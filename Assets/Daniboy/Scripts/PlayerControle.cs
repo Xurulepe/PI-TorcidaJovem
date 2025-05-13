@@ -1,17 +1,19 @@
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 public class PlayerControle : MonoBehaviour
 {
     [Header("Movimentação")]
     public float moveSpeed = 5f; // Velocidade do jogador
-
+    
     [Header("Tiro")]
     public GameObject projectilePrefab; // Prefab do projétil
     public Transform shootPoint;        // Ponto de disparo
     public float projectileSpeed = 10f; // Velocidade do projétil
-
+    public Vector3 moveDirection;
     private Rigidbody rb;
     private Camera cam;
+    
 
     void Start()
     {
@@ -29,14 +31,22 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
-    void Move()
+    public void Move()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
-
-        Vector3 moveDirection = new Vector3(moveX, 0, moveZ).normalized;
+      
         rb.linearVelocity = moveDirection * moveSpeed;
     }
+
+
+    public void PlayerMove(InputAction.CallbackContext value) 
+    { 
+    
+    moveDirection = value.ReadValue<Vector3>();
+
+    
+    }
+
+
 
     void RotateTowardsMouse()
     {
