@@ -31,11 +31,25 @@ public class Dashing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_cooldowtime > 0) 
+        { 
+        _cooldowtime -= Time.deltaTime;
+        }
     }
 
     public void Dash() 
-    { 
+    {
+
+        if (_cooldowtime > 0)
+        {
+            return;
+        }
+        else
+        {
+            _cooldowtime = _cooldowndash;
+        }
+        _playerControle._dashing = true;
+
     Vector3 forcetoapply = _playerControle.moveDirection * _dashForce;
 
         _rb.AddForce(forcetoapply, ForceMode.Impulse);
@@ -54,8 +68,8 @@ public class Dashing : MonoBehaviour
 
 
     private void Dashreset() 
-    { 
-
+    {
+        _playerControle._dashing = false;
     }
 
 

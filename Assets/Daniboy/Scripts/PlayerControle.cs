@@ -5,15 +5,21 @@ public class PlayerControle : MonoBehaviour
 {
     [Header("Movimentação")]
     public float moveSpeed = 5f; // Velocidade do jogador
-    
+    public float _dashSpeed;
+    public bool _dashing;
+    public Vector3 moveDirection;
+    private Rigidbody rb;
     [Header("Tiro")]
     public GameObject projectilePrefab; // Prefab do projétil
     public Transform shootPoint;        // Ponto de disparo
     public float projectileSpeed = 10f; // Velocidade do projétil
-    public Vector3 moveDirection;
-    private Rigidbody rb;
+
+    [Header("Camera")]
     private Camera cam;
-    
+
+    [Header("Variables")]
+    public StateSET _state; //referencia a função enumerator
+
 
     void Start()
     {
@@ -34,7 +40,7 @@ public class PlayerControle : MonoBehaviour
     public void Move()
     {
       
-        rb.linearVelocity = moveDirection * moveSpeed;
+        rb.linearVelocity = new Vector3 (moveDirection.x , rb.linearVelocity.y, moveDirection.z) * moveSpeed;
     }
 
 
@@ -71,4 +77,29 @@ public class PlayerControle : MonoBehaviour
             rbProjectile.linearVelocity = shootDirection * projectileSpeed;
         }
     }
+
+    public enum StateSET //enumerator das ações 
+    { 
+    dashing, 
+    
+    
+    
+    
+    }
+
+    private void stateHandle() 
+    { 
+    
+    if (_dashing) 
+        { 
+        _state = StateSET.dashing;
+            moveSpeed = _dashSpeed;
+        
+        }
+    
+    
+    
+    
+    }
+
 }
