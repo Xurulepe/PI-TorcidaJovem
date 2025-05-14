@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 public class PlayerControle : MonoBehaviour
 {
     [Header("Movimentação")]
@@ -67,15 +68,15 @@ public class PlayerControle : MonoBehaviour
 
     void Shoot()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            Vector3 shootDirection = (hit.point - shootPoint.position).normalized;
 
-            GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-            Rigidbody rbProjectile = projectile.GetComponent<Rigidbody>();
-            rbProjectile.linearVelocity = shootDirection * projectileSpeed;
+        GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        {
+            bullet.transform.position = shootPoint.transform.position ;
+            bullet.transform.rotation = shootPoint.transform.rotation;
+            bullet.SetActive(true);
         }
+
     }
 
     public enum StateSET //enumerator das ações 
@@ -100,6 +101,16 @@ public class PlayerControle : MonoBehaviour
     
     
     
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy")) 
+        {
+
+            Debug.Log("You hit the enemy!");
+        
+        }
     }
 
 }

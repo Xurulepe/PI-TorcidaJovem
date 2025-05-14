@@ -149,4 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43d7fc763536cd4887caffe00585850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
+  bulletPool: {fileID: 9191463063044287822}
+  shootPoint: {fileID: 0}
+  _rb: {fileID: 4506290045414802572}
+  projectileSpeed: 50

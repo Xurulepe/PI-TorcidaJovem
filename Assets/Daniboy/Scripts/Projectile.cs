@@ -2,10 +2,36 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float lifeTime = 3f; // Tempo antes de ser destruído
-
+    //public float lifeTime = 3f; // Tempo antes de ser destruído
+    public GameObject bulletPool;
+    public Transform shootPoint;
+    public Rigidbody _rb;
     void Start()
     {
-        Destroy(gameObject, lifeTime);
+      _rb = GetComponent<Rigidbody>();
+        Invoke("DeactivateObj", 3);
+
     }
+
+
+
+
+
+    void DeactivateObj() 
+    {
+
+        bulletPool.SetActive(false);
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
