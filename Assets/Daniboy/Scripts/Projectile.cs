@@ -1,3 +1,4 @@
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -6,32 +7,31 @@ public class Projectile : MonoBehaviour
     public GameObject bulletPool;
     public Transform shootPoint;
     public Rigidbody _rb;
-    void Start()
-    {
-      _rb = GetComponent<Rigidbody>();
-        Invoke("DeactivateObj", 3);
+    public float speedProjectile;
 
+    private void Awake()
+    {
+        shootPoint = GameObject.FindWithTag("ShootPoint").transform;
+        
     }
 
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
-
-
+    private void FixedUpdate()
+    {
+    }
 
     void DeactivateObj() 
     {
-
         bulletPool.SetActive(false);
-
-
     }
 
-
-
-
-
-
-
-
-
-
+    private void OnEnable()
+    {
+        _rb.linearVelocity = shootPoint.forward * speedProjectile * Time.deltaTime;
+        Invoke("DeactivateObj", 3); 
+    }
 }

@@ -21,7 +21,6 @@ public class PlayerControle : MonoBehaviour
     [Header("Variables")]
     public StateSET _state; //referencia a função enumerator
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,30 +29,26 @@ public class PlayerControle : MonoBehaviour
 
     void Update()
     {
-        Move();
         RotateTowardsMouse();
         if (Input.GetMouseButtonDown(0)) // Botão esquerdo para atirar
         {
             Shoot();
         }
     }
-
-    public void Move()
+    private void FixedUpdate()
     {
-      
-        rb.linearVelocity = new Vector3 (moveDirection.x , rb.linearVelocity.y, moveDirection.z) * moveSpeed;
+        Move();
     }
 
+    public void Move()
+    {      
+        rb.linearVelocity = new Vector3 (moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed) ;
+    }
 
     public void PlayerMove(InputAction.CallbackContext value) 
     { 
-    
-    moveDirection = value.ReadValue<Vector3>();
-
-    
+        moveDirection = value.ReadValue<Vector3>();
     }
-
-
 
     void RotateTowardsMouse()
     {
@@ -68,48 +63,37 @@ public class PlayerControle : MonoBehaviour
 
     void Shoot()
     {
-
         GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
-            bullet.transform.position = shootPoint.transform.position ;
-            bullet.transform.rotation = shootPoint.transform.rotation;
+            bullet.transform.position = shootPoint.transform.position;
+            bullet.transform.rotation = shootPoint.transform.rotation; // Rotaciona a bala corretamente
+            Projectile proj = bullet.GetComponent<Projectile>();
+            proj.speedProjectile = projectileSpeed;
+            proj.shootPoint = shootPoint;
             bullet.SetActive(true);
         }
-
     }
 
     public enum StateSET //enumerator das ações 
     { 
-    dashing, 
-    
-    
-    
-    
+        dashing, 
     }
 
     private void stateHandle() 
-    { 
-    
-    if (_dashing) 
+    {
+        if (_dashing) 
         { 
-        _state = StateSET.dashing;
-            moveSpeed = _dashSpeed;
-        
-        }
-    
-    
-    
-    
+            _state = StateSET.dashing;
+            moveSpeed = _dashSpeed;        
+        } 
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy")) 
         {
-
-            Debug.Log("You hit the enemy!");
-        
+            Debug.Log("You hit the enemy!");        
         }
     }
 
