@@ -8,8 +8,11 @@ public class PlayerControle : MonoBehaviour
     public float moveSpeed = 5f; // Velocidade do jogador
     public float _dashSpeed;
     public bool _dashing;
+    public CharacterController Controller;
     public Vector3 moveDirection;
-    private Rigidbody rb;
+    [Header("Gravidade")]
+    [SerializeField] Vector3 _playerVelocity;
+    public float _gravityFloat = -9.81f;
     [Header("Tiro")]
     public GameObject projectilePrefab; // Prefab do projétil
     public Transform shootPoint;        // Ponto de disparo
@@ -18,37 +21,54 @@ public class PlayerControle : MonoBehaviour
     [Header("Camera")]
     private Camera cam;
 
-    [Header("Variables")]
-    public StateSET _state; //referencia a função enumerator
+  
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+      
         cam = Camera.main;
     }
 
     void Update()
     {
+        Move();
         RotateTowardsMouse();
         if (Input.GetMouseButtonDown(0)) // Botão esquerdo para atirar
         {
             Shoot();
         }
     }
-    private void FixedUpdate()
-    {
-        Move();
-    }
 
     public void Move()
-    {      
-        rb.linearVelocity = new Vector3 (moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed) ;
+    {
+        Controller.Move(new Vector3(moveDirection.x * moveSpeed, Controller.velocity.y, moveDirection.z * moveSpeed) * Time.deltaTime);
     }
 
     public void PlayerMove(InputAction.CallbackContext value) 
     { 
         moveDirection = value.ReadValue<Vector3>();
+
+        Vector3 m = value.ReadValue<Vector3>();
+
+
+        moveDirection.x = m.x;
+        moveDirection.y = m.y;
     }
+
+    public void Gravity()
+    {
+
+        _playerVelocity.y += _gravityFloat * Time.deltaTime;
+
+        Controller.Move(_playerVelocity * Time.deltaTime);
+
+
+    }
+
+
+
+
+
 
     void RotateTowardsMouse()
     {
@@ -75,20 +95,7 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
-    public enum StateSET //enumerator das ações 
-    { 
-        dashing, 
-    }
-
-    private void stateHandle() 
-    {
-        if (_dashing) 
-        { 
-            _state = StateSET.dashing;
-            moveSpeed = _dashSpeed;        
-        } 
-    }
-
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy")) 
