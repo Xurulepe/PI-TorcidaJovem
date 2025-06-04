@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovePlayer : MonoBehaviour
+public class minijogoMP : MonoBehaviour
 {
     [SerializeField] Rigidbody2D _rb;
 
@@ -13,7 +13,7 @@ public class MovePlayer : MonoBehaviour
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();    
     }
 
     // Update is called once per frame
@@ -22,21 +22,10 @@ public class MovePlayer : MonoBehaviour
         _rb.linearVelocity = new Vector2(_move.x * _speed, _rb.linearVelocity.y);
     }
 
+
     public void SetMove(InputAction.CallbackContext value)
     {
         _move = value.ReadValue<Vector2>();
-    }
-
-    
-
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("checkGround"))
-        {
-            Jump();
-        }
     }
 
     void Jump()
@@ -44,4 +33,15 @@ public class MovePlayer : MonoBehaviour
         _rb.linearVelocityY = 0;
         _rb.AddForceY(_forceJump);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("jumpGround"))
+        {
+            Jump();
+        }
+    }
+
+    
+
 }
