@@ -541,10 +541,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
+  _anim: {fileID: 1454259743}
   _move: {x: 0, y: 0}
   _speed: 5
   _forceJump: 550
   _checkGround: 0
+  _isWalking: 0
 --- !u!1 &790464609
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a6339cd20518a9b4d8e9e9de854cf111, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.65
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a6339cd20518a9b4d8e9e9de854cf111, type: 3}
       propertyPath: m_LocalScale.y
@@ -748,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a6339cd20518a9b4d8e9e9de854cf111, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7221020487405985688, guid: a6339cd20518a9b4d8e9e9de854cf111, type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,7 +789,7 @@ GameObject:
   - component: {fileID: 1230629601}
   m_Layer: 0
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
