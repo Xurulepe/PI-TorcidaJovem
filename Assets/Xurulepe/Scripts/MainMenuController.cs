@@ -9,9 +9,12 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] List<Transform> menuButtons = new List<Transform>();
     [SerializeField] Image fadePanel;
+    [SerializeField] List<Transform> menuPanels = new List<Transform>();
 
     private void Start()
     {
+        fadePanel.gameObject.SetActive(true);
+
         foreach(var button in menuButtons)
         {
             //button.localScale = Vector3.zero;
