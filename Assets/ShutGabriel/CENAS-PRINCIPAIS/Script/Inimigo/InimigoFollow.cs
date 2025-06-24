@@ -6,6 +6,11 @@ public class InimigoFollow : MonoBehaviour
 {
     [SerializeField] NavMeshAgent _agent;
     public Transform _player;
+    public float _distanciaATK = 2f;
+    public float _TempoEntreATKS = 10;
+    public int _dano = 1;
+
+    private float _tempoProximoATK = 1f;
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -14,6 +19,27 @@ public class InimigoFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _agent.SetDestination(_player.position);
+        float distancia = Vector3.Distance(transform.position, _player.position);
+        if (distancia > _distanciaATK)
+        {
+            _agent.isStopped = false;
+            _agent.SetDestination(_player.position);
+        }
+        else
+        {
+            _agent.isStopped = true;
+            Vector3 direcao = (_player.position.normalized - transform.position).normalized;
+            Quaternion rotacao = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotacao, Time.deltaTime * 5f);
+            if(Time.time >= _tempoProximoATK)
+            {
+                Atacar();
+                _tempoProximoATK = Time.time + _TempoEntreATKS;
+            }
+        }
+    }
+    void Atacar()
+    {
+        Debug.Log("-1 hp");
     }
 }
