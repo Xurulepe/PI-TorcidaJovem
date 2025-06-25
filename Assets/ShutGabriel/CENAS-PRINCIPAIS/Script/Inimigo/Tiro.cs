@@ -12,19 +12,10 @@ public class Tiro : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerDano>()?.LevarDano();
+            Debug.Log("-1 HP");
             //talvez consiga colocar efeitos aqui? perguntar em sala
             Destroy(gameObject);
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

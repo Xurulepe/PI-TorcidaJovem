@@ -6,7 +6,7 @@ public class InimigoT1 : MonoBehaviour
 {
     public static InimigoT1 instance;
     private List<GameObject> pooledObject = new List<GameObject>();
-    private int amoutToPool = 20;
+    private int amoutToPool = 5;
 
     [SerializeField] private GameObject bulletprefab;
 

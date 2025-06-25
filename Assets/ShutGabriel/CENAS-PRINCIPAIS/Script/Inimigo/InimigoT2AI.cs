@@ -16,6 +16,7 @@ public class InimigoT2AI : MonoBehaviour
 
     void Start()
     {
+        
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
         shootTimer = shootInterval;
@@ -25,6 +26,7 @@ public class InimigoT2AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (player != null)
         {
             float distance = Vector3.Distance(transform.position, player.position);

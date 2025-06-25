@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 32067615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0, z: 1.47}
+  m_LocalPosition: {x: 0.13, y: 1.53, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -253,7 +253,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 60, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 80, y: 1, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 741733523}
   - component: {fileID: 741733522}
   - component: {fileID: 741733521}
+  - component: {fileID: 741733524}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -418,6 +419,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741733519}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &741733524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741733519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdb49a04476c62419a13625476ce792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1361208945
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -778,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -790,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4903567391625273316, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -799,6 +812,30 @@ PrefabInstance:
     - target: {fileID: 5730242824847577605, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
       propertyPath: m_Name
       value: Inimigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841824740782218981, guid: d8f8996d5246aa249a42d323f552a15e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
