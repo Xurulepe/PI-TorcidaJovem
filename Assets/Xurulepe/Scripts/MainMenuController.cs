@@ -7,48 +7,87 @@ using DG.Tweening;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] List<Transform> menuButtons = new List<Transform>();
     [SerializeField] Image fadePanel;
-    [SerializeField] List<Transform> menuPanels = new List<Transform>();
+    [SerializeField] List<Transform> _menuPanels = new List<Transform>();
+    [SerializeField] List<Transform> _startMenuButtons = new List<Transform>();
+    [SerializeField] List<Transform> _configMenuButtons = new List<Transform>();
+    [SerializeField] List<Transform> _sonsMenuButtons = new List<Transform>();
+    [SerializeField] List<Transform> _languageMenuButtons = new List<Transform>();
 
     private void Start()
     {
         fadePanel.gameObject.SetActive(true);
 
-        foreach(var button in menuButtons)
-        {
-            //button.localScale = Vector3.zero;
-            button.localScale = new Vector3(button.localScale.x, 0f, button.localScale.z);
-        }
+        HideButtons(_startMenuButtons);
 
         FadeToLight();
-        StartCoroutine(MenuON());
+        StartCoroutine(MenuAnimations(_startMenuButtons));
     }
 
-    private IEnumerator MenuON()
+    void HideButtons(List<Transform> buttonsList)
     {
-        yield return new WaitForSeconds(1.25f);
+        foreach (var button in buttonsList)
+        {
+            button.localScale = new Vector3(button.localScale.x, 0f, button.localScale.z);
+        }
+    }
+
+    private IEnumerator MenuAnimations(List<Transform> menuButtons)
+    {
+        //yield return new WaitForSeconds(1.25f);
+        HideButtons(menuButtons);
 
         foreach (var button in menuButtons)
         {
-            //button.DOScale(1.5f, .25f);
-            //yield return new WaitForSeconds(.25f);
-            //button.DOScale(1f, .25f);
             button.DOScaleY(1f, .25f);
             yield return new WaitForSeconds(.25f);
         }
     }
 
+    void HideOthersMenus(Transform menuException)
+    {
+        foreach (var menu in _menuPanels)
+        {
+            menu.gameObject.SetActive(false);
+        }
+
+        menuException.gameObject.SetActive(true);
+    }
+
+    public void ChangeMenu(int menuIndex)
+    {
+        switch (menuIndex)
+        {
+            case 0:
+                HideOthersMenus(_menuPanels[0]);
+                StartCoroutine(MenuAnimations(_startMenuButtons));
+                break;
+            case 1:
+                HideOthersMenus(_menuPanels[1]);
+                StartCoroutine(MenuAnimations(_configMenuButtons));
+                break;
+            case 2:
+                HideOthersMenus(_menuPanels[2]);
+                StartCoroutine(MenuAnimations(_sonsMenuButtons));
+                break;
+            case 3:
+                HideOthersMenus(_menuPanels[3]);
+                StartCoroutine(MenuAnimations(_languageMenuButtons));
+                break;
+            default:
+                Debug.LogWarning("Menu inválido! Index " + menuIndex + " não existe!");
+                break;
+        }
+    }
+
+    #region FADE PANEL CONTROLLER
     private void FadeToLight()
     {
-        //fadePanel.color = new Color(0f, 0f, 0f, 255f);
-        fadePanel.DOFade(0f, 2.5f).OnComplete(HideFadePanel);
+        fadePanel.DOFade(0f, 1f).OnComplete(HideFadePanel);
     }
 
     private void FadeToDark()
     {
-        //fadePanel.color = new Color(0f, 0f, 0f, 0f);
-
         fadePanel.DOFade(1f, 1f);
     }
 
@@ -61,10 +100,10 @@ public class MainMenuController : MonoBehaviour
     {
         fadePanel.transform.localScale = Vector3.zero;
     }
+    #endregion
 
     public void LoadScene(string sceneName)
     {
-        //SceneManager.LoadScene(sceneName);
         StartCoroutine(OpenScene(sceneName));
     }
 
