@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.AI;
 public class InimigoT2AI : MonoBehaviour
 {
+    //GETCOMPONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEENT PARA CHAMAR PLAYER E RESOLVER NOSSOS PROBLEMAS
+    public GameObject _spriteVirus;
+    public Transform cameraTrans;
+    public Transform shadowPosition;
     public Transform player;
     public float stoppingDistance = 10f;
     
@@ -16,13 +20,13 @@ public class InimigoT2AI : MonoBehaviour
 
     void Start()
     {
-        
+        //agent = GetComponent<>
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
         shootTimer = shootInterval;
         
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +47,7 @@ public class InimigoT2AI : MonoBehaviour
             }
         }
     }
+   
     void shoot()
     {
         shootTimer -= Time.deltaTime;
@@ -56,5 +61,10 @@ public class InimigoT2AI : MonoBehaviour
             }
             shootTimer = shootInterval;
         }
+    }
+    void LateUpdate()
+    {
+        _spriteVirus.transform.LookAt(_spriteVirus.transform.localPosition + cameraTrans.position);
+        shadowPosition.transform.LookAt(shadowPosition.transform.localPosition + cameraTrans.position);
     }
 }

@@ -4,10 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 public class InimigoFollow : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent _agent;
+    public GameObject _spriteVirus;
+    public Transform cameraTrans;
+    public Transform shadowPosition;
     public Transform _player;
+
+    [SerializeField] NavMeshAgent _agent;
     public float _distanciaATK = 2f;
-    public float _TempoEntreATKS = 10;
+    public float _TempoEntreATKS = 2;
     public int _dano = 1;
 
     private float _tempoProximoATK = 1f;
@@ -28,7 +32,7 @@ public class InimigoFollow : MonoBehaviour
         else
         {
             _agent.isStopped = true;
-            //Vector3 direcao = (_player.position.normalized - transform.position).normalized;
+            Vector3 direcao = (_player.position.normalized - transform.position).normalized;
             //Quaternion rotacao = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
             //transform.rotation = Quaternion.Slerp(transform.rotation, rotacao, Time.deltaTime * 5f);
             if(Time.time >= _tempoProximoATK)
@@ -38,9 +42,14 @@ public class InimigoFollow : MonoBehaviour
             }
         }
     }
+    void LateUpdate()
+    {
+        _spriteVirus.transform.LookAt(_spriteVirus.transform.localPosition + cameraTrans.position);
+        shadowPosition.transform.LookAt(shadowPosition.transform.localPosition + cameraTrans.position);
+    }
     void Atacar()
     {
         _player.GetComponent<PlayerDano>()?.LevarDano();
-        Debug.Log("-1 hp");
+         Debug.Log("-1 HP");
     }
 }
