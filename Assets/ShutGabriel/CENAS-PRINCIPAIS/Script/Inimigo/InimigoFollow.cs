@@ -33,8 +33,6 @@ public class InimigoFollow : MonoBehaviour
         {
             _agent.isStopped = true;
             Vector3 direcao = (_player.position.normalized - transform.position).normalized;
-            //Quaternion rotacao = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
-            //transform.rotation = Quaternion.Slerp(transform.rotation, rotacao, Time.deltaTime * 5f);
             if(Time.time >= _tempoProximoATK)
             {
                 Atacar();
@@ -42,14 +40,15 @@ public class InimigoFollow : MonoBehaviour
             }
         }
     }
+    void Atacar()
+    {
+        _player.GetComponent<PlayerDano>().LevarDano();
+        Debug.Log("-1 HP");
+    }
     void LateUpdate()
     {
         _spriteVirus.transform.LookAt(_spriteVirus.transform.localPosition + cameraTrans.position);
         shadowPosition.transform.LookAt(shadowPosition.transform.localPosition + cameraTrans.position);
     }
-    void Atacar()
-    {
-        _player.GetComponent<PlayerDano>()?.LevarDano();
-         Debug.Log("-1 HP");
-    }
+   
 }

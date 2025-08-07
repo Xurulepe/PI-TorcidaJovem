@@ -12,7 +12,7 @@ public class InimigoATK : MonoBehaviour
     private void Awake()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");
-        //PlayerHealth = GetComponent<PlayerHealth>();
+        //para depois:   PlayerHealth = GetComponent<PlayerHealth>();
         _anim = GetComponent<Animator>();
     }
     private void OnTriggerEnter(Collider other)
