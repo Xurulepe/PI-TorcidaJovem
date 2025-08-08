@@ -4,12 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 public class InimigoFollow : MonoBehaviour
 {
-    public GameObject _spriteVirus;
-    public Transform cameraTrans;
-    public Transform shadowPosition;
-    public Transform _player;
+    protected GameObject _spriteVirus;
+    protected Transform cameraTrans;
+    protected Transform shadowPosition;
+    protected Transform _player;
 
-    [SerializeField] NavMeshAgent _agent;
+    [SerializeField] protected NavMeshAgent _agent;
     public float _distanciaATK = 2f;
     public float _TempoEntreATKS = 2;
     public int _dano = 1;

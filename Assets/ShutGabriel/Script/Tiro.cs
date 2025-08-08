@@ -14,7 +14,6 @@ public class Tiro : MonoBehaviour
         {
             other.GetComponent<PlayerDano>()?.LevarDano();
             Debug.Log("-1 HP");
-            //talvez consiga colocar efeitos aqui? perguntar em sala
             Destroy(gameObject);
         }
     }
