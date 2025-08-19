@@ -4,9 +4,14 @@ using UnityEngine.AI;
 public class InimigoDefault : MonoBehaviour
 {
 
-    protected GameObject _spriteVírus;
+    protected GameObject[] _Spawner;
+    protected float _SpawnTimer;
+    protected GameObject inimigo1;
+    protected GameObject inimigo2;
+
+    [SerializeField] protected GameObject _spriteVírus;
     protected Transform _cameraTransf;
-    protected Transform _shadowPosition;
+    [SerializeField] protected Transform _shadowPosition;
     protected Transform _player;
     protected Animator _anim;
 
@@ -33,6 +38,9 @@ public class InimigoDefault : MonoBehaviour
     {
         _Player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
+        _player = _Player.transform;
+        _cameraTransf = Camera.main.transform;
+        
     }
 
     protected virtual void Update()

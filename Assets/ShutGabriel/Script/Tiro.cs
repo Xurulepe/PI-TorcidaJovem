@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class Tiro : MonoBehaviour
+public class Tiro : InimigoDefault
 {
-    public float lifeTime = 5f;
+    protected float lifeTime = 5f;
     void start()
     {
         Destroy(gameObject, 7f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class InimigoV2 : InimigoDefault
 {
-
+ 
     protected override void Start()
     {
         _Agent = GetComponent<NavMeshAgent>();

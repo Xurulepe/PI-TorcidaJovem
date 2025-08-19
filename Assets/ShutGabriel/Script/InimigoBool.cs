@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InimigoBool : MonoBehaviour
 {
-    public static InimigoT1 instance;
+    public static InimigoV1 instance;
     private List<GameObject> pooledObject = new List<GameObject>();
     private int amoutToPool = 5;
 
@@ -13,7 +13,7 @@ public class InimigoBool : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
+            //instance = this;
         }
     }
 

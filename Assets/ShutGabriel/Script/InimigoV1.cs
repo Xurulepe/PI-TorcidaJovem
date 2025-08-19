@@ -4,6 +4,7 @@ public class InimigoV1 : InimigoDefault
 {
     protected override void Update()
     {
+       
         float distancia = Vector3.Distance(transform.position, _player.position);
         if (distancia > _distanciaATK)
         {
