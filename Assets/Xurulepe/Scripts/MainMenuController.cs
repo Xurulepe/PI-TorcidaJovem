@@ -23,7 +23,7 @@ public class MainMenuController : MonoBehaviour
         FadeToLight();
         StartCoroutine(MenuAnimations(_startMenuButtons));
 
-        AudioManager.Instance.PlayMusic("MenuMusic");
+        AudioManager.Instance.PlayMusicByName("MenuMusic");
     }
 
     void HideButtons(List<Transform> buttonsList)

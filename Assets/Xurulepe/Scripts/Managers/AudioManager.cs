@@ -31,13 +31,17 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region PLAY SOUNDS
-    public void PlayMusic(string name)
+    /// <summary>
+    /// Procura uma música pelo nome e a reproduz.
+    /// </summary>
+    /// <param name="name"> Nome da música a ser procurada no AudioManager.</param>
+    public void PlayMusicByName(string name)
     {
         Sound sound = System.Array.Find(_musicSounds, s => s.name == name);
 
         if (sound == null)
         {
-            Debug.LogWarning("Música não encontrada!");
+            Debug.LogWarning("Música " + name + " não encontrada!");
             return;
         }
 
@@ -45,21 +49,58 @@ public class AudioManager : MonoBehaviour
         _musicSource.Play();
     }
 
-    public void PlaySFX(string name)
+    /// <summary>
+    /// Reproduz uma música a partir de um AudioClip.
+    /// </summary>
+    /// <param name="clip"> Clip da música a ser reproduzida.</param>
+    public void PlayMusicByAudioClip(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            Debug.LogWarning("Clip de música é nulo!");
+            return;
+        }
+
+        _musicSource.clip = clip;
+        _musicSource.Play();
+    }
+
+    /// <summary>
+    /// Procura um efeito sonoro pelo nome e o reproduz.
+    /// </summary>
+    /// <param name="name"> Nome do efeito sonoro a ser procurado no AudioManager. </param>
+    public void PlaySFXByName(string name)
     {
         Sound sound = System.Array.Find(_sfxSounds, s => s.name == name);
 
         if (sound == null)
         {
-            Debug.LogWarning("SFX não encontrado!");
+            Debug.LogWarning("SFX " + name + " não encontrado!");
             return;
         }
 
         _sfxSource.PlayOneShot(sound.audioClip);
     }
+
+    /// <summary>
+    /// Reproduz um efeito sonoro a partir de um AudioClip.
+    /// </summary>
+    /// <param name="clip"> Clip do efeito sonoro a ser reproduzido.</param>
+    public void PlaySFXByAudioClip(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            Debug.LogWarning("Clip de SFX é nulo!");
+            return;
+        }
+
+        _sfxSource.PlayOneShot(clip);
+    }
     #endregion
 
     #region SET VOLUMES
+    // Define os volumes de áudio pelos sliders
+
     public void SetMasterVolume(float volume)
     {
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);

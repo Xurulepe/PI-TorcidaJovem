@@ -28,6 +28,10 @@ public class MiniJogoGameController : MonoBehaviour
             }
             GroundStart();
         }
+        if (_checkGroundCount)
+        {
+            
+        }
     }
 
     void GroundStart()
