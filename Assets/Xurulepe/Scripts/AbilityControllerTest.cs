@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class AbilityControllerTest : MonoBehaviour
 {
+    [Header("Habilidades")]
     [SerializeField] Ability ability1;
     [SerializeField] Ability ability2;
 
@@ -16,30 +17,5 @@ public class AbilityControllerTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
             ability2.TryUse();
-    }
-}
-
-[System.Serializable]
-public class Ability  // classe auxiliar 
-{
-    public Image timerImage;      
-    public float cooldown;        
-
-    public void TryUse()
-    {
-        if (timerImage.fillAmount <= 0f)
-        {
-            timerImage.fillAmount = 1f;
-        }
-    }
-
-    public void Update()
-    {
-        if (timerImage.fillAmount > 0f)
-        {
-            timerImage.fillAmount -= Time.deltaTime / cooldown;
-            if (timerImage.fillAmount < 0f)
-                timerImage.fillAmount = 0f;
-        }
     }
 }
