@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class AudioManager : MonoBehaviour
     [Header("AudioClips")]
     [SerializeField] private Sound[] _musicSounds;
     [SerializeField] private Sound[] _sfxSounds;
+
+    [Header("UI Sliders")]
+    [SerializeField] private Slider _masterVolumeSlider;
+    [SerializeField] private Slider _musicVolumeSlider;
+    [SerializeField] private Slider _sFXVolumeSlider;
 
     #region SINGLETON
     public static AudioManager Instance { get; private set; }
@@ -116,4 +122,17 @@ public class AudioManager : MonoBehaviour
         _audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
     #endregion
+
+    /// <summary>
+    /// Seta os sliders de volume a partir do HUDController de cada cena.
+    /// </summary>
+    /// <param name="hud">O HUDControler presente na cena que contém os sliders.</param>
+    public void GetSliders(HUDController hud)
+    {
+        _masterVolumeSlider = hud.MasterSlider;
+        _musicVolumeSlider = hud.MusicSlider;
+        _sFXVolumeSlider = hud.SFXSlider;
+    }
+
+
 }
