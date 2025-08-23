@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.Localization.Settings;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -103,6 +104,11 @@ public class MainMenuController : MonoBehaviour
         fadePanel.transform.localScale = Vector3.zero;
     }
     #endregion
+
+    public void ChangeLanguage(int languageIndex)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
+    }
 
     public void LoadScene(string sceneName)
     {

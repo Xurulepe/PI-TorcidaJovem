@@ -18,5 +18,7 @@ EditorBuildSettings:
     path: Assets/Xurulepe/Scenes/TestScene.unity
     guid: bc03bd329ab1a964f93abe35c0f1482a
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 28e0d42928e8fdf4ab0d0652eb0a1aea, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.localization.settings: {fileID: 11400000, guid: 6c3e44bd5dc363b4ab99ee3c482c3a31, type: 2}
   m_UseUCBPForAssetBundles: 0
