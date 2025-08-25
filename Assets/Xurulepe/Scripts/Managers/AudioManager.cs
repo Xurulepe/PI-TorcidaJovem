@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
     /// Procura uma música pelo nome e a reproduz.
     /// </summary>
     /// <param name="name"> Nome da música a ser procurada no AudioManager.</param>
-    public void PlayMusicByName(string name)
+    public void PlayMusic(string name)
     {
         Sound sound = System.Array.Find(_musicSounds, s => s.name == name);
 
@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
     /// Reproduz uma música a partir de um AudioClip.
     /// </summary>
     /// <param name="clip"> Clip da música a ser reproduzida.</param>
-    public void PlayMusicByAudioClip(AudioClip clip)
+    public void PlayMusic(AudioClip clip)
     {
         if (clip == null)
         {
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
     /// Procura um efeito sonoro pelo nome e o reproduz.
     /// </summary>
     /// <param name="name"> Nome do efeito sonoro a ser procurado no AudioManager. </param>
-    public void PlaySFXByName(string name)
+    public void PlaySFX(string name)
     {
         Sound sound = System.Array.Find(_sfxSounds, s => s.name == name);
 
@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
     /// Reproduz um efeito sonoro a partir de um AudioClip.
     /// </summary>
     /// <param name="clip"> Clip do efeito sonoro a ser reproduzido.</param>
-    public void PlaySFXByAudioClip(AudioClip clip)
+    public void PlaySFX(AudioClip clip)
     {
         if (clip == null)
         {

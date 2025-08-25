@@ -5,6 +5,9 @@ public class ButtonController : MonoBehaviour
 {
     private Button _button;
 
+    [SerializeField] private AudioClip _buttonClickSound;
+    [SerializeField] private string _buttonClickSoundName = "ButtonClick";
+
     void Awake()
     {
         _button = GetComponent<Button>();
@@ -22,6 +25,12 @@ public class ButtonController : MonoBehaviour
 
     private void PlayButtonSound()
     {
-        AudioManager.Instance.PlaySFXByName("ButtonClick");
+        if (_buttonClickSound != null)
+        {
+            AudioManager.Instance.PlaySFX(_buttonClickSound);
+            return;
+        }
+
+        AudioManager.Instance.PlaySFX(_buttonClickSoundName);
     }
 }
