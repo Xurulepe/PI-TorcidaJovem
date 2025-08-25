@@ -13,11 +13,12 @@ public class Ability : MonoBehaviour
     [Tooltip("O tempo de recarga da habilidade em segundos.")]
     public float cooldown;
 
-    public void TryUse()
+    public void TryUse(PlayerTest player)
     {
         if (timerImage.fillAmount <= 0f)
         {
             timerImage.fillAmount = 1f;
+            player.UseAbility();
         }
     }
 
