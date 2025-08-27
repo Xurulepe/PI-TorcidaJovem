@@ -5457,21 +5457,21 @@ MonoBehaviour:
   - {fileID: 71794788}
   - {fileID: 315235135}
   - {fileID: 760334508}
-  _startMenuButtons:
+  _startMenuElements:
   - {fileID: 220933770}
   - {fileID: 2082535871}
   - {fileID: 1424157812}
   - {fileID: 97881368}
-  _configMenuButtons:
+  _configMenuElements:
   - {fileID: 436461978}
   - {fileID: 2070251778}
   - {fileID: 1590613470}
-  _sonsMenuButtons:
+  _sonsMenuElements:
   - {fileID: 1134390932}
   - {fileID: 1239147546}
   - {fileID: 753892810}
   - {fileID: 1959209511}
-  _languageMenuButtons:
+  _languageMenuElements:
   - {fileID: 147888258}
   - {fileID: 1742791236}
 --- !u!114 &1519013631

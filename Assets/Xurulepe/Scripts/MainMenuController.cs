@@ -8,37 +8,112 @@ using UnityEngine.Localization.Settings;
 
 public class MainMenuController : MonoBehaviour
 {
+    /// <summary>
+    /// O painel de fade que cobre a tela para transições.
+    /// </summary>
+    [Tooltip("O painel de fade que cobre a tela para transições.")]
     [SerializeField] Image fadePanel;
+
+    [Space]
+    /// <summary>
+    /// Os painéis dos menus (Start, Configurações, Sons, Idiomas).
+    /// </summary>
+    [Tooltip("Os painéis dos menus (Start, Configurações, Sons, Idiomas).")]
     [SerializeField] List<Transform> _menuPanels = new List<Transform>();
-    [SerializeField] List<Transform> _startMenuButtons = new List<Transform>();
-    [SerializeField] List<Transform> _configMenuButtons = new List<Transform>();
-    [SerializeField] List<Transform> _sonsMenuButtons = new List<Transform>();
-    [SerializeField] List<Transform> _languageMenuButtons = new List<Transform>();
+
+    #region MENUS ELEMENTS
+    /// <summary>
+    /// Os elementos que serão animados do menu Start.
+    /// </summary>
+    [Tooltip("Os elementos que serão animados do menu Start.")]
+    [SerializeField] List<Transform> _startMenuElements = new List<Transform>();
+
+    /// <summary>
+    /// Os elementos que serão animados do menu de Configurações.
+    /// </summary>
+    [Tooltip("Os elementos que serão animados do menu de Configurações.")]
+    [SerializeField] List<Transform> _configMenuElements = new List<Transform>();
+
+    /// <summary>
+    /// Os elementos que serão animados do menu de Sons.
+    /// </summary>
+    [Tooltip("Os elementos que serão animados do menu de Sons.")]
+    [SerializeField] List<Transform> _sonsMenuElements = new List<Transform>();
+
+    /// <summary>
+    /// Os elementos que serão animados do menu de Idiomas.
+    /// </summary>
+    [Tooltip("Os elementos que serão animados do menu de Idiomas.")]
+    [SerializeField] List<Transform> _languageMenuElements = new List<Transform>();
+    #endregion
+
+    /// <summary>
+    /// A lista de listas que contém os elementos de cada menu.
+    /// </summary>
+    [Tooltip("A lista de listas que contém os elementos de cada menu.")]
+    List<List<Transform>> _menusLists = new List<List<Transform>>();
 
     private void Start()
     {
+        _menusLists = new List<List<Transform>>()
+        {
+            _startMenuElements,
+            _configMenuElements,
+            _sonsMenuElements,
+            _languageMenuElements
+        };
+
+
         fadePanel.gameObject.SetActive(true);
 
-        HideButtons(_startMenuButtons);
+        HideMenuElements(_startMenuElements);
 
         FadeToLight();
-        StartCoroutine(MenuAnimations(_startMenuButtons));
+        StartCoroutine(AnimateMenu(_startMenuElements));
 
         AudioManager.Instance.PlayMusic("MenuMusic");
     }
 
-    void HideButtons(List<Transform> buttonsList)
+    #region CHANGE MENU
+    /// <summary>
+    /// Altera o menu ativo, baseado no índice do menu.
+    /// </summary>
+    /// <param name="menuIndex"> O index do menu que será ativado.</param>
+    public void ChangeMenu(int menuIndex)
     {
-        foreach (var button in buttonsList)
+        if (menuIndex < 0 || menuIndex >= _menusLists.Count || menuIndex >= _menuPanels.Count)
         {
-            button.localScale = new Vector3(button.localScale.x, 0f, button.localScale.z);
+            Debug.LogWarning($"Menu inválido! Index {menuIndex} não existe!");
+            return;
         }
+
+        HideOthersMenus(_menuPanels[menuIndex]);
+        StartCoroutine(AnimateMenu(_menusLists[menuIndex]));
     }
 
-    private IEnumerator MenuAnimations(List<Transform> menuButtons)
+    /// <summary>
+    /// Oculta outros menus, exceto o menu passado como exceção.
+    /// </summary>
+    /// <param name="menuToKeep"> O menu que será ativo.</param>
+    private void HideOthersMenus(Transform menuToKeep)
     {
-        //yield return new WaitForSeconds(1.25f);
-        HideButtons(menuButtons);
+        foreach (var menu in _menuPanels)
+        {
+            menu.gameObject.SetActive(false);
+        }
+
+        menuToKeep.gameObject.SetActive(true);
+    }
+    #endregion
+
+    #region ANIMATE MENU
+    /// <summary>
+    /// Anima os elementos do menu, fazendo com que eles apareçam um de cada vez.
+    /// </summary>
+    /// <param name="menuButtons"> A lista de componentes do menu que será animado.</param>
+    private IEnumerator AnimateMenu(List<Transform> menuButtons)
+    {
+        HideMenuElements(menuButtons);
 
         foreach (var button in menuButtons)
         {
@@ -47,61 +122,28 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    void HideOthersMenus(Transform menuException)
+    /// <summary>
+    /// Oculta os elementos do menu que serão animados.
+    /// </summary>
+    /// <param name="menusElements"> A lista de elementos que será ocultada.</param>
+    private void HideMenuElements(List<Transform> menusElements)
     {
-        foreach (var menu in _menuPanels)
+        foreach (var element in menusElements)
         {
-            menu.gameObject.SetActive(false);
-        }
-
-        menuException.gameObject.SetActive(true);
-    }
-
-    public void ChangeMenu(int menuIndex)
-    {
-        switch (menuIndex)
-        {
-            case 0:
-                HideOthersMenus(_menuPanels[0]);
-                StartCoroutine(MenuAnimations(_startMenuButtons));
-                break;
-            case 1:
-                HideOthersMenus(_menuPanels[1]);
-                StartCoroutine(MenuAnimations(_configMenuButtons));
-                break;
-            case 2:
-                HideOthersMenus(_menuPanels[2]);
-                StartCoroutine(MenuAnimations(_sonsMenuButtons));
-                break;
-            case 3:
-                HideOthersMenus(_menuPanels[3]);
-                StartCoroutine(MenuAnimations(_languageMenuButtons));
-                break;
-            default:
-                Debug.LogWarning("Menu inválido! Index " + menuIndex + " não existe!");
-                break;
+            element.localScale = new Vector3(element.localScale.x, 0f, element.localScale.z);
         }
     }
+    #endregion
 
     #region FADE PANEL CONTROLLER
     private void FadeToLight()
     {
-        fadePanel.DOFade(0f, 1f).OnComplete(HideFadePanel);
+        fadePanel.DOFade(0f, 1f);
     }
 
     private void FadeToDark()
     {
         fadePanel.DOFade(1f, 1f);
-    }
-
-    void ShowFadePanel()
-    {
-        fadePanel.transform.localScale = Vector3.one;
-    }
-
-    void HideFadePanel()
-    {
-        fadePanel.transform.localScale = Vector3.zero;
     }
     #endregion
 
@@ -110,6 +152,7 @@ public class MainMenuController : MonoBehaviour
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
     }
 
+    #region CHANGE SCENE AND QUIT GAME
     public void LoadScene(string sceneName)
     {
         StartCoroutine(OpenScene(sceneName));
@@ -117,7 +160,6 @@ public class MainMenuController : MonoBehaviour
 
     IEnumerator OpenScene(string sceneName)
     {
-        ShowFadePanel();
         fadePanel.color = new Color(0f, 0f, 0f, 0f);
         FadeToDark();
         yield return new WaitForSeconds(1f);
@@ -129,4 +171,5 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Quit!");
         Application.Quit();
     }
+    #endregion
 }
