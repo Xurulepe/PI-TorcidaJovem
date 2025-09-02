@@ -1,9 +1,25 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using static UnityEngine.GraphicsBuffer;
 public class PlayerControle : MonoBehaviour
 {
+
+    [Header("Melee")]
+    public float _attackDistance = 3f;
+    public float _attackDelay = 0.4f;
+    public float _attackSpeed = 1f;
+    public float _attackDamage = 1f;
+    public LayerMask _attackLayer;
+
+    public bool _isAttacking;
+    public bool _readytoAttack;
+    public int attackCount;
+    public Transform attackPoint;
+    [Header("PlayerInfo")]
+    public float _lifepoints;
+   
     [Header("Movimentação")]
     public float moveSpeed = 5f; // Velocidade do jogador
     public float _dashSpeed;
@@ -36,6 +52,10 @@ public class PlayerControle : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Botão esquerdo para atirar
         {
             Shoot();
+        }
+        if (Input.GetMouseButtonDown(1)) // Botão direito para atacar
+        {
+            Melee();
         }
     }
 
@@ -77,7 +97,7 @@ public class PlayerControle : MonoBehaviour
         {
             Vector3 targetPosition = hit.point;
             targetPosition.y = transform.position.y; // Mantém a rotação no plano horizontal
-            transform.LookAt(targetPosition);
+            transform.LookAt(targetPosition); 
         }
     }
 
@@ -93,6 +113,50 @@ public class PlayerControle : MonoBehaviour
             proj.shootPoint = shootPoint;
             bullet.SetActive(true);
         }
+    }
+
+    void Melee() 
+    {
+
+        if (!_readytoAttack || _isAttacking) return;
+
+        _readytoAttack = false;
+        _isAttacking = true;
+
+        Invoke(nameof(ResetAttack), _attackSpeed);
+        Invoke(nameof(AttackRaycast), _attackDelay);
+
+
+
+    }
+
+    void ResetAttack() 
+    {
+
+        _readytoAttack = true;
+        _isAttacking = false;
+
+
+
+    }
+
+    void AttackRaycast() 
+    { 
+    
+    if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out RaycastHit hit, _attackDistance, _attackLayer)) 
+    { 
+        Debug.Log("HitTarget");
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     }
 
     
