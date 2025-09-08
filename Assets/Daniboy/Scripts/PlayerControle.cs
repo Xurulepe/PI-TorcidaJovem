@@ -11,12 +11,11 @@ public class PlayerControle : MonoBehaviour
     public float _attackDelay = 0.4f;
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
-    public LayerMask _attackLayer;
-
+ 
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
-    public Transform attackPoint;
+    [SerializeField] public Transform attackPoint;
     [Header("PlayerInfo")]
     public float _lifepoints;
    
@@ -53,9 +52,11 @@ public class PlayerControle : MonoBehaviour
         {
             Shoot();
         }
-        if (Input.GetMouseButtonDown(1)) // Botão direito para atacar
+        if (Input.GetKeyDown(KeyCode.L)) // Botão direito para atacar
         {
-            Melee();
+
+            AttackRaycast();
+
         }
     }
 
@@ -126,7 +127,7 @@ public class PlayerControle : MonoBehaviour
         Invoke(nameof(ResetAttack), _attackSpeed);
         Invoke(nameof(AttackRaycast), _attackDelay);
 
-
+       
 
     }
 
@@ -141,22 +142,16 @@ public class PlayerControle : MonoBehaviour
     }
 
     void AttackRaycast() 
-    { 
-    
-    if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out RaycastHit hit, _attackDistance, _attackLayer)) 
-    { 
-        Debug.Log("HitTarget");
-        
-        
-        
-        
+    {
+
+        RaycastHit hit;
+    if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance)) 
+    {
+            Debug.Log(hit.transform.name);
+            Debug.Log("HitTarget");
+
     }
-    
-    
-    
-    
-    
-    
+ 
     }
 
     
