@@ -13,12 +13,19 @@ public class Ability : MonoBehaviour
     [Tooltip("O tempo de recarga da habilidade em segundos.")]
     public float cooldown;
 
-    public void TryUse(PlayerTest player)
+    [Tooltip("O custo de energia para usar a habilidade.")]
+    public int energyCost;
+
+    [Tooltip("Se a habilidade está pronta para ser usada.")]
+    public bool readyToUse = true;
+
+    public void TryUse()
     {
         if (timerImage.fillAmount <= 0f)
         {
             timerImage.fillAmount = 1f;
-            player.UseAbility();
+            readyToUse = false;
+            //player.UseAbility(energyCost);
         }
     }
 
@@ -27,8 +34,11 @@ public class Ability : MonoBehaviour
         if (timerImage.fillAmount > 0f)
         {
             timerImage.fillAmount -= Time.deltaTime / cooldown;
-            if (timerImage.fillAmount < 0f)
+            if (timerImage.fillAmount <= 0f)
+            {
                 timerImage.fillAmount = 0f;
+                readyToUse = true;
+            }
         }
     }
 }

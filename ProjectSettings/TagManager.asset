@@ -9,6 +9,8 @@ TagManager:
   - checkGround
   - jumpGround
   - ground
+  - HealRegen
+  - EnergyRegen
   layers:
   - Default
   - TransparentFX
