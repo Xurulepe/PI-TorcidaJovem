@@ -5,7 +5,7 @@ public class InimigoMelee : InimigoDef
     public int dano = 1;
     public float IntervaloAtaque = 3f;
     private float tempo = 0f;
-    private bool _playerNaArea;
+    private bool _playerNaArea = false;
     private GameObject _player;
     protected override void Update()
     {
@@ -14,11 +14,7 @@ public class InimigoMelee : InimigoDef
         {
 
         }
-        if (_playerNaArea && tempo >= IntervaloAtaque)
-        {
-            Ataque(_player);
-            tempo = 0f;
-        }
+       
     }
 
 
@@ -26,8 +22,14 @@ public class InimigoMelee : InimigoDef
     {
         if (other.gameObject.CompareTag("Player"));
         {
+            //Debug.Log("Hit");
             _playerNaArea = true;
             _player = other.gameObject;
+            if (_playerNaArea = true)
+            {
+                Ataque();
+                tempo = 0f;
+            }
         }
     }
 
@@ -40,7 +42,7 @@ public class InimigoMelee : InimigoDef
         }
     }
 
-    private void Ataque(GameObject player)
+    private void Ataque()
     {
         Debug.Log("Atacou o player");
     }
