@@ -8,7 +8,7 @@ public class InimigoShooter : InimigoDef
 
     public float _intervaloTiro = 2f;
     public float _distanciaMin= 7f;
-    public float _distanciaSeg = 4f; 
+    public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
     public float _tempo = 0f;
 
