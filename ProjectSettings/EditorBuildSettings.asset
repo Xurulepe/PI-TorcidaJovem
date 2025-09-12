@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Xurulepe/Scenes/MenuPrincipalAnimado.unity
-    guid: d0e323267ea949f43bf5525225992c73
+    path: Assets/Xurulepe/Scenes/MenuPrincipalAtualizado.unity
+    guid: b1b6895bb14380a44bc4a064896ce98d
   - enabled: 1
     path: Assets/Pedro/MiniJogo2D/cena/Game1.unity
     guid: 4c8bcfed6ff9e1f41b9afaa86a7f0a75
-  - enabled: 1
+  - enabled: 0
     path: Assets/Xurulepe/Scenes/TestScene.unity
     guid: bc03bd329ab1a964f93abe35c0f1482a
   m_configObjects:

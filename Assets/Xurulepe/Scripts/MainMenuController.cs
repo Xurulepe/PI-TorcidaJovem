@@ -22,6 +22,18 @@ public class MainMenuController : MonoBehaviour
     [Tooltip("O painel de fade que cobre a tela para transições.")]
     [SerializeField] Image fadePanel;
 
+    /// <summary>
+    /// A tela de loading que aparece ao carregar uma nova cena.
+    /// </summary>
+    [Tooltip("A tela de loading que aparece ao carregar uma nova cena.")]
+    [SerializeField] GameObject loadingScreen;
+
+    /// <summary>
+    /// A barra de progresso de carregamento.
+    /// </summary>
+    [Tooltip("A barra de progresso de carregamento.")]
+    [SerializeField] Image progressBar;
+
     [Space]
     /// <summary>
     /// Os painéis dos menus (Start, Configurações, Sons, Idiomas).
@@ -224,17 +236,25 @@ public class MainMenuController : MonoBehaviour
     }
 
     #region CHANGE SCENE AND QUIT GAME
-    public void LoadScene(string sceneName)
+    public void LoadScene(int scene_id)
     {
-        StartCoroutine(OpenScene(sceneName));
+        StartCoroutine(OpenScene(scene_id));
     }
 
-    IEnumerator OpenScene(string sceneName)
+    IEnumerator OpenScene(int scene_id)
     {
-        fadePanel.color = new Color(0f, 0f, 0f, 0f);
-        FadeToDark();
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_id);
+
+        loadingScreen.SetActive(true);
+
+        while (!asyncLoad.isDone)
+        {
+            progressBar.fillAmount = asyncLoad.progress;
+            yield return null;
+        }
+
+        progressBar.fillAmount = 1f;
+        loadingScreen.SetActive(false);
     }
 
     public void QuitGame()
