@@ -11,7 +11,7 @@ public class PlayerControle : MonoBehaviour
     public float _attackDelay = 0.4f;
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
- 
+    public LayerMask _attackLayer;
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
@@ -145,7 +145,7 @@ public class PlayerControle : MonoBehaviour
     {
 
         RaycastHit hit;
-    if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance)) 
+    if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance, _attackLayer )) 
     {
             Debug.Log(hit.transform.name);
             Debug.Log("HitTarget");

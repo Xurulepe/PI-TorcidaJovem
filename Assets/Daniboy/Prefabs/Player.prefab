@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &499427329652919771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2097307948137453444}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2097307948137453444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499427329652919771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147041290223676875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2406757294662704781
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +68,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5062767935875316180}
+  - {fileID: 2097307948137453444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3045332472542135628
@@ -154,14 +186,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4e06da114977e49a137b47c77a862d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackDistance: 3
+  _attackDelay: 0.4
+  _attackSpeed: 1
+  _attackDamage: 1
+  _isAttacking: 0
+  _readytoAttack: 0
+  attackCount: 0
+  attackPoint: {fileID: 2097307948137453444}
+  _lifepoints: 0
   moveSpeed: 5
   _dashSpeed: 20
   _dashing: 0
+  Controller: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
+  _playerVelocity: {x: 0, y: 0, z: 0}
+  _gravityFloat: -9.81
   projectilePrefab: {fileID: 9191463063044287822, guid: 81ce5a3701965b049925c208b604d478, type: 3}
   shootPoint: {fileID: 5062767935875316180}
   projectileSpeed: 10
-  _state: 0
 --- !u!114 &1097436513212806957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,11 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d916665c9df3640b05f6ed6fcb1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveScript: {fileID: 0}
   _dashSpeed: 20
-  _dashForce: 100
-  _dashupForce: 100
-  _dashduration: 0.25
-  _cooldowndash: 1.5
+  _dashTime: 0
 --- !u!1 &6731457815296351080
 GameObject:
   m_ObjectHideFlags: 0
