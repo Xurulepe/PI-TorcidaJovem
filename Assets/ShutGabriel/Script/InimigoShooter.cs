@@ -53,7 +53,6 @@ public class InimigoShooter : InimigoDef
         Quaternion rot = Quaternion.LookRotation(dir);
 
         GameObject proj = Instantiate(projectilePrefab,spawnPoint.position, rot);
-        Projectile p = proj.GetComponent<Projectile>();
-        if (p != null) p.SetDirecao(dir);
+        Projetil p = proj.GetComponent<Projetil>();
     }
 }
