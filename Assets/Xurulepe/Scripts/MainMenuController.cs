@@ -55,6 +55,12 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] List<Transform> _configMenuElements = new List<Transform>();
 
     /// <summary>
+    /// Os elementos que serão animados do menu de Créditos.
+    /// </summary>
+    [Tooltip("Os elementos que serão animados do menu de Créditos.")]
+    [SerializeField] List<Transform> _creditMenuElements = new List<Transform>();
+
+    /// <summary>
     /// Os elementos que serão animados do menu de Sons.
     /// </summary>
     [Tooltip("Os elementos que serão animados do menu de Sons.")]
@@ -97,6 +103,7 @@ public class MainMenuController : MonoBehaviour
         {
             _startMenuElements,
             _configMenuElements,
+            _creditMenuElements,
             _sonsMenuElements,
             _languageMenuElements
         };
