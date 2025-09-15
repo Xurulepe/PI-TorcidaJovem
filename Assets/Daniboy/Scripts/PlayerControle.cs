@@ -12,6 +12,7 @@ public class PlayerControle : MonoBehaviour
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
     public LayerMask _attackLayer;
+    public Animator _attackAnim;
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
@@ -40,7 +41,7 @@ public class PlayerControle : MonoBehaviour
 
     void Start()
     {
-      
+      _attackAnim = GetComponent<Animator>();
         cam = Camera.main;
     }
 
@@ -54,7 +55,7 @@ public class PlayerControle : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L)) // Botão direito para atacar
         {
-
+            _attackAnim.SetBool("Atack", _isAttacking);
             AttackRaycast();
 
         }
