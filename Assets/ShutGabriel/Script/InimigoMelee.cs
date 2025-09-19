@@ -68,6 +68,7 @@ public class InimigoMelee : InimigoDef
     private void Ataque()
     {
         Debug.Log("Atacou o player");
+        StartCoroutine(CooldownAtk());
     }
 
     protected override void Start()
@@ -120,5 +121,13 @@ public class InimigoMelee : InimigoDef
         yield return new WaitForSeconds(0.25f);
 
         _checkHIT = false;
+    }
+    IEnumerator CooldownAtk()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(0.25f);
     }
 }
