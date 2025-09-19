@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class InimigoMelee : InimigoDef
 {
     public int dano = 1;
@@ -7,6 +7,19 @@ public class InimigoMelee : InimigoDef
     private float tempo = 0f;
     private bool _playerNaArea = false;
     private GameObject _player;
+
+    [Header("configuração da capsula")]
+    public float _raio = 3f;
+    public float _tamanho = 3f;
+    public LayerMask layermask;
+    public Color gizmoColor = Color.cyan;
+
+    private bool _isHIT;
+    bool _checkHIT;
+
+
+
+
     protected override void Update()
     {
         base.Update();
@@ -14,6 +27,16 @@ public class InimigoMelee : InimigoDef
         {
 
         }
+        Vector3 point1, point2;
+        GetCapsulePoints(out point1, out point2);
+        _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
+        if (_isHIT && !_checkHIT)
+        {
+            _checkHIT = true;
+            Debug.Log("Alvo Colidiu na Capsula");
+            StartCoroutine(HitTime());
+        }
+        
        
     }
 
@@ -60,5 +83,42 @@ public class InimigoMelee : InimigoDef
         {
             Morrer();
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Vector3 point1, point2;
+        GetCapsulePoints(out point1, out point2);
+
+        Gizmos.color = _isHIT ? Color.red : gizmoColor;
+        Gizmos.DrawWireSphere(point1, _raio);
+        Gizmos.DrawWireSphere(point2, _raio);
+
+        Gizmos.DrawLine(point1 + transform.right * _raio, point2 + transform.right * _raio);
+
+        Gizmos.DrawLine(point1 - transform.right * _raio, point2 - transform.right * _raio);
+
+        Gizmos.DrawLine(point1 + transform.forward * _raio, point2 + transform.forward * _raio);
+
+        Gizmos.DrawLine(point1 - transform.forward * _raio, point2 - transform.forward * _raio);
+
+    }
+    private void GetCapsulePoints(out Vector3 point1, out Vector3 point2)
+    {
+        Vector3 center = transform.position;
+        float halfheight = Mathf.Max(_tamanho * 0.5f - _raio, 0f);
+        Vector3 Up = transform.up * halfheight;
+        point1 = center + Up;
+        point2 = center - Up;
+    }
+
+    IEnumerator HitTime()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        _checkHIT = false;
     }
 }
