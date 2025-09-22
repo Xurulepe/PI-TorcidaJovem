@@ -6,7 +6,7 @@ public class InimigoDef : MonoBehaviour
   
     protected NavMeshAgent _agent;
     protected Transform _alvo;
-    public int vida = 5;
+    public int vida = 1;
     [HideInInspector] public Spawner spawner;
     protected virtual void Start()
     {

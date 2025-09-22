@@ -432,16 +432,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d9774acf5e2fbec4aa12f7fcaa0cf8f6, type: 2}
   m_BuildHeightMesh: 0
---- !u!136 &1126821875 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 5298015954864128707, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  m_PrefabInstance: {fileID: 6969107795806958494}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1126821876 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6102374726004681698, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  m_PrefabInstance: {fileID: 6969107795806958494}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1426433558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
@@ -1002,26 +992,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6102374726004681698, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 4459fff084dd84526ab8fd5082d2eacb, type: 2}
     - target: {fileID: 7806406029798976255, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-      propertyPath: _CL.Array.size
-      value: 0
+      propertyPath: layermask.m_Bits
+      value: 128
       objectReference: {fileID: 0}
-    - target: {fileID: 7806406029798976255, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-      propertyPath: '_CL.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1126821875}
-    - target: {fileID: 7806406029798976255, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-      propertyPath: _renderer.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7806406029798976255, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-      propertyPath: '_renderer.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1126821876}
     - target: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
       propertyPath: m_Name
       value: Inimigo-Melee

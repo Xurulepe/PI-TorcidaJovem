@@ -151,6 +151,7 @@ public class InimigoMelee : InimigoDef
         yield return new WaitForSeconds(0.25f);
 
         _checkHIT = false;
+        LevarDano(dano);
     }
     IEnumerator CooldownAtk()
     {
@@ -159,5 +160,7 @@ public class InimigoMelee : InimigoDef
         yield return new WaitForSeconds(0.25f);
 
         yield return new WaitForSeconds(0.25f);
+
+       
     }
 }
