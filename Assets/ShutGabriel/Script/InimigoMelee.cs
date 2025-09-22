@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 public class InimigoMelee : InimigoDef
 {
     public int dano = 1;
@@ -16,6 +17,11 @@ public class InimigoMelee : InimigoDef
 
     private bool _isHIT;
     bool _checkHIT;
+    bool _checkMorte;
+
+    [SerializeField] MeshRenderer[] _renderer;
+    [SerializeField] ParticleSystem[] _part;
+    [SerializeField] Collider[] _CL;
 
 
 
@@ -27,15 +33,19 @@ public class InimigoMelee : InimigoDef
         {
 
         }
-        Vector3 point1, point2;
-        GetCapsulePoints(out point1, out point2);
-        _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
-        if (_isHIT && !_checkHIT)
+        if (!_checkMorte)
         {
-            _checkHIT = true;
-            Debug.Log("Alvo Colidiu na Capsula");
-            StartCoroutine(HitTime());
+            Vector3 point1, point2;
+            GetCapsulePoints(out point1, out point2);
+            _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
+            if (_isHIT && !_checkHIT)
+            {
+                _checkHIT = true;
+                Debug.Log("Alvo Colidiu na Capsula");
+                StartCoroutine(HitTime());
+            }
         }
+        
         
        
     }
@@ -114,7 +124,27 @@ public class InimigoMelee : InimigoDef
 
     IEnumerator HitTime()
     {
+        _checkMorte = true;
+
+        for(int i = 0; i <  _renderer.Length ; i++)
+        {
+            _renderer[i].transform.DOScale(2, .25f);
+        }
+        for (int i = 0; i < _CL.Length; i++)
+        {
+            _CL[i].enabled = false;
+        }
         yield return new WaitForSeconds(0.25f);
+
+        for (int i = 0; i < _part.Length; i++)
+        {
+            _part[i].Play();
+        }
+
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+        }
 
         yield return new WaitForSeconds(0.25f);
 

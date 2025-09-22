@@ -157,6 +157,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  _renderer:
+  - {fileID: 6102374726004681698}
+  _part: []
+  _CL: []
 --- !u!54 &54305424926373166
 Rigidbody:
   m_ObjectHideFlags: 0
