@@ -24,7 +24,7 @@ public class InimigoDef : MonoBehaviour
             _agent.SetDestination(_alvo.position);
         }
     }
-    public virtual void LevarDano(int dano)
+    protected virtual void LevarDano(int dano)
     {
         vida -= dano;
         if (vida <= 0)

@@ -1,16 +1,33 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.AI;
+using System.Collections;
+using DG.Tweening;
 public class InimigoShooter : InimigoDef
 {
     public GameObject projectilePrefab;
     public Transform spawnPoint;
 
+    public int dano = 1;
     public float _intervaloTiro = 2f;
     public float _distanciaMin= 7f;
     public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
     public float _tempo = 0f;
+
+    [Header("configuração da capsula")]
+    public float _raio = 3f;
+    public float _tamanho = 3f;
+    public LayerMask layermask;
+    public Color gizmoColor = Color.cyan;
+
+    private bool _isHIT;
+    bool _checkHIT;
+    bool _checkMorte;
+
+    [SerializeField] MeshRenderer[] _renderer;
+    [SerializeField] ParticleSystem[] _part;
+    [SerializeField] Collider[] _CL;
 
     protected override void Start()
     {
@@ -45,6 +62,24 @@ public class InimigoShooter : InimigoDef
                 _tempo = 0f;
             }
         }
+
+        if (!_checkMorte)
+        {
+            Vector3 point1, point2;
+            GetCapsulePoints(out point1, out point2);
+            _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
+            if (_isHIT && !_checkHIT)
+            {
+                _checkHIT = true;
+                Debug.Log("Alvo Colidiu na Capsula");
+                StartCoroutine(HitTime());
+            }
+        }
+
+    }
+    protected override void LevarDano(int dano)
+    {
+        base.LevarDano(dano);
     }
     private void Atirar()
     {
@@ -54,5 +89,65 @@ public class InimigoShooter : InimigoDef
 
         GameObject proj = Instantiate(projectilePrefab,spawnPoint.position, rot);
         Projetil p = proj.GetComponent<Projetil>();
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Vector3 point1, point2;
+        GetCapsulePoints(out point1, out point2);
+
+        Gizmos.color = _isHIT ? Color.red : gizmoColor;
+        Gizmos.DrawWireSphere(point1, _raio);
+        Gizmos.DrawWireSphere(point2, _raio);
+
+        Gizmos.DrawLine(point1 + transform.right * _raio, point2 + transform.right * _raio);
+
+        Gizmos.DrawLine(point1 - transform.right * _raio, point2 - transform.right * _raio);
+
+        Gizmos.DrawLine(point1 + transform.forward * _raio, point2 + transform.forward * _raio);
+
+        Gizmos.DrawLine(point1 - transform.forward * _raio, point2 - transform.forward * _raio);
+
+    }
+    private void GetCapsulePoints(out Vector3 point1, out Vector3 point2)
+    {
+        Vector3 center = transform.position;
+        float halfheight = Mathf.Max(_tamanho * 0.5f - _raio, 0f);
+        Vector3 Up = transform.up * halfheight;
+        point1 = center + Up;
+        point2 = center - Up;
+    }
+    
+    IEnumerator HitTime()
+    {
+        _checkMorte = true;
+
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].transform.DOScale(2, .25f);
+        }
+        for (int i = 0; i < _CL.Length; i++)
+        {
+            _CL[i].enabled = false;
+        }
+        yield return new WaitForSeconds(0.25f);
+
+        for (int i = 0; i < _part.Length; i++)
+        {
+            _part[i].Play();
+        }
+
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+        }
+
+        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        _checkHIT = false;
+        LevarDano(dano);
     }
 }

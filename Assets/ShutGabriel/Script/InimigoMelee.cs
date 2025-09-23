@@ -86,14 +86,10 @@ public class InimigoMelee : InimigoDef
         base.Start();
         _agent.speed = 3.5f;
     }
-    
-    public void LevarDano(int dano)
+
+    protected override void LevarDano(int dano)
     {
-        vida -= dano;
-        if (vida >= 0)
-        {
-            Morrer();
-        }
+        base.LevarDano(dano);
     }
     private void OnDrawGizmos()
     {
