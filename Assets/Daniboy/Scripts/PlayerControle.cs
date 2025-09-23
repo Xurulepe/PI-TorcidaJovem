@@ -10,7 +10,7 @@ public class PlayerControle : MonoBehaviour
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
     public LayerMask _attackLayer;
-    public Animator _attackAnim;
+
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
@@ -43,9 +43,14 @@ public class PlayerControle : MonoBehaviour
     [Header("Camera")]
     private Camera cam;
 
+    [Header("Manage")]
+    public bool _lockMove;
+
+    [Header("Animation")]
+    public Animator _Anim;
     void Start()
     {
-        _attackAnim = GetComponent<Animator>();
+        _Anim = GetComponent<Animator>();
         cam = Camera.main;
         if (Controller == null)
             Controller = GetComponent<CharacterController>();
@@ -63,35 +68,58 @@ public class PlayerControle : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            _attackAnim.SetBool("Atack", _isAttacking);
+            
             AttackRaycast();
         }
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
+            LockFunction();
+        }
+    }
+
+    public void LockFunction() 
+    {
+
+        _lockMove = true;
+
+        AttackRaycast();
+     
+        Move();
+        Shoot();
+        RotateTowardsMouse();
+
     }
 
     public void Move()
     {
-        float h = moveInput.x; // A/D ou ← →
-        float v = moveInput.z; // W/S ou ↑ ↓
-
-        // converte entrada para movimento no plano isométrico
-        Vector3 move = (isoForward * v + isoRight * h).normalized;
-
-        // junta movimento horizontal + gravidade
-        Vector3 finalMove = move * moveSpeed + Vector3.up * _playerVelocity.y;
-
-        if (move.sqrMagnitude > 0.001f)
+        if (_lockMove == false ) 
         {
-            Controller.Move(finalMove * Time.deltaTime);
 
-            // rotaciona suavemente para direção do movimento
-            Quaternion targetRot = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, _rotationSpeed * Time.deltaTime);
+            float h = moveInput.x; // A/D ou ← →
+            float v = moveInput.z; // W/S ou ↑ ↓
+
+            // converte entrada para movimento no plano isométrico
+            Vector3 move = (isoForward * v + isoRight * h).normalized;
+
+            // junta movimento horizontal + gravidade
+            Vector3 finalMove = move * moveSpeed + Vector3.up * _playerVelocity.y;
+
+            if (move.sqrMagnitude > 0.001f)
+            {
+                Controller.Move(finalMove * Time.deltaTime);
+
+                // rotaciona suavemente para direção do movimento
+                Quaternion targetRot = Quaternion.LookRotation(move);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, _rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // se parado, só aplica gravidade
+                Controller.Move(Vector3.up * _playerVelocity.y * Time.deltaTime);
+            }
+
         }
-        else
-        {
-            // se parado, só aplica gravidade
-            Controller.Move(Vector3.up * _playerVelocity.y * Time.deltaTime);
-        }
+        
     }
 
     // recebe entrada do Input System
@@ -102,45 +130,69 @@ public class PlayerControle : MonoBehaviour
 
     public void Gravity()
     {
-        if (Controller.isGrounded && _playerVelocity.y < 0)
-            _playerVelocity.y = -1f;
+        if (_lockMove == false) 
+        {
+            if (Controller.isGrounded && _playerVelocity.y < 0)
+                _playerVelocity.y = -1f;
 
-        _playerVelocity.y += _gravityFloat * Time.deltaTime;
+            _playerVelocity.y += _gravityFloat * Time.deltaTime;
+
+
+
+        }
+       
     }
 
     void RotateTowardsMouse()
     {
-        if (cam == null) return;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (_lockMove == false) 
         {
-            Vector3 targetPosition = hit.point;
-            targetPosition.y = transform.position.y;
-            transform.LookAt(targetPosition);
+
+            if (cam == null) return;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Vector3 targetPosition = hit.point;
+                targetPosition.y = transform.position.y;
+                transform.LookAt(targetPosition);
+            }
+
         }
+        
     }
 
     void Shoot()
     {
-        GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
-        if (bullet != null)
+        if (_lockMove == false) 
         {
-            bullet.transform.position = shootPoint.transform.position;
-            bullet.transform.rotation = shootPoint.transform.rotation;
-            Projectile proj = bullet.GetComponent<Projectile>();
-            proj.speedProjectile = projectileSpeed;
-            proj.shootPoint = shootPoint;
-            bullet.SetActive(true);
+            GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
+            if (bullet != null)
+            {
+                bullet.transform.position = shootPoint.transform.position;
+                bullet.transform.rotation = shootPoint.transform.rotation;
+                Projectile proj = bullet.GetComponent<Projectile>();
+                proj.speedProjectile = projectileSpeed;
+                proj.shootPoint = shootPoint;
+                bullet.SetActive(true);
+            }
+
         }
+       
     }
 
     void Melee()
     {
-        if (!_readytoAttack || _isAttacking) return;
-        _readytoAttack = false;
-        _isAttacking = true;
-        Invoke(nameof(ResetAttack), _attackSpeed);
-        Invoke(nameof(AttackRaycast), _attackDelay);
+        if (_lockMove == false) 
+        {
+
+            if (!_readytoAttack || _isAttacking) return;
+            _readytoAttack = false;
+            _isAttacking = true;
+            Invoke(nameof(ResetAttack), _attackSpeed);
+            Invoke(nameof(AttackRaycast), _attackDelay);
+
+        }
+ 
     }
 
     void ResetAttack()
@@ -151,12 +203,18 @@ public class PlayerControle : MonoBehaviour
 
     void AttackRaycast()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance, _attackLayer))
+        if (_lockMove == false) 
         {
-            Debug.Log(hit.transform.name);
-            Debug.Log("HitTarget");
+            _Anim.SetTrigger("Attack");
+            RaycastHit hit;
+            if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance, _attackLayer))
+            {
+                Debug.Log(hit.transform.name);
+                Debug.Log("HitTarget");
+            }
+
         }
+   
     }
 
     public void OnTriggerEnter(Collider other)

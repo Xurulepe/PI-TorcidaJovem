@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 942fa48d6dbe0564f93e4336ac7d0575
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a217252ccdc2e5647bcc4bba76ad1425
+    m_Address: Assets/Ruan/Modelos3d/PlayerTest/Idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: dcd0bfebbbd57f5439a153e351eecae0, type: 2}
   m_SchemaSet:
