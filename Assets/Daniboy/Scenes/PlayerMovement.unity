@@ -564,6 +564,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2907908603216287298, guid: 3bf11b35321ba40479bad34235383630, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.76
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bf11b35321ba40479bad34235383630, type: 3}
       propertyPath: m_Name
       value: RoboTeste
@@ -854,7 +858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2097307948137453444, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.043
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 2097307948137453444, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalPosition.y
@@ -862,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2097307948137453444, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.936
+      value: 0.754
       objectReference: {fileID: 0}
     - target: {fileID: 2406757294662704781, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_Name
@@ -897,8 +901,16 @@ PrefabInstance:
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.285
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.046
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.937
+      value: 3.329
       objectReference: {fileID: 0}
     - target: {fileID: 6731457815296351080, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_TagString

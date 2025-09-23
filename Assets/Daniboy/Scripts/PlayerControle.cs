@@ -165,6 +165,7 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false) 
         {
+            _Anim.SetTrigger("Shoot");
             GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
             if (bullet != null)
             {
