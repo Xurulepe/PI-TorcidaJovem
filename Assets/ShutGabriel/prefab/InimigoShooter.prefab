@@ -100,7 +100,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +159,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -206,3 +206,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255d3577d0bf77047ae94732fc8c8151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vida: 1
+  spawner: {fileID: 0}
+  projectilePrefab: {fileID: 5209477025593447596, guid: 10a34b3928ad20948a20e015b352a657, type: 3}
+  spawnPoint: {fileID: 3178175699698396072}
+  dano: 1
+  _intervaloTiro: 2
+  _distanciaMin: 20
+  _distanciaSeg: 15
+  _recuoDist: 10
+  _tempo: 0
+  _raio: 3
+  _tamanho: 3
+  layermask:
+    serializedVersion: 2
+    m_Bits: 128
+  gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  _renderer:
+  - {fileID: 602561182795835090}
+  _part: []
+  _CL: []

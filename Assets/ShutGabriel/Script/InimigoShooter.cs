@@ -33,6 +33,7 @@ public class InimigoShooter : InimigoDef
     {
         base.Start();
         if (_agent != null) _agent.speed = 3.5f;
+
     }
     protected override void Update()
     {
@@ -48,7 +49,7 @@ public class InimigoShooter : InimigoDef
         else if (distancia < _distanciaSeg)
         {
             _agent.isStopped = false;
-            Vector3 direcaoFuga = (transform.position-_alvo.position).normalized;
+            Vector3 direcaoFuga = (transform.position -_alvo.position).normalized;
             Vector3 destinoFuga = transform.position + direcaoFuga * _recuoDist;
             _agent.SetDestination(destinoFuga);
         }

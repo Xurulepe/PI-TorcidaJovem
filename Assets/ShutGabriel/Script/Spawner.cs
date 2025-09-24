@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Spawner : InimigoDef
 {
-   public GameObject _inimigoM;
+   public GameObject inimigoM;
     public float _intervalo = 2f;
     public int _maxInimigos = 5;
     private float _tempo = 0f;
 
-    private List<GameObject> InimigosAtivos = new List<GameObject>();
+    public List<GameObject> InimigosAtivos = new List<GameObject>();
 
     protected override void Start()
     {
@@ -25,8 +25,10 @@ public class Spawner : InimigoDef
             _tempo += Time.deltaTime;
             if (_tempo >= _intervalo &&InimigosAtivos.Count < _maxInimigos)
             {
-                SpawnInimigo();
+
                 _tempo = 0f;
+                SpawnInimigo();
+                //gameObject.SetActive(true);
             }
         }
     }
@@ -34,7 +36,7 @@ public class Spawner : InimigoDef
 
     void SpawnInimigo()
     {
-        GameObject novoInimigo = Instantiate(_inimigoM, transform.position, Quaternion.identity);
+        GameObject novoInimigo = Instantiate(inimigoM, transform.position, Quaternion.identity);
         InimigosAtivos.Add(novoInimigo);
         InimigoDef script = novoInimigo.GetComponent<InimigoDef>();
         if (script != null)

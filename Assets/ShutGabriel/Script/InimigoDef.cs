@@ -19,6 +19,7 @@ public class InimigoDef : MonoBehaviour
     }
     protected virtual void Update()
     {
+
         if (_alvo != null && _agent != null)
         {
             _agent.SetDestination(_alvo.position);
@@ -34,7 +35,7 @@ public class InimigoDef : MonoBehaviour
     }
     public virtual void Morrer()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 

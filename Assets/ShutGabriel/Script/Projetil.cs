@@ -4,7 +4,7 @@ public class Projetil : MonoBehaviour
 {
     public float speed = 10f;
     public int damage = 10;
-    public float lifeTime = 5f;
+    public float lifeTime = 4f;
 
     void Start()
     {

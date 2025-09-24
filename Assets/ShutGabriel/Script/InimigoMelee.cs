@@ -3,13 +3,14 @@ using System.Collections;
 using DG.Tweening;
 public class InimigoMelee : InimigoDef
 {
+    [Header("Configuração InimigoM")]
     public int dano = 1;
     public float IntervaloAtaque = 3f;
     private float tempo = 0f;
-    private bool _playerNaArea = false;
+    public bool _playerNaArea = false;
     private GameObject _player;
 
-    [Header("configuração da capsula")]
+    [Header("configuração da detecção")]
     public float _raio = 3f;
     public float _tamanho = 3f;
     public LayerMask layermask;
@@ -18,10 +19,12 @@ public class InimigoMelee : InimigoDef
     private bool _isHIT;
     bool _checkHIT;
     bool _checkMorte;
+    public bool Pause = false;
 
     [SerializeField] MeshRenderer[] _renderer;
     [SerializeField] ParticleSystem[] _part;
     [SerializeField] Collider[] _CL;
+
 
 
 
@@ -44,10 +47,7 @@ public class InimigoMelee : InimigoDef
                 Debug.Log("Alvo Colidiu na Capsula");
                 StartCoroutine(HitTime());
             }
-        }
-        
-        
-       
+        }  
     }
 
 

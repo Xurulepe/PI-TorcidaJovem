@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7806406029798976255}
   - component: {fileID: 54305424926373166}
   m_Layer: 6
-  m_Name: Inimigo-Melee
+  m_Name: InimigoM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,12 +151,14 @@ MonoBehaviour:
   spawner: {fileID: 0}
   dano: 1
   IntervaloAtaque: 3
+  _playerNaArea: 0
   _raio: 2
   _tamanho: 7
   layermask:
     serializedVersion: 2
     m_Bits: 128
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  Pause: 0
   _renderer:
   - {fileID: 6102374726004681698}
   _part: []
