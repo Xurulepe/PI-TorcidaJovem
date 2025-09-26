@@ -3,54 +3,59 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Spawner : InimigoDef
+public class Spawner : MonoBehaviour
 {
-   public GameObject inimigoM;
+   //public GameObject inimigoM;
     public float _intervalo = 2f;
     public int _maxInimigos = 5;
-    private float _tempo = 0f;
+    public float _tempo = 0f;
 
     public List<GameObject> InimigosAtivos = new List<GameObject>();
 
-    protected override void Start()
-    {
-        _agent = null;
-        _alvo = null;
+    public Vector3 StartPosition;
+    
+  void Start()
+   {
+        // _agent = null;
+        // _alvo = null;
+        StartPosition=transform.position;
 
-    }
-    protected override void Update()
+   }//
+  
+    void Update()
+   {
+     //  if (vida > 0)
+      // {
+           _tempo += Time.deltaTime;
+           if (_tempo >= _intervalo && InimigosAtivos.Count < _maxInimigos)
+           {
+
+               _tempo = 0f;
+               InimigoON();
+               Debug.Log("edsds");
+               //gameObject.SetActive(true);
+           }
+       //}
+   }
+   
+
+    public void InimigoON()
     {
-        if (vida > 0)
+        GameObject bullet = ObjectPooling.SharedInstance.GetPooledObject();
+        if (bullet != null)
         {
-            _tempo += Time.deltaTime;
-            if (_tempo >= _intervalo &&InimigosAtivos.Count < _maxInimigos)
-            {
+            //bullet.transform.position = turret.transform.position;
+            // bullet.transform.rotation = turret.transform.rotation;
+            InimigoDef inimigoDef= bullet.GetComponent<InimigoDef>();
 
-                _tempo = 0f;
-                SpawnInimigo();
-                //gameObject.SetActive(true);
-            }
+            inimigoDef.Vida();
+            //bullet.transform.SetParent(transform);
+            bullet.transform.position = StartPosition;
+
+            bullet.SetActive(true);
         }
     }
 
 
-    void SpawnInimigo()
-    {
-        GameObject novoInimigo = Instantiate(inimigoM, transform.position, Quaternion.identity);
-        InimigosAtivos.Add(novoInimigo);
-        InimigoDef script = novoInimigo.GetComponent<InimigoDef>();
-        if (script != null)
-        {
-            script.spawner = this;
-        }
-    }
-    public void RemoverInimigo(GameObject Inimigo)
-    {
-        if (InimigosAtivos.Contains(Inimigo))InimigosAtivos.Remove(Inimigo);
-    }
-    public override void Morrer()
-    {
-        InimigosAtivos.Clear();
-        base.Morrer();
-    }
+    
 }

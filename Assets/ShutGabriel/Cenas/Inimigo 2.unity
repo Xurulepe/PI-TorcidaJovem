@@ -244,7 +244,8 @@ Transform:
   m_LocalPosition: {x: -29.865002, y: 25, z: -30.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 558504997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &176569571
@@ -432,6 +433,37 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: ee1a78a8de4f3ed44abf2a3c97a909a1, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &558504996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558504997}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558504997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558504996}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
+  m_LocalPosition: {x: -3.0025883, y: 20.819424, z: 55.523506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 176569570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1426433558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
@@ -818,7 +850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 5
   spawner: {fileID: 0}
-  _inimigoM: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
+  inimigoM: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
   _intervalo: 3
   _maxInimigos: 5
   InimigosAtivos: []
@@ -831,7 +863,7 @@ Transform:
   m_GameObject: {fileID: 2031289274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 5, z: 0}
+  m_LocalPosition: {x: 25, y: 14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

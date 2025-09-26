@@ -16,14 +16,10 @@ public class InimigoMelee : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    private bool _isHIT;
-    bool _checkHIT;
-    bool _checkMorte;
+
+
     public bool Pause = false;
 
-    [SerializeField] MeshRenderer[] _renderer;
-    [SerializeField] ParticleSystem[] _part;
-    [SerializeField] Collider[] _CL;
 
 
 
@@ -58,7 +54,7 @@ public class InimigoMelee : InimigoDef
             //Debug.Log("Hit");
             _playerNaArea = true;
             _player = other.gameObject;
-            if (_playerNaArea = true)
+            if (_playerNaArea == true)
             {
                 Ataque();
                 tempo = 0f;
@@ -85,6 +81,10 @@ public class InimigoMelee : InimigoDef
     {
         base.Start();
         _agent.speed = 3.5f;
+        if (_playerNaArea = true)
+        {
+            Pause = true;
+        }
     }
 
     protected override void LevarDano(int dano)
@@ -118,37 +118,7 @@ public class InimigoMelee : InimigoDef
         point2 = center - Up;
     }
 
-    IEnumerator HitTime()
-    {
-        _checkMorte = true;
-
-        for(int i = 0; i <  _renderer.Length ; i++)
-        {
-            _renderer[i].transform.DOScale(2, .25f);
-        }
-        for (int i = 0; i < _CL.Length; i++)
-        {
-            _CL[i].enabled = false;
-        }
-        yield return new WaitForSeconds(0.25f);
-
-        for (int i = 0; i < _part.Length; i++)
-        {
-            _part[i].Play();
-        }
-
-        for (int i = 0; i < _renderer.Length; i++)
-        {
-            _renderer[i].enabled = false;
-        }
-
-        yield return new WaitForSeconds(0.25f);
-
-        yield return new WaitForSeconds(0.25f);
-
-        _checkHIT = false;
-        LevarDano(dano);
-    }
+   
     IEnumerator CooldownAtk()
     {
         yield return new WaitForSeconds(0.25f);

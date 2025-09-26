@@ -5,15 +5,15 @@ using System.Collections;
 using DG.Tweening;
 public class InimigoShooter : InimigoDef
 {
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab;//
     public Transform spawnPoint;
 
-    public int dano = 1;
+  
     public float _intervaloTiro = 2f;
     public float _distanciaMin= 7f;
     public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
-    public float _tempo = 0f;
+   
 
     [Header("configuração da capsula")]
     public float _raio = 3f;
@@ -21,13 +21,9 @@ public class InimigoShooter : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    private bool _isHIT;
-    bool _checkHIT;
-    bool _checkMorte;
+ 
 
-    [SerializeField] MeshRenderer[] _renderer;
-    [SerializeField] ParticleSystem[] _part;
-    [SerializeField] Collider[] _CL;
+    
 
     protected override void Start()
     {
@@ -120,35 +116,7 @@ public class InimigoShooter : InimigoDef
         point2 = center - Up;
     }
     
-    IEnumerator HitTime()
-    {
-        _checkMorte = true;
+   
 
-        for (int i = 0; i < _renderer.Length; i++)
-        {
-            _renderer[i].transform.DOScale(2, .25f);
-        }
-        for (int i = 0; i < _CL.Length; i++)
-        {
-            _CL[i].enabled = false;
-        }
-        yield return new WaitForSeconds(0.25f);
-
-        for (int i = 0; i < _part.Length; i++)
-        {
-            _part[i].Play();
-        }
-
-        for (int i = 0; i < _renderer.Length; i++)
-        {
-            _renderer[i].enabled = false;
-        }
-
-        yield return new WaitForSeconds(0.25f);
-
-        yield return new WaitForSeconds(0.25f);
-
-        _checkHIT = false;
-        LevarDano(dano);
-    }
+  
 }
