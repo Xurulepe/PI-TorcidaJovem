@@ -13,7 +13,7 @@ public class InimigoShooter : InimigoDef
     public float _distanciaMin= 7f;
     public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
-   
+    public float _tempo;
 
     [Header("configuração da capsula")]
     public float _raio = 3f;

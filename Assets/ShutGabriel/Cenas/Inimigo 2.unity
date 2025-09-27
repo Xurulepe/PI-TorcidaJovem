@@ -244,8 +244,7 @@ Transform:
   m_LocalPosition: {x: -29.865002, y: 25, z: -30.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 558504997}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &176569571
@@ -442,8 +441,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558504997}
+  - component: {fileID: 558504998}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: ObjectPooling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,13 +457,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558504996}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -3.0025883, y: 20.819424, z: 55.523506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.626308, y: 1.2683926, z: 13.184994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 176569570}
+  m_Father: {fileID: 2031289276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &558504998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558504996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1343af5b51865fc469f724fed656ae62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
+  amountToPool: 5
 --- !u!4 &1426433558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062767935875316180, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
@@ -828,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031289276}
-  - component: {fileID: 2031289275}
+  - component: {fileID: 2031289277}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -836,7 +851,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2031289275
+--- !u!4 &2031289276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031289274}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 558504997}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031289277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,27 +879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aa8ff986572214e81264188c205e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 5
-  spawner: {fileID: 0}
-  inimigoM: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
-  _intervalo: 3
+  _intervalo: 2
   _maxInimigos: 5
+  _tempo: 0
   InimigosAtivos: []
---- !u!4 &2031289276
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031289274}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  StartPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2127895036
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +1002,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7499632406542801487, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 7499632406542801487, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1029,6 +1044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InimigoShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1042,6 +1061,6 @@ SceneRoots:
   - {fileID: 1602972342}
   - {fileID: 1547783171}
   - {fileID: 403646310}
-  - {fileID: 2031289276}
   - {fileID: 1883993607}
   - {fileID: 7884619651961857041}
+  - {fileID: 2031289276}

@@ -624,6 +624,53 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 695390}
   m_SourcePrefab: {fileID: 100100000, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
+--- !u!1 &1036189079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1036189080}
+  - component: {fileID: 1036189081}
+  m_Layer: 0
+  m_Name: Pooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036189080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036189079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2031289276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036189081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036189079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1343af5b51865fc469f724fed656ae62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 1877424138}
+  amountToPool: 5
 --- !u!1 &1108419333
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +888,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1877424138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
+  m_PrefabInstance: {fileID: 6969107795806958494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1927776355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -947,12 +999,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aa8ff986572214e81264188c205e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 5
-  spawner: {fileID: 0}
-  inimigoM: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
   _intervalo: 3
   _maxInimigos: 5
+  _tempo: 0
   InimigosAtivos: []
+  StartPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &2031289276
 Transform:
   m_ObjectHideFlags: 0
@@ -965,7 +1016,8 @@ Transform:
   m_LocalPosition: {x: 25, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1036189080}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6969107795806958494
