@@ -41,7 +41,7 @@ public class Dashing : MonoBehaviour
         while (Time.time < startTime + _dashTime)
         {
 
-            //_moveScript.Controller.Move(_moveScript.moveDirection * _dashSpeed * Time.deltaTime);
+            _moveScript.Controller.Move(_moveScript.moveInput * _dashSpeed * Time.deltaTime);
 
             yield return null;
 

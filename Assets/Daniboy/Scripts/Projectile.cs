@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public GameObject bulletPool;
     public Transform shootPoint;
     public Rigidbody _rb;
-    public float speedProjectile;
+    public float speedProjectile = 15f;
 
     private void Awake()
     {
