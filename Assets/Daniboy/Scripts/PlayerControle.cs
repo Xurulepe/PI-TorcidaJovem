@@ -39,7 +39,9 @@ public class PlayerControle : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform shootPoint;
     public float projectileSpeed = 10f;
-
+    public float _shootDelay = 1f;
+    public bool _readytoShoot;
+    public bool _isShooting;
     [Header("Camera")]
     private Camera cam;
 
@@ -64,7 +66,7 @@ public class PlayerControle : MonoBehaviour
     
         RotateTowardsMouse();
         if (Input.GetMouseButtonDown(0))
-            Shoot();
+            _Anim.SetTrigger("Shoot");
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -87,6 +89,9 @@ public class PlayerControle : MonoBehaviour
         Move();
         Shoot();
         RotateTowardsMouse();
+
+
+
 
     }
 
@@ -140,6 +145,8 @@ public class PlayerControle : MonoBehaviour
 
 
         }
+
+
        
     }
 
@@ -158,6 +165,8 @@ public class PlayerControle : MonoBehaviour
             }
 
         }
+
+
         
     }
 
@@ -178,6 +187,8 @@ public class PlayerControle : MonoBehaviour
             }
 
         }
+
+
        
     }
 
@@ -194,6 +205,34 @@ public class PlayerControle : MonoBehaviour
 
         }
  
+
+
+
+    }
+    void Shootmanage()
+    {
+        if (_lockMove == false)
+        {
+
+            if (!_readytoShoot || _isShooting) return;
+            _readytoShoot = false;
+            _isShooting = true;
+            Invoke(nameof(ResetShoot), projectileSpeed);
+            Invoke(nameof(Shoot), _shootDelay);
+
+        }
+
+    }
+    void ResetShoot() 
+    {
+
+        _readytoShoot = true;
+        _isShooting = false;
+
+
+
+
+
     }
 
     void ResetAttack()
