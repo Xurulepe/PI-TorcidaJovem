@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 1824024773}
     - target: {fileID: 2550083265308508962, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: projectileSpeed
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2550083265308508962, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: _attackLayer.m_Bits
