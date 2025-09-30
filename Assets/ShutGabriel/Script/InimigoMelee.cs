@@ -4,7 +4,7 @@ using DG.Tweening;
 public class InimigoMelee : InimigoDef
 {
     [Header("Configuração InimigoM")]
-    public int dano = 1;
+    
     public float IntervaloAtaque = 3f;
     private float tempo = 0f;
     public bool _playerNaArea = false;

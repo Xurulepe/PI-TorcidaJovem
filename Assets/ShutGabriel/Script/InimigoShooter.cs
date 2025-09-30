@@ -27,9 +27,11 @@ public class InimigoShooter : InimigoDef
 
     protected override void Start()
     {
-        base.Start();
-        if (_agent != null) _agent.speed = 3.5f;
 
+        base.Start();
+
+        if (_agent != null) _agent.speed = 3.5f;
+        
     }
     protected override void Update()
     {
