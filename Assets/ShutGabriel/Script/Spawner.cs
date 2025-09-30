@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+   /*
    //public GameObject inimigoM;
     public float _intervalo = 2f;
     public int _maxInimigos = 5;
@@ -57,5 +58,5 @@ public class Spawner : MonoBehaviour
     }
 
 
-    
+    */
 }
