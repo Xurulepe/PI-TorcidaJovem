@@ -7,30 +7,43 @@ public class Dashing : MonoBehaviour
 
     public float _dashSpeed;
     public float _dashTime;
-
+    public PlayerControle _playerScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _playerScript = GetComponent<PlayerControle>();
         _moveScript = GetComponent<PlayerControle>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DashMove();
+        if (_playerScript._lockMove == false) 
+        {
+
+            DashMove();
+
+        }
+         
     }
 
     public void DashMove()
     {
+       
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
 
-            StartCoroutine(Impulse());
+                StartCoroutine(Impulse());
 
-        }
+            }
+
+
+       
+
+       
     }
 
      IEnumerator Impulse()

@@ -10,7 +10,7 @@ public class PlayerControle : MonoBehaviour
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
     public LayerMask _attackLayer;
-
+    
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
@@ -50,8 +50,12 @@ public class PlayerControle : MonoBehaviour
 
     [Header("Animation")]
     public Animator _Anim;
+
+    [Header("ScriptCalling")]
+    public Dashing _dashScript;
     void Start()
     {
+        _dashScript = GetComponent<Dashing>();
         _Anim = GetComponent<Animator>();
         cam = Camera.main;
         if (Controller == null)
@@ -62,11 +66,13 @@ public class PlayerControle : MonoBehaviour
     {
         Gravity();
         Move();
+        InputAttack();
         //if (Controller.velocity.x + Controller.velocity.z <= 0)
-    
+
         RotateTowardsMouse();
-        if (Input.GetMouseButtonDown(0))
-            _Anim.SetTrigger("Shoot");
+        
+           
+           
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -79,18 +85,34 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
+    public void InputAttack() 
+    {
+        if (_lockMove == false) 
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _Anim.SetTrigger("Shoot");
+
+            }
+
+        }
+        
+
+    }
+
     public void LockFunction() 
     {
 
         _lockMove = true;
-
+        _dashScript.DashMove();
         AttackRaycast();
-     
+        InputAttack();
         Move();
         Shoot();
         RotateTowardsMouse();
-
-
+        Gravity();
+        Melee();
+        Shootmanage();
 
 
     }
