@@ -6,7 +6,7 @@ public class InimigoMelee : InimigoDef
     [Header("Configuração InimigoM")]
     
     public float IntervaloAtaque = 3f;
-    private float tempo = 0f;
+    private float tempo = 2f;
     public bool _playerNaArea = false;
     private GameObject _player;
 
@@ -39,6 +39,7 @@ public class InimigoMelee : InimigoDef
             _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
             if (_isHIT && !_checkHIT)
             {
+                //lembrete, para o inimigo aguentar mais fazer o check hit voltar a ser false após timming
                 _checkHIT = true;
                 Debug.Log("Alvo Colidiu na Capsula");
                 StartCoroutine(HitTime());

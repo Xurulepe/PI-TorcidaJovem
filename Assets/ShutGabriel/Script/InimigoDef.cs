@@ -22,8 +22,16 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected Vector3 ScaleStart;
     protected float _tempo = 0f;
     bool _startV;
+
+    [Header("SpriteVirus")]
+    [SerializeField] protected GameObject _spriteVirus;
+    [SerializeField] protected Transform cameraTransform;
+    //[SerializeField] protected Transform shadowPosition;
+
     protected virtual void Start()
     {
+        cameraTransform = Camera.main.transform;
+        
         _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -38,6 +46,12 @@ public class InimigoDef : MonoBehaviour
         }
 
     }
+    protected void LateUpdate()
+    {
+        _spriteVirus.transform.LookAt(_spriteVirus.transform.localPosition + cameraTransform.position);
+        //shadowPosition.transform.LookAt(shadowPosition.transform.localPosition + cameraTransform.position);
+    }
+
     protected virtual void Update()
     {
 
@@ -54,14 +68,36 @@ public class InimigoDef : MonoBehaviour
             Morrer();
         }
     }
+
+    //Morte do inimigo
     protected virtual void Morrer()
     {
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
         }
+        _spriteVirus.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        
+        
+        
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     protected virtual IEnumerator HitTime()
     {
@@ -111,6 +147,7 @@ public class InimigoDef : MonoBehaviour
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = true;
+            _spriteVirus.gameObject.SetActive(true);
         }
     }
 
