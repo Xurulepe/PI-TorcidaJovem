@@ -6,11 +6,11 @@ using DG.Tweening;
 
 public class InimigoDef : MonoBehaviour
 {
-  
+    //movimento
     protected NavMeshAgent _agent;
     protected Transform _alvo;
     public int vida = 1;
-
+    //status
     [SerializeField] protected int dano = 1;
     [SerializeField]  MeshRenderer[] _renderer;
     [SerializeField] protected ParticleSystem[] _part;

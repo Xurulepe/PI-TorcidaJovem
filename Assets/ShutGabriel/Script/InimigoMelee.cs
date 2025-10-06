@@ -18,10 +18,6 @@ public class InimigoMelee : InimigoDef
 
 
 
-    public bool Pause = false;
-
-
-
 
 
 
@@ -82,10 +78,6 @@ public class InimigoMelee : InimigoDef
     {
         base.Start();
         _agent.speed = 3.5f;
-        if (_playerNaArea = true)
-        {
-            Pause = true;
-        }
     }
 
     protected override void LevarDano(int dano)
