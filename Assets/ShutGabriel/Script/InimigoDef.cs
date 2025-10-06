@@ -146,7 +146,7 @@ public class InimigoDef : MonoBehaviour
 
         for (int i = 0; i < _renderer.Length; i++)
         {
-            _renderer[i].enabled = true;
+            _renderer[i].enabled = false;
             _spriteVirus.gameObject.SetActive(true);
         }
     }

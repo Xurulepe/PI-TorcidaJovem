@@ -119,7 +119,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.8, y: 5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9061306001358388816}
@@ -255,7 +255,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
-  Pause: 0
 --- !u!54 &54305424926373166
 Rigidbody:
   m_ObjectHideFlags: 0
