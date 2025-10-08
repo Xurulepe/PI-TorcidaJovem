@@ -271,6 +271,7 @@ public class PlayerControle : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance, _attackLayer))
             {
+             
                 Debug.Log(hit.transform.name);
                 Debug.Log("HitTarget");
             }
@@ -281,7 +282,7 @@ public class PlayerControle : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("EnemyMelee"))
             Debug.Log("You hit the enemy!");
     }
 }
