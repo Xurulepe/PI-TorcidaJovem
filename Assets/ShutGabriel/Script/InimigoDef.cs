@@ -97,18 +97,22 @@ public class InimigoDef : MonoBehaviour
         for (int i = 0; i < _CL.Length; i++)
         {
             _CL[i].enabled = false;
+
         }
         yield return new WaitForSeconds(0.25f);
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+        }
+        yield return new WaitForSeconds(0.25f);
+
 
         for (int i = 0; i < _part.Length; i++)
         {
             _part[i].Play();
         }
 
-        for (int i = 0; i < _renderer.Length; i++)
-        {
-            _renderer[i].enabled = false;
-        }
+
 
         yield return new WaitForSeconds(0.25f);
 
@@ -116,6 +120,7 @@ public class InimigoDef : MonoBehaviour
 
         _checkHIT = false;
         LevarDano(dano);
+        
     }
 
 
