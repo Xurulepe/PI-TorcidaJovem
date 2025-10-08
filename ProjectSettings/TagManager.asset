@@ -11,6 +11,7 @@ TagManager:
   - ground
   - HealRegen
   - EnergyRegen
+  - "Espad\xE3o"
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI
   - EnemyMelee
   - Player
-  - 
+  - Espadao
   - 
   - 
   - 

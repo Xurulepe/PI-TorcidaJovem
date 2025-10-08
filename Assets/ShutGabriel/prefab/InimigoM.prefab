@@ -253,7 +253,7 @@ MonoBehaviour:
   _tamanho: 7
   layermask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!54 &54305424926373166
 Rigidbody:

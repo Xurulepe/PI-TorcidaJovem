@@ -86,19 +86,6 @@ public class InimigoDef : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     protected virtual IEnumerator HitTime()
     {
         _checkMorte = true;
