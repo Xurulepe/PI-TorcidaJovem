@@ -12,6 +12,7 @@ TagManager:
   - HealRegen
   - EnergyRegen
   - "Espad\xE3o"
+  - BulletPlayer
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - EnemyMelee
   - Player
   - Espadao
-  - 
+  - BulletPlayer
   - 
   - 
   - 

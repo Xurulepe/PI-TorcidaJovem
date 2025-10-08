@@ -313,9 +313,9 @@ MonoBehaviour:
   _distanciaSeg: 15
   _recuoDist: 10
   _tempo: 0
-  _raio: 3
-  _tamanho: 3
+  _raio: 4
+  _tamanho: 15
   layermask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}

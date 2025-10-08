@@ -197,8 +197,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &8604188785682618025
@@ -249,8 +249,8 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   IntervaloAtaque: 3
   _playerNaArea: 0
-  _raio: 2
-  _tamanho: 7
+  _raio: 4
+  _tamanho: 15
   layermask:
     serializedVersion: 2
     m_Bits: 256
