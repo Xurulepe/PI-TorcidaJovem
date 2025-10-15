@@ -13,6 +13,7 @@ TagManager:
   - EnergyRegen
   - "Espad\xE3o"
   - BulletPlayer
+  - EnemyMelee
   layers:
   - Default
   - TransparentFX

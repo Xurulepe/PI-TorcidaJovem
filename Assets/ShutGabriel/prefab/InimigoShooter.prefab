@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4077182662573274977}
   m_Layer: 0
   m_Name: InimigoShooter
-  m_TagString: Untagged
+  m_TagString: EnemyMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

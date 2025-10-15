@@ -74,11 +74,7 @@ public class PlayerControle : MonoBehaviour
            
            
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            
-            AttackRaycast();
-        }
+        
         if (Input.GetKeyDown(KeyCode.R)) 
         {
             LockFunction();
@@ -94,8 +90,14 @@ public class PlayerControle : MonoBehaviour
                 _Anim.SetTrigger("Shoot");
 
             }
+            if (Input.GetMouseButton(1))
+            {
+                _Anim.SetTrigger("Attack");
+
+            }
 
         }
+
         
 
     }
@@ -267,7 +269,7 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false) 
         {
-            _Anim.SetTrigger("Attack");
+           
             RaycastHit hit;
             if (Physics.Raycast(attackPoint.transform.position, attackPoint.transform.forward, out hit, _attackDistance, _attackLayer))
             {
