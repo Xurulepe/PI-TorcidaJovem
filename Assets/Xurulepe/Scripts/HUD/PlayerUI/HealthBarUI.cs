@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HealthBarUI : MonoBehaviour
 {
     [SerializeField] private Image _healthBar;
+    [SerializeField] private PlayerHealthScript _playerHealth;
 
     private void Awake()
     {
@@ -20,5 +21,6 @@ public class HealthBarUI : MonoBehaviour
     private void UpdateHealthBar()
     {
         // atualizar a barra de vida com base na vida atual do jogador
+        // _healthBar.fillAmount = _playerHealth.GetHealthNormalized();
     }
 }
