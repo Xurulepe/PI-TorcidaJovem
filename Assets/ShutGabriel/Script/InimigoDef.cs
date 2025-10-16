@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.AI;
 using System.Collections;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class InimigoDef : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class InimigoDef : MonoBehaviour
     protected NavMeshAgent _agent;
     protected Transform _alvo;
     public int vida = 1;
+    [SerializeField] protected float Velo; 
     //status
     [SerializeField] protected int dano = 1;
     [SerializeField]  MeshRenderer[] _renderer;
@@ -27,11 +29,15 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected GameObject _spriteVirus;
     [SerializeField] protected Transform cameraTransform;
     //[SerializeField] protected Transform shadowPosition;
+    
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
+
 
     protected virtual void Start()
     {
         cameraTransform = Camera.main.transform;
-        
+        _agent.speed = Velo;
         _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -51,7 +57,7 @@ public class InimigoDef : MonoBehaviour
         _spriteVirus.transform.LookAt(_spriteVirus.transform.localPosition + cameraTransform.position);
         //shadowPosition.transform.LookAt(shadowPosition.transform.localPosition + cameraTransform.position);
     }
-
+    
     protected virtual void Update()
     {
 
@@ -59,6 +65,7 @@ public class InimigoDef : MonoBehaviour
         {
             _agent.SetDestination(_alvo.position);
         }
+        selecaoFace();
     }
     protected virtual void LevarDano(int dano)
     {
@@ -82,6 +89,17 @@ public class InimigoDef : MonoBehaviour
         
         
     }
+    protected virtual void selecaoFace()
+    {
+        if (_isHIT == true)
+        {
+            spriteRenderer.sprite = Rostoimg[1];
+        }
+        else
+        {
+            spriteRenderer.sprite = Rostoimg[0];
+        }
+    }
 
 
 
@@ -92,7 +110,7 @@ public class InimigoDef : MonoBehaviour
 
         for (int i = 0; i < _renderer.Length; i++)
         {
-            _renderer[i].transform.DOScale(2, .25f);
+            _renderer[i].transform.DOScale(0.5f, 0.05f);
         }
         for (int i = 0; i < _CL.Length; i++)
         {

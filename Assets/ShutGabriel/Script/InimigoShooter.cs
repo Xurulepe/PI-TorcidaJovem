@@ -5,7 +5,7 @@ using System.Collections;
 using DG.Tweening;
 public class InimigoShooter : InimigoDef
 {
-    public GameObject projectilePrefab;//
+    public GameObject projectilePrefab;
     public Transform spawnPoint;
 
   
@@ -54,11 +54,11 @@ public class InimigoShooter : InimigoDef
         else
         {
             _agent.isStopped = true;
-            _tempo += Time.deltaTime;
-            if(_tempo >= _intervaloTiro)
+            _clock += Time.deltaTime;
+            if(_clock >= _intervaloTiro)
             {
                 Atirar();
-                _tempo = 0f;
+                _clock = 0f;
             }
         }
 
