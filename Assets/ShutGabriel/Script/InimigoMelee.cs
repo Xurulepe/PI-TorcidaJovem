@@ -6,7 +6,7 @@ public class InimigoMelee : InimigoDef
     [Header("Configuração InimigoM")]
     
     public float IntervaloAtaque = 3f;
-    private float tempo = 2f;
+    private float _clock = 2f;
     public bool _playerNaArea = false;
     private GameObject _player;
 
@@ -17,7 +17,7 @@ public class InimigoMelee : InimigoDef
     public Color gizmoColor = Color.cyan;
 
 
-
+    
 
 
 
@@ -54,7 +54,7 @@ public class InimigoMelee : InimigoDef
             if (_playerNaArea == true)
             {
                 Ataque();
-                tempo = 0f;
+                _clock = 0f;
             }
         }
     }
@@ -77,7 +77,7 @@ public class InimigoMelee : InimigoDef
     protected override void Start()
     {
         base.Start();
-        _agent.speed = 3.5f;
+        _agent.speed = 10f;
     }
 
     protected override void LevarDano(int dano)

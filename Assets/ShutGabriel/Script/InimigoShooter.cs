@@ -13,7 +13,7 @@ public class InimigoShooter : InimigoDef
     public float _distanciaMin= 7f;
     public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
-    public float _tempo;
+    public float _clock;
 
     [Header("configuração da capsula")]
     public float _raio = 3f;
@@ -30,7 +30,7 @@ public class InimigoShooter : InimigoDef
 
         base.Start();
 
-        if (_agent != null) _agent.speed = 3.5f;
+        if (_agent != null) _agent.speed = 10.5f;
         
     }
     protected override void Update()

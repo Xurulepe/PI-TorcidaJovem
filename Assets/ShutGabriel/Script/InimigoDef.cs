@@ -11,7 +11,7 @@ public class InimigoDef : MonoBehaviour
     protected NavMeshAgent _agent;
     protected Transform _alvo;
     public int vida = 1;
-    [SerializeField] protected float Velo; 
+
     //status
     [SerializeField] protected int dano = 1;
     [SerializeField]  MeshRenderer[] _renderer;
@@ -37,7 +37,7 @@ public class InimigoDef : MonoBehaviour
     protected virtual void Start()
     {
         cameraTransform = Camera.main.transform;
-        _agent.speed = Velo;
+        
         _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
