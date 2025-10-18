@@ -31,13 +31,6 @@ public class HUDController : MonoBehaviour
         MasterSlider.onValueChanged.RemoveAllListeners();
         MusicSlider.onValueChanged.RemoveAllListeners();
         SFXSlider.onValueChanged.RemoveAllListeners();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene("MenuPrincipalAnimado");
-        }
+        Debug.Log("HUDController desabilitado e listeners removidos.");
     }
 }

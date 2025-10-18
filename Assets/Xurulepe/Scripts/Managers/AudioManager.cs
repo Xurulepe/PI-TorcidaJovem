@@ -133,6 +133,4 @@ public class AudioManager : MonoBehaviour
         _musicVolumeSlider = hud.MusicSlider;
         _sFXVolumeSlider = hud.SFXSlider;
     }
-
-
 }

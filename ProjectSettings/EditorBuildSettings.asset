@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Xurulepe/Scenes/MenuPrincipalAtualizado.unity
     guid: b1b6895bb14380a44bc4a064896ce98d
   - enabled: 1
-    path: Assets/Pedro/MiniJogo2D/cena/Game1.unity
-    guid: 4c8bcfed6ff9e1f41b9afaa86a7f0a75
-  - enabled: 0
-    path: Assets/Xurulepe/Scenes/TestScene.unity
-    guid: bc03bd329ab1a964f93abe35c0f1482a
+    path: Assets/Daniboy/Scenes/PlayerMovement.unity
+    guid: 42f868a2b84ce3743a170e914adb4e22
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 28e0d42928e8fdf4ab0d0652eb0a1aea, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
