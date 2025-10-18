@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
@@ -31,6 +30,5 @@ public class HUDController : MonoBehaviour
         MasterSlider.onValueChanged.RemoveAllListeners();
         MusicSlider.onValueChanged.RemoveAllListeners();
         SFXSlider.onValueChanged.RemoveAllListeners();
-        Debug.Log("HUDController desabilitado e listeners removidos.");
     }
 }

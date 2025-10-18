@@ -5,6 +5,18 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenuPanel;
 
+
+    // teste de música
+    public AudioClip music;
+
+    private void Start()
+    {
+        if (music != null)
+        {
+            AudioManager.Instance.PlayMusic(music);
+        }
+    }
+
     public void Pause()
     {
         Debug.Log("Pausando o jogo");
