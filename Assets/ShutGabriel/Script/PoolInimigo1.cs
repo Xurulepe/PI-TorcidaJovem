@@ -15,4 +15,5 @@ public class PoolInimigo1 : PoolInimigo
         bullet = PoolInimigo1._poolimigos1.GetPooledObject();
        base.InimigoON(bullet);
     }
+
 }

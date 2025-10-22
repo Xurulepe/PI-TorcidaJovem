@@ -20,7 +20,6 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected bool _checkHIT;
     [SerializeField] protected bool _checkMorte;
     [SerializeField] protected bool _isHIT;
-
     [SerializeField] protected Vector3 ScaleStart;
     protected float _tempo = 0f;
     bool _startV;
@@ -29,13 +28,25 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected GameObject _spriteVirus;
     [SerializeField] protected Transform cameraTransform;
     //[SerializeField] protected Transform shadowPosition;
-    
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
+
+    /*
+    [Header("Knockback Settings")]
+    protected float knockbackForce = 100f;
+    protected float knockbackDuration = 0.3f;
+    protected float gravity = -9.81f;
+    protected CharacterController controller;
+    protected Vector3 EnemySpeed;
+    protected Vector3 knockbackVelocity;
+    protected float knockbackTimer;
+    */
+
 
 
     protected virtual void Start()
     {
+        //controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
         
         _agent = GetComponent<NavMeshAgent>();
@@ -65,8 +76,34 @@ public class InimigoDef : MonoBehaviour
         {
             _agent.SetDestination(_alvo.position);
         }
+        /*if (controller.isGrounded && EnemySpeed.y < 0)
+            EnemySpeed.y = -2f;
+        else
+            EnemySpeed.y += gravity * Time.deltaTime;
+
+
+        if (knockbackTimer > 0)
+        {
+            controller.Move(knockbackVelocity * Time.deltaTime);
+            knockbackTimer -= Time.deltaTime;
+        }
+        */
         selecaoFace();
     }
+    /*
+    protected virtual void ApplyKnockback(Vector3 direction, float force = -1)
+    {
+        if (force < 0) force = knockbackForce;
+        knockbackVelocity = direction * force;
+        knockbackTimer = knockbackDuration;
+    }
+    */
+
+
+
+
+
+
     protected virtual void LevarDano(int dano)
     {
         vida -= dano;

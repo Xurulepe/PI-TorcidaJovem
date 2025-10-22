@@ -31,6 +31,24 @@ public class PoolInimigo : ObjectPooling
                 //timerIsRunning=false;
             }
         }
+        if (!_checkMortado)
+        {
+            // Pega os pontos da cápsula (base e topo)
+            Vector3 point1, point2;
+            GetCapsulePoints(out point1, out point2);
+
+            // Verifica colisão com CapsuleCheck
+            _isHitado = Physics.CheckCapsule(point1, point2, radius, layerMask);
+
+            if (_isHitado && !_checkHitado)
+            {
+                _checkHitado = true;
+
+                Debug.Log("SPAWNER ACERTADO!");
+                _checkMortado = false;
+                StartCoroutine(HitTime());
+            }
+        }
 
     }
     protected virtual void InimigoON(GameObject bullet)

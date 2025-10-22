@@ -56,9 +56,24 @@ public class InimigoMelee : InimigoDef
                 Ataque();
                 _clock = 0f;
             }
+            /*if (other.CompareTag("EspadaHitBox"))
+            {
+                Vector3 knockDir = (transform.position - other.transform.position).normalized;
+                ApplyKnockback(knockDir);
+            }
+            */
         }
     }
-
+    /*
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("EspadaHitBox"))
+        {
+            Vector3 knockDir = (transform.position - hit.point).normalized;
+            ApplyKnockback(knockDir);
+        }
+    }
+    */
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

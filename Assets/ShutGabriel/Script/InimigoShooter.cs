@@ -118,7 +118,5 @@ public class InimigoShooter : InimigoDef
         point2 = center - Up;
     }
     
-   
 
-  
 }
