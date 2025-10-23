@@ -885,7 +885,21 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
   amountToPool: 5
-  _TimeStart: 3
+  Vida: 0
+  radius: 5
+  height: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  _isHitado: 0
+  _checkHitado: 0
+  _checkMortado: 0
+  _renderer:
+  - {fileID: 932181893}
+  _part: []
+  _cl: []
+  _TimeStart: 5
   timerIsRunning: 0
 --- !u!195 &932181891
 NavMeshAgent:
@@ -924,7 +938,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -994,7 +1008,7 @@ Transform:
   m_GameObject: {fileID: 932181889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42, y: 5, z: 14.3}
+  m_LocalPosition: {x: -32.3, y: 5, z: 24}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1107,7 +1121,7 @@ Transform:
   m_GameObject: {fileID: 1143978091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 4.41, z: 0.85}
+  m_LocalPosition: {x: -0.56, y: 4.41, z: -36}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1385,6 +1399,20 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
   amountToPool: 3
+  Vida: 0
+  radius: 5
+  height: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  _isHitado: 0
+  _checkHitado: 0
+  _checkMortado: 0
+  _renderer:
+  - {fileID: 1240622948}
+  _part: []
+  _cl: []
   _TimeStart: 3
   timerIsRunning: 0
 --- !u!195 &1240622946
@@ -1494,7 +1522,7 @@ Transform:
   m_GameObject: {fileID: 1240622944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.3, y: 5, z: 33.8}
+  m_LocalPosition: {x: 30.8, y: 5, z: 19.8}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1940,7 +1968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147041290223676875, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.6
+      value: -1.3
       objectReference: {fileID: 0}
     - target: {fileID: 147041290223676875, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       propertyPath: m_LocalRotation.w

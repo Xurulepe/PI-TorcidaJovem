@@ -10,7 +10,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] protected List<GameObject> pooledObjects;
     [SerializeField] protected GameObject objectToPool;
     [SerializeField] protected int amountToPool;
-
+    [SerializeField] protected float Vida;
 
 
 
@@ -27,6 +27,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] MeshRenderer[] _renderer;
     [SerializeField] ParticleSystem[] _part;
     [SerializeField] Collider[] _cl;
+    protected int dano;
 
     protected virtual void Awake()
     {
@@ -60,8 +61,28 @@ public class ObjectPooling : MonoBehaviour
 
 
     //HITSPAWNER
+    protected virtual void LevarDano(int dano)
+    {
+        Vida -= dano;
+        if (Vida <= 0)
+        {
+            Morrer();
+        }
+    }
 
-    
+    //Morte do inimigo
+    protected virtual void Morrer()
+    {
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+        }
+        gameObject.SetActive(false);
+
+
+
+    }
+
     protected virtual void OnDrawGizmos()
     {
         // Pega pontos da cápsula
@@ -130,6 +151,8 @@ public class ObjectPooling : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         _checkHitado = false;
-    }
+        LevarDano(dano);
 
+    }
+    
 }
