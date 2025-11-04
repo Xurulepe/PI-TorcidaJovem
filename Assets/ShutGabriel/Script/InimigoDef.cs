@@ -10,7 +10,7 @@ public class InimigoDef : MonoBehaviour
     //movimento
     protected NavMeshAgent _agent;
     protected Transform _alvo;
-    public int vida = 1;
+    [SerializeField] protected int vida = 10;
 
     //status
     [SerializeField] protected int dano = 1;
@@ -30,17 +30,6 @@ public class InimigoDef : MonoBehaviour
     //[SerializeField] protected Transform shadowPosition;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
-
-    /*
-    [Header("Knockback Settings")]
-    protected float knockbackForce = 100f;
-    protected float knockbackDuration = 0.3f;
-    protected float gravity = -9.81f;
-    protected CharacterController controller;
-    protected Vector3 EnemySpeed;
-    protected Vector3 knockbackVelocity;
-    protected float knockbackTimer;
-    */
 
 
 
@@ -76,55 +65,38 @@ public class InimigoDef : MonoBehaviour
         {
             _agent.SetDestination(_alvo.position);
         }
-        /*if (controller.isGrounded && EnemySpeed.y < 0)
-            EnemySpeed.y = -2f;
-        else
-            EnemySpeed.y += gravity * Time.deltaTime;
-
-
-        if (knockbackTimer > 0)
-        {
-            controller.Move(knockbackVelocity * Time.deltaTime);
-            knockbackTimer -= Time.deltaTime;
-        }
-        */
         selecaoFace();
     }
-    /*
-    protected virtual void ApplyKnockback(Vector3 direction, float force = -1)
-    {
-        if (force < 0) force = knockbackForce;
-        knockbackVelocity = direction * force;
-        knockbackTimer = knockbackDuration;
-    }
-    */
-
-
-
-
-
-
     protected virtual void LevarDano(int dano)
     {
         vida -= dano;
         if (vida <= 0)
         {
             Morrer();
+
+        }
+        else
+        {
+            RecuperarDedano();
         }
     }
-
     //Morte do inimigo
     protected virtual void Morrer()
     {
+        for (int i = 0; i < _part.Length; i++)
+        {
+            _part[i].Play();
+        }
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
         }
+        
         _spriteVirus.gameObject.SetActive(false);
         gameObject.SetActive(false);
         
-        
-        
+        //yield return new WaitForSeconds(0.10f);
+
     }
     protected virtual void selecaoFace()
     {
@@ -138,17 +110,15 @@ public class InimigoDef : MonoBehaviour
         }
     }
 
-
-
-
     protected virtual IEnumerator HitTime()
     {
         _checkMorte = true;
-
+        yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].transform.DOScale(0.5f, 0.05f);
         }
+
         for (int i = 0; i < _CL.Length; i++)
         {
             _CL[i].enabled = false;
@@ -162,26 +132,19 @@ public class InimigoDef : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
 
-        for (int i = 0; i < _part.Length; i++)
-        {
-            _part[i].Play();
-        }
-
-
-
-        yield return new WaitForSeconds(0.25f);
-
-        yield return new WaitForSeconds(0.25f);
+      
 
         _checkHIT = false;
         LevarDano(dano);
+        
         
     }
 
 
     public virtual void Vida()
     {
-        vida = 1;
+
+        vida = 10;
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
@@ -197,6 +160,24 @@ public class InimigoDef : MonoBehaviour
             _spriteVirus.gameObject.SetActive(true);
         }
     }
+    public virtual void RecuperarDedano()
+    {
 
+        
+        _tempo = 0f;
+        _checkMorte = false;
+        _isHIT = false;
+
+        if (_startV)
+        {
+            transform.localScale = ScaleStart;
+        }
+
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+            _spriteVirus.gameObject.SetActive(true);
+        }
+    }
 
 }
