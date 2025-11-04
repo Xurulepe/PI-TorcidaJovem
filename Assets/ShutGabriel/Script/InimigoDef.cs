@@ -83,10 +83,7 @@ public class InimigoDef : MonoBehaviour
     //Morte do inimigo
     protected virtual void Morrer()
     {
-        for (int i = 0; i < _part.Length; i++)
-        {
-            _part[i].Play();
-        }
+        
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
@@ -131,7 +128,6 @@ public class InimigoDef : MonoBehaviour
         }
         yield return new WaitForSeconds(0.25f);
 
-
       
 
         _checkHIT = false;
@@ -163,7 +159,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void RecuperarDedano()
     {
 
-        
+       
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;

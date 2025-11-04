@@ -23,12 +23,13 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] protected bool _isHitado;
     [SerializeField] protected bool _checkHitado;
     [SerializeField] protected bool _checkMortado;
+    [SerializeField] protected Vector3 ScaleStart;
 
     [SerializeField] MeshRenderer[] _renderer;
     [SerializeField] ParticleSystem[] _part;
     [SerializeField] Collider[] _cl;
     protected int dano;
-
+    bool _startV;
     protected virtual void Awake()
     {
         // SharedInstance = this;
@@ -43,6 +44,11 @@ public class ObjectPooling : MonoBehaviour
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
+        }
+        if (!_startV)
+        {
+            ScaleStart = transform.localScale;
+            _startV = true;
         }
     }
 
@@ -67,6 +73,10 @@ public class ObjectPooling : MonoBehaviour
         if (Vida <= 0)
         {
             Morrer();
+        }
+        else
+        {
+            RecuperarDedano();
         }
     }
 
@@ -154,5 +164,22 @@ public class ObjectPooling : MonoBehaviour
         LevarDano(dano);
 
     }
-    
+    protected virtual void RecuperarDedano()
+    {
+
+
+        
+        _checkMortado = false;
+        _isHitado = false;
+        if (_startV)
+        {
+            transform.localScale = ScaleStart;
+        }
+        for (int i = 0; i < _renderer.Length; i++)
+        {
+            _renderer[i].enabled = false;
+            
+        }
+
+    }
 }
