@@ -59,8 +59,8 @@ public class PoolInimigo : ObjectPooling
             InimigoDef inimigoDef = bullet.GetComponent<InimigoDef>();
             inimigoDef.Vida();
 
-            bullet.transform.SetParent(_SPAWN);
-            bullet.transform.localPosition = Vector3.zero;
+            //bullet.transform.SetParent(_SPAWN);
+            bullet.transform.localPosition = transform.position;
             bullet.SetActive(true);
         }
         

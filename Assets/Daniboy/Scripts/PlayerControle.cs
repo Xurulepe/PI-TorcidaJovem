@@ -95,16 +95,11 @@ public class PlayerControle : MonoBehaviour
                 _Anim.SetTrigger("Attack");
 
             }
-
-        }
-
-        
-
+        }  
     }
 
-    public void LockFunction() 
-    {
-
+    public void LockFunction()
+    { 
         _lockMove = true;
         _dashScript.DashMove();
         AttackRaycast();
@@ -115,8 +110,6 @@ public class PlayerControle : MonoBehaviour
         Gravity();
         Melee();
         Shootmanage();
-
-
     }
 
     public void Move()
