@@ -177,9 +177,8 @@ public class ObjectPooling : MonoBehaviour
         }
         for (int i = 0; i < _renderer.Length; i++)
         {
-            _renderer[i].enabled = false;
+            _renderer[i].enabled = true;
             
         }
-
     }
 }
