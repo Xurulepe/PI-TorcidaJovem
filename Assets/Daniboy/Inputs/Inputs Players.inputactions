@@ -24,13 +24,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mouse",
+                    "name": "Shoot",
                     "type": "Value",
                     "id": "bb9db6bc-b8da-4a1d-8a6b-61934f2c5c07",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "add40449-0116-452e-b069-389ef9b480cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -107,18 +116,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mouse",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "4316070d-c473-476a-bd26-ff10cf69e8cd",
+                    "id": "263c5d76-1d6a-4eb6-a4e0-8a9f791bd539",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mouse",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerControle : MonoBehaviour
 {
@@ -66,44 +67,56 @@ public class PlayerControle : MonoBehaviour
     {
         Gravity();
         Move();
-        InputAttack();
+
         //if (Controller.velocity.x + Controller.velocity.z <= 0)
 
         RotateTowardsMouse();
-        
-           
-           
+      
 
-        
+
+
+
+
         if (Input.GetKeyDown(KeyCode.R)) 
         {
             LockFunction();
         }
     }
 
-    public void InputAttack() 
+    public void AttackShoot(InputAction.CallbackContext value) 
     {
         if (_lockMove == false) 
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _Anim.SetTrigger("Shoot");
 
-            }
-            if (Input.GetMouseButton(1))
-            {
-                _Anim.SetTrigger("Attack");
+            _Anim.SetTrigger("Shoot");
 
-            }
-        }  
+        }
+       
+
+
     }
+    public void AttackMeele(InputAction.CallbackContext value) 
+    {
+        if (_lockMove == false) 
+        {
+
+            _Anim.SetTrigger("Attack");
+
+        }
+        
+
+
+
+    }
+
+
 
     public void LockFunction()
     { 
         _lockMove = true;
         _dashScript.DashMove();
         AttackRaycast();
-        InputAttack();
+     
         Move();
         Shoot();
         RotateTowardsMouse();
