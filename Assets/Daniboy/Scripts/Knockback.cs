@@ -11,6 +11,7 @@ public class Knockback : MonoBehaviour
     private Vector3 playerVelocity;
     private Vector3 knockbackVelocity;
     private float knockbackTimer;
+    bool EnemyHitBox;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class Knockback : MonoBehaviour
     {
         if (other.CompareTag("EnemyHitbox"))
         {
+            Debug.Log(" inim "+other.gameObject.name);
             Vector3 knockDir = (transform.position - other.transform.position).normalized;
             ApplyKnockback(knockDir);
         }

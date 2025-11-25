@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using System.Collections;
 using DG.Tweening;
 using System.Collections.Generic;
+using static UnityEngine.Rendering.DebugUI;
 
 public class InimigoDef : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class InimigoDef : MonoBehaviour
     //[SerializeField] protected Transform shadowPosition;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
+    [SerializeField] GameObject hITBOX;
 
 
 
@@ -69,6 +71,7 @@ public class InimigoDef : MonoBehaviour
     }
     protected virtual void LevarDano(int dano)
     {
+
         vida -= dano;
         if (vida <= 0)
         {
@@ -110,6 +113,7 @@ public class InimigoDef : MonoBehaviour
     protected virtual IEnumerator HitTime()
     {
         _checkMorte = true;
+        hITBOX.SetActive(false);
         yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < _renderer.Length; i++)
         {
@@ -121,6 +125,7 @@ public class InimigoDef : MonoBehaviour
             _CL[i].enabled = false;
 
         }
+
         yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < _renderer.Length; i++)
         {
@@ -128,9 +133,10 @@ public class InimigoDef : MonoBehaviour
         }
         yield return new WaitForSeconds(0.25f);
 
-      
 
+        _agent.isStopped = true;
         _checkHIT = false;
+        yield return new WaitForSeconds(3.25f);
         LevarDano(dano);
         
         
@@ -163,6 +169,8 @@ public class InimigoDef : MonoBehaviour
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
+        _agent.isStopped = false;
+        hITBOX.SetActive(true);
 
         if (_startV)
         {

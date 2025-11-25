@@ -52,7 +52,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Height: 7
+  m_Height: 6.58
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5654051592905657018
@@ -386,7 +386,8 @@ MonoBehaviour:
   - {fileID: 6102374726004681698}
   _part:
   - {fileID: 5749441704591633328}
-  _CL: []
+  _CL:
+  - {fileID: 5298015954864128707}
   _checkHIT: 0
   _checkMorte: 0
   _isHIT: 0
@@ -397,10 +398,11 @@ MonoBehaviour:
   Rostoimg:
   - {fileID: -2216818378679403149, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   - {fileID: -2710034688760179752, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
+  hITBOX: {fileID: 3436551259529693283}
   IntervaloAtaque: 3
   _playerNaArea: 0
-  _raio: 4
-  _tamanho: 14.3
+  _raio: 1.19
+  _tamanho: 14.2
   layermask:
     serializedVersion: 2
     m_Bits: 256

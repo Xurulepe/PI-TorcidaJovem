@@ -17,10 +17,18 @@ public class InimigoMelee : InimigoDef
     public Color gizmoColor = Color.cyan;
 
 
+    //Tags
+    protected string newtag = "Hit";
+    protected float duração = 1f;
+    protected string OriginalTag;
+
+    protected override void Start()
+    {
+        base.Start();
+        _agent.speed = 10f;
+        OriginalTag = gameObject.tag;
+    }
     
-
-
-
     protected override void Update()
     {
         base.Update();
@@ -37,6 +45,7 @@ public class InimigoMelee : InimigoDef
             {
                 //lembrete, para o inimigo aguentar mais fazer o check hit voltar a ser false após timming
                 _checkHIT = true;
+
                 Debug.Log("Alvo Colidiu na Capsula");
                 StartCoroutine(HitTime());
             }
@@ -64,16 +73,10 @@ public class InimigoMelee : InimigoDef
             */
         }
     }
-    /*
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.collider.CompareTag("EspadaHitBox"))
-        {
-            Vector3 knockDir = (transform.position - hit.point).normalized;
-            ApplyKnockback(knockDir);
-        }
-    }
-    */
+    
+    
+  
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -89,11 +92,7 @@ public class InimigoMelee : InimigoDef
         StartCoroutine(CooldownAtk());
     }
 
-    protected override void Start()
-    {
-        base.Start();
-        _agent.speed = 10f;
-    }
+    
 
     protected override void LevarDano(int dano)
     {
@@ -129,12 +128,7 @@ public class InimigoMelee : InimigoDef
    
     IEnumerator CooldownAtk()
     {
-        yield return new WaitForSeconds(0.25f);
-
-        yield return new WaitForSeconds(0.25f);
-
-        yield return new WaitForSeconds(0.25f);
-
+        yield return new WaitForSeconds(1.25f);
        
     }
 }
