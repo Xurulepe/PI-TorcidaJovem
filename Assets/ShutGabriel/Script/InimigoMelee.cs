@@ -4,6 +4,7 @@ using DG.Tweening;
 public class InimigoMelee : InimigoDef
 {
     [Header("Configuração InimigoM")]
+
     
     public float IntervaloAtaque = 3f;
     private float _clock = 2f;
@@ -16,17 +17,17 @@ public class InimigoMelee : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
+    [SerializeField] int Hurt = 0;
 
     //Tags
-    protected string newtag = "Hit";
-    protected float duração = 1f;
-    protected string OriginalTag;
+    
+
+    private Vector3 direction;
 
     protected override void Start()
     {
         base.Start();
         _agent.speed = 10f;
-        OriginalTag = gameObject.tag;
     }
     
     protected override void Update()
@@ -86,10 +87,15 @@ public class InimigoMelee : InimigoDef
         }
     }
 
-    private void Ataque()
+    protected virtual void Ataque()
     {
         Debug.Log("Atacou o player");
+        
+        PlayerHealthScript playerHealth = GetComponent<PlayerHealthScript>();
+        playerHealth.DamagePlayer(Hurt, direction);
+
         StartCoroutine(CooldownAtk());
+        //StartCoroutine(CooldownAtk());
     }
 
     

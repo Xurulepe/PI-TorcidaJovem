@@ -113,12 +113,14 @@ public class InimigoDef : MonoBehaviour
     protected virtual IEnumerator HitTime()
     {
         _checkMorte = true;
+        _agent.isStopped = true;
         hITBOX.SetActive(false);
         yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].transform.DOScale(0.5f, 0.05f);
         }
+        
 
         for (int i = 0; i < _CL.Length; i++)
         {
@@ -134,7 +136,7 @@ public class InimigoDef : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
 
-        _agent.isStopped = true;
+        
         _checkHIT = false;
         yield return new WaitForSeconds(3.25f);
         LevarDano(dano);
