@@ -7,15 +7,17 @@ public class Knockback : MonoBehaviour
     public float knockbackDuration = 0.3f;
     public float gravity = -9.81f;
 
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     private Vector3 playerVelocity;
     private Vector3 knockbackVelocity;
     private float knockbackTimer;
     bool EnemyHitBox;
 
+    [SerializeField] Transform _Player;
+
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+      //  controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -51,7 +53,7 @@ public class Knockback : MonoBehaviour
         if (other.CompareTag("EnemyHitbox"))
         {
             Debug.Log(" inim "+other.gameObject.name);
-            Vector3 knockDir = (transform.position - other.transform.position).normalized;
+            Vector3 knockDir = (_Player.transform.position - other.transform.position).normalized;
             ApplyKnockback(knockDir);
         }
     }

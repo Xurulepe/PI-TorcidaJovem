@@ -18,7 +18,7 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") 
+        if (other.gameObject.tag == "HitPlayer") 
         { 
         
         Vector3 damageDirection = other.transform.position - transform.forward;

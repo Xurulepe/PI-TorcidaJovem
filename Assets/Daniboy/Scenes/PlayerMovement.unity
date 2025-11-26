@@ -1540,9 +1540,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1680745408}
   - component: {fileID: 1680745409}
+  - component: {fileID: 1680745410}
   m_Layer: 7
   m_Name: HitboxPlayer
-  m_TagString: Untagged
+  m_TagString: HitPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,6 +1586,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1680745410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680745407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72addbd7533a23e47b1be31a1ec36310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackForce: 100
+  knockbackDuration: 0.3
+  gravity: -9.81
+  controller: {fileID: 1824024765}
+  _Player: {fileID: 63921191}
 --- !u!1 &1716994826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,21 +1836,6 @@ MonoBehaviour:
   _maxHealth: 100
   Respawn: 1
   _currentHealth: 100
---- !u!114 &1824024784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824024764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72addbd7533a23e47b1be31a1ec36310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockbackForce: 100
-  knockbackDuration: 0.3
-  gravity: -9.81
 --- !u!1 &1866754252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,9 +2210,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2406757294662704781, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1824024777}
-    - targetCorrespondingSourceObject: {fileID: 2406757294662704781, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1824024784}
     - targetCorrespondingSourceObject: {fileID: 499427329652919771, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6033461328626384749}
