@@ -22,7 +22,7 @@ public class PlayerHealthScript : MonoBehaviour
     public void Death() 
     { 
     
-    if (_currentHealth == 0) 
+    if (_currentHealth <= 0) 
     {
 
        SceneManager.LoadScene(Respawn);
@@ -55,4 +55,13 @@ public class PlayerHealthScript : MonoBehaviour
     
     
     }
+
+    public float GetHealthNormalized()
+    {
+        return (float)_currentHealth / _maxHealth;
+    }
+
+
+
+
 }
