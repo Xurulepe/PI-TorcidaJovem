@@ -17,7 +17,7 @@ public class InimigoMelee : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    [SerializeField] int Hurt = 0;
+    [SerializeField] int Hurt = 1;
 
     //Tags
     
@@ -87,18 +87,21 @@ public class InimigoMelee : InimigoDef
         }
     }
 
-    protected virtual void Ataque()
+    protected void Ataque()
     {
         Debug.Log("Atacou o player");
         
-        PlayerHealthScript playerHealth = GetComponent<PlayerHealthScript>();
-        playerHealth.DamagePlayer(Hurt, direction);
+        PlayerHit();
 
         StartCoroutine(CooldownAtk());
-        //StartCoroutine(CooldownAtk());
     }
 
-    
+    protected void PlayerHit()
+    { 
+        PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
+        PlayerHealth.DamagePlayer(Hurt, direction);
+    }
+
 
     protected override void LevarDano(int dano)
     {
