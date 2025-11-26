@@ -13,6 +13,7 @@ public class InimigoDef : MonoBehaviour
     protected Transform _alvo;
     [SerializeField] protected int vida = 10;
 
+
     //status
     [SerializeField] protected int dano = 1;
     [SerializeField]  MeshRenderer[] _renderer;
