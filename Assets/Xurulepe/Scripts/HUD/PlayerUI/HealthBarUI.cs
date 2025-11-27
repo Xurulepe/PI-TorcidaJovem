@@ -18,9 +18,15 @@ public class HealthBarUI : MonoBehaviour
         UpdateHealthBar();
     }
 
+    // provavelmente substituir por evento do player
+    private void Update()
+    {
+        UpdateHealthBar();
+    }
+
     private void UpdateHealthBar()
     {
         // atualizar a barra de vida com base na vida atual do jogador
-        // _healthBar.fillAmount = _playerHealth.GetHealthNormalized();
+        _healthBar.fillAmount = _playerHealth.GetHealthNormalized();
     }
 }
