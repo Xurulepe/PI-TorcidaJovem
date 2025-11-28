@@ -110,27 +110,52 @@ public class AudioManager : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        _masterVolumeSlider.value = volume;
+
+        PlayerPrefs.SetFloat("MasterVolume", volume);
     }
 
     public void SetMusicVolume(float volume)
     {
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        _musicVolumeSlider.value = volume;
+
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SetSFXVolume(float volume)
     {
         _audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        _sFXVolumeSlider.value = volume;
+
+        PlayerPrefs.SetFloat("SFXVolume", volume);
     }
     #endregion
 
-    /// <summary>
-    /// Seta os sliders de volume a partir do HUDController de cada cena.
-    /// </summary>
-    /// <param name="hud">O HUDControler presente na cena que contém os sliders.</param>
-    public void GetSliders(HUDController hud)
+    public void LoadVolume()
     {
-        _masterVolumeSlider = hud.MasterSlider;
-        _musicVolumeSlider = hud.MusicSlider;
-        _sFXVolumeSlider = hud.SFXSlider;
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume"));
+        }
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume"));
+        }
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume"));
+        }
+    }
+
+    /// <summary>
+    /// Seta os sliders de volume a partir do AudioHelper de cada cena.
+    /// </summary>
+    /// <param name="helper">O AudioHelper presente na cena que contém os sliders.</param>
+    public void GetSliders(AudioHelper helper)
+    {
+        _masterVolumeSlider = helper.MasterSlider;
+        _musicVolumeSlider = helper.MusicSlider;
+        _sFXVolumeSlider = helper.SFXSlider;
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDController : MonoBehaviour
+public class AudioHelper : MonoBehaviour
 {
     [Header("Audio Sliders")]
     [Tooltip("Slider que controla o volume master")]
@@ -16,6 +16,7 @@ public class HUDController : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.GetSliders(this);
+        AudioManager.Instance.LoadVolume();
     }
 
     private void OnEnable()
