@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &499427329652919771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2097307948137453444}
-  m_Layer: 0
-  m_Name: AttackPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2097307948137453444
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499427329652919771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 147041290223676875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2406757294662704781
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +159,9 @@ MonoBehaviour:
   _attackDelay: 0.4
   _attackSpeed: 1
   _attackDamage: 1
+  _attackLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _isAttacking: 0
   _readytoAttack: 0
   attackCount: 0
@@ -199,12 +171,19 @@ MonoBehaviour:
   _dashSpeed: 20
   _dashing: 0
   Controller: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  moveInput: {x: 0, y: 0, z: 0}
+  _rotationSpeed: 10
   _playerVelocity: {x: 0, y: 0, z: 0}
   _gravityFloat: -9.81
   projectilePrefab: {fileID: 9191463063044287822, guid: 81ce5a3701965b049925c208b604d478, type: 3}
   shootPoint: {fileID: 5062767935875316180}
   projectileSpeed: 10
+  _shootDelay: 1
+  _readytoShoot: 0
+  _isShooting: 0
+  _lockMove: 0
+  _Anim: {fileID: 0}
+  _dashScript: {fileID: 0}
 --- !u!114 &1097436513212806957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +241,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0f7845c6-e354-4f20-a9b3-cbc1a48bbc17
     m_ActionName: 'Keyboard/Dash[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb9db6bc-b8da-4a1d-8a6b-61934f2c5c07
+    m_ActionName: 'Keyboard/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: add40449-0116-452e-b069-389ef9b480cb
+    m_ActionName: 'Keyboard/Attack[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard
@@ -282,6 +269,7 @@ MonoBehaviour:
   _moveScript: {fileID: 0}
   _dashSpeed: 20
   _dashTime: 0
+  _playerScript: {fileID: 0}
 --- !u!1 &6731457815296351080
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,10 +294,72 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6731457815296351080}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.014318351, y: -0, z: -0, w: 0.9998975}
   m_LocalPosition: {x: 0, y: 0, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 147041290223676875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.641, y: 0, z: 0}
+--- !u!1001 &711104042832126292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 147041290223676875}
+    m_Modifications:
+    - target: {fileID: 1094387737702689935, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_Name
+      value: AttackPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+--- !u!4 &2097307948137453444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1496737882194081488, guid: a6a1dd34c68d8cd49822d3dce4217b88, type: 3}
+  m_PrefabInstance: {fileID: 711104042832126292}
+  m_PrefabAsset: {fileID: 0}
