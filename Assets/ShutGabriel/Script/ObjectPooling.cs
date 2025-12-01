@@ -10,7 +10,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] protected List<GameObject> pooledObjects;
     [SerializeField] protected GameObject objectToPool;
     [SerializeField] protected int amountToPool;
-    [SerializeField] protected float Vida;
+    [SerializeField] protected int Vida = 100;
 
 
 
@@ -28,7 +28,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] MeshRenderer[] _renderer;
     [SerializeField] ParticleSystem[] _part;
     [SerializeField] Collider[] _cl;
-    protected int dano;
+    protected int dano = 10;
     bool _startV;
     protected virtual void Awake()
     {
@@ -129,7 +129,7 @@ public class ObjectPooling : MonoBehaviour
         point1 = center + up;    // Topo
         point2 = center - up;    // Base
     }
-    protected virtual IEnumerator HitTime()
+    protected virtual IEnumerator HitSpawner()
     {
         _checkMortado = true;
         for (int i = 0; i < _renderer.Length; i++)
@@ -150,11 +150,11 @@ public class ObjectPooling : MonoBehaviour
             _part[i].Play();
         }
 
-        for (int i = 0; i < _renderer.Length; i++)
+        /*for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
         }
-
+        */
 
         yield return new WaitForSeconds(0.25f);
 

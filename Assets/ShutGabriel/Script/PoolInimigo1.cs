@@ -16,4 +16,5 @@ public class PoolInimigo1 : PoolInimigo
        base.InimigoON(bullet);
     }
 
+
 }

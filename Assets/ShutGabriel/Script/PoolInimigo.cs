@@ -31,6 +31,8 @@ public class PoolInimigo : ObjectPooling
                 //timerIsRunning=false;
             }
         }
+        
+        
         if (!_checkMortado)
         {
             // Pega os pontos da cápsula (base e topo)
@@ -45,8 +47,7 @@ public class PoolInimigo : ObjectPooling
                 _checkHitado = true;
 
                 Debug.Log("SPAWNER ACERTADO!");
-                _checkMortado = false;
-                StartCoroutine(HitTime());
+                StartCoroutine(HitSpawner());
             }
         }
 
