@@ -36,7 +36,8 @@ public class InimigoShooter : InimigoDef
     protected override void Update()
     {
         base.Update();
-        if(_alvo == null || _agent == null) return;
+        
+        if (_alvo == null || _agent == null) return;
         float distancia = Vector3.Distance(transform.position, _alvo.position);
 
         if(distancia > _distanciaMin)
@@ -61,7 +62,6 @@ public class InimigoShooter : InimigoDef
                 _clock = 0f;
             }
         }
-
         if (!_checkMorte)
         {
             Vector3 point1, point2;
@@ -74,6 +74,7 @@ public class InimigoShooter : InimigoDef
                 StartCoroutine(HitTime());
             }
         }
+
 
     }
     protected override void LevarDano(int dano)

@@ -18,6 +18,7 @@ TagManager:
   - EspadaHitBox
   - BalaHitBox
   - HitPlayer
+  - EnemyShooter
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Player
   - Espadao
   - BulletPlayer
-  - 
+  - EnemyShooter
   - 
   - 
   - 
