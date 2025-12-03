@@ -25,6 +25,7 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected Vector3 ScaleStart;
     protected float _tempo = 0f;
     bool _startV;
+    public bool _StopTiro;
 
     [Header("SpriteVirus")]
     [SerializeField] protected GameObject _spriteVirus;
@@ -113,6 +114,7 @@ public class InimigoDef : MonoBehaviour
 
     protected virtual IEnumerator HitTime()
     {
+        _StopTiro = true;
         _checkMorte = true;
         _agent.isStopped = true;
         hITBOX.SetActive(false);
@@ -141,8 +143,6 @@ public class InimigoDef : MonoBehaviour
         _checkHIT = false;
         yield return new WaitForSeconds(3.25f);
         LevarDano(dano);
-        
-        
     }
 
 
@@ -174,6 +174,7 @@ public class InimigoDef : MonoBehaviour
         _isHIT = false;
         _agent.isStopped = false;
         hITBOX.SetActive(true);
+        _StopTiro = false;
 
         if (_startV)
         {

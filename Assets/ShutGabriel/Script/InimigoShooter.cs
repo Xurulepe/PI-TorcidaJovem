@@ -3,6 +3,8 @@ using UnityEngine.Rendering;
 using UnityEngine.AI;
 using System.Collections;
 using DG.Tweening;
+using System;
+
 public class InimigoShooter : InimigoDef
 {
     public GameObject projectilePrefab;
@@ -13,7 +15,8 @@ public class InimigoShooter : InimigoDef
     public float _distanciaMin= 7f;
     public float _distanciaSeg = 6f; 
     public float _recuoDist = 5f;
-    public float _clock;
+    public float _clock = 3f;
+
 
     [Header("configuração da capsula")]
     public float _raio = 3f;
@@ -54,10 +57,15 @@ public class InimigoShooter : InimigoDef
         }
         else
         {
+            if(_StopTiro == true)
+            {
+                _clock = 0f;
+            }
             _agent.isStopped = true;
             _clock += Time.deltaTime;
             if(_clock >= _intervaloTiro)
             {
+                _StopTiro = false;
                 Atirar();
                 _clock = 0f;
             }
@@ -71,7 +79,9 @@ public class InimigoShooter : InimigoDef
             {
                 _checkHIT = true;
                 Debug.Log("Alvo Colidiu na Capsula");
+
                 StartCoroutine(HitTime());
+
             }
         }
 
@@ -83,12 +93,15 @@ public class InimigoShooter : InimigoDef
     }
     private void Atirar()
     {
-        if (projectilePrefab == null || spawnPoint == null || _alvo == null) return;
-        Vector3 dir = (_alvo.position- spawnPoint.position).normalized;
-        Quaternion rot = Quaternion.LookRotation(dir);
+        if(_StopTiro == false)
+        {
+            if (projectilePrefab == null || spawnPoint == null || _alvo == null) return;
+            Vector3 dir = (_alvo.position - spawnPoint.position).normalized;
+            Quaternion rot = Quaternion.LookRotation(dir);
 
-        GameObject proj = Instantiate(projectilePrefab,spawnPoint.position, rot);
-        Projetil p = proj.GetComponent<Projetil>();
+            GameObject proj = Instantiate(projectilePrefab, spawnPoint.position, rot);
+            Projetil p = proj.GetComponent<Projetil>();
+        }
     }
 
 
