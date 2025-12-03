@@ -11,10 +11,10 @@ public class InimigoShooter : InimigoDef
     public Transform spawnPoint;
 
   
-    public float _intervaloTiro = 2f;
-    public float _distanciaMin= 7f;
-    public float _distanciaSeg = 6f; 
-    public float _recuoDist = 5f;
+    public float _intervaloTiro = 1f;
+    public float _distanciaMin= 50f;
+    public float _distanciaSeg = 10; 
+    public float _recuoDist = 15f;
     public float _clock = 3f;
 
 
@@ -53,7 +53,7 @@ public class InimigoShooter : InimigoDef
             {
                 _agent.isStopped = false;
                 Vector3 direcaoFuga = (transform.position - _alvo.position).normalized;
-                Vector3 destinoFuga = transform.position + direcaoFuga * _recuoDist;
+                Vector3 destinoFuga = (transform.position + direcaoFuga * _recuoDist);
                 _agent.SetDestination(destinoFuga);
             }
             else
