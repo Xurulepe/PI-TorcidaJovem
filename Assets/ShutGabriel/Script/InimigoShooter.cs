@@ -39,37 +39,42 @@ public class InimigoShooter : InimigoDef
     protected override void Update()
     {
         base.Update();
-        
-        if (_alvo == null || _agent == null) return;
-        float distancia = Vector3.Distance(transform.position, _alvo.position);
+        if(_isHIT == false)
+        {
+            if (_alvo == null || _agent == null) return;
+            float distancia = Vector3.Distance(transform.position, _alvo.position);
 
-        if(distancia > _distanciaMin)
-        {
-            _agent.isStopped = false;
-            _agent.SetDestination(_alvo.position);
-        }
-        else if (distancia < _distanciaSeg)
-        {
-            _agent.isStopped = false;
-            Vector3 direcaoFuga = (transform.position -_alvo.position).normalized;
-            Vector3 destinoFuga = transform.position + direcaoFuga * _recuoDist;
-            _agent.SetDestination(destinoFuga);
-        }
-        else
-        {
-            if(_StopTiro == true)
+            if (distancia > _distanciaMin)
             {
-                _clock = 0f;
+                _agent.isStopped = false;
+                _agent.SetDestination(_alvo.position);
             }
-            _agent.isStopped = true;
-            _clock += Time.deltaTime;
-            if(_clock >= _intervaloTiro)
+            else if (distancia < _distanciaSeg)
             {
-                _StopTiro = false;
-                Atirar();
-                _clock = 0f;
+                _agent.isStopped = false;
+                Vector3 direcaoFuga = (transform.position - _alvo.position).normalized;
+                Vector3 destinoFuga = transform.position + direcaoFuga * _recuoDist;
+                _agent.SetDestination(destinoFuga);
+            }
+            else
+            {
+                if (_StopTiro == true)
+                {
+                    _clock = 0f;
+
+
+                }
+                _agent.isStopped = true;
+                _clock += Time.deltaTime;
+                if (_clock >= _intervaloTiro)
+                {
+                    _StopTiro = false;
+                    Atirar();
+                    _clock = 0f;
+                }
             }
         }
+        
         if (!_checkMorte)
         {
             Vector3 point1, point2;
