@@ -884,7 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  amountToPool: 20
+  amountToPool: 0
   Vida: 100
   radius: 5
   height: 10
@@ -1755,6 +1755,8 @@ MonoBehaviour:
   _maxHealth: 100
   Respawn: 1
   _currentHealth: 100
+  _Anim: {fileID: 0}
+  _deathTime: 0
 --- !u!1 &1866754252
 GameObject:
   m_ObjectHideFlags: 0

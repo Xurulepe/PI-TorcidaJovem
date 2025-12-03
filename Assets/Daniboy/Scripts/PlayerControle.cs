@@ -160,8 +160,10 @@ public class PlayerControle : MonoBehaviour
     // recebe entrada do Input System
     public void PlayerMove(InputAction.CallbackContext value)
     {
+        _Anim.SetTrigger("Walk");
         moveInput = value.ReadValue<Vector3>();
     }
+
 
     public void Gravity()
     {

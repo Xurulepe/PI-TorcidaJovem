@@ -1,13 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class PlayerHealthScript : MonoBehaviour
 {
     public int _maxHealth;
     public int Respawn;
     public int _currentHealth;
+    public Animator _Anim;
+    public float _deathTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _Anim = GetComponent<Animator>();
         _currentHealth = _maxHealth;
     }
 
@@ -24,12 +29,12 @@ public class PlayerHealthScript : MonoBehaviour
     
     if (_currentHealth <= 0) 
     {
+           
 
-       SceneManager.LoadScene(Respawn);
-        
-        
-        
-    }
+
+            StartCoroutine(DeathTime());
+
+        }
     
     }
     public void Test() 
@@ -56,12 +61,35 @@ public class PlayerHealthScript : MonoBehaviour
     
     }
 
-    public float GetHealthNormalized()
+
+    IEnumerator DeathTime()
     {
+
+        float startTime = Time.time;
+
+        while (Time.time < startTime + _deathTime)
+        {
+            _Anim.SetTrigger("Death");
+          
+
+            yield return new WaitForSeconds(_deathTime);
+
+            SceneManager.LoadScene(Respawn);
+        }
+
+
+    }
+
+        public float GetHealthNormalized() 
+    {
+
         return (float)_currentHealth / _maxHealth;
+    }
+    
+      
     }
 
 
 
 
-}
+
