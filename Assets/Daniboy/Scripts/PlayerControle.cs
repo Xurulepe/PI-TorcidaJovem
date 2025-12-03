@@ -48,6 +48,7 @@ public class PlayerControle : MonoBehaviour
 
     [Header("Manage")]
     public bool _lockMove;
+    public bool _Death;
 
     [Header("Animation")]
     public Animator _Anim;
@@ -85,7 +86,7 @@ public class PlayerControle : MonoBehaviour
 
     public void AttackShoot(InputAction.CallbackContext value) 
     {
-        if (_lockMove == false) 
+        if (_lockMove == false && _Death == false) 
         {
 
             _Anim.SetTrigger("Shoot");
@@ -97,7 +98,7 @@ public class PlayerControle : MonoBehaviour
     }
     public void AttackMeele(InputAction.CallbackContext value) 
     {
-        if (_lockMove == false) 
+        if (_lockMove == false && _Death == false) 
         {
 
             _Anim.SetTrigger("Attack");
@@ -127,7 +128,7 @@ public class PlayerControle : MonoBehaviour
 
     public void Move()
     {
-        if (_lockMove == false ) 
+        if (_lockMove == false && _Death == false) 
         {
 
             float h = moveInput.x; // A/D ou ← →
@@ -142,7 +143,7 @@ public class PlayerControle : MonoBehaviour
             if (move.sqrMagnitude > 0.001f)
             {
                 Controller.Move(finalMove * Time.deltaTime);
-
+                _Anim.SetBool("Walk", true);
                 // rotaciona suavemente para direção do movimento
                 Quaternion targetRot = Quaternion.LookRotation(move);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, _rotationSpeed * Time.deltaTime);
@@ -151,6 +152,7 @@ public class PlayerControle : MonoBehaviour
             {
                 // se parado, só aplica gravidade
                 Controller.Move(Vector3.up * _playerVelocity.y * Time.deltaTime);
+                _Anim.SetBool("Walk", false);
             }
 
         }
@@ -160,10 +162,9 @@ public class PlayerControle : MonoBehaviour
     // recebe entrada do Input System
     public void PlayerMove(InputAction.CallbackContext value)
     {
-        _Anim.SetTrigger("Walk");
+      
         moveInput = value.ReadValue<Vector3>();
     }
-
 
     public void Gravity()
     {
@@ -184,7 +185,7 @@ public class PlayerControle : MonoBehaviour
 
     void RotateTowardsMouse()
     {
-        if (_lockMove == false) 
+        if (_lockMove == false && _Death == false) 
         {
 
             if (cam == null) return;

@@ -9,9 +9,11 @@ public class PlayerHealthScript : MonoBehaviour
     public int _currentHealth;
     public Animator _Anim;
     public float _deathTime;
+    public PlayerControle _playerControle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _playerControle = GetComponent<PlayerControle>();
         _Anim = GetComponent<Animator>();
         _currentHealth = _maxHealth;
     }
@@ -29,9 +31,9 @@ public class PlayerHealthScript : MonoBehaviour
     
     if (_currentHealth <= 0) 
     {
-           
 
-
+            _Anim.SetBool("Death", true);
+            _playerControle._Death = true;
             StartCoroutine(DeathTime());
 
         }
@@ -69,7 +71,7 @@ public class PlayerHealthScript : MonoBehaviour
 
         while (Time.time < startTime + _deathTime)
         {
-            _Anim.SetTrigger("Death");
+           
           
 
             yield return new WaitForSeconds(_deathTime);
