@@ -11,11 +11,11 @@ public class InimigoShooter : InimigoDef
     public GameObject projectilePrefab;
     public Transform spawnPoint;
 
-  
+   
     public float _intervaloTiro = 1f;
-    public float _distanciaMin= 50f;
-    public float _distanciaSeg = 10; 
-    public float _recuoDist = 15f;
+    [SerializeField] public float _distanciaMin= 20f;
+    //public float _distanciaSeg = 50; 
+    //public float _recuoDist = 15f;
     public float _clock = 3f;
     //Fuga com knock back
     public float _knockbackForce = 100f;
@@ -52,34 +52,26 @@ public class InimigoShooter : InimigoDef
     {
         base.Update();
         
-        if (controller.isGrounded && EnemyVelocity.y < 0)
-            EnemyVelocity.y = -2f; 
-        else
-            EnemyVelocity.y += gravity * Time.deltaTime;
-
-        if (knockbackTimer > 0)
-        {
-            controller.Move(knockbackVelocity * Time.deltaTime);
-            knockbackTimer -= Time.deltaTime;
-        }
+        
   
         if (_isHIT == false)
         {
+            
             if (_alvo == null || _agent == null) return;
             float distancia = Vector3.Distance(transform.position, _alvo.position);
-
+            
             if (distancia > _distanciaMin)
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_alvo.position);
             }
-            else if (distancia < _distanciaSeg)
+            /*else if (distancia < _distanciaSeg)
             {
                 _agent.isStopped = false;
                 Vector3 direcaoFuga = (transform.position - _alvo.position).normalized;
                 Vector3 destinoFuga = (transform.position + direcaoFuga * _recuoDist);
                 _agent.SetDestination(destinoFuga);
-            }
+            }*/
             else
             {
                 if (_StopTiro == true)
@@ -113,7 +105,17 @@ public class InimigoShooter : InimigoDef
 
             }
         }
+        if (controller.isGrounded && EnemyVelocity.y < 0)
+            EnemyVelocity.y = -2f;
+        else
+            EnemyVelocity.y += gravity * Time.deltaTime;
 
+        if (knockbackTimer > 0)
+        {
+            controller.Move(knockbackVelocity * Time.deltaTime);
+            knockbackTimer -= Time.deltaTime;
+        }
+        
 
     }
     public void ApplyKnockback(Vector3 direction, float force = -1)

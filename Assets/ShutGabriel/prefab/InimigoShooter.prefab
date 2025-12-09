@@ -463,10 +463,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5209477025593447596, guid: 10a34b3928ad20948a20e015b352a657, type: 3}
   spawnPoint: {fileID: 3178175699698396072}
   _intervaloTiro: 1
-  _distanciaMin: 50
-  _distanciaSeg: 20
-  _recuoDist: 15
-  _clock: 0
+  _clock: 3
   _knockbackForce: 100
   knockbackDuration: 0.3
   gravity: -9.81

@@ -34,26 +34,29 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
+    
 
 
 
     protected virtual void Start()
     {
+
         //controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
-        
+       
         _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             _alvo = player.transform;
         }
-
+        _spriteVirus.transform.DOScale(Vector3.one * 0.7f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         if (!_startV)
         {
-            ScaleStart = transform.localScale;
+            ScaleStart = _spriteVirus.transform.localScale;
             _startV = true;
         }
+
 
     }
     protected void LateUpdate()
