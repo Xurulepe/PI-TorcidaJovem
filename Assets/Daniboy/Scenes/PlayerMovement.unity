@@ -1756,7 +1756,7 @@ MonoBehaviour:
   Respawn: 1
   _currentHealth: 100
   _Anim: {fileID: 0}
-  _deathTime: 2.5
+  _deathTime: 2.4
   _playerControle: {fileID: 0}
 --- !u!1 &1866754252
 GameObject:
