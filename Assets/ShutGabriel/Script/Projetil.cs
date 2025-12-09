@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projetil : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     public int damage = 10;
     public float lifeTime = 4f;
 

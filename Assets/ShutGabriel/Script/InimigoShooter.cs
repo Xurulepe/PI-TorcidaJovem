@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using System.Collections;
 using DG.Tweening;
 using System;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class InimigoShooter : InimigoDef
 {
@@ -16,7 +17,18 @@ public class InimigoShooter : InimigoDef
     public float _distanciaSeg = 10; 
     public float _recuoDist = 15f;
     public float _clock = 3f;
+    //Fuga com knock back
+    public float _knockbackForce = 100f;
+    public float knockbackDuration = 0.3f;
+    public float gravity = -9.81f;
 
+
+    [SerializeField] public CharacterController controller;
+    private Vector3 EnemyVelocity;
+    private Vector3 knockbackVelocity;
+    private float knockbackTimer;
+    public bool PlayerHitBox;
+    [SerializeField] Transform _enemy;
 
     [Header("configuração da capsula")]
     public float _raio = 3f;
@@ -30,16 +42,28 @@ public class InimigoShooter : InimigoDef
 
     protected override void Start()
     {
-
         base.Start();
 
         if (_agent != null) _agent.speed = 10.5f;
+        
         
     }
     protected override void Update()
     {
         base.Update();
-        if(_isHIT == false)
+        
+        if (controller.isGrounded && EnemyVelocity.y < 0)
+            EnemyVelocity.y = -2f; 
+        else
+            EnemyVelocity.y += gravity * Time.deltaTime;
+
+        if (knockbackTimer > 0)
+        {
+            controller.Move(knockbackVelocity * Time.deltaTime);
+            knockbackTimer -= Time.deltaTime;
+        }
+  
+        if (_isHIT == false)
         {
             if (_alvo == null || _agent == null) return;
             float distancia = Vector3.Distance(transform.position, _alvo.position);
@@ -91,6 +115,34 @@ public class InimigoShooter : InimigoDef
         }
 
 
+    }
+    public void ApplyKnockback(Vector3 direction, float force = -1)
+    {
+        if (force < 0) force = _knockbackForce;
+
+        knockbackVelocity = direction * force;
+        knockbackTimer = knockbackDuration;
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("HitPlayer"))
+        {
+            Debug.Log(" knockback disparado " + other.gameObject.name);
+            Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
+            ApplyKnockback(knockDir);
+        }
+    }
+
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("HitPlayer"))
+        {
+            Vector3 knockDir = (transform.position - hit.point).normalized;
+            ApplyKnockback(knockDir);
+        }
     }
     protected override void LevarDano(int dano)
     {
