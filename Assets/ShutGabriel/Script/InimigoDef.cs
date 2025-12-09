@@ -34,7 +34,9 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
-    
+
+    public bool estaMorrendo = false;
+    public float TempoMorrendo = 0f;
 
 
 
@@ -73,6 +75,15 @@ public class InimigoDef : MonoBehaviour
             _agent.SetDestination(_alvo.position);
         }
         selecaoFace();
+        if (estaMorrendo)
+        {
+            TempoMorrendo -= Time.deltaTime;
+            if (TempoMorrendo <= 0f)
+            {
+                gameObject.SetActive(false);
+                _spriteVirus.gameObject.SetActive(false);
+            }
+        }
     }
     protected virtual void LevarDano(int dano)
     {
@@ -91,16 +102,25 @@ public class InimigoDef : MonoBehaviour
     //Morte do inimigo
     protected virtual void Morrer()
     {
+
+        for (int i = 0; i < _part.Length; i++)
+        {
+            _part[i].Play();
+        }
         
+        //tempo antes de deletar
+        //yield return new WaitForSeconds(0.10f);
+
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
         }
+        TempoMorrendo = 1.5f;
+        estaMorrendo = true;
+
         
-        _spriteVirus.gameObject.SetActive(false);
-        gameObject.SetActive(false);
         
-        //yield return new WaitForSeconds(0.10f);
+        
 
     }
     protected virtual void selecaoFace()
@@ -156,6 +176,7 @@ public class InimigoDef : MonoBehaviour
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
+        estaMorrendo = false;
         
         if (_startV)
         {
@@ -178,6 +199,7 @@ public class InimigoDef : MonoBehaviour
         _agent.isStopped = false;
         hITBOX.SetActive(true);
         _StopTiro = false;
+        estaMorrendo = false;
 
         if (_startV)
         {
