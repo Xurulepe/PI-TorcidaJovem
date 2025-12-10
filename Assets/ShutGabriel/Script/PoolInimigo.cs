@@ -7,6 +7,7 @@ public class PoolInimigo : ObjectPooling
     [SerializeField] protected bool timerIsRunning = false;
     protected GameObject _tempInimigo;
     protected Transform _SPAWN;
+    [SerializeField] protected ParticleSystem[] _part;
 
     protected override void Start()
     {
@@ -63,6 +64,10 @@ public class PoolInimigo : ObjectPooling
             //bullet.transform.SetParent(_SPAWN);
             bullet.transform.localPosition = transform.position;
             bullet.SetActive(true);
+            for (int i = 0; i < _part.Length; i++)
+            {
+                _part[i].Play();
+            }
         }
         
     }
