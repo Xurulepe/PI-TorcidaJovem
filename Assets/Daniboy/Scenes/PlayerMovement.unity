@@ -299,15 +299,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3784945155588612437, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.266666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784945155588612437, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6666667
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784945155588612437, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784945155588612437, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  amountToPool: 1
+  amountToPool: 5
   Vida: 100
   radius: 5
   height: 10
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
-  amountToPool: 0
+  amountToPool: 3
   Vida: 100
   radius: 5
   height: 10
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   _part:
   - {fileID: 76774295}
   _cl: []
-  _TimeStart: 3
+  _TimeStart: 2
   timerIsRunning: 0
   _part: []
 --- !u!195 &1240622946

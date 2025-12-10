@@ -147,7 +147,7 @@ public class InimigoDef : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < _renderer.Length; i++)
         {
-            _renderer[i].transform.DOScale(0.5f, 0.05f);
+            _renderer[i].transform.DOScale(0.5f, 0.25f);
         }
         
 
@@ -205,7 +205,8 @@ public class InimigoDef : MonoBehaviour
 
         if (_startV)
         {
-            transform.localScale = ScaleStart;
+            //transform.localScale = ScaleStart;
+            transform.DOScale(ScaleStart, 0.5f);
         }
 
         for (int i = 0; i < _renderer.Length; i++)
