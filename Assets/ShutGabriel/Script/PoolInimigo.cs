@@ -3,7 +3,7 @@ using UnityEngine;
 public class PoolInimigo : ObjectPooling
 {
     protected float _TimeReal;
-    [SerializeField] protected float _TimeStart = 3;
+    [SerializeField] protected float _TimeStart = 2;
     [SerializeField] protected bool timerIsRunning = false;
     protected GameObject _tempInimigo;
     protected Transform _SPAWN;
