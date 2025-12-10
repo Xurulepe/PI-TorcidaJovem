@@ -19,9 +19,18 @@ public class InimigoMelee : InimigoDef
 
     [SerializeField] int Hurt = 1;
 
-    //Tags
-    
+    //KnockBeck
+    public float _knockbackForce = 40f;
+    public float knockbackDuration = 0.3f;
+    public float gravity = -9.81f;
 
+
+    [SerializeField] public CharacterController controller;
+    private Vector3 EnemyVelocity;
+    private Vector3 knockbackVelocity;
+    private float knockbackTimer;
+    public bool PlayerHitBox;
+    [SerializeField] Transform _enemy;
     private Vector3 direction;
 
     protected override void Start()
@@ -50,9 +59,25 @@ public class InimigoMelee : InimigoDef
                 Debug.Log("Alvo Colidiu na Capsula");
                 StartCoroutine(HitTime());
             }
-        }  
-    }
+        }
+        if (controller.isGrounded && EnemyVelocity.y < 0)
+            EnemyVelocity.y = -2f;
+        else
+            EnemyVelocity.y += gravity * Time.deltaTime;
 
+        if (knockbackTimer > 0)
+        {
+            controller.Move(knockbackVelocity * Time.deltaTime);
+            knockbackTimer -= Time.deltaTime;
+        }
+    }
+    public void ApplyKnockback(Vector3 direction, float force = -1)
+    {
+        if (force < 0) force = _knockbackForce;
+
+        knockbackVelocity = direction * force;
+        knockbackTimer = knockbackDuration;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -66,18 +91,27 @@ public class InimigoMelee : InimigoDef
                 Ataque();
                 _clock = 0f;
             }
-            /*if (other.CompareTag("EspadaHitBox"))
+
+            if (other.CompareTag("Espadão"))
             {
-                Vector3 knockDir = (transform.position - other.transform.position).normalized;
+                Debug.Log(" knockback disparado " + other.gameObject.name);
+                Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
                 ApplyKnockback(knockDir);
             }
-            */
         }
     }
-    
-    
-  
-    
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Espadão"))
+        {
+            Vector3 knockDir = (transform.position - hit.point).normalized;
+            ApplyKnockback(knockDir);
+        }
+    }
+
+
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

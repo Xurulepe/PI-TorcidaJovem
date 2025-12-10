@@ -204,7 +204,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4700257245938581422}
-  - {fileID: 4852742885288568923}
   - {fileID: 2239015465177736811}
   m_Father: {fileID: 7499632406542801487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,6 +298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4852742885288568923}
   - {fileID: 8774877411280557814}
   - {fileID: 3178175699698396072}
   m_Father: {fileID: 0}
@@ -440,8 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255d3577d0bf77047ae94732fc8c8151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 10
-  dano: 2
+  vida: 100
+  dano: 32
   _renderer:
   - {fileID: 602561182795835090}
   _part:
@@ -510,7 +510,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8774877411280557814}
+    m_TransformParent: {fileID: 7499632406542801487}
     m_Modifications:
     - target: {fileID: 2584144885705572293, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: playOnAwake
@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584144885890085390, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2584144885890085390, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: m_LocalPosition.z

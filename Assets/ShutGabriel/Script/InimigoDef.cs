@@ -11,11 +11,11 @@ public class InimigoDef : MonoBehaviour
     //movimento
     protected NavMeshAgent _agent;
     protected Transform _alvo;
-    [SerializeField] protected int vida = 10;
+    [SerializeField] protected int vida = 100;
 
 
     //status
-    [SerializeField] protected int dano = 1;
+    [SerializeField] protected int dano = 25;
     [SerializeField]  MeshRenderer[] _renderer;
     [SerializeField] protected ParticleSystem[] _part;
     [SerializeField] protected Collider[] _CL;
@@ -77,11 +77,14 @@ public class InimigoDef : MonoBehaviour
         selecaoFace();
         if (estaMorrendo)
         {
+
+            _spriteVirus.gameObject.SetActive(false);
             TempoMorrendo -= Time.deltaTime;
             if (TempoMorrendo <= 0f)
             {
+                
                 gameObject.SetActive(false);
-                _spriteVirus.gameObject.SetActive(false);
+                //_spriteVirus.gameObject.SetActive(false);
             }
         }
     }
@@ -154,17 +157,16 @@ public class InimigoDef : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < _renderer.Length; i++)
         {
             _renderer[i].enabled = false;
         }
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
 
 
         
         _checkHIT = false;
-        yield return new WaitForSeconds(3.25f);
         LevarDano(dano);
     }
 
@@ -172,7 +174,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void Vida()
     {
 
-        vida = 10;
+        vida = 100;
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
