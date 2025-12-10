@@ -152,3 +152,5 @@ MonoBehaviour:
   speed: 20
   damage: 10
   lifeTime: 5
+  Hurt: 5
+  _alvo: {fileID: 0}

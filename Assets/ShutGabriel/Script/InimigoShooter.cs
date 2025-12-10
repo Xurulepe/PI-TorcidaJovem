@@ -13,7 +13,7 @@ public class InimigoShooter : InimigoDef
 
    
     public float _intervaloTiro = 1f;
-    [SerializeField] public float _distanciaMin= 50f;
+    [SerializeField] public float _distanciaMin= 20f;
     //public float _distanciaSeg = 50; 
     //public float _recuoDist = 15f;
     public float _clock = 3f;
