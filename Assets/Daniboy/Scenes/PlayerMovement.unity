@@ -1157,8 +1157,6 @@ MonoBehaviour:
   _cl: []
   _TimeStart: 5
   timerIsRunning: 0
-  _part:
-  - {fileID: 740781186}
 --- !u!195 &932181891
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1590,7 +1588,6 @@ MonoBehaviour:
   _cl: []
   _TimeStart: 2
   timerIsRunning: 0
-  _part: []
 --- !u!195 &1240622946
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2408,8 +2405,7 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2509837996381970735, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 499427329652919771, guid: 1edf6de1a030df743a97a6e5eba82c27, type: 3}
     m_AddedGameObjects:
