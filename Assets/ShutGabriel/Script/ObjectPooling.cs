@@ -26,7 +26,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] protected Vector3 ScaleStart;
 
     [SerializeField] MeshRenderer[] _renderer;
-    [SerializeField] ParticleSystem[] _part;
+    [SerializeField] protected ParticleSystem[] _part;
     [SerializeField] Collider[] _cl;
     protected int dano = 10;
     bool _startV;

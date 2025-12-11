@@ -7,7 +7,6 @@ public class PoolInimigo : ObjectPooling
     [SerializeField] protected bool timerIsRunning = false;
     protected GameObject _tempInimigo;
     protected Transform _SPAWN;
-    [SerializeField] protected ParticleSystem[] _part;
 
     protected override void Start()
     {

@@ -81,7 +81,7 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"));
+        if (other.gameObject.CompareTag("HitPlayer"));
         {
             //Debug.Log("Hit");
             _playerNaArea = true;
@@ -94,7 +94,7 @@ public class InimigoMelee : InimigoDef
 
             if (other.CompareTag("Espadão"))
             {
-                Debug.Log(" knockback disparado " + other.gameObject.name);
+                Debug.Log(" knockback melle " + other.gameObject.name);
                 Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
                 ApplyKnockback(knockDir);
             }
@@ -114,7 +114,7 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("HitPlayer"))
         {
             _playerNaArea = false;
             _player = null;
