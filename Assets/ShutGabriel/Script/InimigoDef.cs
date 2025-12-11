@@ -15,7 +15,7 @@ public class InimigoDef : MonoBehaviour
 
 
     //status
-    [SerializeField] protected int dano = 25;
+    [SerializeField] protected int dano = 2;
     [SerializeField]  MeshRenderer[] _renderer;
     [SerializeField] protected ParticleSystem[] _part;
     [SerializeField] protected Collider[] _CL;

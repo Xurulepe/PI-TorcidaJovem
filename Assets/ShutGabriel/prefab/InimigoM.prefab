@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  dano: 27
+  dano: 15
   _renderer:
   - {fileID: 6102374726004681698}
   _part:
@@ -403,7 +403,7 @@ MonoBehaviour:
   hITBOX: {fileID: 3436551259529693283}
   estaMorrendo: 0
   TempoMorrendo: 0
-  IntervaloAtaque: 3
+  IntervaloAtaque: 1
   _playerNaArea: 0
   _raio: 3.5
   _tamanho: 14.2
@@ -411,7 +411,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
-  Hurt: 1
   _knockbackForce: 40
   knockbackDuration: 0.3
   gravity: -9.81

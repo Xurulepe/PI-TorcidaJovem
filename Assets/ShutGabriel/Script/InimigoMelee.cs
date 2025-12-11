@@ -6,8 +6,8 @@ public class InimigoMelee : InimigoDef
     [Header("Configuração InimigoM")]
 
     
-    public float IntervaloAtaque = 3f;
-    private float _clock = 2f;
+    public float IntervaloAtaque = 1f;
+    
     public bool _playerNaArea = false;
     private GameObject _player;
 
@@ -17,7 +17,6 @@ public class InimigoMelee : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    [SerializeField] int Hurt = 20;
 
     //KnockBeck
     public float _knockbackForce = 40f;
@@ -70,6 +69,7 @@ public class InimigoMelee : InimigoDef
             controller.Move(knockbackVelocity * Time.deltaTime);
             knockbackTimer -= Time.deltaTime;
         }
+        IntervaloAtaque -= Time.deltaTime;
     }
     public void ApplyKnockback(Vector3 direction, float force = -1)
     {
@@ -81,15 +81,20 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("HitPlayer"));
+        if (other.gameObject.CompareTag("Player"));
         {
             //Debug.Log("Hit");
             _playerNaArea = true;
             _player = other.gameObject;
+            
             if (_playerNaArea == true)
             {
-                Ataque();
-                _clock = 0f;
+                if (IntervaloAtaque <= 0)
+                {
+                    Ataque();
+                    IntervaloAtaque = 2f;
+                }
+                
             }
 
             if (other.CompareTag("Espadão"))
@@ -114,7 +119,7 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("HitPlayer"))
+        if (other.gameObject.CompareTag("Player"))
         {
             _playerNaArea = false;
             _player = null;
@@ -133,7 +138,7 @@ public class InimigoMelee : InimigoDef
     protected void PlayerHit()
     { 
         PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
-        PlayerHealth.DamagePlayer(Hurt, direction);
+        PlayerHealth.DamagePlayer(dano, direction);
     }
 
 
