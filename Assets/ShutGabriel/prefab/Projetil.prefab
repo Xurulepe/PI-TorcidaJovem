@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 10
+  damage: 7
   lifeTime: 5
-  Hurt: 5
   _alvo: {fileID: 0}
