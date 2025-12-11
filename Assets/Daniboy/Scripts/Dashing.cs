@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 public class Dashing : MonoBehaviour
 {
     public PlayerControle _moveScript;
-
+    public bool _IsDashing;
     public float _dashSpeed;
     public float _dashTime;
     public PlayerControle _playerScript;
-
+    [SerializeField] private ParticleSystem _damagePlayer;
+    private ParticleSystem instanceDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class Dashing : MonoBehaviour
     {
         if (_playerScript._lockMove == false) 
         {
-
+            
             DashMove();
 
         }
@@ -35,7 +36,7 @@ public class Dashing : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
+                
                 StartCoroutine(Impulse());
 
             }
@@ -53,9 +54,9 @@ public class Dashing : MonoBehaviour
 
         while (Time.time < startTime + _dashTime)
         {
-
+           
             _moveScript.Controller.Move(_moveScript.moveInput * _dashSpeed * Time.deltaTime);
-
+            SpawnDamageParticle();
             yield return null;
 
         }
@@ -63,6 +64,15 @@ public class Dashing : MonoBehaviour
 
     }
 
+    private void SpawnDamageParticle() 
+    { 
+    
+    
+    instanceDamage = Instantiate(_damagePlayer, transform.position, Quaternion.identity);
+    
+    
+    
+    }
 
 
 }
