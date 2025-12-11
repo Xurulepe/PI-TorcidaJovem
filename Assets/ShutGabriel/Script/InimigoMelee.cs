@@ -17,7 +17,7 @@ public class InimigoMelee : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    [SerializeField] int Hurt = 1;
+    [SerializeField] int Hurt = 20;
 
     //KnockBeck
     public float _knockbackForce = 40f;
