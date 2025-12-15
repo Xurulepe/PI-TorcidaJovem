@@ -31,6 +31,9 @@ public class PlayerControle : MonoBehaviour
     // vetores fixos para projeção isométrica
     private Vector3 isoForward = new Vector3(1, 0, 1).normalized;
     private Vector3 isoRight = new Vector3(1, 0, -1).normalized;
+    
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem _muzzleFlash;
 
     [Header("Gravidade")]
     [SerializeField] Vector3 _playerVelocity;
@@ -110,7 +113,12 @@ public class PlayerControle : MonoBehaviour
 
     }
 
+    public void Muzzleflash() 
+    {
 
+        _muzzleFlash.Play();
+
+    }
 
     public void LockFunction()
     { 
