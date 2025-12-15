@@ -183,6 +183,9 @@ public class PlayerControle : MonoBehaviour
        
     }
 
+
+
+
     void RotateTowardsMouse()
     {
         if (_lockMove == false && _Death == false) 

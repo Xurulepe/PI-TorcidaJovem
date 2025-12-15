@@ -81,7 +81,7 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"));
+        if (other.gameObject.CompareTag("HitPlayer"))
         {
             //Debug.Log("Hit");
             _playerNaArea = true;
@@ -119,7 +119,7 @@ public class InimigoMelee : InimigoDef
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("HitPlayer"))
         {
             _playerNaArea = false;
             _player = null;

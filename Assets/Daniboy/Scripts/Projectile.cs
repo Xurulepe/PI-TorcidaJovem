@@ -8,9 +8,11 @@ public class Projectile : MonoBehaviour
     public Transform shootPoint;
     public Rigidbody _rb;
     public float speedProjectile = 15f;
-
+  
+    [SerializeField] public Transform _trailpoint; 
     private void Awake()
     {
+      
         shootPoint = GameObject.FindWithTag("ShootPoint").transform;
         
     }
