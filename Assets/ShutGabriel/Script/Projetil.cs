@@ -1,19 +1,24 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class Projetil : MonoBehaviour
 {
     public float speed = 20f;
     public int damage = 10;
-    public float lifeTime = 4f;
+    public float lifeTime = 1f;
     int Hurt = 15;
     private Vector3 direction;
     [SerializeField] Transform _alvo;
-  
+    [SerializeField] protected ParticleSystem[] _part;
+    [SerializeField] MeshRenderer[] _renderer;
+    public float tempoExplosao = 1f;
+
+
     void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
-        Destroy(gameObject,lifeTime);
+        //Destroy(gameObject,lifeTime);
         _alvo = player.transform;
     }
     void Update()
@@ -26,14 +31,26 @@ public class Projetil : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Bala Acertou");
+            for (int i = 0; i < _part.Length; i++)
+            {
+                _part[i].Play();
+            }
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _renderer[i].enabled = false;
+            }
             Dano();
-            Destroy(gameObject);
-
+            
         }
     }
     void Dano()
     {
-        PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
-        PlayerHealth.DamagePlayer(Hurt, direction);
+        tempoExplosao -= Time.deltaTime;
+        if (tempoExplosao <= 0f)
+        {
+            PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
+            PlayerHealth.DamagePlayer(Hurt, direction);
+            gameObject.SetActive(false);
+        }
     }
 }
