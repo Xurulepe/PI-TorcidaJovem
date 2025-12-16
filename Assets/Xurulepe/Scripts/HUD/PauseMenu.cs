@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseButtonUI;
+    [SerializeField] private Image _backgroundPanel;
 
     [Header("Componentes do menu de pausa")]
     [SerializeField] private GameObject _pauseMenuPanel;
@@ -41,6 +42,8 @@ public class PauseMenu : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic(music);
         }
+
+        _backgroundPanel.color = new Color(0f, 0f, 0f, 0f);
     }
 
     public void ChangeMenu(int index)
@@ -86,6 +89,7 @@ public class PauseMenu : MonoBehaviour
         IsPaused = true;
 
         AnimatePauseMenuIn(_pauseMenuPanel);
+        AnimateBackgroundPanel(0.7f, 0.5f);
     }
 
     public void Resume()
@@ -102,6 +106,8 @@ public class PauseMenu : MonoBehaviour
                 AnimatePauseMenuOut(menu);
             }
         }
+
+        AnimateBackgroundPanel(0f, 0.25f);
     }
 
     public void BackToMenu()
@@ -125,6 +131,11 @@ public class PauseMenu : MonoBehaviour
         {
             gameObject.SetActive(false);
         });
+    }
+
+    private void AnimateBackgroundPanel(float alphaValue, float duration)
+    {
+        _backgroundPanel.DOFade(alphaValue, duration);
     }
     #endregion
 }
