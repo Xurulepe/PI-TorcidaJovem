@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bc6da4580f5514e458fe5def87e138be, type: 2}
+  - {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,9 +168,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2811156738572877574}
     m_Modifications:
+    - target: {fileID: 2584144885705572293, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584144885705572294, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2584144885890085385, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: m_Name
       value: Explosion_2_Bomb_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584144885890085388, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584144885890085388, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584144885890085388, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 2584144885890085390, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,6 +230,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584144885890085390, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584144886557936391, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -273,6 +297,10 @@ PrefabInstance:
     - target: {fileID: 8367907410985086597, guid: 0b493b97a8e419d46903c1b023460740, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367907410985086599, guid: 0b493b97a8e419d46903c1b023460740, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8367907410985086599, guid: 0b493b97a8e419d46903c1b023460740, type: 3}
       propertyPath: playOnAwake

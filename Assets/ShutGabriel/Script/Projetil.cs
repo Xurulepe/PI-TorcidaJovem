@@ -31,6 +31,7 @@ public class Projetil : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Bala Acertou");
+            Dano();
             for (int i = 0; i < _part.Length; i++)
             {
                 _part[i].Play();
@@ -39,18 +40,15 @@ public class Projetil : MonoBehaviour
             {
                 _renderer[i].enabled = false;
             }
-            Dano();
+           
             
         }
     }
     void Dano()
     {
-        tempoExplosao -= Time.deltaTime;
-        if (tempoExplosao <= 0f)
-        {
-            PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
-            PlayerHealth.DamagePlayer(Hurt, direction);
-            gameObject.SetActive(false);
-        }
+        
+         PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
+         PlayerHealth.DamagePlayer(Hurt, direction);
+        
     }
 }
