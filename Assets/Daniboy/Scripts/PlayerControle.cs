@@ -116,7 +116,7 @@ public class PlayerControle : MonoBehaviour
     public void Muzzleflash() 
     {
 
-        _muzzleFlash.Play();
+        //_muzzleFlash.Play();
 
     }
 
