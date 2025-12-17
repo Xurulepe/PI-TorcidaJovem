@@ -89,7 +89,7 @@ public class PauseMenu : MonoBehaviour
         IsPaused = true;
 
         AnimatePauseMenuIn(_pauseMenuPanel);
-        AnimateBackgroundPanel(0.7f, 0.5f);
+        FadeBackgroundPanel(0.7f, 0.5f, true);
     }
 
     public void Resume()
@@ -107,7 +107,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
 
-        AnimateBackgroundPanel(0f, 0.25f);
+        FadeBackgroundPanel(0f, 0.25f, false);
     }
 
     public void BackToMenu()
@@ -133,9 +133,16 @@ public class PauseMenu : MonoBehaviour
         });
     }
 
-    private void AnimateBackgroundPanel(float alphaValue, float duration)
+    private void FadeBackgroundPanel(float alphaValue, float duration, bool activeOnComplete = true)
     {
-        _backgroundPanel.DOFade(alphaValue, duration);
+        _backgroundPanel.DOKill();
+
+        _backgroundPanel.gameObject.SetActive(true);
+
+        _backgroundPanel.DOFade(alphaValue, duration).OnComplete(() =>
+        {
+            _backgroundPanel.gameObject.SetActive(activeOnComplete);
+        });
     }
     #endregion
 }
