@@ -12,7 +12,8 @@ public class Projetil : MonoBehaviour
     [SerializeField] Transform _alvo;
     [SerializeField] protected ParticleSystem[] _part;
     [SerializeField] MeshRenderer[] _renderer;
-    public float tempoExplosao = 1f;
+    public float tempoExplosao = 0.1f;
+    public bool Tiro = false;
 
 
     void Start()
@@ -24,11 +25,10 @@ public class Projetil : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-   
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("HitPlayer"))
         {
             Debug.Log("Bala Acertou");
             Dano();
@@ -36,13 +36,20 @@ public class Projetil : MonoBehaviour
             {
                 _part[i].Play();
             }
+            Tiro = true; 
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("HitPlayer"))
+        {
             for (int i = 0; i < _renderer.Length; i++)
             {
                 _renderer[i].enabled = false;
+                gameObject.SetActive(false);
             }
-           
-            
         }
+            
     }
     void Dano()
     {
