@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
             _soundsMenu
         };
 
-        if (music != null)
+        if (music != null && AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayMusic(music);
         }
