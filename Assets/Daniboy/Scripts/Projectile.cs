@@ -26,6 +26,11 @@ public class Projectile : MonoBehaviour
     {
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        bulletPool.SetActive(false);
+    }
+
     void DeactivateObj() 
     {
         bulletPool.SetActive(false);
