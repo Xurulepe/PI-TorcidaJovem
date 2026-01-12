@@ -11,11 +11,7 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private AudioClip _mainMenuMusic;
 
-    [Header("componentes")]
-    [SerializeField] Animator _animator;
-    [SerializeField] GameObject _virus1;
-    [SerializeField] GameObject _virus2;
-    [SerializeField] GameObject _virus3;
+    [SerializeField] private MainMenuVirusAnimation _virusAnimation;
 
     /// <summary>
     /// O painel de fade que cobre a tela para transições.
@@ -80,24 +76,7 @@ public class MainMenuController : MonoBehaviour
     [Tooltip("A lista de listas que contém os elementos de cada menu.")]
     List<List<Transform>> _menusLists = new List<List<Transform>>();
 
-    #region controle de dotoween
-    [Header("controle de animação do toween")]
-    public float escalaMin ;   // escala mínima do pulso
-    public float escalaMax ;   // escala máxima do pulso
-
-    public float escalaMin1;   // escala mínima do pulso
-    public float escalaMax1;   // escala máxima do pulso
-
-    public float escalaMin2;   // escala mínima do pulso
-    public float escalaMax2;   // escala máxima do pulso
-
-    public float duracaoMin ;  // duração mínima
-    public float duracaoMax ;  // duração máxima
-    public Ease ease = Ease.InOutSine; // suavização
-
-    private Tween tween1, tween2, tween3;
-
-    #endregion
+    
     private void Start()
     {
         _menusLists = new List<List<Transform>>()
@@ -111,9 +90,6 @@ public class MainMenuController : MonoBehaviour
 
 
         fadePanel.gameObject.SetActive(true);
-        IniciarPulso1(_virus1.transform);
-        IniciarPulso2(_virus2.transform);
-        IniciarPulso3(_virus3.transform);
 
         HideMenuElements(_startMenuElements);
         FadeToLight();
@@ -180,50 +156,6 @@ public class MainMenuController : MonoBehaviour
             element.localScale = new Vector3(element.localScale.x, 0f, element.localScale.z);
         }
     }
-
-    public void AnimaBackGroundTrue()
-    {
-        _animator.SetBool("Move", true);
-    }
-
-    public void AnimaBackGroundFalse()
-    {
-        _animator.SetBool("Move", false);
-    }
-
-    void IniciarPulso1(Transform transobj)
-    {
-        float escalaAlvo = Random.Range(escalaMin, escalaMax);
-        float duracao = Random.Range(duracaoMin, duracaoMax);
-
-        tween1?.Kill();
-        tween1 = transobj.DOScale(escalaAlvo, duracao)
-            .SetEase(ease)
-            .OnComplete(() => IniciarPulso1(transobj));
-    }
-
-    void IniciarPulso2(Transform transobj)
-    {
-        float escalaAlvo = Random.Range(escalaMin1, escalaMax1);
-        float duracao = Random.Range(duracaoMin, duracaoMax);
-
-        tween2?.Kill();
-        tween2 = transobj.DOScale(escalaAlvo, duracao)
-            .SetEase(ease)
-            .OnComplete(() => IniciarPulso2(transobj));
-    }
-
-    void IniciarPulso3(Transform transobj)
-    {
-        float escalaAlvo = Random.Range(escalaMin2, escalaMax2);
-        float duracao = Random.Range(duracaoMin, duracaoMax);
-
-        tween3?.Kill();
-        tween3 = transobj.DOScale(escalaAlvo, duracao)
-            .SetEase(ease)
-            .OnComplete(() => IniciarPulso3(transobj));
-    }
-
     #endregion
 
     #region FADE PANEL CONTROLLER
@@ -246,6 +178,7 @@ public class MainMenuController : MonoBehaviour
     #region CHANGE SCENE AND QUIT GAME
     public void LoadScene(int scene_id)
     {
+        _virusAnimation.KillTweens();
         StartCoroutine(OpenScene(scene_id));
     }
 

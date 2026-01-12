@@ -21461,8 +21461,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1519013630}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+      - m_Target: {fileID: 1519013632}
+        m_TargetAssemblyTypeName: MainMenuVirusAnimation, Assembly-CSharp
         m_MethodName: AnimaBackGroundTrue
         m_Mode: 1
         m_Arguments:
@@ -21948,6 +21948,7 @@ GameObject:
   - component: {fileID: 1519013626}
   - component: {fileID: 1519013630}
   - component: {fileID: 1519013631}
+  - component: {fileID: 1519013632}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -22058,10 +22059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMenuMusic: {fileID: 8300000, guid: 1cc2825610afac547bda9b3c3f6b86ff, type: 3}
-  _animator: {fileID: 1174607477}
-  _virus1: {fileID: 42439070}
-  _virus2: {fileID: 554904855}
-  _virus3: {fileID: 2077791423}
+  _virusAnimation: {fileID: 1519013632}
   fadePanel: {fileID: 1049359298}
   loadingScreen: {fileID: 459123291}
   progressBar: {fileID: 825188787}
@@ -22095,15 +22093,6 @@ MonoBehaviour:
   _languageMenuElements:
   - {fileID: 147888258}
   - {fileID: 1742791236}
-  escalaMin: 187
-  escalaMax: 195
-  escalaMin1: 74
-  escalaMax1: 80
-  escalaMin2: 74
-  escalaMax2: 80
-  duracaoMin: 0.5
-  duracaoMax: 0.5
-  ease: 4
 --- !u!114 &1519013631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22119,6 +22108,31 @@ MonoBehaviour:
   MasterSlider: {fileID: 177225389}
   MusicSlider: {fileID: 1212515473}
   SFXSlider: {fileID: 315996035}
+--- !u!114 &1519013632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519013625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b5859fd3e26c940b04109ed74de14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1174607477}
+  _virus1: {fileID: 42439070}
+  _virus2: {fileID: 554904855}
+  _virus3: {fileID: 2077791423}
+  escalaMin1: 187
+  escalaMax1: 195
+  escalaMin2: 74
+  escalaMax2: 80
+  escalaMin3: 74
+  escalaMax3: 80
+  duracaoMin: 0.5
+  duracaoMax: 0.5
+  ease: 4
 --- !u!1 &1590613469
 GameObject:
   m_ObjectHideFlags: 0
@@ -22227,8 +22241,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1519013630}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+      - m_Target: {fileID: 1519013632}
+        m_TargetAssemblyTypeName: MainMenuVirusAnimation, Assembly-CSharp
         m_MethodName: AnimaBackGroundFalse
         m_Mode: 1
         m_Arguments:
@@ -23148,8 +23162,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1519013630}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+      - m_Target: {fileID: 1519013632}
+        m_TargetAssemblyTypeName: MainMenuVirusAnimation, Assembly-CSharp
         m_MethodName: AnimaBackGroundFalse
         m_Mode: 1
         m_Arguments:
@@ -28816,8 +28830,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1519013630}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+      - m_Target: {fileID: 1519013632}
+        m_TargetAssemblyTypeName: MainMenuVirusAnimation, Assembly-CSharp
         m_MethodName: AnimaBackGroundTrue
         m_Mode: 1
         m_Arguments:
