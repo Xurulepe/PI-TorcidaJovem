@@ -21,9 +21,9 @@ public class PauseMenu : MonoBehaviour
     [Header("Controle de botões")]
     [SerializeField] private Button _firstButtonPauseMenu;
 
-    // propriedade estática para verificar se o jogo está pausado
-    // substituir por não-static em um GameManager depois
-    public static bool IsPaused { get; private set; } = false;
+    // propriedade para verificar se o jogo está pausado
+    // substituir em um GameManager depois
+    public bool IsPaused { get; private set; } = false;
 
     [Space(20f)]
     // teste de música

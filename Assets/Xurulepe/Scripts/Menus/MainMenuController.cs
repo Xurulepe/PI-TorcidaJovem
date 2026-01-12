@@ -9,6 +9,7 @@ using JetBrains.Annotations;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private AudioClip _mainMenuMusic;
 
     [Header("componentes")]
     [SerializeField] Animator _animator;
@@ -117,7 +118,7 @@ public class MainMenuController : MonoBehaviour
         HideMenuElements(_startMenuElements);
         FadeToLight();
         StartCoroutine(AnimateMenu(_startMenuElements));
-        AudioManager.Instance.PlayMusic("MenuMusic");
+        AudioManager.Instance.PlayMusic(_mainMenuMusic);
     }
 
     #region CHANGE MENU

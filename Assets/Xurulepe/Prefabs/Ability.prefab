@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1361289961644841343}
   - component: {fileID: 7683337986627710116}
   m_Layer: 5
-  m_Name: Ability 1 Timer
+  m_Name: Ability Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3316754155979067832}
   - component: {fileID: 8456794780787046683}
   m_Layer: 5
-  m_Name: Ability 1 Image
+  m_Name: Ability Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 7494802252257197266}
   - component: {fileID: 6693941327228182382}
   m_Layer: 5
-  m_Name: Ability 1
+  m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,3 +203,4 @@ MonoBehaviour:
   timerImage: {fileID: 7683337986627710116}
   cooldown: 5
   energyCost: 0
+  readyToUse: 1

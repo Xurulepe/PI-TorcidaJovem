@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour
+public class ButtonSound : MonoBehaviour
 {
     private Button _button;
 
     [SerializeField] private AudioClip _buttonClickSound;
-    [SerializeField] private string _buttonClickSoundName = "ButtonClick";
 
     void Awake()
     {
@@ -20,7 +19,7 @@ public class ButtonController : MonoBehaviour
 
     private void OnDisable()
     {
-        _button.onClick.RemoveAllListeners();
+        _button.onClick.RemoveListener(PlayButtonSound);
     }
 
     private void PlayButtonSound()
@@ -28,9 +27,6 @@ public class ButtonController : MonoBehaviour
         if (_buttonClickSound != null)
         {
             AudioManager.Instance.PlaySFX(_buttonClickSound);
-            return;
         }
-
-        AudioManager.Instance.PlaySFX(_buttonClickSoundName);
     }
 }

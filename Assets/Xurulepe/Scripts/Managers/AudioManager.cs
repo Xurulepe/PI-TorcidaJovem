@@ -11,10 +11,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _sfxSource;
 
-    [Header("AudioClips")]
-    [SerializeField] private Sound[] _musicSounds;
-    [SerializeField] private Sound[] _sfxSounds;
-
     [Header("UI Sliders")]
     [SerializeField] private Slider _masterVolumeSlider;
     [SerializeField] private Slider _musicVolumeSlider;
@@ -38,24 +34,6 @@ public class AudioManager : MonoBehaviour
 
     #region PLAY SOUNDS
     /// <summary>
-    /// Procura uma música pelo nome e a reproduz.
-    /// </summary>
-    /// <param name="name"> Nome da música a ser procurada no AudioManager.</param>
-    public void PlayMusic(string name)
-    {
-        Sound sound = System.Array.Find(_musicSounds, s => s.name == name);
-
-        if (sound == null)
-        {
-            Debug.LogWarning("Música " + name + " não encontrada!");
-            return;
-        }
-
-        _musicSource.clip = sound.audioClip;
-        _musicSource.Play();
-    }
-
-    /// <summary>
     /// Reproduz uma música a partir de um AudioClip.
     /// </summary>
     /// <param name="clip"> Clip da música a ser reproduzida.</param>
@@ -69,23 +47,6 @@ public class AudioManager : MonoBehaviour
 
         _musicSource.clip = clip;
         _musicSource.Play();
-    }
-
-    /// <summary>
-    /// Procura um efeito sonoro pelo nome e o reproduz.
-    /// </summary>
-    /// <param name="name"> Nome do efeito sonoro a ser procurado no AudioManager. </param>
-    public void PlaySFX(string name)
-    {
-        Sound sound = System.Array.Find(_sfxSounds, s => s.name == name);
-
-        if (sound == null)
-        {
-            Debug.LogWarning("SFX " + name + " não encontrado!");
-            return;
-        }
-
-        _sfxSource.PlayOneShot(sound.audioClip);
     }
 
     /// <summary>
