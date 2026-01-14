@@ -911,6 +911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2315204635884190056}
+  - component: {fileID: 9049288602437157244}
   m_Layer: 5
   m_Name: Sons sub-menu
   m_TagString: Untagged
@@ -939,6 +940,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9049288602437157244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266888710332409482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 3636672488035006444}
+  - {fileID: 3566749022225724043}
+  - {fileID: 5071918955193171419}
+  - {fileID: 7623213817063012079}
 --- !u!1 &1413809438826443316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1095,7 @@ GameObject:
   - component: {fileID: 865769019807659390}
   - component: {fileID: 3407594041186655454}
   - component: {fileID: 8725940442557831489}
+  - component: {fileID: 1029919267944975873}
   m_Layer: 5
   m_Name: Pause Panel
   m_TagString: Untagged
@@ -1142,6 +1161,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1029919267944975873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932826050587600918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 1885151101868210740}
+  - {fileID: 1784031226568919081}
+  - {fileID: 4259137774562075730}
 --- !u!1 &1955230595789036196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &2480860563383289531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,7 +2225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &3842684550897064415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &4561781892300008703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,6 +2850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3413694402540315579}
+  - component: {fileID: 1966585267655029894}
   m_Layer: 5
   m_Name: Config menu
   m_TagString: Untagged
@@ -2845,6 +2878,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1966585267655029894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062863533651238370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 7236110223106222425}
+  - {fileID: 6724749993912545900}
 --- !u!1 &5174316288644773108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,7 +3521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &6163457673703436875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,7 +3680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &6714791057775526914
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,9 +4061,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseButtonUI: {fileID: 4476297952993579350}
   _backgroundPanel: {fileID: 5416661110980854627}
-  _pauseMenuPanel: {fileID: 1932826050587600918}
-  _settingsMenu: {fileID: 5062863533651238370}
-  _soundsMenu: {fileID: 1266888710332409482}
+  _pauseMenu: {fileID: 1029919267944975873}
+  _settingsMenu: {fileID: 1966585267655029894}
+  _soundsMenu: {fileID: 9049288602437157244}
   _menus:
   - {fileID: 1932826050587600918}
   - {fileID: 5062863533651238370}
@@ -4407,7 +4453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick
 --- !u!1 &8867981352621131546
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,4 +4687,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonClickSound: {fileID: 8300000, guid: a55e2c05b8e2b8b4b80ede04d09ee1ca, type: 3}
-  _buttonClickSoundName: ButtonClick

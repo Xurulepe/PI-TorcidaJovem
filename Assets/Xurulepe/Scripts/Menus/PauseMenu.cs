@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Image _backgroundPanel;
 
     [Header("Componentes do menu de pausa")]
-    [SerializeField] private GameObject _pauseMenuPanel;
-    [SerializeField] private GameObject _settingsMenu;
-    [SerializeField] private GameObject _soundsMenu;
+    [SerializeField] private Menu _pauseMenu;
+    [SerializeField] private Menu _settingsMenu;
+    [SerializeField] private Menu _soundsMenu;
 
     [Header("Listas de menus")]
-    [SerializeField] private List<GameObject> _menus = new List<GameObject>();
+    [SerializeField] private List<Menu> _menus = new List<Menu>();
 
     [Header("Controle de botões")]
     [SerializeField] private Button _firstButtonPauseMenu;
@@ -31,9 +32,9 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        _menus = new List<GameObject>()
+        _menus = new List<Menu>()
         {
-            _pauseMenuPanel,
+            _pauseMenu,
             _settingsMenu,
             _soundsMenu
         };
@@ -56,10 +57,10 @@ public class PauseMenu : MonoBehaviour
 
         foreach (var menu in _menus)
         {
-            menu.SetActive(false);
+            menu.gameObject.SetActive(false);
         }
 
-        AnimatePauseMenuIn(_menus[index]);
+        AnimateMenuElements(_menus[index]);
     }
 
     #region INPUT
@@ -88,7 +89,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Pausando o jogo");
         IsPaused = true;
 
-        AnimatePauseMenuIn(_pauseMenuPanel);
+        AnimateMenuElements(_pauseMenu);
         FadeBackgroundPanel(0.7f, 0.5f, true);
     }
 
@@ -101,7 +102,7 @@ public class PauseMenu : MonoBehaviour
 
         foreach (var menu in _menus)
         {
-            if (menu.activeSelf)
+            if (menu.gameObject.activeSelf)
             {
                 AnimatePauseMenuOut(menu);
             }
@@ -118,19 +119,37 @@ public class PauseMenu : MonoBehaviour
     #endregion
 
     #region ANIMATIONS
-    private void AnimatePauseMenuIn(GameObject gameObject)
+    private void AnimateMenuElements(Menu menu)
     {
-        gameObject.transform.localScale = Vector3.zero;
-        gameObject.SetActive(true);
-        gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+        menu.gameObject.SetActive(true);
+        menu.transform.localScale = Vector3.one;
+
+        HideMenuElements(menu);
+
+        foreach (Transform menuElement in menu.animatedElements)
+        {
+            menuElement.DOScale(1f, 0.25f);
+        }
     }
 
-    private void AnimatePauseMenuOut(GameObject gameObject)
+    private void HideMenuElements(Menu menu)
     {
-        gameObject.transform.DOScale(Vector3.zero, 0.25f).OnComplete(() =>
+        foreach (var element in menu.animatedElements)
         {
-            gameObject.SetActive(false);
-        });
+            element.localScale = new Vector3(element.localScale.x, 0f, element.localScale.z);
+        }
+    }
+
+    private void AnimatePauseMenuOut(Menu menu)
+    {
+
+        foreach (Transform menuElement in menu.animatedElements)
+        {
+            menuElement.DOScale(0f, 0.25f).OnComplete(() =>
+            {
+                menu.gameObject.SetActive(false);
+            }); ;
+        }
     }
 
     private void FadeBackgroundPanel(float alphaValue, float duration, bool activeOnComplete = true)
