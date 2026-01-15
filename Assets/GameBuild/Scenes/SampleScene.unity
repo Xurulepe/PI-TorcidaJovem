@@ -4583,6 +4583,37 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!1 &614694422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614694423}
+  m_Layer: 7
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614694423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614694422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: 0, z: 2.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1883800625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &626873952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2879815633268833890, guid: f372ec5ef86493343892f0144a563c6a, type: 3}
@@ -7972,6 +8003,14 @@ PrefabInstance:
       propertyPath: Respawn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4159503338457460153, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
+      propertyPath: Orientation
+      value: 
+      objectReference: {fileID: 614694423}
+    - target: {fileID: 4159503338457460153, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 1883800625}
     - target: {fileID: 6174366324891715665, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.96381545
@@ -8030,6 +8069,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6174366324891715665, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 295626848}
+    - targetCorrespondingSourceObject: {fileID: 6174366324891715665, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 614694423}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 182224453857137725, guid: d9d4db2cb0b7d2c418d9b89e8d2c73cf, type: 3}
       insertIndex: -1
@@ -11604,8 +11646,8 @@ MonoBehaviour:
   _Player: {fileID: 1777990953}
   _gunTransform: {fileID: 511672807}
   _gunrange: 50
-  _guntime: 1
-  Timefire: 0
+  _guntime: 0.1
+  Timefire: 0.5
   fireRate: 1
 --- !u!120 &1883800629
 LineRenderer:

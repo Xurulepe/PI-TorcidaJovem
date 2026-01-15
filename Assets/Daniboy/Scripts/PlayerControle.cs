@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using static UnityEngine.Rendering.DebugUI;
 
+
 public class PlayerControle : MonoBehaviour
 {
     [Header("Melee")]
@@ -11,7 +12,7 @@ public class PlayerControle : MonoBehaviour
     public float _attackSpeed = 1f;
     public float _attackDamage = 1f;
     public LayerMask _attackLayer;
-    
+
     public bool _isAttacking;
     public bool _readytoAttack;
     public int attackCount;
@@ -24,6 +25,7 @@ public class PlayerControle : MonoBehaviour
     public float moveSpeed = 5f;
     public float _dashSpeed;
     public bool _dashing;
+    public Transform Orientation;
     public CharacterController Controller;
     public Vector3 moveInput; // agora usamos Vector2 (x,y)
     public float _rotationSpeed = 10f;
@@ -31,7 +33,7 @@ public class PlayerControle : MonoBehaviour
     // vetores fixos para projeção isométrica
     private Vector3 isoForward = new Vector3(1, 0, 1).normalized;
     private Vector3 isoRight = new Vector3(1, 0, -1).normalized;
-    
+
     [Header("Particle")]
     [SerializeField] private ParticleSystem _muzzleFlash;
 
@@ -75,45 +77,45 @@ public class PlayerControle : MonoBehaviour
         //if (Controller.velocity.x + Controller.velocity.z <= 0)
 
         RotateTowardsMouse();
-      
 
 
 
 
 
-        if (Input.GetKeyDown(KeyCode.R)) 
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             LockFunction();
         }
     }
 
-    public void AttackShoot(InputAction.CallbackContext value) 
+    public void AttackShoot(InputAction.CallbackContext value)
     {
-        if (_lockMove == false && _Death == false) 
+        if (_lockMove == false && _Death == false)
         {
 
             _Anim.SetTrigger("Shoot");
 
         }
-       
+
 
 
     }
-    public void AttackMeele(InputAction.CallbackContext value) 
+    public void AttackMeele(InputAction.CallbackContext value)
     {
-        if (_lockMove == false && _Death == false) 
+        if (_lockMove == false && _Death == false)
         {
 
             _Anim.SetTrigger("Attack");
 
         }
-        
+
 
 
 
     }
 
-    public void Muzzleflash() 
+    public void Muzzleflash()
     {
 
         //_muzzleFlash.Play();
@@ -121,11 +123,11 @@ public class PlayerControle : MonoBehaviour
     }
 
     public void LockFunction()
-    { 
+    {
         _lockMove = true;
         _dashScript.DashMove();
         AttackRaycast();
-     
+
         Move();
         Shoot();
         RotateTowardsMouse();
@@ -136,59 +138,46 @@ public class PlayerControle : MonoBehaviour
 
     public void Move()
     {
-        if (_lockMove == false && _Death == false) 
+        if (_lockMove == false && _Death == false)
         {
 
-            float h = moveInput.x; // A/D ou ← →
-            float v = moveInput.z; // W/S ou ↑ ↓
-
-            // converte entrada para movimento no plano isométrico
-            Vector3 move = (isoForward * v + isoRight * h).normalized;
-
-            // junta movimento horizontal + gravidade
-            Vector3 finalMove = move * moveSpeed + Vector3.up * _playerVelocity.y;
+            Vector3 move = new Vector3(moveInput.x, 0f, moveInput.z);
 
             if (move.sqrMagnitude > 0.001f)
             {
-                Controller.Move(finalMove * Time.deltaTime);
+                Controller.Move(move.normalized * moveSpeed * Time.deltaTime);
                 _Anim.SetBool("Walk", true);
-                // rotaciona suavemente para direção do movimento
-                Quaternion targetRot = Quaternion.LookRotation(move);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, _rotationSpeed * Time.deltaTime);
             }
             else
             {
-                // se parado, só aplica gravidade
-                Controller.Move(Vector3.up * _playerVelocity.y * Time.deltaTime);
                 _Anim.SetBool("Walk", false);
             }
 
+
+
         }
-        
+
     }
 
     // recebe entrada do Input System
     public void PlayerMove(InputAction.CallbackContext value)
     {
-      
+
         moveInput = value.ReadValue<Vector3>();
     }
 
     public void Gravity()
     {
-        if (_lockMove == false) 
+        if (_lockMove == false)
         {
-            if (Controller.isGrounded && _playerVelocity.y < 0)
-                _playerVelocity.y = -1f;
-
             _playerVelocity.y += _gravityFloat * Time.deltaTime;
-
+            Controller.Move(_playerVelocity * Time.deltaTime);
 
 
         }
 
 
-       
+
     }
 
 
@@ -196,22 +185,24 @@ public class PlayerControle : MonoBehaviour
 
     void RotateTowardsMouse()
     {
-        if (_lockMove == false && _Death == false) 
+        if (_lockMove == false && _Death == false)
         {
 
             if (cam == null) return;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Vector3 targetPosition = hit.point;
-                targetPosition.y = transform.position.y;
-                transform.LookAt(targetPosition);
-            }
+                Vector3 lookPos = hit.point;
+                lookPos.y = transform.position.y;
 
+                Vector3 dir = lookPos - transform.position;
+                if (dir.sqrMagnitude > 0.001f)
+                    transform.rotation = Quaternion.LookRotation(dir);
+            }
         }
 
-
-        
     }
 
     void Shoot()
