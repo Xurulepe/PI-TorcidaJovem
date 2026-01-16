@@ -165,10 +165,7 @@ public class ObjectPooling : MonoBehaviour
 
     }
     protected virtual void RecuperarDedano()
-    {
-
-
-        
+    {        
         _checkMortado = false;
         _isHitado = false;
         if (_startV)
