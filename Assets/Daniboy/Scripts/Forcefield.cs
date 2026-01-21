@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Forcefield : MonoBehaviour
@@ -23,9 +24,23 @@ public class Forcefield : MonoBehaviour
       
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("EnemyMelee") || other.CompareTag("EnemyShooter"))
+        {
+
+
+            Debug.Log("Pushed");
+        
+        
+        
+        }
+    
 
 
 
 
 
+    }
 }
