@@ -60,6 +60,10 @@ public class PlayerControle : MonoBehaviour
 
     [Header("ScriptCalling")]
     public Dashing _dashScript;
+
+    [Header("animaPlayer_ruan")]
+    public Animator _anima_Robo;
+
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
@@ -68,6 +72,9 @@ public class PlayerControle : MonoBehaviour
         if (Controller == null)
             Controller = GetComponent<CharacterController>();
     }
+
+
+
 
     void Update()
     {
@@ -95,6 +102,7 @@ public class PlayerControle : MonoBehaviour
         {
 
             _Anim.SetTrigger("Shoot");
+            _anima_Robo.SetTrigger("Shot");
 
         }
 
@@ -147,16 +155,14 @@ public class PlayerControle : MonoBehaviour
             {
                 Controller.Move(move.normalized * moveSpeed * Time.deltaTime);
                 _Anim.SetBool("Walk", true);
+                _anima_Robo.SetBool("walk", true);
             }
             else
             {
                 _Anim.SetBool("Walk", false);
+                _anima_Robo.SetBool("walk", false);
             }
-
-
-
         }
-
     }
 
     // recebe entrada do Input System
