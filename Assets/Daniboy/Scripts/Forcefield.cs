@@ -27,7 +27,7 @@ public class Forcefield : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("EnemyMelee") || other.CompareTag("EnemyShooter"))
+        if (other.CompareTag("HitPlayer"))
         {
 
 
