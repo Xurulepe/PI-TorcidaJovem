@@ -1343,6 +1343,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: add40449-0116-452e-b069-389ef9b480cb
     m_ActionName: 'Keyboard/Attack[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 590766110}
+        m_TargetAssemblyTypeName: PlayerControle, Assembly-CSharp
+        m_MethodName: CallHelp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e74f16a8-9124-44a6-93be-3d406b1dec55
+    m_ActionName: 'Keyboard/CallHelp[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 590766110}
+        m_TargetAssemblyTypeName: PlayerControle, Assembly-CSharp
+        m_MethodName: CallShieldUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8b1c8dee-a83a-473b-8744-53b3d361f9a5
+    m_ActionName: 'Keyboard/ShieldUp[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard

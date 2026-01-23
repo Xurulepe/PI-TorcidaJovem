@@ -82,6 +82,7 @@ public class PlayerControle : MonoBehaviour
         Move();
 
         RotateTowardsMouse();
+        Shootmanage();
 
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -127,7 +128,6 @@ public class PlayerControle : MonoBehaviour
         RotateTowardsMouse();
         Gravity();
         Melee();
-        Shootmanage();
     }
 
     public void Move()
@@ -228,6 +228,7 @@ public class PlayerControle : MonoBehaviour
 
 
     }
+
     void Shootmanage()
     {
         if (_lockMove == false)
@@ -241,6 +242,7 @@ public class PlayerControle : MonoBehaviour
         }
 
     }
+
     void ResetShoot() 
     {
 
@@ -269,6 +271,16 @@ public class PlayerControle : MonoBehaviour
 
         }
    
+    }
+
+    public void CallHelp()
+    {
+        _anima_Robo.SetTrigger("CallHelp");
+    }
+
+    public void CallShieldUp()
+    {
+        _anima_Robo.SetTrigger("ShieldUp");
     }
 
     public void OnTriggerEnter(Collider other)
