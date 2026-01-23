@@ -19,6 +19,7 @@ TagManager:
   - BalaHitBox
   - HitPlayer
   - EnemyShooter
+  - Forcefield
   layers:
   - Default
   - TransparentFX
