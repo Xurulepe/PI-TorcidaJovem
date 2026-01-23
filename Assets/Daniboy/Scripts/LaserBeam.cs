@@ -10,6 +10,7 @@ public class LaserBeam : MonoBehaviour
     public float Timefire;
     LineRenderer _lineRenderer;
     public float fireRate;
+    public PlayerControle _pLayerControle;
     void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -25,22 +26,22 @@ public class LaserBeam : MonoBehaviour
             _lineRenderer.SetPosition(0, _gunTransform.position);
             Vector3 rayOrigin = _Player.transform.position;
             RaycastHit hit;
-            if(Physics.Raycast(rayOrigin,_Player.transform.forward, out hit, _gunrange)) 
-            { 
-            
+            if (Physics.Raycast(rayOrigin, _Player.transform.forward, out hit, _gunrange))
+            {
+
                 _lineRenderer.SetPosition(1, hit.point);
                 Debug.Log(hit.transform.position);
 
-            
+
             }
-            else 
-            { 
-            
-            
-            _lineRenderer.SetPosition(1, rayOrigin + (_Player.transform.forward * _gunrange));
-            
-            
-            
+            else
+            {
+
+
+                _lineRenderer.SetPosition(1, rayOrigin + (_Player.transform.forward * _gunrange));
+
+
+
             }
             StartCoroutine(ShootLaser());
         }
@@ -48,10 +49,11 @@ public class LaserBeam : MonoBehaviour
 
     IEnumerator ShootLaser() 
     {
-
+        _pLayerControle._anima_Robo.SetTrigger("Laser");
         _lineRenderer.enabled = true;
         yield return new WaitForSeconds(_guntime);
-        _lineRenderer.enabled = false;    
+        _lineRenderer.enabled = false;
+        _pLayerControle._anima_Robo.SetTrigger("Fim_laser");
     }
 
 

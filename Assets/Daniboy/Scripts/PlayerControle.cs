@@ -81,13 +81,7 @@ public class PlayerControle : MonoBehaviour
         Gravity();
         Move();
 
-        //if (Controller.velocity.x + Controller.velocity.z <= 0)
-
         RotateTowardsMouse();
-
-
-
-
 
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -105,22 +99,14 @@ public class PlayerControle : MonoBehaviour
             _anima_Robo.SetTrigger("Shot");
 
         }
-
-
-
     }
+
     public void AttackMeele(InputAction.CallbackContext value)
     {
         if (_lockMove == false && _Death == false)
         {
-
             _Anim.SetTrigger("Attack");
-
         }
-
-
-
-
     }
 
     public void Muzzleflash()
@@ -178,15 +164,9 @@ public class PlayerControle : MonoBehaviour
         {
             _playerVelocity.y += _gravityFloat * Time.deltaTime;
             Controller.Move(_playerVelocity * Time.deltaTime);
-
-
         }
 
-
-
     }
-
-
 
 
     void RotateTowardsMouse()
@@ -228,8 +208,6 @@ public class PlayerControle : MonoBehaviour
             }
 
         }
-
-
        
     }
 
@@ -254,7 +232,6 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false)
         {
-
             if (!_readytoShoot || _isShooting) return;
             _readytoShoot = false;
             _isShooting = true;
@@ -269,11 +246,6 @@ public class PlayerControle : MonoBehaviour
 
         _readytoShoot = true;
         _isShooting = false;
-
-
-
-
-
     }
 
     void ResetAttack()

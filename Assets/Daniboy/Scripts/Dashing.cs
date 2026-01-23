@@ -32,46 +32,29 @@ public class Dashing : MonoBehaviour
 
     public void DashMove()
     {
-       
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                
-                StartCoroutine(Impulse());
-
-            }
-
-
-       
-
-       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {  
+            StartCoroutine(Impulse());
+        }
     }
 
      IEnumerator Impulse()
     {
-
         float startTime = Time.time;
 
         while (Time.time < startTime + _dashTime)
         {
-           
+            _moveScript._anima_Robo.SetTrigger("Dash");
             _moveScript.Controller.Move(_moveScript.moveInput * _dashSpeed * Time.deltaTime);
             SpawnDamageParticle();
             yield return null;
 
         }
-
-
     }
 
     private void SpawnDamageParticle() 
     { 
-    
-    
-    instanceDamage = Instantiate(_damagePlayer, transform.position, Quaternion.identity);
-    
-    
-    
+        instanceDamage = Instantiate(_damagePlayer, transform.position, Quaternion.identity);  
     }
 
 

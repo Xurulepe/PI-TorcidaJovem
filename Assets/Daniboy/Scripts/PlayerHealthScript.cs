@@ -8,13 +8,17 @@ public class PlayerHealthScript : MonoBehaviour
     public int Respawn;
     public int _currentHealth;
     public Animator _Anim;
+    public Animator _anima_Robo;
     public float _deathTime;
     public PlayerControle _playerControle;
+
+    public bool morteExecutada;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _playerControle = GetComponent<PlayerControle>();
         _Anim = GetComponent<Animator>();
+        _anima_Robo = _playerControle._anima_Robo;
         _currentHealth = _maxHealth;
     }
 
@@ -27,31 +31,26 @@ public class PlayerHealthScript : MonoBehaviour
     }
 
     public void Death() 
-    { 
-    
-    if (_currentHealth <= 0) 
     {
-
-            _Anim.SetBool("Death", true);
-            _playerControle._Death = true;
-            StartCoroutine(DeathTime());
-
-        }
-    
-    }
-    public void Test() 
-    { 
-    
-    if (Input.GetKeyUp(KeyCode.Escape)) 
+        if (_currentHealth <= 0)
         {
-
-            _currentHealth = 0;
-        
-        
-        
+            if (morteExecutada == false)
+            {
+                //_Anim.SetBool("Death", true);
+                _anima_Robo.SetTrigger("Death");
+                _playerControle._Death = true;
+                morteExecutada = true;
+                StartCoroutine(DeathTime());
+            }
         }
-    
-    
+    }
+
+    public void Test() 
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            _currentHealth = 0;
+        }
     }
 
 
@@ -70,26 +69,21 @@ public class PlayerHealthScript : MonoBehaviour
         float startTime = Time.time;
 
         while (Time.time < startTime + _deathTime)
-        {
-           
-          
+        {        
 
             yield return new WaitForSeconds(_deathTime);
-
+            morteExecutada = false;
             SceneManager.LoadScene(Respawn);
         }
 
 
     }
 
-        public float GetHealthNormalized() 
+    public float GetHealthNormalized()
     {
-
         return (float)_currentHealth / _maxHealth;
     }
-    
-      
-    }
+}
 
 
 
