@@ -62,6 +62,7 @@ public class PlayerControle : MonoBehaviour
     public Dashing _dashScript;
 
     [Header("animaPlayer_ruan")]
+    public  AnimaControleRobo_ruan anima_robo_ruan;
     public Animator _anima_Robo;
     public bool shootExec;
 
@@ -108,7 +109,11 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false && _Death == false)
         {
-            //_Anim.SetTrigger("Attack");
+            if (value.performed)
+            {
+                anima_robo_ruan.quantAtk++;                
+            }
+
         }
     }
 
@@ -136,7 +141,7 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false && _Death == false)
         {
-
+            _anima_Robo.SetInteger("quantAtk", anima_robo_ruan.quantAtk);
             Vector3 move = new Vector3(moveInput.x, 0f, moveInput.z);
 
             if (move.sqrMagnitude > 0.001f)
@@ -211,7 +216,6 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false) 
         {
-
             if (!_readytoAttack || _isAttacking) return;
             _readytoAttack = false;
             _isAttacking = true;
