@@ -56,18 +56,19 @@ public class PlayerControle : MonoBehaviour
     public bool _Death;
 
     [Header("Animation")]
-    public Animator _Anim;
+   // public Animator _Anim;
 
     [Header("ScriptCalling")]
     public Dashing _dashScript;
 
     [Header("animaPlayer_ruan")]
     public Animator _anima_Robo;
+    public bool shootExec;
 
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
-        _Anim = GetComponent<Animator>();
+        //_Anim = GetComponent<Animator>();
         cam = Camera.main;
         if (Controller == null)
             Controller = GetComponent<CharacterController>();
@@ -82,7 +83,7 @@ public class PlayerControle : MonoBehaviour
         Move();
 
         RotateTowardsMouse();
-        Shootmanage();
+        //Shootmanage();
 
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -93,11 +94,12 @@ public class PlayerControle : MonoBehaviour
 
     public void AttackShoot(InputAction.CallbackContext value)
     {
-        if (_lockMove == false && _Death == false)
+        if (_lockMove == false && _Death == false && shootExec == false)
         {
 
-            _Anim.SetTrigger("Shoot");
+            //_Anim.SetTrigger("Shoot");
             _anima_Robo.SetTrigger("Shot");
+            shootExec = true;
 
         }
     }
@@ -106,7 +108,7 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false && _Death == false)
         {
-            _Anim.SetTrigger("Attack");
+            //_Anim.SetTrigger("Attack");
         }
     }
 
@@ -124,8 +126,8 @@ public class PlayerControle : MonoBehaviour
         AttackRaycast();
 
         Move();
-        Shoot();
-        RotateTowardsMouse();
+       // Shoot();
+       // RotateTowardsMouse();
         Gravity();
         Melee();
     }
@@ -140,12 +142,12 @@ public class PlayerControle : MonoBehaviour
             if (move.sqrMagnitude > 0.001f)
             {
                 Controller.Move(move.normalized * moveSpeed * Time.deltaTime);
-                _Anim.SetBool("Walk", true);
+                // _Anim.SetBool("Walk", true);
                 _anima_Robo.SetBool("walk", true);
             }
             else
             {
-                _Anim.SetBool("Walk", false);
+                // _Anim.SetBool("Walk", false);
                 _anima_Robo.SetBool("walk", false);
             }
         }
@@ -191,24 +193,18 @@ public class PlayerControle : MonoBehaviour
 
     }
 
-    void Shoot()
+    public void Shoot()
     {
-        if (_lockMove == false) 
+        GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
+        if (bullet != null)
         {
-            _Anim.SetTrigger("Shoot");
-            GameObject bullet = BulletPooling.SharedInstance.GetPooledObject();
-            if (bullet != null)
-            {
-                bullet.transform.position = shootPoint.transform.position;
-                bullet.transform.rotation = shootPoint.transform.rotation;
-                Projectile proj = bullet.GetComponent<Projectile>();
-                proj.speedProjectile = projectileSpeed;
-                proj.shootPoint = shootPoint;
-                bullet.SetActive(true);
-            }
-
+            bullet.transform.position = shootPoint.transform.position;
+            bullet.transform.rotation = shootPoint.transform.rotation;
+            Projectile proj = bullet.GetComponent<Projectile>();
+            proj.speedProjectile = projectileSpeed;
+            proj.shootPoint = shootPoint;
+            bullet.SetActive(true);
         }
-       
     }
 
     void Melee()
@@ -223,10 +219,6 @@ public class PlayerControle : MonoBehaviour
             Invoke(nameof(AttackRaycast), _attackDelay);
 
         }
- 
-
-
-
     }
 
     void Shootmanage()
