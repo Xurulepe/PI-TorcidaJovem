@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Amarelo
-    second: {fileID: 2100000, guid: f0768775872a6a84ba951a6bfabd69a8, type: 2}
+    second: {fileID: 2100000, guid: b0c255a1a318fb24a960d64cf3a601ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Azul
-    second: {fileID: 2100000, guid: f0768775872a6a84ba951a6bfabd69a8, type: 2}
+    second: {fileID: 2100000, guid: b0c255a1a318fb24a960d64cf3a601ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Peito
-    second: {fileID: 2100000, guid: 49b8e7a6e12948b4e948598f8eb928df, type: 2}
+    second: {fileID: 2100000, guid: b0c255a1a318fb24a960d64cf3a601ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cabo
-    second: {fileID: 2100000, guid: 6ddbf1655d62b5046be2b33f2670528c, type: 2}
+    second: {fileID: 2100000, guid: e1c98134f9607da45a5a83aa54ba7c45, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: corRobo
-    second: {fileID: 2100000, guid: f0768775872a6a84ba951a6bfabd69a8, type: 2}
+    second: {fileID: 2100000, guid: b0c255a1a318fb24a960d64cf3a601ac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
