@@ -64,7 +64,9 @@ public class PlayerControle : MonoBehaviour
     [Header("animaPlayer_ruan")]
     public  AnimaControleRobo_ruan anima_robo_ruan;
     public Animator _anima_Robo;
-    public bool shootExec;
+    public bool _finalAction;
+    public Transform pontoEspada;
+
 
     void Start()
     {
@@ -95,13 +97,17 @@ public class PlayerControle : MonoBehaviour
 
     public void AttackShoot(InputAction.CallbackContext value)
     {
-        if (_lockMove == false && _Death == false && shootExec == false)
+        if (_lockMove == false && _Death == false)
         {
+            if (value.performed && _finalAction == false)
+            {
+                if (anima_robo_ruan.quantAtk == 0)
+                {
+                    _anima_Robo.SetTrigger("Shot");
+                    _finalAction = true;
 
-            //_Anim.SetTrigger("Shoot");
-            _anima_Robo.SetTrigger("Shot");
-            shootExec = true;
-
+                }
+            }
         }
     }
 
@@ -109,9 +115,13 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false && _Death == false)
         {
-            if (value.performed)
+            if (value.performed && _finalAction == false)
             {
-                anima_robo_ruan.quantAtk++;                
+                anima_robo_ruan.quantAtk++;
+                if (anima_robo_ruan.quantAtk > 1)
+                {
+                    _finalAction = true;
+                }
             }
 
         }
@@ -269,14 +279,20 @@ public class PlayerControle : MonoBehaviour
    
     }
 
-    public void CallHelp()
+    public void CallHelp(InputAction.CallbackContext value)
     {
-        _anima_Robo.SetTrigger("CallHelp");
+        if (value.performed)
+        {
+            _anima_Robo.SetTrigger("CallHelp");
+        }
     }
 
-    public void CallShieldUp()
+    public void CallShieldUp(InputAction.CallbackContext value)
     {
-        _anima_Robo.SetTrigger("ShieldUp");
+        if (value.performed)
+        {
+            _anima_Robo.SetTrigger("ShieldUp");
+        }
     }
 
     public void OnTriggerEnter(Collider other)

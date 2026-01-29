@@ -21,27 +21,18 @@ public class LaserBeam : MonoBehaviour
         Timefire += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.E) && Timefire > fireRate) 
         {
-
             Timefire = 0;
             _lineRenderer.SetPosition(0, _gunTransform.position);
             Vector3 rayOrigin = _Player.transform.position;
             RaycastHit hit;
             if (Physics.Raycast(rayOrigin, _Player.transform.forward, out hit, _gunrange))
             {
-
                 _lineRenderer.SetPosition(1, hit.point);
                 Debug.Log(hit.transform.position);
-
-
             }
             else
             {
-
-
                 _lineRenderer.SetPosition(1, rayOrigin + (_Player.transform.forward * _gunrange));
-
-
-
             }
             StartCoroutine(ShootLaser());
         }

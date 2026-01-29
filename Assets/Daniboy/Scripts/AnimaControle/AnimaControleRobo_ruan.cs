@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AnimaControleRobo_ruan : MonoBehaviour
 {
@@ -9,11 +10,9 @@ public class AnimaControleRobo_ruan : MonoBehaviour
    public void Shoot()
     {
         playerControle.Shoot();
-    }
+        quantAtk = 0;
+        playerControle._finalAction = false;
 
-    public void finalShoot()
-    {
-        playerControle.shootExec = false;
     }
 
     public void finalAnimaEspada1()
@@ -21,6 +20,7 @@ public class AnimaControleRobo_ruan : MonoBehaviour
         if (quantAtk ==1)
         {
             quantAtk = 0;
+            playerControle._finalAction = false;
         }
     }
 
@@ -29,6 +29,8 @@ public class AnimaControleRobo_ruan : MonoBehaviour
         if (quantAtk >= 1)
         {
             quantAtk = 0;
+            playerControle._finalAction = false;
+
         }
     }
 }
