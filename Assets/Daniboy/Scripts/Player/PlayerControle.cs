@@ -66,6 +66,11 @@ public class PlayerControle : MonoBehaviour
     public Animator _anima_Robo;
     public bool _finalAction;
     public Transform pontoEspada;
+    public Material espadaMaterial;
+    public float showValor;
+    public float veloTrasn;
+
+    public bool showSword;
 
 
     void Start()
@@ -84,7 +89,7 @@ public class PlayerControle : MonoBehaviour
     {
         Gravity();
         Move();
-
+        showSwordFunc();
         RotateTowardsMouse();
         //Shootmanage();
 
@@ -300,4 +305,26 @@ public class PlayerControle : MonoBehaviour
         if (other.CompareTag("EnemyMelee"))
             Debug.Log("You hit the enemy!");
     }
+
+
+    #region ruan functions
+
+    public void showSwordFunc()
+    {
+        if (showSword  == true)
+        {
+            showValor = Mathf.MoveTowards(showValor, 0, veloTrasn * Time.deltaTime);
+        }
+        else
+        {
+            showValor = Mathf.MoveTowards(showValor, -2000, veloTrasn * Time.deltaTime);
+
+        }
+
+
+        espadaMaterial.SetFloat("_Cultof_helth", showValor);
+
+    }
+
+    #endregion
 }
