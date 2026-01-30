@@ -72,6 +72,7 @@ public class PlayerControle : MonoBehaviour
 
     public bool showSword;
     public GameObject collisionSword;
+    public GameObject SwordTrails;
 
     void Start()
     {
@@ -329,6 +330,7 @@ public class PlayerControle : MonoBehaviour
 
         }
         collisionSword.SetActive(showSword);
+        SwordTrails.SetActive(showSword);
 
         espadaMaterial.SetFloat("_Cultof_helth", showValor);
 
