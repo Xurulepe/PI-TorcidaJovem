@@ -71,7 +71,7 @@ public class PlayerControle : MonoBehaviour
     public float veloTrasn;
 
     public bool showSword;
-
+    public GameObject collisionSword;
 
     void Start()
     {
@@ -109,7 +109,6 @@ public class PlayerControle : MonoBehaviour
                 if (anima_robo_ruan.quantAtk == 0)
                 {
                     _anima_Robo.SetTrigger("Shot");
-                    _finalAction = true;
 
                 }
             }
@@ -142,7 +141,6 @@ public class PlayerControle : MonoBehaviour
     public void LockFunction()
     {
         _lockMove = true;
-        _dashScript.DashMove();
         AttackRaycast();
 
         Move();
@@ -321,6 +319,16 @@ public class PlayerControle : MonoBehaviour
 
         }
 
+        if (anima_robo_ruan.quantAtk > 0)
+        {
+           showSword = true;
+        }
+        else
+        {
+            showSword = false;
+
+        }
+        collisionSword.SetActive(showSword);
 
         espadaMaterial.SetFloat("_Cultof_helth", showValor);
 

@@ -21,24 +21,22 @@ public class Dashing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerScript._lockMove == false) 
-        {
-            
-            DashMove();
-
-        }
+                 
          
     }
 
-    public void DashMove()
+    public void DashMove(InputAction.CallbackContext value)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {  
-            StartCoroutine(Impulse());
-        }
+        if (value.performed)
+        {
+            if (_playerScript._lockMove == false)
+            {
+                StartCoroutine(Impulse());
+            }
+        }        
     }
 
-     IEnumerator Impulse()
+    IEnumerator Impulse()
     {
         float startTime = Time.time;
 

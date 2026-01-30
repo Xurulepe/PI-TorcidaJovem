@@ -7,12 +7,16 @@ public class AnimaControleRobo_ruan : MonoBehaviour
 
     public int quantAtk;
 
-   public void Shoot()
+    public void Shoot()
     {
         playerControle.Shoot();
         quantAtk = 0;
         playerControle._finalAction = false;
 
+    }
+
+    public void InicioEspada()
+    {
     }
 
     public void finalAnimaEspada1()
@@ -21,6 +25,8 @@ public class AnimaControleRobo_ruan : MonoBehaviour
         {
             quantAtk = 0;
             playerControle._finalAction = false;
+            //playerControle.showSword = false;
+
         }
     }
 
@@ -30,7 +36,7 @@ public class AnimaControleRobo_ruan : MonoBehaviour
         {
             quantAtk = 0;
             playerControle._finalAction = false;
-
+            //playerControle.showSword = false;
         }
     }
 }
