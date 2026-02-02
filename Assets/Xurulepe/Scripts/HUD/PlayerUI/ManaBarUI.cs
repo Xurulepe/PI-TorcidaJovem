@@ -5,11 +5,6 @@ public class ManaBarUI : MonoBehaviour
 {
     [SerializeField] private Image _manaBar;
 
-    private void Awake()
-    {
-        _manaBar = GetComponent<Image>();
-    }
-
     private void Start()
     {
         // inscrever no evento de mudança de energia do jogador
