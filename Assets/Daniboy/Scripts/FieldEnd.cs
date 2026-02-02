@@ -4,6 +4,7 @@ public class FieldEnd : MonoBehaviour
 { 
     public float Fieldtime = 2f;
     [SerializeField] public GameObject fieldPool;
+    public Transform _Player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +14,7 @@ public class FieldEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = _Player.transform.position;
     }
 
  

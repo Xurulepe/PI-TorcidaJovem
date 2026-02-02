@@ -2,7 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using static UnityEngine.Rendering.DebugUI;
-
+using Unity.VisualScripting;
 
 public class PlayerControle : MonoBehaviour
 {
@@ -300,12 +300,13 @@ public class PlayerControle : MonoBehaviour
         if (value.performed)
         {
             GameObject Field = Forcefield.instance.GetPooledObjects();
-
+            FieldEnd Fielder = Field.GetComponent<FieldEnd>();
             if (Field != null)
             {
                 Field.transform.position = fieldPoint.position;
                 Field.transform.rotation = fieldPoint.rotation;
                 Field.SetActive(true);
+                Fielder._Player = this.transform;
                 _anima_Robo.SetTrigger("ShieldUp");
             }
         
