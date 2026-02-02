@@ -38,12 +38,12 @@ Material:
     - _StencilWriteMask: 255
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
-    - _edge_withg: 0
-    - _noiseScale: 50
-    - _noiseStrong: 1
+    - _edge_withg: 1152
+    - _noiseScale: 0
+    - _noiseStrong: 0
     m_Colors:
-    - _Albedo: {r: 0.44339618, g: 0.44339618, b: 0.44339618, a: 1}
+    - _Albedo: {r: 0, g: 0.58457136, b: 1, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _EdgeColor: {r: 1024, g: 0, b: 0, a: 1}
+    - _EdgeColor: {r: 0, g: 161.45409, b: 1023.9999, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
