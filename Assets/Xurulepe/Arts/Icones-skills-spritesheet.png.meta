@@ -1,0 +1,722 @@
+fileFormatVersion: 2
+guid: fe23eebbe4bee624dbf6c67512549d2c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 764
+        width: 177
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559ac029433c0f847bcada31f0b949c8
+      internalID: 1800250769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 751
+        width: 230
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9309f2db51967214b9b26cbfc92671e5
+      internalID: -1185858253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 714
+        width: 240
+        height: 309
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b04b088009242040b672f968c0d9cb4
+      internalID: 639458875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 760
+        width: 208
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f10cb2aa443fbbd4c8d2d8104f1a4e74
+      internalID: -429310385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 782
+        width: 149
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873325e5534c58445904c51dead7f6a4
+      internalID: -1581887230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 766
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b793695e45fc7445b3dd6209e205354
+      internalID: -18046306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 770
+        width: 192
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700f8d9d960760441b7a639f59deda22
+      internalID: 1511699306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 559
+        width: 293
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cce2493e893cc4e8e1b8c44dcd6e16
+      internalID: 1248068016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 541
+        width: 259
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239b3fc25fc72e04ababfb50036cd951
+      internalID: -1471695099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 262
+        width: 280
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378b2d5f905588d4fb41617837fde794
+      internalID: 1435186390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 535
+        width: 226
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136360fe5f7cd0942866e7721c053614
+      internalID: 904769059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 497
+        width: 227
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6926c7f6d573a7f4a9991fc7e9a24365
+      internalID: 967974087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 558
+        width: 195
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be48e61285185de4fa5bb0f74d1cc1c5
+      internalID: 1802890560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 530
+        width: 188
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7230d41cf1842264686625119f721596
+      internalID: -469714541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 316
+        width: 187
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e598a8f26c9e04b99ec8efe2b220df
+      internalID: 460295895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 312
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff108f47acb68f4c849580163c06638
+      internalID: 1077651612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 327
+        width: 212
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a3ee1b33ef3f0f4c9badb526bde7dff
+      internalID: 143747977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1
+        width: 247
+        height: 494
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8dadd564b3a114aa051d41aed895a1
+      internalID: 1595570612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 264
+        width: 209
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15e64f29a7c71324aac511a362f0c0db
+      internalID: 640237307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 6
+        width: 202
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2716eafafcdc7024c845697c15cba6e8
+      internalID: -2083364296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 72
+        width: 164
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228314fc457588340a369d17c5a1a3ba
+      internalID: 525003618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 76
+        width: 222
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4562ee51ae5f972499e275028ca96ab5
+      internalID: -692862901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 4
+        width: 239
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ddf9dc04c73e04fa173d3eeb70c6d5
+      internalID: 1536212044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 65
+        width: 249
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690c2a48377e16a44be4d2a29ff063ac
+      internalID: -1581849248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icones-skills-spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 2
+        width: 188
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4bdd3349358c94bb2b264f81f071da
+      internalID: 712280500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 85bbe94c1e686bb4b8dafa9036f624d1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Icones-skills-spritesheet_0: 1800250769
+      Icones-skills-spritesheet_1: 952435256
+      Icones-skills-spritesheet_10: 1248068016
+      Icones-skills-spritesheet_11: 710892060
+      Icones-skills-spritesheet_12: 70701641
+      Icones-skills-spritesheet_13: 597271708
+      Icones-skills-spritesheet_14: 292989301
+      Icones-skills-spritesheet_15: -1471695099
+      Icones-skills-spritesheet_16: 1435186390
+      Icones-skills-spritesheet_17: 904769059
+      Icones-skills-spritesheet_18: 967974087
+      Icones-skills-spritesheet_19: 1802890560
+      Icones-skills-spritesheet_2: -1185858253
+      Icones-skills-spritesheet_20: -469714541
+      Icones-skills-spritesheet_21: 460295895
+      Icones-skills-spritesheet_22: 1077651612
+      Icones-skills-spritesheet_23: 143747977
+      Icones-skills-spritesheet_24: 1595570612
+      Icones-skills-spritesheet_25: 640237307
+      Icones-skills-spritesheet_26: -2083364296
+      Icones-skills-spritesheet_27: 525003618
+      Icones-skills-spritesheet_28: 307620296
+      Icones-skills-spritesheet_29: 157735044
+      Icones-skills-spritesheet_3: 639458875
+      Icones-skills-spritesheet_30: -970115147
+      Icones-skills-spritesheet_31: -454392480
+      Icones-skills-spritesheet_32: 1011008488
+      Icones-skills-spritesheet_33: -906663945
+      Icones-skills-spritesheet_34: -141802645
+      Icones-skills-spritesheet_35: -692862901
+      Icones-skills-spritesheet_36: 1536212044
+      Icones-skills-spritesheet_37: -1581849248
+      Icones-skills-spritesheet_38: 165500540
+      Icones-skills-spritesheet_39: 876108105
+      Icones-skills-spritesheet_4: -429310385
+      Icones-skills-spritesheet_40: 712280500
+      Icones-skills-spritesheet_41: -1538313245
+      Icones-skills-spritesheet_5: -768468430
+      Icones-skills-spritesheet_6: -1581887230
+      Icones-skills-spritesheet_7: -18046306
+      Icones-skills-spritesheet_8: 1511699306
+      Icones-skills-spritesheet_9: 1591195992
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
