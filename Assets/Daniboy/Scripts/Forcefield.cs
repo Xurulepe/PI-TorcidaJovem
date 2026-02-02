@@ -1,47 +1,50 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Forcefield : MonoBehaviour
 {
-    public Animator _anim;
 
+    public static Forcefield instance;
+    [SerializeField] GameObject fieldPrefab;
+    private List<GameObject> objects = new List<GameObject>();
+    private int amountToPool = 10;
+   
+ 
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        animationactive();
-    }
-
-    void animationactive()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (instance == null)
         {
-
-            _anim.SetTrigger("Expand");
-
-
+            instance = this;
         }
-      
-
     }
-    private void OnTriggerEnter(Collider other)
+
+    void Start()
     {
-
-
-        if (other.CompareTag("Forcefield"))
+        for (int i = 0; i < amountToPool; i++)
         {
-
-
-            Debug.Log("Pushed");
-        
-        
-        
+            GameObject obj = Instantiate(fieldPrefab);
+            obj.SetActive(false);
+            objects.Add(obj);
         }
-    
-
-
-
-
-
     }
+
+
+    public GameObject GetPooledObjects()
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            if (!objects[i].activeInHierarchy)
+            {
+                return objects[i];
+            }
+        }
+        return null;
+    }
+
+
 }
+
+

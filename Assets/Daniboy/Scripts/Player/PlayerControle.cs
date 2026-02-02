@@ -74,6 +74,10 @@ public class PlayerControle : MonoBehaviour
     public GameObject collisionSword;
     public GameObject SwordTrails;
 
+    [Header("Forcefield")]
+    [SerializeField] public Transform fieldPoint;
+    public float Fieldtime = 1f;
+   [SerializeField] public GameObject fieldPool;
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
@@ -295,9 +299,22 @@ public class PlayerControle : MonoBehaviour
     {
         if (value.performed)
         {
-            _anima_Robo.SetTrigger("ShieldUp");
+            GameObject Field = Forcefield.instance.GetPooledObjects();
+
+            if (Field != null)
+            {
+                Field.transform.position = fieldPoint.position;
+                Field.transform.rotation = fieldPoint.rotation;
+                Field.SetActive(true);
+                _anima_Robo.SetTrigger("ShieldUp");
+            }
+        
         }
+
     }
+
+    
+
 
     public void OnTriggerEnter(Collider other)
     {
