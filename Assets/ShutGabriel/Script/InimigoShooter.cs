@@ -5,15 +5,16 @@ using System.Collections;
 using DG.Tweening;
 using System;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEngine.Rendering.DebugUI;
 
 public class InimigoShooter : InimigoDef
 {
     public GameObject projectilePrefab;
     public Transform spawnPoint;
 
-   
-    public float _intervaloTiro = 1f;
-    [SerializeField] public float _distanciaMin= 20f;
+
+    public float _intervaloTiro = 99f;
+    [SerializeField] public float _distanciaMin = 20f;
     //public float _distanciaSeg = 50; 
     //public float _recuoDist = 15f;
     public float _clock = 3f;
@@ -36,30 +37,30 @@ public class InimigoShooter : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
- 
+    [Header("Campo de força")]
+    bool _field = false;
 
-    
 
     protected override void Start()
     {
         base.Start();
 
         if (_agent != null) _agent.speed = 10.5f;
-        
-        
+
+
     }
     protected override void Update()
     {
         base.Update();
-        
-        
-  
+
+
+
         if (_isHIT == false)
         {
-            
+
             if (_alvo == null || _agent == null) return;
             float distancia = Vector3.Distance(transform.position, _alvo.position);
-            
+
             if (distancia > _distanciaMin)
             {
                 _agent.isStopped = false;
@@ -90,7 +91,7 @@ public class InimigoShooter : InimigoDef
                 }
             }
         }
-        
+
         if (!_checkMorte)
         {
             Vector3 point1, point2;
@@ -115,7 +116,7 @@ public class InimigoShooter : InimigoDef
             controller.Move(knockbackVelocity * Time.deltaTime);
             knockbackTimer -= Time.deltaTime;
         }
-        
+
 
     }
     public void ApplyKnockback(Vector3 direction, float force = -1)
@@ -135,8 +136,22 @@ public class InimigoShooter : InimigoDef
             Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
             ApplyKnockback(knockDir);
         }
-    }
 
+        if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+
+            _field = true;
+            ApplyKnockback(transform.position);
+            Invoke(nameof(FieldResp), 1);
+
+        }
+    }
+    void FieldResp()
+    {
+
+        _field = false;
+
+    }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -152,7 +167,7 @@ public class InimigoShooter : InimigoDef
     }
     private void Atirar()
     {
-        if(_StopTiro == false)
+        if (_StopTiro == false)
         {
             if (projectilePrefab == null || spawnPoint == null || _alvo == null) return;
             Vector3 dir = (_alvo.position - spawnPoint.position).normalized;
@@ -190,6 +205,6 @@ public class InimigoShooter : InimigoDef
         point1 = center + Up;
         point2 = center - Up;
     }
-    
+
 
 }

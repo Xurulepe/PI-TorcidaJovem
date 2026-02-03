@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using static UnityEngine.Rendering.DebugUI;
+
 public class InimigoMelee : InimigoDef
 {
     [Header("Configuração InimigoM")]
 
-    
+
     public float IntervaloAtaque = 1f;
-    
+
     public bool _playerNaArea = false;
     private GameObject _player;
 
@@ -31,13 +33,14 @@ public class InimigoMelee : InimigoDef
     public bool PlayerHitBox;
     [SerializeField] Transform _enemy;
     private Vector3 direction;
+    bool _field = false;
 
     protected override void Start()
     {
         base.Start();
         _agent.speed = 10f;
     }
-    
+
     protected override void Update()
     {
         base.Update();
@@ -86,7 +89,7 @@ public class InimigoMelee : InimigoDef
             //Debug.Log("Hit");
             _playerNaArea = true;
             _player = other.gameObject;
-            
+
             if (_playerNaArea == true)
             {
                 if (IntervaloAtaque <= 0)
@@ -94,7 +97,7 @@ public class InimigoMelee : InimigoDef
                     Ataque();
                     IntervaloAtaque = 2f;
                 }
-                
+
             }
 
             if (other.CompareTag("Espadão"))
@@ -104,6 +107,17 @@ public class InimigoMelee : InimigoDef
                 ApplyKnockback(knockDir);
             }
         }
+
+        if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+
+            _field = true;
+            ApplyKnockback(transform.position);
+            Invoke(nameof(FieldResp), 1);
+
+        }
+
+
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -112,9 +126,16 @@ public class InimigoMelee : InimigoDef
             Vector3 knockDir = (transform.position - hit.point).normalized;
             ApplyKnockback(knockDir);
         }
+
+
     }
 
+    void FieldResp()
+    {
 
+        _field = false;
+
+    }
 
 
     private void OnTriggerExit(Collider other)
@@ -129,14 +150,14 @@ public class InimigoMelee : InimigoDef
     protected void Ataque()
     {
         Debug.Log("Atacou o player");
-        
+
         PlayerHit();
 
         StartCoroutine(CooldownAtk());
     }
 
     protected void PlayerHit()
-    { 
+    {
         PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
         PlayerHealth.DamagePlayer(dano, direction);
     }
@@ -173,10 +194,10 @@ public class InimigoMelee : InimigoDef
         point2 = center - Up;
     }
 
-   
+
     IEnumerator CooldownAtk()
     {
         yield return new WaitForSeconds(1.25f);
-       
+
     }
 }
