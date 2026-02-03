@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class HealthBarUI : MonoBehaviour
         // atualizar a barra de vida com base na vida atual do jogador
         if (_playerHealth != null)
         {
-            _healthBar.fillAmount = _playerHealth.GetHealthNormalized();
+            _healthBar.DOFillAmount(_playerHealth.GetHealthNormalized(), 0.5f);
         }
     }
 }

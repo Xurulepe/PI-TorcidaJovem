@@ -325,10 +325,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause-Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3842684550897064415, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5847694074426914949, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -640,6 +636,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2050565358253458155, guid: c01464d8601b9dd4581fa4687e1dac93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6409256606703982294, guid: c01464d8601b9dd4581fa4687e1dac93, type: 3}
       propertyPath: m_Name
       value: Stats-Canvas
