@@ -5,7 +5,6 @@ using System.Collections;
 using DG.Tweening;
 using System;
 using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.Rendering.DebugUI;
 
 public class InimigoShooter : InimigoDef
 {
@@ -13,7 +12,7 @@ public class InimigoShooter : InimigoDef
     public Transform spawnPoint;
 
    
-    public float _intervaloTiro = 99f;
+    public float _intervaloTiro = 1f;
     [SerializeField] public float _distanciaMin= 20f;
     //public float _distanciaSeg = 50; 
     //public float _recuoDist = 15f;
@@ -37,9 +36,9 @@ public class InimigoShooter : InimigoDef
     public LayerMask layermask;
     public Color gizmoColor = Color.cyan;
 
-    [Header("Campo de força")]
-    bool _field = false;
+ 
 
+    
 
     protected override void Start()
     {
@@ -136,22 +135,8 @@ public class InimigoShooter : InimigoDef
             Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
             ApplyKnockback(knockDir);
         }
-
-        if (other.gameObject.CompareTag("Forcefield") && !_field)
-        {
-
-            _field = true;
-            ApplyKnockback(transform.position);
-            Invoke(nameof(FieldResp), 1);
-
-        }
     }
-    void FieldResp()
-    {
 
-        _field = false;
-
-    }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {

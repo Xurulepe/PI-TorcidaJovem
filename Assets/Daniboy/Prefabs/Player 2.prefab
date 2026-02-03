@@ -32,51 +32,6 @@ Transform:
   - {fileID: 5586564751520177393}
   m_Father: {fileID: 5538585495156061752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &382667019730936501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3635885065411253896}
-  - component: {fileID: 9099405772802917473}
-  m_Layer: 7
-  m_Name: FieldPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3635885065411253896
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382667019730936501}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3767381977790515458}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9099405772802917473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382667019730936501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811e6e2a029f80c4fb1fe377ab69c466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fieldPrefab: {fileID: 5397853695515244767, guid: bbfb49e9c9a6ad14c8135f9c38e51448, type: 3}
 --- !u!1 &450849229181744125
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,7 +5068,6 @@ Transform:
   - {fileID: 2077561774877166024}
   - {fileID: 2721747313221522146}
   - {fileID: 8169937619715951730}
-  - {fileID: 3635885065411253896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6973772905238250988
@@ -5272,9 +5226,6 @@ MonoBehaviour:
   showSword: 0
   collisionSword: {fileID: 8913766153729388458}
   SwordTrails: {fileID: 6093540354601736907}
-  fieldPoint: {fileID: 3635885065411253896}
-  Fieldtime: 1
-  fieldPool: {fileID: 5397853695515244767, guid: bbfb49e9c9a6ad14c8135f9c38e51448, type: 3}
 --- !u!114 &3943182846284432213
 MonoBehaviour:
   m_ObjectHideFlags: 0
