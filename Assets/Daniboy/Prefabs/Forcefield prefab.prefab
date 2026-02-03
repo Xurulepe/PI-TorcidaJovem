@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7990870307087223212}
   m_Layer: 0
   m_Name: Forcefield prefab
-  m_TagString: Untagged
+  m_TagString: Forcefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,3 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fieldtime: 1
   fieldPool: {fileID: 5397853695515244767}
+  _Player: {fileID: 0}
+  enemyScript1: {fileID: 0}
+  enemyScript2: {fileID: 0}

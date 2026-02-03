@@ -10,7 +10,7 @@ public class Forcefield : MonoBehaviour
     [SerializeField] GameObject fieldPrefab;
     private List<GameObject> objects = new List<GameObject>();
     private int amountToPool = 10;
-   
+  
  
 
     private void Awake()
@@ -21,6 +21,8 @@ public class Forcefield : MonoBehaviour
         }
     }
 
+    
+
     void Start()
     {
         for (int i = 0; i < amountToPool; i++)
@@ -30,6 +32,8 @@ public class Forcefield : MonoBehaviour
             objects.Add(obj);
         }
     }
+
+
 
 
     public GameObject GetPooledObjects()

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using static UnityEngine.Rendering.DebugUI;
+
 public class InimigoMelee : InimigoDef
 {
     [Header("Configuração InimigoM")]
@@ -31,6 +33,7 @@ public class InimigoMelee : InimigoDef
     public bool PlayerHitBox;
     [SerializeField] Transform _enemy;
     private Vector3 direction;
+    bool _field = false;
 
     protected override void Start()
     {
@@ -104,6 +107,17 @@ public class InimigoMelee : InimigoDef
                 ApplyKnockback(knockDir);
             }
         }
+
+        if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+          
+            _field=true;
+            ApplyKnockback(transform.position);
+            Invoke(nameof(FieldResp), 1);
+
+        }
+
+
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -112,9 +126,16 @@ public class InimigoMelee : InimigoDef
             Vector3 knockDir = (transform.position - hit.point).normalized;
             ApplyKnockback(knockDir);
         }
+
+       
     }
 
+    void FieldResp()
+    {
 
+        _field = false;
+       
+    }
 
 
     private void OnTriggerExit(Collider other)
