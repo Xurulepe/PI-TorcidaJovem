@@ -11,6 +11,7 @@ public class AnimaControleRobo_ruan : MonoBehaviour
     {
         playerControle.Shoot();
         quantAtk = 0;
+        playerControle.ShootParticule.SetActive(true);
         playerControle._finalAction = false;
 
     }

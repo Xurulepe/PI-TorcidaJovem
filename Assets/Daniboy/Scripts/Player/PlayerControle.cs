@@ -73,6 +73,7 @@ public class PlayerControle : MonoBehaviour
     public bool showSword;
     public GameObject collisionSword;
     public GameObject SwordTrails;
+    public GameObject ShootParticule;
 
     [Header("Forcefield")]
     [SerializeField] public Transform fieldPoint;
@@ -348,7 +349,7 @@ public class PlayerControle : MonoBehaviour
 
         }
         collisionSword.SetActive(showSword);
-        SwordTrails.SetActive(showSword);
+        SwordTrails.SetActive(showSword);        
 
         espadaMaterial.SetFloat("_Cultof_helth", showValor);
 
