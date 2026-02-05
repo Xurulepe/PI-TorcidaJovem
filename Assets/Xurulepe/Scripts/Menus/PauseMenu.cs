@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseButtonUI;
     [SerializeField] private Image _backgroundPanel;
+    [SerializeField] private GameObject _backgroundImage;
 
     [Header("Componentes do menu de pausa")]
     [SerializeField] private Menu _pauseMenu;
@@ -85,6 +86,7 @@ public class PauseMenu : MonoBehaviour
     {
         _pauseButtonUI.SetActive(false);
         _firstButtonPauseMenu.Select();
+        _backgroundImage.SetActive(true);
 
         Debug.Log("Pausando o jogo");
         IsPaused = true;
@@ -96,6 +98,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         _pauseButtonUI.SetActive(true);
+        _backgroundImage.SetActive(false);
 
         Debug.Log("Retomando o jogo");
         IsPaused = false;
@@ -114,6 +117,8 @@ public class PauseMenu : MonoBehaviour
     public void BackToMenu()
     {
         IsPaused = false;
+
+        DOTween.KillAll();
         SceneManager.LoadScene(0);
     }
     #endregion
@@ -148,7 +153,7 @@ public class PauseMenu : MonoBehaviour
             menuElement.DOScale(0f, 0.25f).OnComplete(() =>
             {
                 menu.gameObject.SetActive(false);
-            }); ;
+            });
         }
     }
 
