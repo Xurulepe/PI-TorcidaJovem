@@ -131,6 +131,7 @@ public class InimigoDef : MonoBehaviour
         if (_isHIT == true)
         {
             spriteRenderer.sprite = Rostoimg[1];
+            _spriteVirus.GetComponent<SpriteRenderer>().color = Color.red;
         }
         else
         {
@@ -162,7 +163,7 @@ public class InimigoDef : MonoBehaviour
         {
             _renderer[i].enabled = false;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
 
         
@@ -194,7 +195,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void RecuperarDedano()
     {
 
-       
+        _spriteVirus.GetComponent<SpriteRenderer>().color = Color.white;
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
