@@ -34,7 +34,8 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
-
+    [SerializeField] Color cor;
+    [SerializeField] Color cor2;
     public bool estaMorrendo = false;
     public float TempoMorrendo = 0f;
 
@@ -131,7 +132,9 @@ public class InimigoDef : MonoBehaviour
         if (_isHIT == true)
         {
             spriteRenderer.sprite = Rostoimg[1];
-            _spriteVirus.GetComponent<SpriteRenderer>().color = Color.red;
+            //_spriteVirus.GetComponent<SpriteRenderer>().color = cor;
+            _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
+
         }
         else
         {
@@ -163,7 +166,7 @@ public class InimigoDef : MonoBehaviour
         {
             _renderer[i].enabled = false;
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.25f);
 
 
         
@@ -194,8 +197,7 @@ public class InimigoDef : MonoBehaviour
     }
     public virtual void RecuperarDedano()
     {
-
-        _spriteVirus.GetComponent<SpriteRenderer>().color = Color.white;
+        _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;

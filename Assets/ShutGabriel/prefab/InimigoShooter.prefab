@@ -460,6 +460,8 @@ MonoBehaviour:
   - {fileID: -2216818378679403149, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   - {fileID: -2710034688760179752, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   hITBOX: {fileID: 3207082676554296347}
+  cor: {r: 0.46226418, g: 0.4600837, b: 0.4600837, a: 1}
+  cor2: {r: 1, g: 1, b: 1, a: 1}
   estaMorrendo: 0
   TempoMorrendo: 0
   projectilePrefab: {fileID: 5209477025593447596, guid: 10a34b3928ad20948a20e015b352a657, type: 3}

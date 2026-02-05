@@ -401,6 +401,8 @@ MonoBehaviour:
   - {fileID: -2216818378679403149, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   - {fileID: -2710034688760179752, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   hITBOX: {fileID: 3436551259529693283}
+  cor: {r: 0.4528302, g: 0.44642222, b: 0.44642222, a: 1}
+  cor2: {r: 1, g: 1, b: 1, a: 1}
   estaMorrendo: 0
   TempoMorrendo: 0
   IntervaloAtaque: 1
