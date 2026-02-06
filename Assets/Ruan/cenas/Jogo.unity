@@ -7016,7 +7016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2012477931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,7 +7031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
-  amountToPool: 3
+  amountToPool: 1
   Vida: 55
   radius: 5
   height: 10
