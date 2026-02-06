@@ -134,7 +134,7 @@ public class InimigoDef : MonoBehaviour
         {
             spriteRenderer.sprite = Rostoimg[1];
             //_spriteVirus.GetComponent<SpriteRenderer>().color = cor;
-           //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
+            _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
 
         }
         else
@@ -202,7 +202,7 @@ public class InimigoDef : MonoBehaviour
         {
             _part2[i].Play();
         }
-        //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
+        _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;
