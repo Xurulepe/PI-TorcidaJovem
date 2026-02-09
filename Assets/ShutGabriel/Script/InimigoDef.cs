@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.AI;
 using System.Collections;
@@ -33,6 +33,7 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected Transform cameraTransform;
     //[SerializeField] protected Transform shadowPosition;
     [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected SpriteRenderer spriteRendererVirus;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
     [SerializeField] Color cor;
@@ -40,7 +41,30 @@ public class InimigoDef : MonoBehaviour
     public bool estaMorrendo = false;
     public float TempoMorrendo = 0f;
 
+    [Header("ruan conde")]
+    public Material mat;
+    public Coroutine flashRoutine;
+    public GameObject particule;
+    public float tempoPiscar;
+    public bool executado;
 
+
+    void Awake()
+    {     
+        // 🔥 cria uma instância ÚNICA do material para ESTE inimigo
+        mat = new Material(spriteRendererVirus.sharedMaterial);
+        spriteRendererVirus.material = mat;
+
+        mat.SetFloat("_FlashAmount", 0f);
+    }
+
+
+    void OnEnable()
+    {
+        // importante pra pooling
+        if (mat != null)
+            mat.SetFloat("_FlashAmount", 0f);
+    }
 
     protected virtual void Start()
     {
@@ -89,10 +113,11 @@ public class InimigoDef : MonoBehaviour
                 //_spriteVirus.gameObject.SetActive(false);
             }
         }
+        
     }
     protected virtual void LevarDano(int dano)
     {
-
+        
         vida -= dano;
         if (vida <= 0)
         {
@@ -104,6 +129,22 @@ public class InimigoDef : MonoBehaviour
             RecuperarDedano();
         }
     }
+
+    public void Flash(float duration = 0.1f)
+    {
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+
+        flashRoutine = StartCoroutine(FlashRoutine(duration));
+    }
+
+    IEnumerator FlashRoutine(float duration)
+    {
+        mat.SetFloat("_FlashAmount", 1f);
+        yield return new WaitForSeconds(duration);
+        mat.SetFloat("_FlashAmount", 0f);
+    }
+
     //Morte do inimigo
     protected virtual void Morrer()
     {
@@ -122,24 +163,30 @@ public class InimigoDef : MonoBehaviour
         }
         TempoMorrendo = 1.5f;
         estaMorrendo = true;
-
-        
-        
-        
-
     }
+
     protected virtual void selecaoFace()
     {
         if (_isHIT == true)
         {
             spriteRenderer.sprite = Rostoimg[1];
             //_spriteVirus.GetComponent<SpriteRenderer>().color = cor;
-            _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
+            //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
+            if (executado == false)
+            {
+                Flash(tempoPiscar);
+
+                particule.SetActive(true);
+                
+                executado = true;
+            }
 
         }
         else
         {
             spriteRenderer.sprite = Rostoimg[0];
+            executado = false;
+
         }
     }
 
@@ -202,7 +249,7 @@ public class InimigoDef : MonoBehaviour
         {
             _part2[i].Play();
         }
-        _spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
+        //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
         _tempo = 0f;
         _checkMorte = false;
         _isHIT = false;

@@ -520,26 +520,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3767381977790515458, guid: 1a2ef6edee3fdb74dac95a3235eb5fac, type: 3}
   m_PrefabInstance: {fileID: 641526177434200281}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &618758382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8913766153729388458, guid: 1a2ef6edee3fdb74dac95a3235eb5fac, type: 3}
-  m_PrefabInstance: {fileID: 641526177434200281}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &618758387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618758382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02821fc631b8824cb52bffede5a4f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParticulaHit: {fileID: 8598715497064841651, guid: 72d7a9089b59128459a88cad0d95e84c, type: 3}
-  poolSize: 20
-  Particulas: []
 --- !u!198 &650913493 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3784945155588612439, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
@@ -5516,7 +5496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1060880383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7676,10 +7656,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8169937619715951730, guid: 1a2ef6edee3fdb74dac95a3235eb5fac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 893510138}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8913766153729388458, guid: 1a2ef6edee3fdb74dac95a3235eb5fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 618758387}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a2ef6edee3fdb74dac95a3235eb5fac, type: 3}
 --- !u!1001 &3796154605032342967
 PrefabInstance:
