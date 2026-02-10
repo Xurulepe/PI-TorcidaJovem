@@ -22,7 +22,7 @@ public class AnimaControleRobo_ruan : MonoBehaviour
 
     public void finalAnimaEspada1()
     {
-        if (quantAtk ==1)
+        if (quantAtk == 1)
         {
             quantAtk = 0;
             playerControle._finalAction = false;

@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Cultof_helth: -1344.86
+    - _Cultof_helth: -2000
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
