@@ -14,7 +14,8 @@ public class Projetil : MonoBehaviour
     [SerializeField] MeshRenderer[] _renderer;
     public float tempoExplosao = 0.1f;
     public bool Tiro = false;
-
+    [Header("Campo de força")]
+    bool _field = false;
 
     void Start()
     {
@@ -38,6 +39,17 @@ public class Projetil : MonoBehaviour
             }
             Tiro = true; 
         }
+        else if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _field = true;
+                gameObject.SetActive(false); 
+                Invoke(nameof(FieldResp), 1);
+
+            }
+
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -49,7 +61,13 @@ public class Projetil : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-            
+        
+    }
+    void FieldResp()
+    {
+
+        _field = false;
+
     }
     void Dano()
     {
