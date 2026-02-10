@@ -73,7 +73,7 @@ public class PlayerHealthScript : MonoBehaviour
 
             yield return new WaitForSeconds(_deathTime);
             morteExecutada = false;
-            SceneManager.LoadScene(Respawn);
+            SceneManager.LoadScene(Respawn); // aqui a parte do respawn xurulepe...
         }
 
 
