@@ -78,7 +78,8 @@ public class PlayerControle : MonoBehaviour
     [Header("Forcefield")]
     [SerializeField] public Transform fieldPoint;
     public float Fieldtime = 1f;
-   [SerializeField] public GameObject fieldPool;
+    public GameObject _Field;
+    [SerializeField] public Animator fieldAnim;
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
@@ -300,15 +301,17 @@ public class PlayerControle : MonoBehaviour
     {
         if (value.performed)
         {
-            GameObject Field = Forcefield.instance.GetPooledObjects();
-            FieldEnd Fielder = Field.GetComponent<FieldEnd>();
-            if (Field != null)
+            Debug.Log("press T");
+            FieldEnd Fielder = _Field.GetComponent<FieldEnd>();
+            if (_Field != null)
             {
-                Field.transform.position = fieldPoint.position;
-                Field.transform.rotation = fieldPoint.rotation;
-                Field.SetActive(true);
+                Debug.Log("escudoT");
+                _Field.transform.position = fieldPoint.position;
+                _Field.transform.rotation = fieldPoint.rotation;
+                _Field.SetActive(true);
                 Fielder._Player = this.transform;
                 _anima_Robo.SetTrigger("ShieldUp");
+                fieldAnim.SetBool("FieldUp", false);
             }
         
         }

@@ -3,7 +3,8 @@ using UnityEngine;
 public class FieldEnd : MonoBehaviour
 {
     public float Fieldtime = 2f;
-    [SerializeField] public GameObject fieldPool;
+     
+    [SerializeField] public PlayerControle _playerControle;
     public Transform _Player;
     public InimigoMelee enemyScript1;
     public InimigoShooter enemyScript2;
@@ -11,9 +12,10 @@ public class FieldEnd : MonoBehaviour
     void Start()
     {
 
-        enemyScript1.GetComponent<InimigoMelee>();
+        //_playerControle = GetComponent<PlayerControle>();
+       // enemyScript1.GetComponent<InimigoMelee>();
 
-        enemyScript2.GetComponent<InimigoShooter>();
+      //  enemyScript2.GetComponent<InimigoShooter>();
 
 
     }
@@ -43,12 +45,13 @@ public class FieldEnd : MonoBehaviour
 
     void DeactivateObj()
     {
-        fieldPool.SetActive(false);
+        _playerControle._Field.SetActive(false);
+
     }
 
     private void OnEnable()
     {
         Fieldtime = -Time.deltaTime;
-        Invoke("DeactivateObj", 0.3f);
+        Invoke("DeactivateObj", 3f);
     }
 }
