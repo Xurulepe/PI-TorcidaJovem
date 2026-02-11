@@ -21,7 +21,7 @@ public class InimigoMelee : InimigoDef
 
 
     //KnockBeck
-    public float _knockbackForce = 40f;
+    public float _knockbackForce = 20f;
     public float knockbackDuration = 0.3f;
     public float gravity = -9.81f;
 
@@ -112,7 +112,9 @@ public class InimigoMelee : InimigoDef
         {
 
             _field = true;
-            ApplyKnockback(transform.position);
+            //ApplyKnockback(transform.localPosition);
+            Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
+            ApplyKnockback(knockDir);
             Invoke(nameof(FieldResp), 1);
 
         }
