@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameOverPanel;
-    [SerializeField] private GameObject _pauseMenuPanel;
+    [SerializeField] private GameFlowController _gameFlowController;
 
     #region SINGLETON
     public static UIManager Instance { get; private set; }
@@ -25,18 +24,23 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // inscrever nos eventos relacionados à ui
+        
 
-        _gameOverPanel.SetActive(false);
+        
     }
 
     public void ShowGameOver()
     {
-        _gameOverPanel.SetActive(true);
+        _gameFlowController.ShowLoseHUD();
     }
 
-    public void TogglePauseMenu(bool active)
+    public void ShowGameCompleted()
     {
-        _pauseMenuPanel.SetActive(active);
+        _gameFlowController.ShowWinHUD();
+    }
+
+    public void TogglePauseMenu()
+    {
+        
     }
 }

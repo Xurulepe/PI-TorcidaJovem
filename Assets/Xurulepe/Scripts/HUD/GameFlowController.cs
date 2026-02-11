@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
 {
@@ -35,5 +37,23 @@ public class GameFlowController : MonoBehaviour
 
         menuAnimation.AnimateSingleElement(loseHUD);
         menuAnimation.AnimateMenu(loseMenu, MenuAnimation.AnimationMode.OneAtATime);
+    }
+
+    public void BackToMenu()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene(0);
+    }
+
+    public void RetryLevel()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
