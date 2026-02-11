@@ -13,6 +13,10 @@ public class PlayerHealthScript : MonoBehaviour
     public PlayerControle _playerControle;
 
     public bool morteExecutada;
+
+    [SerializeField] private GameFlowController _gameFlowController;
+    private bool _jogoTerminou;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +24,7 @@ public class PlayerHealthScript : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _anima_Robo = _playerControle._anima_Robo;
         _currentHealth = _maxHealth;
+        _jogoTerminou = false;
     }
 
     // Update is called once per frame
@@ -73,7 +78,13 @@ public class PlayerHealthScript : MonoBehaviour
 
             yield return new WaitForSeconds(_deathTime);
             morteExecutada = false;
-            SceneManager.LoadScene(Respawn); // aqui a parte do respawn xurulepe...
+            //SceneManager.LoadScene(Respawn); 
+            
+            if (!_jogoTerminou)
+            {
+                _gameFlowController.ShowLoseHUD();
+                _jogoTerminou = true;
+            }
         }
 
 
