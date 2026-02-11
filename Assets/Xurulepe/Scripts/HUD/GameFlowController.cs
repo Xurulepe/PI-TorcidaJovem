@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
 {
-    [Header("HUDs de vitória e derrota")]
+    [Header("HUDs")]
     [SerializeField] private GameObject winHUD;
     [SerializeField] private GameObject loseHUD;
+    [SerializeField] private GameObject tutorialHUD;
 
     [Header("Menus a serem animados")]
     [SerializeField] private Menu winMenu;
@@ -55,5 +56,10 @@ public class GameFlowController : MonoBehaviour
     {
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ContinueTutorial()
+    {
+        tutorialHUD.SetActive(false);
     }
 }
