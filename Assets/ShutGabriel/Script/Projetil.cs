@@ -44,7 +44,7 @@ public class Projetil : MonoBehaviour
             for (int i = 0; i < _renderer.Length; i++)
             {
                 _field = true;
-                gameObject.SetActive(false); 
+                _part[i].Play();
                 Invoke(nameof(FieldResp), 1);
 
             }
@@ -61,7 +61,15 @@ public class Projetil : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        
+        if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _renderer[i].enabled = false;
+                gameObject.SetActive(false);
+            }
+        }
+
     }
     void FieldResp()
     {
