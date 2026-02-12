@@ -20,6 +20,7 @@ public class GameFlowController : MonoBehaviour
     [Header("Tutorial controller")]
     [SerializeField] private List<GameObject> tutorialList;
     [SerializeField] private int tutorialIndex;
+    [SerializeField] private bool tutorialActive;
 
     // componentes
     private MenuAnimation menuAnimation;
@@ -38,7 +39,7 @@ public class GameFlowController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && tutorialIndex <= tutorialList.Count - 1)
+        if (Input.GetKeyDown(KeyCode.L) && tutorialIndex <= tutorialList.Count - 1 && !tutorialActive)
         {
             ShowTutorial();
         }
@@ -82,6 +83,7 @@ public class GameFlowController : MonoBehaviour
 
     public void ContinueTutorial()
     {
+        tutorialActive = false;
         backgroundPanel.SetActive(false);
         menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f);
 
@@ -90,6 +92,7 @@ public class GameFlowController : MonoBehaviour
 
     private void ShowTutorial()
     {
+        tutorialActive = true;
         tutorialHUD.SetActive(true);
         backgroundPanel.SetActive(true);
 
