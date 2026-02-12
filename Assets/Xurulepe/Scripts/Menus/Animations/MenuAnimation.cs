@@ -58,9 +58,9 @@ public class MenuAnimation : MonoBehaviour
         }
     }
 
-    public void AnimateSingleElement(GameObject gameObj)
+    public void AnimateSingleElement(GameObject gameObj, Vector3 initialScale, float finalScale, float time)
     {
-        gameObj.transform.localScale = Vector3.zero;
-        gameObj.transform.DOScale(1f, 0.25f).SetEase(Ease.InOutBack);
+        gameObj.transform.localScale = initialScale;
+        gameObj.transform.DOScale(finalScale, time).SetEase(Ease.InOutBack);
     }
 }

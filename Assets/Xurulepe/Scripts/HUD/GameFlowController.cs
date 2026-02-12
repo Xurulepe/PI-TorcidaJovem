@@ -1,9 +1,12 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
 {
+    [SerializeField] private GameObject backgroundPanel;
+
     [Header("HUDs")]
     [SerializeField] private GameObject winHUD;
     [SerializeField] private GameObject loseHUD;
@@ -12,6 +15,11 @@ public class GameFlowController : MonoBehaviour
     [Header("Menus a serem animados")]
     [SerializeField] private Menu winMenu;
     [SerializeField] private Menu loseMenu;
+    [SerializeField] private Menu tutorialMenu;
+
+    [Header("Tutorial controller")]
+    [SerializeField] private List<GameObject> tutorialList;
+    [SerializeField] private int tutorialIndex;
 
     // componentes
     private MenuAnimation menuAnimation;
@@ -22,13 +30,26 @@ public class GameFlowController : MonoBehaviour
 
         winHUD.SetActive(false);
         loseHUD.SetActive(false);
+        tutorialHUD.SetActive(false);
+        backgroundPanel.SetActive(false);
+
+        tutorialIndex = 0;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T) && tutorialIndex <= tutorialList.Count - 1)
+        {
+            ShowTutorial();
+        }
     }
 
     public void ShowWinHUD()
     {
         winHUD.SetActive(true);
 
-        menuAnimation.AnimateSingleElement(winHUD);
+        backgroundPanel.SetActive(true);
+        menuAnimation.AnimateSingleElement(winHUD, Vector3.zero, 1f, 0.25f);
         menuAnimation.AnimateMenu(winMenu, MenuAnimation.AnimationMode.OneAtATime);
     }
 
@@ -36,7 +57,8 @@ public class GameFlowController : MonoBehaviour
     {
         loseHUD.SetActive(true);
 
-        menuAnimation.AnimateSingleElement(loseHUD);
+        backgroundPanel.SetActive(true);
+        menuAnimation.AnimateSingleElement(loseHUD, Vector3.zero, 1f, 0.25f);
         menuAnimation.AnimateMenu(loseMenu, MenuAnimation.AnimationMode.OneAtATime);
     }
 
@@ -60,6 +82,30 @@ public class GameFlowController : MonoBehaviour
 
     public void ContinueTutorial()
     {
-        tutorialHUD.SetActive(false);
+        backgroundPanel.SetActive(false);
+        menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f);
+
+        DeactiveTutorialText();
+    }
+
+    private void ShowTutorial()
+    {
+        tutorialHUD.SetActive(true);
+        backgroundPanel.SetActive(true);
+
+        tutorialList[tutorialIndex].SetActive(true);
+
+        menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.zero, 1f, 0.5f);
+        menuAnimation.AnimateMenu(tutorialMenu, MenuAnimation.AnimationMode.OneAtATime);
+
+        tutorialIndex++;
+    }
+
+    private void DeactiveTutorialText()
+    {
+        foreach (var tutorial in tutorialList)
+        {
+            tutorial.SetActive(false);
+        }
     }
 }
