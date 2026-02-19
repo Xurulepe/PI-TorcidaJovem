@@ -22,6 +22,11 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private int tutorialIndex;
     [SerializeField] private bool tutorialActive;
 
+    [Header("Controlados pelo tutorial")]
+    [SerializeField] private GameObject enemyMelee;
+    [SerializeField] private GameObject enemyShooter;
+    [SerializeField] List<GameObject> spawners;
+
     // componentes
     private MenuAnimation menuAnimation;
 
@@ -35,16 +40,19 @@ public class GameFlowController : MonoBehaviour
         backgroundPanel.SetActive(false);
 
         tutorialIndex = 0;
+
+        ShowTutorial();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L) && tutorialIndex <= tutorialList.Count - 1 && !tutorialActive)
-        {
-            ShowTutorial();
-        }
+        //if (Input.GetKeyDown(KeyCode.L) && tutorialIndex <= tutorialList.Count - 1 && !tutorialActive)
+        //{
+        //    ShowTutorial();
+        //}
     }
 
+    #region HUD DE FINAL DE JOGO
     public void ShowWinHUD()
     {
         winHUD.SetActive(true);
@@ -62,7 +70,9 @@ public class GameFlowController : MonoBehaviour
         menuAnimation.AnimateSingleElement(loseHUD, Vector3.zero, 1f, 0.25f);
         menuAnimation.AnimateMenu(loseMenu, MenuAnimation.AnimationMode.OneAtATime);
     }
+    #endregion
 
+    #region HUD BUTTONS FUNCTIONS
     public void BackToMenu()
     {
         DOTween.KillAll();
@@ -80,18 +90,29 @@ public class GameFlowController : MonoBehaviour
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    #endregion
 
+
+    public void PauseGame()
+    {
+
+    }
+
+    #region TUTORIAL CONTROLLER
     public void ContinueTutorial()
     {
         tutorialActive = false;
         backgroundPanel.SetActive(false);
-        menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f);
+        menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f, false);
 
         DeactiveTutorialText();
+        //ControlTutorialObjects();
     }
 
-    private void ShowTutorial()
+    public void ShowTutorial()
     {
+        // Pausar inimigos e player
+
         tutorialActive = true;
         tutorialHUD.SetActive(true);
         backgroundPanel.SetActive(true);
@@ -104,6 +125,11 @@ public class GameFlowController : MonoBehaviour
         tutorialIndex++;
     }
 
+    public bool CanShowTutorial()
+    {
+        return (tutorialIndex <= tutorialList.Count - 1) && !tutorialActive;
+    }
+
     private void DeactiveTutorialText()
     {
         foreach (var tutorial in tutorialList)
@@ -111,4 +137,15 @@ public class GameFlowController : MonoBehaviour
             tutorial.SetActive(false);
         }
     }
+
+    private void ControlTutorialObjects()
+    {
+        switch (tutorialIndex)
+        {
+            case 4:
+
+                break;
+        }
+    }
+    #endregion
 }
