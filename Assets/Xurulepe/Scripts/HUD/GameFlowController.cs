@@ -92,10 +92,11 @@ public class GameFlowController : MonoBehaviour
     }
     #endregion
 
-
+    // a ser usado quando um tutorial for exibido
     public void PauseGame()
     {
-
+        // pausar inimigos
+        // pausar player
     }
 
     #region TUTORIAL CONTROLLER
