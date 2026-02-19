@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
@@ -27,6 +28,7 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private GameObject enemyShooter;
     [SerializeField] private List<GameObject> spawners;
     public List<GameObject> enemiesList = new List<GameObject>();
+    public List<GameObject> spawnersList = new List<GameObject>();
 
 
     // componentes
@@ -95,10 +97,20 @@ public class GameFlowController : MonoBehaviour
     #endregion
 
     // a ser usado quando um tutorial for exibido
-    public void PauseGame()
+    public void PauseGame(bool value)
     {
         // pausar inimigos
         //PauseManager.isPaused = true;
+        for (int i = 0; i < enemiesList.Count; i++) {
+
+            enemiesList[i].GetComponent<NavMeshAgent>().isStopped = value;
+        }
+
+        //for (int i = 0; i < spawnersList.Count; i++)
+        //{
+
+            
+        //}
 
         // pausar player
     }
@@ -116,13 +128,15 @@ public class GameFlowController : MonoBehaviour
         menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f, false);
 
         DeactiveTutorialText();
+
+        PauseGame(false);
         //ControlTutorialObjects();
     }
 
     public void ShowTutorial()
     {
         // Pausar inimigos e player
-        PauseGame();
+        PauseGame(true);
 
         tutorialActive = true;
         tutorialHUD.SetActive(true);

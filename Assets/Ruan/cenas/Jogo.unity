@@ -649,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &405270020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  amountToPool: 2
+  amountToPool: 5
   Vida: 100
   radius: 0.5
   height: 2
@@ -682,6 +682,7 @@ MonoBehaviour:
   - {fileID: 851263701}
   _cl:
   - {fileID: 405270022}
+  _gfc: {fileID: 0}
   _TimeStart: 2
   timerIsRunning: 0
 --- !u!195 &405270021
@@ -1036,6 +1037,7 @@ MonoBehaviour:
   - {fileID: 650913493}
   _cl:
   - {fileID: 1060880385}
+  _gfc: {fileID: 0}
   _TimeStart: 2
   timerIsRunning: 0
 --- !u!195 &1060880384
@@ -2834,6 +2836,7 @@ MonoBehaviour:
   _part:
   - {fileID: 1953245548}
   _cl: []
+  _gfc: {fileID: 0}
   _TimeStart: 2
   timerIsRunning: 0
 --- !u!195 &2012477932
