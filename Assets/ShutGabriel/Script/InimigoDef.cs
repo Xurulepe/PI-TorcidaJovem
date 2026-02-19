@@ -5,6 +5,7 @@ using System.Collections;
 using DG.Tweening;
 using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
+using DG.Tweening.Core.Easing;
 
 public class InimigoDef : MonoBehaviour
 {
@@ -47,7 +48,8 @@ public class InimigoDef : MonoBehaviour
     public GameObject particule;
     public float tempoPiscar;
     public bool executado;
-
+    //--------------------PARAR INIMIGO----------------------
+    protected static bool isPaused = false;
 
     void Awake()
     {     
@@ -96,6 +98,16 @@ public class InimigoDef : MonoBehaviour
     protected virtual void Update()
     {
 
+        if (PauseManager.isPaused)
+        {
+            _agent.isStopped = true;
+            return;
+        }
+        else
+        {
+            _agent.isStopped = false;
+        }
+
         if (_alvo != null && _agent != null)
         {
             _agent.SetDestination(_alvo.position);
@@ -113,7 +125,7 @@ public class InimigoDef : MonoBehaviour
                 //_spriteVirus.gameObject.SetActive(false);
             }
         }
-        
+
     }
     protected virtual void LevarDano(int dano)
     {
@@ -270,5 +282,6 @@ public class InimigoDef : MonoBehaviour
             _spriteVirus.gameObject.SetActive(true);
         }
     }
+
 
 }
