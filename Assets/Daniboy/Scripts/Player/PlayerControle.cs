@@ -80,6 +80,10 @@ public class PlayerControle : MonoBehaviour
     public float Fieldtime = 1f;
     public GameObject _Field;
     [SerializeField] public Animator fieldAnim;
+
+    [Header("laserBean")]
+    public LaserBeam _laserBeam;
+
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
@@ -127,15 +131,16 @@ public class PlayerControle : MonoBehaviour
     {
         if (_lockMove == false && _Death == false)
         {
-            if (value.performed && _finalAction == false)
+            if (value.performed)
             {
-                _finalAction = true;
-
-                anima_robo_ruan.quantAtk++;
-                if (anima_robo_ruan.quantAtk > 1)
+                if (_finalAction == false)
                 {
-                    _finalAction = true;
+                    if (anima_robo_ruan.quantAtk > 1)
+                    {
+                        _finalAction = true;
+                    }
                 }
+                anima_robo_ruan.quantAtk++;                
             }
 
         }
@@ -294,31 +299,48 @@ public class PlayerControle : MonoBehaviour
 
     public void CallHelp(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (_finalAction == false)
         {
-            _anima_Robo.SetTrigger("CallHelp");
+            if (value.performed)
+            {
+                _anima_Robo.SetTrigger("CallHelp");
+                _finalAction = true;
+            }
         }
+        
     }
 
     public void CallShieldUp(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (_finalAction == false)
         {
-            Debug.Log("press T");
-            FieldEnd Fielder = _Field.GetComponent<FieldEnd>();
-            if (_Field != null)
+            if (value.performed)
             {
-                Debug.Log("escudoT");
-                _Field.transform.position = fieldPoint.position;
-                _Field.transform.rotation = fieldPoint.rotation;
-                _Field.SetActive(true);
-                Fielder._Player = this.transform;
-                _anima_Robo.SetTrigger("ShieldUp");
-                fieldAnim.SetBool("FieldUp", false);
-            }
-        
-        }
+                Debug.Log("press T");
+                FieldEnd Fielder = _Field.GetComponent<FieldEnd>();
+                if (_Field != null)
+                {
+                    Debug.Log("escudoT");
+                    _Field.transform.position = fieldPoint.position;
+                    _Field.transform.rotation = fieldPoint.rotation;
+                    _Field.SetActive(true);
+                    Fielder._Player = this.transform;
+                    _anima_Robo.SetTrigger("ShieldUp");
+                    fieldAnim.SetBool("FieldUp", false);
+                }
 
+                _finalAction = true;
+            }
+        }       
+
+    }
+
+    public void LaserBean(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            _laserBeam.ShootLaserBean();
+        }
     }
 
     

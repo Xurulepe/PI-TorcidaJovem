@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserBeam : MonoBehaviour
 {
@@ -18,8 +19,12 @@ public class LaserBeam : MonoBehaviour
 
     private void Update()
     {
-        Timefire += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.E) && Timefire > fireRate) 
+        Timefire += Time.deltaTime;       
+    }
+
+    public void ShootLaserBean()
+    {
+        if (_pLayerControle._finalAction == false)
         {
             Timefire = 0;
             _lineRenderer.SetPosition(0, _gunTransform.position);
@@ -35,7 +40,10 @@ public class LaserBeam : MonoBehaviour
                 _lineRenderer.SetPosition(1, rayOrigin + (_Player.transform.forward * _gunrange));
             }
             StartCoroutine(ShootLaser());
+            _pLayerControle._finalAction = true;
+
         }
+        
     }
 
     IEnumerator ShootLaser() 

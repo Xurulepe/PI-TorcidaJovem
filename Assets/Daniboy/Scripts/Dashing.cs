@@ -30,10 +30,11 @@ public class Dashing : MonoBehaviour
     {
         if (_playerScript._finalAction == false)
         {
-            if (value.performed)
+            if (value.started)
             {
                 if (_playerScript._lockMove == false)
                 {
+                    _moveScript._anima_Robo.SetTrigger("Dash");
                     StartCoroutine(Impulse());
                     _playerScript._finalAction = true;
                 }
@@ -47,9 +48,7 @@ public class Dashing : MonoBehaviour
 
         while (Time.time < startTime + _dashTime)
         {
-            _moveScript._anima_Robo.SetTrigger("Dash");
             _moveScript.Controller.Move(_moveScript.moveInput * _dashSpeed * Time.deltaTime);
-            _playerScript._finalAction = false;
             _playerScript.anima_robo_ruan.quantAtk = 0;
             SpawnDamageParticle();
             yield return null;
