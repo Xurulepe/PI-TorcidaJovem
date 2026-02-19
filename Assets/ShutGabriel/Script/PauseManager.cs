@@ -6,10 +6,10 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            isPaused = !isPaused;
-            Time.timeScale = isPaused ? 0f : 1f;
-        }
+        //if (isPaused != !isPaused)
+        //{
+        //    isPaused = !isPaused;
+        //}
+        Time.timeScale = isPaused ? 0f : 1f;
     }
 }

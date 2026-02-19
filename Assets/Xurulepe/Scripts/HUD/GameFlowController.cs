@@ -25,7 +25,9 @@ public class GameFlowController : MonoBehaviour
     [Header("Controlados pelo tutorial")]
     [SerializeField] private GameObject enemyMelee;
     [SerializeField] private GameObject enemyShooter;
-    [SerializeField] List<GameObject> spawners;
+    [SerializeField] private List<GameObject> spawners;
+    public List<GameObject> enemiesList = new List<GameObject>();
+
 
     // componentes
     private MenuAnimation menuAnimation;
@@ -96,7 +98,14 @@ public class GameFlowController : MonoBehaviour
     public void PauseGame()
     {
         // pausar inimigos
+        PauseManager.isPaused = true;
+
         // pausar player
+    }
+
+    public void UnPause()
+    {
+        PauseManager.isPaused = false;
     }
 
     #region TUTORIAL CONTROLLER
@@ -113,6 +122,7 @@ public class GameFlowController : MonoBehaviour
     public void ShowTutorial()
     {
         // Pausar inimigos e player
+        PauseGame();
 
         tutorialActive = true;
         tutorialHUD.SetActive(true);
