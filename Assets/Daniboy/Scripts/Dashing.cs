@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Dashing : MonoBehaviour
@@ -27,13 +28,17 @@ public class Dashing : MonoBehaviour
 
     public void DashMove(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (_playerScript._finalAction == false)
         {
-            if (_playerScript._lockMove == false)
+            if (value.performed)
             {
-                StartCoroutine(Impulse());
+                if (_playerScript._lockMove == false)
+                {
+                    StartCoroutine(Impulse());
+                    _playerScript._finalAction = true;
+                }
             }
-        }        
+        }                
     }
 
     IEnumerator Impulse()
@@ -44,6 +49,8 @@ public class Dashing : MonoBehaviour
         {
             _moveScript._anima_Robo.SetTrigger("Dash");
             _moveScript.Controller.Move(_moveScript.moveInput * _dashSpeed * Time.deltaTime);
+            _playerScript._finalAction = false;
+            _playerScript.anima_robo_ruan.quantAtk = 0;
             SpawnDamageParticle();
             yield return null;
 

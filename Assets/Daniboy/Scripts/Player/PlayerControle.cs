@@ -116,6 +116,7 @@ public class PlayerControle : MonoBehaviour
                 if (anima_robo_ruan.quantAtk == 0)
                 {
                     _anima_Robo.SetTrigger("Shot");
+                    _finalAction = true;
 
                 }
             }
@@ -128,6 +129,8 @@ public class PlayerControle : MonoBehaviour
         {
             if (value.performed && _finalAction == false)
             {
+                _finalAction = true;
+
                 anima_robo_ruan.quantAtk++;
                 if (anima_robo_ruan.quantAtk > 1)
                 {
