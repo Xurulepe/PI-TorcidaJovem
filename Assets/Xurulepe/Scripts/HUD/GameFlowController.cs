@@ -98,14 +98,14 @@ public class GameFlowController : MonoBehaviour
     public void PauseGame()
     {
         // pausar inimigos
-        PauseManager.isPaused = true;
+        //PauseManager.isPaused = true;
 
         // pausar player
     }
 
     public void UnPause()
     {
-        PauseManager.isPaused = false;
+        //PauseManager.isPaused = false;
     }
 
     #region TUTORIAL CONTROLLER

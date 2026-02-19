@@ -50,6 +50,7 @@ public class InimigoDef : MonoBehaviour
     public bool executado;
     //--------------------PARAR INIMIGO----------------------
     protected static bool isPaused = false;
+   public GameFlowController _gfc;
 
     void Awake()
     {     
@@ -73,8 +74,10 @@ public class InimigoDef : MonoBehaviour
 
         //controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
-       
-        _agent = GetComponent<NavMeshAgent>();
+        _gfc =GameObject.FindWithTag("GameController").GetComponent<GameFlowController>();
+        _gfc.enemiesList.Add(gameObject);
+
+         _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -98,15 +101,7 @@ public class InimigoDef : MonoBehaviour
     protected virtual void Update()
     {
 
-        if (PauseManager.isPaused)
-        {
-            _agent.isStopped = true;
-            return;
-        }
-        else
-        {
-            _agent.isStopped = false;
-        }
+      
 
         if (_alvo != null && _agent != null)
         {

@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894ca0d7b06fab4981351fb422d8251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 100
+  vida: 55
   dano: 15
   _renderer:
   - {fileID: 6102374726004681698}
