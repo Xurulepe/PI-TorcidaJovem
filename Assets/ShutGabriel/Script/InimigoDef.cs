@@ -50,7 +50,7 @@ public class InimigoDef : MonoBehaviour
     public bool executado;
     //--------------------PARAR INIMIGO----------------------
     protected static bool isPaused = false;
-   public GameFlowController _gfc;
+    public GameFlowController _gfc;
 
     void Awake()
     {     

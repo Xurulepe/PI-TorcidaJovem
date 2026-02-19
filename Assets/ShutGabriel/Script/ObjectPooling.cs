@@ -30,6 +30,10 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] Collider[] _cl;
     protected int dano = 10;
     bool _startV;
+
+    public GameFlowController _gfc;
+
+
     protected virtual void Awake()
     {
         // SharedInstance = this;
@@ -37,6 +41,8 @@ public class ObjectPooling : MonoBehaviour
 
     protected virtual void Start()
     {
+        _gfc = GameObject.FindWithTag("GameController").GetComponent<GameFlowController>();
+        _gfc.enemiesList.Add(gameObject);
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
