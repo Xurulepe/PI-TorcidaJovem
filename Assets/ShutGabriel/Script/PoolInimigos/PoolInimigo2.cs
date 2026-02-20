@@ -13,8 +13,9 @@ public class PoolInimigo2 : PoolInimigo
     protected override void InimigoON(GameObject bullet)
     {
         //teste
-        if (!_gfc.isPaused)
+        if (!_gfc.isPaused && _gfc.enemyCount >= 1)
         {
+            //_gfc.enemyCount = 2;
             bullet = PoolInimigo2._poolimigos2.GetPooledObject();
             base.InimigoON(bullet);
         }

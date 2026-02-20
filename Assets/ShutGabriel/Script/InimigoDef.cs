@@ -155,7 +155,7 @@ public class InimigoDef : MonoBehaviour
     //Morte do inimigo
     protected virtual void Morrer()
     {
-
+        _gfc.enemyCount++;
         for (int i = 0; i < _part.Length; i++)
         {
             _part[i].Play();

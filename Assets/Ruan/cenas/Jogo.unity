@@ -649,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &405270020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2804,7 +2804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2012477931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +2997,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 1288662715306654724, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: m_text
+      value: "Use WASD para mover o personagem\nUse ESPA\xC7O para dar dash"
+      objectReference: {fileID: 0}
     - target: {fileID: 2768868119186690615, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3173,6 +3177,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -110
       objectReference: {fileID: 0}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: tutorialList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: 'tutorialList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2067834169}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: 'tutorialList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2067834168}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3189,6 +3205,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9256a416594bce743b30f4f62f2a747d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2067834168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5788769461490183646, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+  m_PrefabInstance: {fileID: 2067834166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2067834169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8889218626824556931, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+  m_PrefabInstance: {fileID: 2067834166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2071061580
 PrefabInstance:
   m_ObjectHideFlags: 0

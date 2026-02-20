@@ -9,7 +9,7 @@ public class ObjectPooling : MonoBehaviour
     //public static ObjectPooling SharedInstance;
     [SerializeField] protected List<GameObject> pooledObjects;
     [SerializeField] protected GameObject objectToPool;
-    [SerializeField] protected int amountToPool;
+    [SerializeField] public int amountToPool;
     [SerializeField] protected int Vida = 100;
 
 

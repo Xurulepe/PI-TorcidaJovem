@@ -26,10 +26,20 @@ public class GameFlowController : MonoBehaviour
     [Header("Controlados pelo tutorial")]
     [SerializeField] private GameObject enemyMelee;
     [SerializeField] private GameObject enemyShooter;
+    [SerializeField] private PoolInimigo1 enemyMeleeSpawner;
+    [SerializeField] private PoolInimigo2 enemyShooterSpawner;
+
     [SerializeField] private List<GameObject> spawners;
     public List<GameObject> enemiesList = new List<GameObject>();
     //public List<GameObject> spawnersList = new List<GameObject>();
     public bool isPaused;
+    public int enemyCount;
+
+    public int enemyMeleeAmount = 1;
+    public int enemyShooterAmount = 1;
+
+    public bool canSpawnEnemyMelee = false;
+    public bool canSpawnEnemyShooter = false;
 
 
     // componentes
@@ -126,7 +136,7 @@ public class GameFlowController : MonoBehaviour
 
         isPaused = false;
         PauseGame();
-        //ControlTutorialObjects();
+        ControlTutorialObjects();
     }
 
     public void ShowTutorial()
@@ -164,8 +174,12 @@ public class GameFlowController : MonoBehaviour
     {
         switch (tutorialIndex)
         {
-            case 4:
-
+            case 1:
+                canSpawnEnemyMelee = true;
+                break;
+            case 2:
+                canSpawnEnemyMelee = false;
+                //canSpawnEnemyShooter = true; 
                 break;
         }
     }
