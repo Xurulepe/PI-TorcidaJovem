@@ -13,7 +13,10 @@ public class PoolInimigo2 : PoolInimigo
     protected override void InimigoON(GameObject bullet)
     {
         //teste
-        bullet = PoolInimigo2._poolimigos2.GetPooledObject();
-        base.InimigoON(bullet);
+        if (!_gfc.isPaused)
+        {
+            bullet = PoolInimigo2._poolimigos2.GetPooledObject();
+            base.InimigoON(bullet);
+        }
     }
 }

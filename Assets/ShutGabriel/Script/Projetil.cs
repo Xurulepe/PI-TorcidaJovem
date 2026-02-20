@@ -16,7 +16,7 @@ public class Projetil : MonoBehaviour
     public bool Tiro = false;
     [Header("Campo de força")]
     bool _field = false;
-
+    //ababbababab
     void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");

@@ -42,7 +42,7 @@ public class ObjectPooling : MonoBehaviour
     protected virtual void Start()
     {
         _gfc = GameObject.FindWithTag("GameController").GetComponent<GameFlowController>();
-        _gfc.enemiesList.Add(gameObject);
+        
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)

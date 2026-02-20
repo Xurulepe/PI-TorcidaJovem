@@ -28,7 +28,8 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private GameObject enemyShooter;
     [SerializeField] private List<GameObject> spawners;
     public List<GameObject> enemiesList = new List<GameObject>();
-    public List<GameObject> spawnersList = new List<GameObject>();
+    //public List<GameObject> spawnersList = new List<GameObject>();
+    public bool isPaused;
 
 
     // componentes
@@ -97,20 +98,14 @@ public class GameFlowController : MonoBehaviour
     #endregion
 
     // a ser usado quando um tutorial for exibido
-    public void PauseGame(bool value)
+    public void PauseGame()
     {
         // pausar inimigos
         //PauseManager.isPaused = true;
         for (int i = 0; i < enemiesList.Count; i++) {
 
-            enemiesList[i].GetComponent<NavMeshAgent>().isStopped = value;
+            enemiesList[i].GetComponent<NavMeshAgent>().isStopped = isPaused;
         }
-
-        //for (int i = 0; i < spawnersList.Count; i++)
-        //{
-
-            
-        //}
 
         // pausar player
     }
@@ -129,14 +124,16 @@ public class GameFlowController : MonoBehaviour
 
         DeactiveTutorialText();
 
-        PauseGame(false);
+        isPaused = false;
+        PauseGame();
         //ControlTutorialObjects();
     }
 
     public void ShowTutorial()
     {
         // Pausar inimigos e player
-        PauseGame(true);
+        isPaused = true;
+        PauseGame();
 
         tutorialActive = true;
         tutorialHUD.SetActive(true);
