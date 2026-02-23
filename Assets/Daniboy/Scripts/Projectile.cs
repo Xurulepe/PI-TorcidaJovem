@@ -39,6 +39,6 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         _rb.linearVelocity = shootPoint.forward * speedProjectile * Time.deltaTime;
-        Invoke("DeactivateObj", 3); 
+        Invoke("DeactivateObj", 6); 
     }
 }
