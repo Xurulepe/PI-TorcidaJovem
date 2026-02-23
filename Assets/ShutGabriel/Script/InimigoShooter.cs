@@ -168,7 +168,7 @@ public class InimigoShooter : InimigoDef
     }
     private void Atirar()
     {
-        if(isPaused = false)
+        if(_gfc.isPaused == false)
         {
             if (_StopTiro == false)
             {

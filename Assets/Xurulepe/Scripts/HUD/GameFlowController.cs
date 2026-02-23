@@ -24,14 +24,14 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private bool tutorialActive;
 
     [Header("Controlados pelo tutorial")]
-    [SerializeField] private GameObject enemyMelee;
-    [SerializeField] private GameObject enemyShooter;
-    [SerializeField] private PoolInimigo1 enemyMeleeSpawner;
-    [SerializeField] private PoolInimigo2 enemyShooterSpawner;
+    //[SerializeField] private GameObject enemyMelee;
+    //[SerializeField] private GameObject enemyShooter;
+    [SerializeField] private List<GameObject> tutorialSpawners;
+    [SerializeField] private List<GameObject> finalSpawners;
+    [SerializeField] private GameObject pauseMenu;
 
-    [SerializeField] private List<GameObject> spawners;
     public List<GameObject> enemiesList = new List<GameObject>();
-    //public List<GameObject> spawnersList = new List<GameObject>();
+
     public bool isPaused;
     public int enemyCount;
 
@@ -57,14 +57,6 @@ public class GameFlowController : MonoBehaviour
         tutorialIndex = 0;
 
         ShowTutorial();
-    }
-
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.L) && tutorialIndex <= tutorialList.Count - 1 && !tutorialActive)
-        //{
-        //    ShowTutorial();
-        //}
     }
 
     #region HUD DE FINAL DE JOGO
@@ -128,6 +120,7 @@ public class GameFlowController : MonoBehaviour
     #region TUTORIAL CONTROLLER
     public void ContinueTutorial()
     {
+        //pauseMenu.SetActive(true);
         tutorialActive = false;
         backgroundPanel.SetActive(false);
         menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f, false);
@@ -148,6 +141,7 @@ public class GameFlowController : MonoBehaviour
         tutorialActive = true;
         tutorialHUD.SetActive(true);
         backgroundPanel.SetActive(true);
+        //pauseMenu.SetActive(false);
 
         tutorialList[tutorialIndex].SetActive(true);
 
@@ -170,6 +164,14 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    private void ControlSpawners(List<GameObject> spawnerList, bool active)
+    {
+        foreach (GameObject spawner in spawnerList)
+        {
+            spawner.SetActive(active);
+        }
+    }
+
     private void ControlTutorialObjects()
     {
         switch (tutorialIndex)
@@ -180,6 +182,9 @@ public class GameFlowController : MonoBehaviour
             case 2:
                 canSpawnEnemyMelee = false;
                 //canSpawnEnemyShooter = true; 
+                break;
+            case 3:
+                ControlSpawners(finalSpawners, true);
                 break;
         }
     }
