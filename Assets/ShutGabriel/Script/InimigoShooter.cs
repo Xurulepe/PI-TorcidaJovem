@@ -41,6 +41,7 @@ public class InimigoShooter : InimigoDef
     bool _field = false;
 
 
+
     protected override void Start()
     {
         base.Start();
@@ -167,15 +168,19 @@ public class InimigoShooter : InimigoDef
     }
     private void Atirar()
     {
-        if (_StopTiro == false)
+        if(isPaused = false)
         {
-            if (projectilePrefab == null || spawnPoint == null || _alvo == null) return;
-            Vector3 dir = (_alvo.position - spawnPoint.position).normalized;
-            Quaternion rot = Quaternion.LookRotation(dir);
+            if (_StopTiro == false)
+            {
+                if (projectilePrefab == null || spawnPoint == null || _alvo == null) return;
+                Vector3 dir = (_alvo.position - spawnPoint.position).normalized;
+                Quaternion rot = Quaternion.LookRotation(dir);
 
-            GameObject proj = Instantiate(projectilePrefab, spawnPoint.position, rot);
-            Projetil p = proj.GetComponent<Projetil>();
+                GameObject proj = Instantiate(projectilePrefab, spawnPoint.position, rot);
+                Projetil p = proj.GetComponent<Projetil>();
+            }
         }
+        
     }
 
 
