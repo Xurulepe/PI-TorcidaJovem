@@ -1207,6 +1207,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3784945155588612437, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
   m_PrefabInstance: {fileID: 369169949}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685301831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5191788822772614127, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+  m_PrefabInstance: {fileID: 2067834166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &727259642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 793702226110300275, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
@@ -3546,6 +3551,11 @@ Transform:
   - {fileID: 1953245550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2025234735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4476297952993579350, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
+  m_PrefabInstance: {fileID: 2071061580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2067834166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3775,6 +3785,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2094590933}
     - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 685301831}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 2025234735}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
       propertyPath: enemyMeleeSpawner
       value: 
       objectReference: {fileID: 18516621}
@@ -3857,6 +3875,10 @@ PrefabInstance:
       value: Pause-Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3842684550897064415, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476297952993579350, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

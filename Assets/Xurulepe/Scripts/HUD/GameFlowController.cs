@@ -28,12 +28,13 @@ public class GameFlowController : MonoBehaviour
     //[SerializeField] private GameObject enemyShooter;
     [SerializeField] private List<GameObject> tutorialSpawners;
     [SerializeField] private List<GameObject> finalSpawners;
-    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseButton;
 
     public List<GameObject> enemiesList = new List<GameObject>();
 
     public bool isPaused;
     public int enemyCount;
+    public bool tutorialFinished;
 
     public int enemyMeleeAmount = 1;
     public int enemyShooterAmount = 1;
@@ -102,46 +103,42 @@ public class GameFlowController : MonoBehaviour
     // a ser usado quando um tutorial for exibido
     public void PauseGame()
     {
-        // pausar inimigos
-        //PauseManager.isPaused = true;
-        for (int i = 0; i < enemiesList.Count; i++) {
+        //for (int i = 0; i < enemiesList.Count; i++) {
 
-            enemiesList[i].GetComponent<NavMeshAgent>().isStopped = isPaused;
-        }
+        //    enemiesList[i].GetComponent<NavMeshAgent>().isStopped = isPaused;
+        //}
 
-        // pausar player
+        isPaused = true;
     }
 
     public void UnPause()
     {
-        //PauseManager.isPaused = false;
+        isPaused = false;
     }
 
     #region TUTORIAL CONTROLLER
     public void ContinueTutorial()
     {
-        //pauseMenu.SetActive(true);
+        pauseButton.SetActive(true);
         tutorialActive = false;
         backgroundPanel.SetActive(false);
         menuAnimation.AnimateSingleElement(tutorialHUD, Vector3.one, 0f, 0.2f, false);
 
         DeactiveTutorialText();
 
-        isPaused = false;
-        PauseGame();
+        UnPause();
         ControlTutorialObjects();
     }
 
     public void ShowTutorial()
     {
         // Pausar inimigos e player
-        isPaused = true;
         PauseGame();
 
         tutorialActive = true;
         tutorialHUD.SetActive(true);
         backgroundPanel.SetActive(true);
-        //pauseMenu.SetActive(false);
+        pauseButton.SetActive(false);
 
         tutorialList[tutorialIndex].SetActive(true);
 
@@ -184,7 +181,9 @@ public class GameFlowController : MonoBehaviour
                 //canSpawnEnemyShooter = true; 
                 break;
             case 3:
+                ControlSpawners(tutorialSpawners, false);
                 ControlSpawners(finalSpawners, true);
+                tutorialFinished = true;
                 break;
         }
     }

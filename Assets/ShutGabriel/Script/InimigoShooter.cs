@@ -54,7 +54,7 @@ public class InimigoShooter : InimigoDef
     {
         base.Update();
 
-
+        _StopTiro = !_gfc.tutorialFinished;
 
         if (_isHIT == false)
         {

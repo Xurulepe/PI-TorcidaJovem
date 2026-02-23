@@ -100,7 +100,8 @@ public class InimigoDef : MonoBehaviour
     
     protected virtual void Update()
     {
-
+        // para inimigos se o jogo estiver pausada
+        _agent.isStopped = _gfc.isPaused;
       
 
         if (_alvo != null && _agent != null)
