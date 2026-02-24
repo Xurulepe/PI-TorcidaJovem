@@ -10,12 +10,14 @@ public class GlobuloBranco : MonoBehaviour
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] Transform _currentTarget;
     [SerializeField] List<Transform> enemies = new List<Transform>();
-    public float _updateRate = 0.5f;
+    public float _updateRate = 0.5f; 
     void Start()
     {
+
         if (_agent == null)
             _agent = GetComponent<NavMeshAgent>();
         InvokeRepeating(nameof(UpdateTarget), 0f, _updateRate);
+
     }
     void UpdateTarget()
     {
@@ -59,5 +61,10 @@ public class GlobuloBranco : MonoBehaviour
         }
 
         return closest;
+    }
+    public void Invocar()
+    {
+        gameObject.SetActive(true);
+        transform.localPosition = new Vector3(0, 0, 0);
     }
 }
