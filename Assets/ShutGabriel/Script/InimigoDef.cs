@@ -51,6 +51,7 @@ public class InimigoDef : MonoBehaviour
     //--------------------PARAR INIMIGO----------------------
     protected static bool isPaused = false;
     public GameFlowController _gfc;
+    public bool morreu;
 
     void Awake()
     {     
@@ -64,6 +65,8 @@ public class InimigoDef : MonoBehaviour
 
     void OnEnable()
     {
+        morreu = false;
+
         // importante pra pooling
         if (mat != null)
             mat.SetFloat("_FlashAmount", 0f);
@@ -279,5 +282,8 @@ public class InimigoDef : MonoBehaviour
         }
     }
 
-
+    private void OnDisable()
+    {
+        morreu = true;
+    }
 }

@@ -24,11 +24,12 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private bool tutorialActive;
 
     [Header("Controlados pelo tutorial")]
-    //[SerializeField] private GameObject enemyMelee;
-    //[SerializeField] private GameObject enemyShooter;
+    [SerializeField] private InimigoMelee enemyMelee;
+    [SerializeField] private InimigoShooter enemyShooter;
     [SerializeField] private List<GameObject> tutorialSpawners;
     [SerializeField] private List<GameObject> finalSpawners;
     [SerializeField] private GameObject pauseButton;
+    [SerializeField] private PlayerControle playerControl;
 
     public List<GameObject> enemiesList = new List<GameObject>();
 
@@ -58,6 +59,17 @@ public class GameFlowController : MonoBehaviour
         tutorialIndex = 0;
 
         ShowTutorial();
+    }
+
+    private void Start()
+    {
+        //enemyMelee = enemiesList[0].GetComponent<InimigoMelee>();
+        //enemyShooter = enemiesList[1].GetComponent<InimigoShooter>();
+    }
+
+    private void Update()
+    {
+        //ControlEnemies();
     }
 
     #region HUD DE FINAL DE JOGO
@@ -109,11 +121,13 @@ public class GameFlowController : MonoBehaviour
         //}
 
         isPaused = true;
+        playerControl.LockFunction();
     }
 
     public void UnPause()
     {
         isPaused = false;
+        playerControl.Unlock();
     }
 
     #region TUTORIAL CONTROLLER
@@ -185,6 +199,18 @@ public class GameFlowController : MonoBehaviour
                 ControlSpawners(finalSpawners, true);
                 tutorialFinished = true;
                 break;
+        }
+    }
+
+    private void ControlEnemies()
+    {
+        if (enemyMelee.morreu && CanShowTutorial())
+        {
+            ShowTutorial();
+        }
+        if (enemyShooter.morreu && CanShowTutorial())
+        {
+            ShowTutorial();
         }
     }
     #endregion

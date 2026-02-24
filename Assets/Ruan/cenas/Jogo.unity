@@ -2327,6 +2327,17 @@ PrefabInstance:
       addedObject: {fileID: 1780309030}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+--- !u!114 &1576868801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+  m_PrefabInstance: {fileID: 1576868800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4e06da114977e49a137b47c77a862d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1650040635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3800,6 +3811,10 @@ PrefabInstance:
       propertyPath: pauseButton
       value: 
       objectReference: {fileID: 2025234735}
+    - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
+      propertyPath: playerControl
+      value: 
+      objectReference: {fileID: 1576868801}
     - target: {fileID: 8493554938979381703, guid: 89b41cf71b737ca4fa1f520258baf81c, type: 3}
       propertyPath: enemyMeleeSpawner
       value: 
