@@ -78,7 +78,7 @@ public class InimigoDef : MonoBehaviour
         //controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
         _gfc =GameObject.FindWithTag("GameController").GetComponent<GameFlowController>();
-        _gfc.enemiesList.Add(gameObject);
+        _gfc.AddEnemy(gameObject);
 
          _agent = GetComponent<NavMeshAgent>();
         GameObject player = GameObject.FindWithTag("Player");

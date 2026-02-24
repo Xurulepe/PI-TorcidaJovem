@@ -69,7 +69,11 @@ public class GameFlowController : MonoBehaviour
 
     private void Update()
     {
-        //ControlEnemies();
+        if (enemyMelee != null && enemyShooter != null)
+        {
+            ControlEnemies();
+        }
+
     }
 
     #region HUD DE FINAL DE JOGO
@@ -130,6 +134,11 @@ public class GameFlowController : MonoBehaviour
         playerControl.Unlock();
     }
 
+    public void AddEnemy(GameObject enemy)
+    {
+        enemiesList.Add(enemy);
+    }
+
     #region TUTORIAL CONTROLLER
     public void ContinueTutorial()
     {
@@ -183,20 +192,27 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    private void ActiveFinalSpawners()
+    {
+        ControlSpawners(finalSpawners, true);
+    }
+
     private void ControlTutorialObjects()
     {
         switch (tutorialIndex)
         {
             case 1:
-                canSpawnEnemyMelee = true;
+                //canSpawnEnemyMelee = true;
+                //GetEnemyMelee();
                 break;
             case 2:
-                canSpawnEnemyMelee = false;
-                //canSpawnEnemyShooter = true; 
+                //canSpawnEnemyMelee = false;
+                //canSpawnEnemyShooter = true;
+                //GetEnemyShooter();
                 break;
             case 3:
                 ControlSpawners(tutorialSpawners, false);
-                ControlSpawners(finalSpawners, true);
+                //ControlSpawners(finalSpawners, true);
                 tutorialFinished = true;
                 break;
         }
@@ -208,10 +224,21 @@ public class GameFlowController : MonoBehaviour
         {
             ShowTutorial();
         }
-        if (enemyShooter.morreu && CanShowTutorial())
+        if (enemyShooter.morreu)
         {
-            ShowTutorial();
+            //ShowTutorial();
+            ControlSpawners(finalSpawners, true);
         }
+    }
+
+    public void GetEnemyMelee()
+    {
+        enemyMelee = enemiesList[0].GetComponent<InimigoMelee>();
+    }
+
+    public void GetEnemyShooter()
+    {
+        enemyShooter = enemiesList[1].GetComponent<InimigoShooter>();
     }
     #endregion
 }

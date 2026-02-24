@@ -15,11 +15,13 @@ public class TutorialTrigger : MonoBehaviour
         {
             checkEnemyMelee = true;
             gameFlowController.ShowTutorial();
+            gameFlowController.GetEnemyMelee();
         }
         else if (enemyShooter && gameFlowController.enemyCount >= 1 && !checkEnemyShooter)
         {
             checkEnemyShooter = true;
             gameFlowController.ShowTutorial();
+            gameFlowController.GetEnemyShooter();
         }
     }
 }
