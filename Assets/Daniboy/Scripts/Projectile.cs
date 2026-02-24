@@ -1,5 +1,7 @@
 using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class Projectile : MonoBehaviour
     public Transform shootPoint;
     public Rigidbody _rb;
     public float speedProjectile = 15f;
-  
+    [SerializeField] public ParticleSystem[] _part;
+    [SerializeField] MeshRenderer[] _renderer;
     [SerializeField] public Transform _trailpoint; 
     private void Awake()
     {
@@ -28,7 +31,23 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        bulletPool.SetActive(false);
+       
+            for (int i = 0; i < _part.Length; i++)
+            {
+                _part[i].Play();
+
+
+            Invoke("DeactivateObj", 0.3f);
+
+        }
+           
+        
+
+      
+
+
+
+
     }
 
     void DeactivateObj() 
@@ -39,6 +58,6 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         _rb.linearVelocity = shootPoint.forward * speedProjectile * Time.deltaTime;
-        Invoke("DeactivateObj", 6); 
+     
     }
 }

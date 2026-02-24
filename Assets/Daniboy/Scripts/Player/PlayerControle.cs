@@ -109,6 +109,13 @@ public class PlayerControle : MonoBehaviour
         {
             LockFunction();
         }
+
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Unlock();
+        }
+
     }
 
     public void AttackShoot(InputAction.CallbackContext value)
@@ -164,6 +171,20 @@ public class PlayerControle : MonoBehaviour
         Gravity();
         Melee();
     }
+
+    public void Unlock()
+    {
+
+        _lockMove = false;
+    
+    
+    
+    
+    
+    }
+
+
+
 
     public void Move()
     {
@@ -269,20 +290,25 @@ public class PlayerControle : MonoBehaviour
 
     void ResetShoot() 
     {
-
-        _readytoShoot = true;
-        _isShooting = false;
+        if (_lockMove == false && _Death == false)
+        {
+            _readytoShoot = true;
+            _isShooting = false;
+        }
     }
 
     void ResetAttack()
     {
-        _readytoAttack = true;
-        _isAttacking = false;
+        if (_lockMove == false && _Death == false)
+        {
+            _readytoAttack = true;
+            _isAttacking = false;
+        }
     }
 
     void AttackRaycast()
     {
-        if (_lockMove == false) 
+        if (_lockMove == false && _Death == false) 
         {
            
             RaycastHit hit;
@@ -299,12 +325,15 @@ public class PlayerControle : MonoBehaviour
 
     public void CallHelp(InputAction.CallbackContext value)
     {
-        if (_finalAction == false)
+        if (_lockMove == false && _Death == false)
         {
-            if (value.performed)
+            if (_finalAction == false)
             {
-                _anima_Robo.SetTrigger("CallHelp");
-                _finalAction = true;
+                if (value.performed)
+                {
+                    _anima_Robo.SetTrigger("CallHelp");
+                    _finalAction = true;
+                }
             }
         }
         
@@ -312,34 +341,39 @@ public class PlayerControle : MonoBehaviour
 
     public void CallShieldUp(InputAction.CallbackContext value)
     {
-        if (_finalAction == false)
+        if (_lockMove == false && _Death == false)
         {
-            if (value.performed)
+            if (_finalAction == false)
             {
-                Debug.Log("press T");
-                FieldEnd Fielder = _Field.GetComponent<FieldEnd>();
-                if (_Field != null)
+                if (value.performed)
                 {
-                    Debug.Log("escudoT");
-                    _Field.transform.position = fieldPoint.position;
-                    _Field.transform.rotation = fieldPoint.rotation;
-                    _Field.SetActive(true);
-                    Fielder._Player = this.transform;
-                    _anima_Robo.SetTrigger("ShieldUp");
-                    fieldAnim.SetBool("FieldUp", false);
+                    Debug.Log("press T");
+                    FieldEnd Fielder = _Field.GetComponent<FieldEnd>();
+                    if (_Field != null)
+                    {
+                        Debug.Log("escudoT");
+                        _Field.transform.position = fieldPoint.position;
+                        _Field.transform.rotation = fieldPoint.rotation;
+                        _Field.SetActive(true);
+                        Fielder._Player = this.transform;
+                        _anima_Robo.SetTrigger("ShieldUp");
+                        fieldAnim.SetBool("FieldUp", false);
+                    }
+
+                    _finalAction = true;
                 }
-
-                _finalAction = true;
             }
-        }       
-
+        }
     }
 
     public void LaserBean(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (_lockMove == false && _Death == false)
         {
-            _laserBeam.ShootLaserBean();
+            if (value.started)
+            {
+                _laserBeam.ShootLaserBean();
+            }
         }
     }
 
