@@ -33,7 +33,7 @@ public class GlobuloBranco : MonoBehaviour
     {
         enemies.Clear();
 
-        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("EnemyMelee");
 
         foreach (GameObject enemy in enemyObjects)
         {
@@ -64,6 +64,7 @@ public class GlobuloBranco : MonoBehaviour
     }
     public void Invocar()
     {
+        Debug.Log("InvocandoAliados");
         gameObject.SetActive(true);
         transform.localPosition = new Vector3(0, 0, 0);
     }
