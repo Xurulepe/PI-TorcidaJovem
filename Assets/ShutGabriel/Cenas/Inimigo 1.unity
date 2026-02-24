@@ -1011,12 +1011,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e7eb8f278254749a9ab74c1279cc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
+  _agent: {fileID: 1510330302}
   _currentTarget: {fileID: 0}
-  transforms:
-  - {fileID: 12364166}
-  - {fileID: 15426125}
-  - {fileID: 335155015}
+  enemies: []
+  _updateRate: 0.5
 --- !u!1 &1547783169
 GameObject:
   m_ObjectHideFlags: 0

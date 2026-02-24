@@ -8,37 +8,56 @@ using UnityEngine.Rendering;
 public class GlobuloBranco : MonoBehaviour
 {
     [SerializeField] NavMeshAgent _agent;
-    [SerializeField] GameObject _currentTarget;
-    [SerializeField] List<Transform> transforms = new List<Transform>();
-    void start()
+    [SerializeField] Transform _currentTarget;
+    [SerializeField] List<Transform> enemies = new List<Transform>();
+    public float _updateRate = 0.5f;
+    void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
+        if (_agent == null)
+            _agent = GetComponent<NavMeshAgent>();
+        InvokeRepeating(nameof(UpdateTarget), 0f, _updateRate);
     }
     void UpdateTarget()
     {
+        UpdateEnemyList();
         _currentTarget = FindClosestEnemy();
-        if (_currentTarget != null )
+
+        if (_currentTarget != null)
         {
-            _agent.SetDestination(_currentTarget.transform.position);
+            _agent.SetDestination(_currentTarget.position);
         }
     }
-    GameObject FindClosestEnemy()
+    void UpdateEnemyList()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
+        enemies.Clear();
+
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemyObjects)
+        {
+            enemies.Add(enemy.transform);
+        }
+    }
+    Transform FindClosestEnemy()
+    {
+        if (enemies.Count == 0)
+            return null;
+
+        Transform closest = null;
         float minDistance = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        foreach ( GameObject enemy in enemies )
+        foreach (Transform enemy in enemies)
         {
-            float distance = Vector3.Distance(currentPosition, enemy.transform.position);
-            if(distance < minDistance)
+            float distance = (enemy.position - currentPosition).sqrMagnitude;
+
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 closest = enemy;
             }
         }
+
         return closest;
     }
 }
