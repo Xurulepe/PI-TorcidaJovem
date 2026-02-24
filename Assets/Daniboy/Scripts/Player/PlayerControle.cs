@@ -84,6 +84,8 @@ public class PlayerControle : MonoBehaviour
     [Header("laserBean")]
     public LaserBeam _laserBeam;
 
+    [Header("ShutGabrielCode")]
+    public GlobuloBranco glob;
     void Start()
     {
         _dashScript = GetComponent<Dashing>();
@@ -333,6 +335,7 @@ public class PlayerControle : MonoBehaviour
                 {
                     _anima_Robo.SetTrigger("CallHelp");
                     _finalAction = true;
+                    glob.Invocar();
                 }
             }
         }
