@@ -6,6 +6,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
 using DG.Tweening.Core.Easing;
+using System.Drawing;
 
 public class InimigoDef : MonoBehaviour
 {
@@ -37,8 +38,6 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRendererVirus;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
-    [SerializeField] Color cor;
-    [SerializeField] Color cor2;
     public bool estaMorrendo = false;
     public float TempoMorrendo = 0f;
 
@@ -285,5 +284,11 @@ public class InimigoDef : MonoBehaviour
     private void OnDisable()
     {
         morreu = true;
+    }
+
+
+    public void ReceberDano(int dano)
+    {
+        LevarDano(dano);
     }
 }

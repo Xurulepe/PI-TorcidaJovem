@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 597203868}
   - component: {fileID: 597203867}
   - component: {fileID: 597203866}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Glob
   m_TagString: Globulo
   m_Icon: {fileID: 0}
@@ -1191,6 +1191,8 @@ MonoBehaviour:
   _currentTarget: {fileID: 0}
   enemies: []
   _updateRate: 0.5
+  IntervaloAtaque: 1
+  dano: 20
 --- !u!195 &597203866
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1201,7 +1203,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1259,8 +1261,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 5
+  m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &597203869
@@ -1324,12 +1326,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597203864}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -67.531044, y: -1075.74, z: 33.089767}
+  m_LocalScale: {x: 0.96381545, y: 0.96381545, z: 0.96381545}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 541963185}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629098762
 GameObject:
@@ -2504,9 +2506,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3767381977790515458, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       insertIndex: -1
       addedObject: {fileID: 220481976}
-    - targetCorrespondingSourceObject: {fileID: 3767381977790515458, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 597203871}
     - targetCorrespondingSourceObject: {fileID: 793702226110300275, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1780309030}
@@ -2857,7 +2856,7 @@ GameObject:
   - component: {fileID: 1726595074}
   - component: {fileID: 1726595073}
   m_Layer: 0
-  m_Name: '|------------------|{ENEMY}|------------------| (1)'
+  m_Name: '|------------------|{Player}|------------------|'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4658,6 +4657,7 @@ SceneRoots:
   - {fileID: 1192312631}
   - {fileID: 1576868800}
   - {fileID: 54682916}
+  - {fileID: 597203871}
   - {fileID: 629098763}
   - {fileID: 1060880388}
   - {fileID: 18516626}

@@ -412,13 +412,15 @@ MonoBehaviour:
   particule: {fileID: 4962133499616030675}
   tempoPiscar: 0.3
   executado: 0
+  _gfc: {fileID: 0}
+  morreu: 0
   IntervaloAtaque: 1
   _playerNaArea: 0
   _raio: 1.5
   _tamanho: 7
   layermask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8448
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
   _knockbackForce: 40
   knockbackDuration: 0.3

@@ -471,6 +471,8 @@ MonoBehaviour:
   particule: {fileID: 439857913897986810}
   tempoPiscar: 0.5
   executado: 0
+  _gfc: {fileID: 0}
+  morreu: 0
   projectilePrefab: {fileID: 5209477025593447596, guid: 10a34b3928ad20948a20e015b352a657, type: 3}
   spawnPoint: {fileID: 3178175699698396072}
   _intervaloTiro: 1
@@ -486,7 +488,7 @@ MonoBehaviour:
   _tamanho: 15
   layermask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 8704
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!143 &8726646863890100546
 CharacterController:

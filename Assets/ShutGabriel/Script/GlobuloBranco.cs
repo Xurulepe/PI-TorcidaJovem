@@ -4,13 +4,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GlobuloBranco : MonoBehaviour
 {
+    [Header("Movimentação do Glóbulo:")]
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] Transform _currentTarget;
     [SerializeField] List<Transform> enemies = new List<Transform>();
-    public float _updateRate = 0.5f; 
+    public float _updateRate = 0.5f;
+    private GameObject _enemy;
+
+    [Header("Alvo:")]
+    bool enemyNaArea;
+    public float IntervaloAtaque = 1f;
+
+    [Header("Dano")]
+    public float dano = 20;
     void Start()
     {
 
@@ -66,6 +76,32 @@ public class GlobuloBranco : MonoBehaviour
     {
         Debug.Log("InvocandoAliados");
         gameObject.SetActive(true);
-        transform.localPosition = new Vector3(0, 0, 0);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyMelee"))
+        {
+            InimigoDef inimigo = other.GetComponent<InimigoDef>();
+
+            if (inimigo != null)
+            {
+                inimigo.ReceberDano((int)dano);
+            }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform == _currentTarget)
+        {
+            InimigoDef inimigo = other.GetComponent<InimigoDef>();
+
+            if (inimigo != null && IntervaloAtaque <= 0)
+            {
+                inimigo.ReceberDano((int)dano);
+                IntervaloAtaque = 1f;
+            }
+        }
+
+        IntervaloAtaque -= Time.deltaTime;
     }
 }
