@@ -79,6 +79,7 @@ public class GameFlowController : MonoBehaviour
     #region HUD DE FINAL DE JOGO
     public void ShowWinHUD()
     {
+        PauseGame();
         winHUD.SetActive(true);
 
         backgroundPanel.SetActive(true);
@@ -88,6 +89,7 @@ public class GameFlowController : MonoBehaviour
 
     public void ShowLoseHUD()
     {
+        PauseGame();
         loseHUD.SetActive(true);
 
         backgroundPanel.SetActive(true);
