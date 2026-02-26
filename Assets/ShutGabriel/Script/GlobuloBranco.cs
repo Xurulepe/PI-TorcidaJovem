@@ -8,6 +8,10 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GlobuloBranco : MonoBehaviour
 {
+    [Header("VIDA")]
+    public float vidaMaxima = 100f;
+    public float vidaAtual;
+
     [Header("Movimentação do Glóbulo:")]
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] Transform _currentTarget;
@@ -21,11 +25,13 @@ public class GlobuloBranco : MonoBehaviour
 
     [Header("Dano")]
     public float dano = 20;
+    private float proximoAtaque = 0f;
     void Start()
     {
 
         if (_agent == null)
             _agent = GetComponent<NavMeshAgent>();
+        vidaAtual = vidaMaxima;
         InvokeRepeating(nameof(UpdateTarget), 0f, _updateRate);
 
     }
@@ -86,6 +92,7 @@ public class GlobuloBranco : MonoBehaviour
             if (inimigo != null)
             {
                 inimigo.ReceberDano((int)dano);
+                ReceberDano(10);
             }
         }
     }
@@ -95,13 +102,25 @@ public class GlobuloBranco : MonoBehaviour
         {
             InimigoDef inimigo = other.GetComponent<InimigoDef>();
 
-            if (inimigo != null && IntervaloAtaque <= 0)
+            if (inimigo != null && Time.time >= proximoAtaque)
             {
                 inimigo.ReceberDano((int)dano);
-                IntervaloAtaque = 1f;
+                proximoAtaque = Time.time + 1f; 
             }
         }
+    }
+    public void ReceberDano(float quantidade)
+    {
+        vidaAtual -= quantidade;
 
-        IntervaloAtaque -= Time.deltaTime;
+        if (vidaAtual <= 0)
+        {
+            Morrer();
+        }
+    }
+    void Morrer()
+    {
+        Debug.Log("O Glóbulo morreu!");
+        gameObject.SetActive(false);
     }
 }
