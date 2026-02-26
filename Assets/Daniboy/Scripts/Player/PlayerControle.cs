@@ -54,6 +54,7 @@ public class PlayerControle : MonoBehaviour
     [Header("Manage")]
     public bool _lockMove;
     public bool _Death;
+    public Rigidbody _rigidbody;
 
     [Header("Animation")]
    // public Animator _Anim;
@@ -88,6 +89,7 @@ public class PlayerControle : MonoBehaviour
     public GlobuloBranco glob;
     void Start()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         _dashScript = GetComponent<Dashing>();
         //_Anim = GetComponent<Animator>();
         cam = Camera.main;
@@ -165,24 +167,23 @@ public class PlayerControle : MonoBehaviour
     public void LockFunction()
     {
         _lockMove = true;
-        AttackRaycast();
 
-        Move();
-       // Shoot();
-       // RotateTowardsMouse();
-        Gravity();
-        Melee();
+        
+
+       // AttackRaycast();
+
+       // Move();
+       //// Shoot();
+       //// RotateTowardsMouse();
+       // Gravity();
+       // Melee();
     }
 
     public void Unlock()
     {
 
         _lockMove = false;
-    
-    
-    
-    
-    
+          
     }
 
 
@@ -206,6 +207,11 @@ public class PlayerControle : MonoBehaviour
                 // _Anim.SetBool("Walk", false);
                 _anima_Robo.SetBool("walk", false);
             }
+        }
+        else if (_lockMove)
+        {
+            Controller.Move(Vector3.zero);
+            _rigidbody.linearVelocity = Vector3.zero;
         }
     }
 
