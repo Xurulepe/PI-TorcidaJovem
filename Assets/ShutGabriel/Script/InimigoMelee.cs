@@ -44,82 +44,79 @@ public class InimigoMelee : InimigoDef
     protected override void Update()
     {
         base.Update();
-        if (_alvo != null)
-        {
 
-        }
-        if (!_checkMorte)
-        {
-            Vector3 point1, point2;
-            GetCapsulePoints(out point1, out point2);
-            _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
-            if (_isHIT && !_checkHIT)
-            {
-                //lembrete, para o inimigo aguentar mais fazer o check hit voltar a ser false após timming
-                _checkHIT = true;
+        if (_checkMorte) return;
+        Vector3 point1, point2;
+        GetCapsulePoints(out point1, out point2);
+        _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
 
-                Debug.Log("Alvo Colidiu na Capsula");
-                StartCoroutine(HitTime());
-            }
+        if (_isHIT && !_checkHIT)
+        {
+            _checkHIT = true;
+            StartCoroutine(HitTime());
         }
         if (controller.isGrounded && EnemyVelocity.y < 0)
             EnemyVelocity.y = -2f;
-        else
-            EnemyVelocity.y += gravity * Time.deltaTime;
+
+        EnemyVelocity.y += gravity * Time.deltaTime;
 
         if (knockbackTimer > 0)
         {
-            controller.Move(knockbackVelocity * Time.deltaTime);
+            if (_agent.enabled)
+                _agent.enabled = false; 
+
+            Vector3 move = knockbackVelocity + EnemyVelocity;
+            controller.Move(move * Time.deltaTime);
+
             knockbackTimer -= Time.deltaTime;
         }
+        else
+        {
+            if (!_agent.enabled)
+                _agent.enabled = true;
+        }
+
         IntervaloAtaque -= Time.deltaTime;
     }
     public void ApplyKnockback(Vector3 direction, float force = -1)
     {
-        if (force < 0) force = _knockbackForce;
+        if (force < 0)
+            force = _knockbackForce;
 
-        knockbackVelocity = direction * force;
+        direction.y = 0f; 
+        knockbackVelocity = direction.normalized * force;
         knockbackTimer = knockbackDuration;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("HitPlayer"))
+        if (other.CompareTag("HitPlayer"))
         {
-            //Debug.Log("Hit");
             _playerNaArea = true;
             _player = other.gameObject;
 
-            if (_playerNaArea == true)
+            if (IntervaloAtaque <= 0)
             {
-                if (IntervaloAtaque <= 0)
-                {
-                    Ataque();
-                    IntervaloAtaque = 2f;
-                }
-
-            }
-
-            if (other.CompareTag("Espadão"))
-            {
-                Debug.Log(" knockback melle " + other.gameObject.name);
-                Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
-                ApplyKnockback(knockDir);
+                Ataque();
+                IntervaloAtaque = 2f;
             }
         }
 
-        if (other.gameObject.CompareTag("Forcefield") && !_field)
+        if (other.CompareTag("Espadão"))
         {
-
-            _field = true;
-            //ApplyKnockback(transform.localPosition);
-            Vector3 knockDir = (_enemy.transform.position - other.transform.position).normalized;
+            Vector3 knockDir = (transform.position - other.transform.position).normalized;
             ApplyKnockback(knockDir);
-            Invoke(nameof(FieldResp), 1);
-
         }
 
+        if (other.CompareTag("Forcefield") && !_field)
+        {
+            _field = true;
 
+            Vector3 knockDir = (transform.position - other.transform.position).normalized;
+            ApplyKnockback(knockDir);
+
+            Invoke(nameof(FieldResp), 1f);
+        }
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
