@@ -1980,7 +1980,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:369859074edc64f47989682e94218a05
     m_TableEntryReference:
-      m_KeyId: 20574855602913280
+      m_KeyId: 12
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2664,7 +2664,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:369859074edc64f47989682e94218a05
     m_TableEntryReference:
-      m_KeyId: 20574790930939904
+      m_KeyId: 11
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

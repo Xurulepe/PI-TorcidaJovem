@@ -107,7 +107,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22
-    m_Localized: Objetivo
+    m_Localized: 'Objetivo: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 23
