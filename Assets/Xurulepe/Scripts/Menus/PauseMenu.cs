@@ -12,6 +12,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _backgroundImage;
 
+    [Header("Controladores")]
+    [SerializeField] private GameFlowController _gameFlowController;
+
     [Header("Componentes do menu de pausa")]
     [SerializeField] private Menu _pauseMenu;
     [SerializeField] private Menu _settingsMenu;
@@ -88,7 +91,8 @@ public class PauseMenu : MonoBehaviour
         _firstButtonPauseMenu.Select();
         _backgroundImage.SetActive(true);
 
-        Debug.Log("Pausando o jogo");
+        //Debug.Log("Pausando o jogo");
+        _gameFlowController.PauseGame();
         IsPaused = true;
 
         AnimateMenuElements(_pauseMenu);
@@ -100,7 +104,8 @@ public class PauseMenu : MonoBehaviour
         _pauseButtonUI.SetActive(true);
         _backgroundImage.SetActive(false);
 
-        Debug.Log("Retomando o jogo");
+        //Debug.Log("Retomando o jogo");
+        _gameFlowController.UnPause();
         IsPaused = false;
 
         foreach (var menu in _menus)

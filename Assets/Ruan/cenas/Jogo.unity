@@ -4053,6 +4053,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4202028694703020555, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
+      propertyPath: _gameFlowController
+      value: 
+      objectReference: {fileID: 2067834167}
     - target: {fileID: 4476297952993579350, guid: 826fa8550d4b2e5458d0948b82d9f2a7, type: 3}
       propertyPath: m_IsActive
       value: 1
