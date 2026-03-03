@@ -7,8 +7,20 @@ public class FinalHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI HUDObjectiveText;
     [SerializeField] private TextMeshProUGUI missionObjectiveText;
 
+    private bool isHUDEnabled = false;
+    private bool isHUDUpdated = false;
+
     private void OnEnable()
     {
-        HUDObjectiveText.text = HUDObjectiveText.text.Replace("{0}", missionObjectiveText.text);
+        isHUDEnabled = true;
+    }
+
+    private void Update()
+    {
+        if (isHUDEnabled && !isHUDUpdated)
+        {
+            HUDObjectiveText.text = HUDObjectiveText.text.Replace("{0}", missionObjectiveText.text);
+            isHUDUpdated = true;
+        }
     }
 }
