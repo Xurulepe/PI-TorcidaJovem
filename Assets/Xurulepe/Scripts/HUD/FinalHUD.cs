@@ -7,6 +7,10 @@ public class FinalHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI HUDObjectiveText;
     [SerializeField] private TextMeshProUGUI missionObjectiveText;
 
+    [Header("Temporizador")]
+    [SerializeField] private TimerUI timer;
+    [SerializeField] private TextMeshProUGUI HUDTimerText;
+
     private bool isHUDEnabled = false;
     private bool isHUDUpdated = false;
 
@@ -20,6 +24,7 @@ public class FinalHUD : MonoBehaviour
         if (isHUDEnabled && !isHUDUpdated)
         {
             HUDObjectiveText.text = HUDObjectiveText.text.Replace("{0}", missionObjectiveText.text);
+            HUDTimerText.text = timer.GetTimer();
             isHUDUpdated = true;
         }
     }

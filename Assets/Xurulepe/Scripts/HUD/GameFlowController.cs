@@ -32,7 +32,7 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private PlayerControle playerControl;
 
-
+    [Space]
     public List<GameObject> enemiesList = new List<GameObject>();
 
     public bool isPaused;
@@ -48,10 +48,12 @@ public class GameFlowController : MonoBehaviour
 
     // componentes
     private MenuAnimation menuAnimation;
+    private TimerUI timerUI;
 
     private void Awake()
     {
         menuAnimation = GetComponent<MenuAnimation>();
+        timerUI = GetComponent<TimerUI>();
 
         winHUD.SetActive(false);
         loseHUD.SetActive(false);
