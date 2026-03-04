@@ -38,7 +38,7 @@ public class Projetil : MonoBehaviour
             }
             Tiro = true; 
         }
-        else if (other.gameObject.CompareTag("Forcefield") && !_field)
+        if (other.gameObject.CompareTag("Forcefield") && !_field)
         {
             for (int i = 0; i < _renderer.Length; i++)
             {
@@ -47,8 +47,17 @@ public class Projetil : MonoBehaviour
                 Invoke(nameof(FieldResp), 1);
 
             }
+        if (other.gameObject.CompareTag("BulletPlayer"))
+            {
+                for (int i = 0; i < _part.Length; i++)
+                {
+                    _part[i].Play();
+                }
+            }
 
         }
+       
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -61,6 +70,14 @@ public class Projetil : MonoBehaviour
             }
         }
         if (other.gameObject.CompareTag("Forcefield") && !_field)
+        {
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _renderer[i].enabled = false;
+                gameObject.SetActive(false);
+            }
+        }
+        if (other.gameObject.CompareTag("BulletPlayer"))
         {
             for (int i = 0; i < _renderer.Length; i++)
             {

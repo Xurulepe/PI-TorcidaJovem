@@ -19,15 +19,13 @@ public class InimigoShooter : InimigoDef
     //public float _recuoDist = 15f;
     public float _clock = 3f;
     //Fuga com knock back
-    public float _knockbackForce = 100f;
-    public float knockbackDuration = 0.3f;
+   
     public float gravity = -9.81f;
 
 
     [SerializeField] public CharacterController controller;
     private Vector3 EnemyVelocity;
-    private Vector3 knockbackVelocity;
-    private float knockbackTimer;
+    
     public bool PlayerHitBox;
     [SerializeField] Transform _enemy;
 
@@ -107,14 +105,7 @@ public class InimigoShooter : InimigoDef
 
 
     }
-    public void ApplyKnockback(Vector3 direction, float force = -1)
-    {
-        if (force < 0) force = _knockbackForce;
-
-        knockbackVelocity = direction * force;
-        knockbackTimer = knockbackDuration;
-    }
-
+   
 
     void OnTriggerEnter(Collider other)
     {
@@ -131,6 +122,15 @@ public class InimigoShooter : InimigoDef
             _field = true;
             ApplyKnockback(transform.position);
             Invoke(nameof(FieldResp), 1);
+
+        }
+        if (other.gameObject.CompareTag("BulletPlayer"))
+        {
+            Debug.Log("BalaPlayered");
+
+            Vector3 knockDir = (transform.position - other.transform.position).normalized;
+            _agent.velocity = Vector3.zero;
+            StartCoroutine(HitTime(knockDir));
 
         }
     }
