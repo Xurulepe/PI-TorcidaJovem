@@ -69,14 +69,12 @@ public class InimigoMelee : InimigoDef
     {
         if (other.CompareTag("HitPlayer"))
         {
+            Debug.Log("PlayerHitado");
             _playerNaArea = true;
             _player = other.gameObject;
 
-            if (IntervaloAtaque <= 0)
-            {
-                Ataque();
-                IntervaloAtaque = 2f;
-            }
+
+            Ataque();
         }
 
         if (other.gameObject.CompareTag("Espadão"))
@@ -125,11 +123,12 @@ public class InimigoMelee : InimigoDef
 
         PlayerHit();
 
-        StartCoroutine(CooldownAtk());
+        //StartCoroutine(CooldownAtk());
     }
 
     protected void PlayerHit()
     {
+        
         PlayerHealthScript PlayerHealth = _alvo.gameObject.GetComponent<PlayerHealthScript>();
         PlayerHealth.DamagePlayer(dano, direction);
     }
