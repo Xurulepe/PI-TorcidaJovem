@@ -21,72 +21,48 @@ public class InimigoMelee : InimigoDef
 
 
     //KnockBeck
-    public float _knockbackForce = 20f;
-    public float knockbackDuration = 0.3f;
+
+
     public float gravity = -9.81f;
 
 
     [SerializeField] public CharacterController controller;
     private Vector3 EnemyVelocity;
-    private Vector3 knockbackVelocity;
-    private float knockbackTimer;
+
+
     public bool PlayerHitBox;
     [SerializeField] Transform _enemy;
     private Vector3 direction;
     bool _field = false;
 
+
     protected override void Start()
     {
         base.Start();
+      
         _agent.speed = 10f;
     }
 
-    protected override void Update()
+     void FixedUpdate()
     {
         base.Update();
-
-        if (_checkMorte) return;
         Vector3 point1, point2;
         GetCapsulePoints(out point1, out point2);
         _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
 
-        if (_isHIT && !_checkHIT)
-        {
-            _checkHIT = true;
-            StartCoroutine(HitTime());
-        }
+       
         if (controller.isGrounded && EnemyVelocity.y < 0)
             EnemyVelocity.y = -2f;
 
         EnemyVelocity.y += gravity * Time.deltaTime;
 
-        if (knockbackTimer > 0)
+        if (_OnHit)
         {
-            if (_agent.enabled)
-                _agent.enabled = false; 
-
-            Vector3 move = knockbackVelocity + EnemyVelocity;
-            controller.Move(move * Time.deltaTime);
-
-            knockbackTimer -= Time.deltaTime;
+           Vector3 move = knockbackVelocity + EnemyVelocity;
+            controller.Move(move * Time.deltaTime);           
         }
-        else
-        {
-            if (!_agent.enabled)
-                _agent.enabled = true;
-        }
-
-        IntervaloAtaque -= Time.deltaTime;
     }
-    public void ApplyKnockback(Vector3 direction, float force = -1)
-    {
-        if (force < 0)
-            force = _knockbackForce;
-
-        direction.y = 0f; 
-        knockbackVelocity = direction.normalized * force;
-        knockbackTimer = knockbackDuration;
-    }
+   
 
     private void OnTriggerEnter(Collider other)
     {
@@ -103,9 +79,12 @@ public class InimigoMelee : InimigoDef
         }
 
         if (other.CompareTag("Espadão"))
-        {
+        {   
             Vector3 knockDir = (transform.position - other.transform.position).normalized;
+            _agent.velocity = Vector3.zero;
+         //   _agent.enabled=false;
             ApplyKnockback(knockDir);
+            StartCoroutine(HitTime());
         }
 
         if (other.CompareTag("Forcefield") && !_field)
@@ -121,9 +100,12 @@ public class InimigoMelee : InimigoDef
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.CompareTag("Espadão"))
-        {
+        {    
             Vector3 knockDir = (transform.position - hit.point).normalized;
+            _agent.velocity = Vector3.zero;
+           // _agent.enabled = false;
             ApplyKnockback(knockDir);
+            StartCoroutine(HitTime());
         }
 
 
@@ -161,11 +143,6 @@ public class InimigoMelee : InimigoDef
         PlayerHealth.DamagePlayer(dano, direction);
     }
 
-
-    protected override void LevarDano(int dano)
-    {
-        base.LevarDano(dano);
-    }
     private void OnDrawGizmos()
     {
         Vector3 point1, point2;

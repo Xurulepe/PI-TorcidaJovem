@@ -62,7 +62,7 @@ public class InimigoShooter : InimigoDef
             if (_alvo == null || _agent == null) return;
             float distancia = Vector3.Distance(transform.position, _alvo.position);
 
-            if (distancia > _distanciaMin)
+            if (distancia > _distanciaMin && _agent.enabled)
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_alvo.position);
@@ -82,7 +82,7 @@ public class InimigoShooter : InimigoDef
 
 
                 }
-                _agent.isStopped = true;
+              //  _agent.isStopped = true;
                 _clock += Time.deltaTime;
                 if (_clock >= _intervaloTiro)
                 {
@@ -93,20 +93,7 @@ public class InimigoShooter : InimigoDef
             }
         }
 
-        if (!_checkMorte)
-        {
-            Vector3 point1, point2;
-            GetCapsulePoints(out point1, out point2);
-            _isHIT = Physics.CheckCapsule(point1, point2, _raio, layermask);
-            if (_isHIT && !_checkHIT)
-            {
-                _checkHIT = true;
-                Debug.Log("Alvo Colidiu na Capsula");
-
-                StartCoroutine(HitTime());
-
-            }
-        }
+       
         if (controller.isGrounded && EnemyVelocity.y < 0)
             EnemyVelocity.y = -2f;
         else
@@ -161,10 +148,6 @@ public class InimigoShooter : InimigoDef
             Vector3 knockDir = (transform.position - hit.point).normalized;
             ApplyKnockback(knockDir);
         }
-    }
-    protected override void LevarDano(int dano)
-    {
-        base.LevarDano(dano);
     }
     private void Atirar()
     {

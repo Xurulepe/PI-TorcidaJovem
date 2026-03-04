@@ -23,7 +23,7 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected ParticleSystem[] _part2;
     [SerializeField] protected Collider[] _CL;
     [SerializeField] protected bool _checkHIT;
-    [SerializeField] protected bool _checkMorte;
+  
     [SerializeField] protected bool _isHIT;
     [SerializeField] protected Vector3 ScaleStart;
     protected float _tempo = 0f;
@@ -39,6 +39,8 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
     public bool estaMorrendo = false;
+    [SerializeField] protected float knockbackDuration = 0.3f;
+    [SerializeField] protected float knockbackTimer;
     public float TempoMorrendo = 0f;
 
     [Header("ruan conde")]
@@ -51,12 +53,16 @@ public class InimigoDef : MonoBehaviour
     protected static bool isPaused = false;
     public GameFlowController _gfc;
     public bool morreu;
+    protected float _knockbackForce = 20f;
+    protected Vector3 knockbackVelocity;
+    protected bool _OnHit;
 
     void Awake()
     {     
-        // 🔥 cria uma instância ÚNICA do material para ESTE inimigo
+       
         mat = new Material(spriteRendererVirus.sharedMaterial);
         spriteRendererVirus.material = mat;
+        knockbackTimer = knockbackDuration;
 
         mat.SetFloat("_FlashAmount", 0f);
     }
@@ -103,12 +109,18 @@ public class InimigoDef : MonoBehaviour
     protected virtual void Update()
     {
         // para inimigos se o jogo estiver pausada
-        _agent.isStopped = _gfc.isPaused;
+       // _agent.isStopped = _gfc.isPaused;
       
 
         if (_alvo != null && _agent != null)
+
         {
-            _agent.SetDestination(_alvo.position);
+            if (_agent.enabled == true)
+            {
+
+                _agent.isStopped = _gfc.isPaused;
+                _agent.SetDestination(_alvo.position);
+            }
         }
         selecaoFace();
         if (estaMorrendo)
@@ -125,20 +137,7 @@ public class InimigoDef : MonoBehaviour
         }
 
     }
-    protected virtual void LevarDano(int dano)
-    {
-        
-        vida -= dano;
-        if (vida <= 0)
-        {
-            Morrer();
-
-        }
-        else
-        {
-            RecuperarDedano();
-        }
-    }
+   
 
     public void Flash(float duration = 0.1f)
     {
@@ -203,15 +202,15 @@ public class InimigoDef : MonoBehaviour
     protected virtual IEnumerator HitTime()
     {
         _StopTiro = true;
-        _checkMorte = true;
-        _agent.isStopped = true;
-        hITBOX.SetActive(false);
-        yield return new WaitForSeconds(0.25f);
-        for (int i = 0; i < _renderer.Length; i++)
+     
+        vida -= dano;
+        if (_agent.enabled)
         {
-            _renderer[i].transform.DOScale(0.5f, 0.25f);
+            _agent.isStopped = true;
+            _agent.enabled = false;
         }
-        
+        _OnHit = true;
+        hITBOX.SetActive(false);
 
         for (int i = 0; i < _CL.Length; i++)
         {
@@ -219,17 +218,29 @@ public class InimigoDef : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(0.1f);
-        for (int i = 0; i < _renderer.Length; i++)
+        if (vida <= 0)
         {
-            _renderer[i].enabled = false;
+
+           Morrer();
         }
-        yield return new WaitForSeconds(0.25f);
-
-
-        
-        _checkHIT = false;
-        LevarDano(dano);
+        else
+        {
+          
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _renderer[i].transform.DOScale(0.5f, 0.25f);
+            }
+            yield return new WaitForSeconds(0.25f);
+            for (int i = 0; i < _renderer.Length; i++)
+            {
+                _renderer[i].enabled = false;
+            }
+            yield return new WaitForSeconds(0.25f);
+            //_agent.enabled = true
+            _OnHit = false;
+           // RecuperarDedano();
+        }   
+       
     }
 
 
@@ -238,7 +249,7 @@ public class InimigoDef : MonoBehaviour
 
         vida = 100;
         _tempo = 0f;
-        _checkMorte = false;
+
         _isHIT = false;
         estaMorrendo = false;
         
@@ -261,12 +272,16 @@ public class InimigoDef : MonoBehaviour
         }
         //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
         _tempo = 0f;
-        _checkMorte = false;
+ 
         _isHIT = false;
         _agent.isStopped = false;
+        knockbackTimer = knockbackDuration;
         hITBOX.SetActive(true);
         _StopTiro = false;
+        _agent.enabled = true;
+        Debug.Log("Move");
         estaMorrendo = false;
+
 
         if (_startV)
         {
@@ -286,9 +301,15 @@ public class InimigoDef : MonoBehaviour
         morreu = true;
     }
 
-
-    public void ReceberDano(int dano)
+    public virtual void ApplyKnockback(Vector3 direction, float force = -1)
     {
-        LevarDano(dano);
+        if (force < 0)
+            force = _knockbackForce;
+
+        direction.y = 0f;
+        knockbackVelocity = direction.normalized * force;
+
+        //_agent.enabled = true;
     }
+
 }

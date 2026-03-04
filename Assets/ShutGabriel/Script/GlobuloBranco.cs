@@ -91,7 +91,7 @@ public class GlobuloBranco : MonoBehaviour
 
             if (inimigo != null)
             {
-                inimigo.ReceberDano((int)dano);
+         
                 ReceberDano(10);
             }
         }
@@ -104,7 +104,7 @@ public class GlobuloBranco : MonoBehaviour
 
             if (inimigo != null && Time.time >= proximoAtaque)
             {
-                inimigo.ReceberDano((int)dano);
+           
                 proximoAtaque = Time.time + 1f; 
             }
         }
