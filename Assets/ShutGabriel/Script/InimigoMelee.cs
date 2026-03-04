@@ -34,6 +34,7 @@ public class InimigoMelee : InimigoDef
     [SerializeField] Transform _enemy;
     private Vector3 direction;
     bool _field = false;
+    [SerializeField] Transform transfomelee;
 
 
     protected override void Start()
@@ -59,7 +60,7 @@ public class InimigoMelee : InimigoDef
         if (_OnHit)
         {
            Vector3 move = knockbackVelocity + EnemyVelocity;
-            controller.Move(move * Time.deltaTime);           
+            controller.Move(move * Time.deltaTime);            
         }
     }
    
@@ -78,38 +79,28 @@ public class InimigoMelee : InimigoDef
             }
         }
 
-        if (other.CompareTag("Espadão"))
-        {   
-            Vector3 knockDir = (transform.position - other.transform.position).normalized;
+        if (other.gameObject.CompareTag("Espadão"))
+        {
+         
+            Vector3 knockDir = (transform.position - transfomelee.transform.position).normalized;
             _agent.velocity = Vector3.zero;
          //   _agent.enabled=false;
-            ApplyKnockback(knockDir);
-            StartCoroutine(HitTime());
+         
+            StartCoroutine(HitTime(knockDir));
         }
+
 
         if (other.CompareTag("Forcefield") && !_field)
         {
             _field = true;
 
             Vector3 knockDir = (transform.position - other.transform.position).normalized;
-            ApplyKnockback(knockDir);
+            //ApplyKnockback(knockDir);
 
             Invoke(nameof(FieldResp), 1f);
         }
     }
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.collider.CompareTag("Espadão"))
-        {    
-            Vector3 knockDir = (transform.position - hit.point).normalized;
-            _agent.velocity = Vector3.zero;
-           // _agent.enabled = false;
-            ApplyKnockback(knockDir);
-            StartCoroutine(HitTime());
-        }
-
-
-    }
+   
 
     void FieldResp()
     {

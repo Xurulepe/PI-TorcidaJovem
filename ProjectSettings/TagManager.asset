@@ -21,6 +21,7 @@ TagManager:
   - EnemyShooter
   - Forcefield
   - Globulo
+  - Ground
   layers:
   - Default
   - TransparentFX

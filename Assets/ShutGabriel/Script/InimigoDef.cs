@@ -10,13 +10,12 @@ using System.Drawing;
 
 public class InimigoDef : MonoBehaviour
 {
-    //movimento
+    [Header("Movimento")]
     protected NavMeshAgent _agent;
     protected Transform _alvo;
     [SerializeField] protected int vida = 100;
 
-
-    //status
+    [Header("ConfigCapsula")]
     [SerializeField] protected int dano = 2;
     [SerializeField]  MeshRenderer[] _renderer;
     [SerializeField] protected ParticleSystem[] _part;
@@ -33,7 +32,6 @@ public class InimigoDef : MonoBehaviour
     [Header("SpriteVirus")]
     [SerializeField] protected GameObject _spriteVirus;
     [SerializeField] protected Transform cameraTransform;
-    //[SerializeField] protected Transform shadowPosition;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected SpriteRenderer spriteRendererVirus;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
@@ -122,7 +120,7 @@ public class InimigoDef : MonoBehaviour
                 _agent.SetDestination(_alvo.position);
             }
         }
-        selecaoFace();
+      
         if (estaMorrendo)
         {
 
@@ -174,41 +172,24 @@ public class InimigoDef : MonoBehaviour
         estaMorrendo = true;
     }
 
-    protected virtual void selecaoFace()
-    {
-        if (_isHIT == true)
-        {
-            spriteRenderer.sprite = Rostoimg[1];
-            //_spriteVirus.GetComponent<SpriteRenderer>().color = cor;
-            //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor,.25f);
-            if (executado == false)
-            {
-                Flash(tempoPiscar);
+    
 
-                particule.SetActive(true);
-                
-                executado = true;
-            }
-
-        }
-        else
-        {
-            spriteRenderer.sprite = Rostoimg[0];
-            executado = false;
-
-        }
-    }
-
-    protected virtual IEnumerator HitTime()
+    protected virtual IEnumerator HitTime(Vector3 knockDir)
     {
         _StopTiro = true;
-     
+        Flash(tempoPiscar);
+
+        particule.SetActive(true);
+        spriteRenderer.sprite = Rostoimg[1];
+        executado = true;
         vida -= dano;
+        _agent.enabled = true;
+        _agent.isStopped = true;
         if (_agent.enabled)
         {
-            _agent.isStopped = true;
             _agent.enabled = false;
         }
+        ApplyKnockback(knockDir);
         _OnHit = true;
         hITBOX.SetActive(false);
 
@@ -235,10 +216,19 @@ public class InimigoDef : MonoBehaviour
             {
                 _renderer[i].enabled = false;
             }
+          
+            RecuperarDedano();
             yield return new WaitForSeconds(0.25f);
-            //_agent.enabled = true
+            spriteRenderer.sprite = Rostoimg[0];
+            executado = false;
+            _isHIT = false;
+            _agent.enabled = true;
+            _agent.isStopped = false;
+            knockbackTimer = knockbackDuration;
+            //_agent.enabled = true;
+            hITBOX.SetActive(true);
             _OnHit = false;
-           // RecuperarDedano();
+          
         }   
        
     }
@@ -273,12 +263,10 @@ public class InimigoDef : MonoBehaviour
         //_spriteVirus.GetComponent<SpriteRenderer>().DOColor(cor2, .25f);
         _tempo = 0f;
  
-        _isHIT = false;
-        _agent.isStopped = false;
-        knockbackTimer = knockbackDuration;
-        hITBOX.SetActive(true);
+      
+       
         _StopTiro = false;
-        _agent.enabled = true;
+  
         Debug.Log("Move");
         estaMorrendo = false;
 
@@ -308,7 +296,7 @@ public class InimigoDef : MonoBehaviour
 
         direction.y = 0f;
         knockbackVelocity = direction.normalized * force;
-
+        Debug.Log("OnTriggerEnter");
         //_agent.enabled = true;
     }
 

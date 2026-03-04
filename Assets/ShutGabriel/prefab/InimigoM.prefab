@@ -142,6 +142,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5780084282583585925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2681113676077495109}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2681113676077495109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5780084282583585925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5882362829534389818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6931138196532282026
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +301,7 @@ Transform:
   - {fileID: 5749441704591633342}
   - {fileID: 9061306001358388816}
   - {fileID: 8090614410360366732}
+  - {fileID: 2681113676077495109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6420629489012720265
@@ -392,7 +424,6 @@ MonoBehaviour:
   _CL:
   - {fileID: 5298015954864128707}
   _checkHIT: 0
-  _checkMorte: 0
   _isHIT: 0
   ScaleStart: {x: 0, y: 0, z: 0}
   _StopTiro: 0
@@ -404,9 +435,9 @@ MonoBehaviour:
   - {fileID: -2216818378679403149, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   - {fileID: -2710034688760179752, guid: 3dacc46998b3fc74ca4bf67a534602eb, type: 3}
   hITBOX: {fileID: 3436551259529693283}
-  cor: {r: 0.4528302, g: 0.44642222, b: 0.44642222, a: 1}
-  cor2: {r: 1, g: 1, b: 1, a: 1}
   estaMorrendo: 0
+  knockbackDuration: 0.3
+  knockbackTimer: 0
   TempoMorrendo: 0
   mat: {fileID: 2100000, guid: 8503f916d485f1d49ba82c745c6fcf5e, type: 2}
   particule: {fileID: 4962133499616030675}
@@ -422,12 +453,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
-  _knockbackForce: 40
-  knockbackDuration: 0.3
   gravity: -9.81
   controller: {fileID: 5289110529591689463}
   PlayerHitBox: 0
   _enemy: {fileID: 5882362829534389818}
+  transfomelee: {fileID: 2681113676077495109}
 --- !u!54 &54305424926373166
 Rigidbody:
   m_ObjectHideFlags: 0
