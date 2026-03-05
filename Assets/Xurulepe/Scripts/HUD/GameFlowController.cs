@@ -1,8 +1,6 @@
 using DG.Tweening;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
@@ -13,6 +11,7 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private GameObject winHUD;
     [SerializeField] private GameObject loseHUD;
     [SerializeField] private GameObject tutorialHUD;
+    [SerializeField] private GameObject waveHUD;
 
     [Header("Menus a serem animados")]
     [SerializeField] private Menu winMenu;
@@ -63,12 +62,6 @@ public class GameFlowController : MonoBehaviour
         tutorialIndex = 0;
 
         ShowTutorial();
-    }
-
-    private void Start()
-    {
-        //enemyMelee = enemiesList[0].GetComponent<InimigoMelee>();
-        //enemyShooter = enemiesList[1].GetComponent<InimigoShooter>();
     }
 
     private void Update()
@@ -125,11 +118,6 @@ public class GameFlowController : MonoBehaviour
     // a ser usado quando um tutorial for exibido
     public void PauseGame()
     {
-        //for (int i = 0; i < enemiesList.Count; i++) {
-
-        //    enemiesList[i].GetComponent<NavMeshAgent>().isStopped = isPaused;
-        //}
-
         isPaused = true;
         playerControl.LockFunction();
     }
@@ -203,28 +191,26 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
-    private void ActiveFinalSpawners()
-    {
-        ControlSpawners(finalSpawners, true);
-    }
-
     private void ControlTutorialObjects()
     {
         switch (tutorialIndex)
         {
-            case 1:
-                //canSpawnEnemyMelee = true;
-                //GetEnemyMelee();
+            case 1:  // terminou o tutorial de mover
+
                 break;
-            case 2:
-                //canSpawnEnemyMelee = false;
-                //canSpawnEnemyShooter = true;
-                //GetEnemyShooter();
+
+            case 2:  // terminou o tutorial de dash
+
                 break;
-            case 4:
+
+            case 3:  // terminou o tutorial de ataque mellee
+
+                break;
+
+            case 4:  // terminou o tutorial de ataque disparo
                 ControlSpawners(tutorialSpawners, false);
-                //ControlSpawners(finalSpawners, true);
                 tutorialFinished = true;
+
                 break;
         }
     }
@@ -252,4 +238,9 @@ public class GameFlowController : MonoBehaviour
         enemyShooter = enemiesList[1].GetComponent<InimigoShooter>();
     }
     #endregion
+
+    public void StartNewWave()
+    {
+        waveHUD.SetActive(true);
+    }
 }
