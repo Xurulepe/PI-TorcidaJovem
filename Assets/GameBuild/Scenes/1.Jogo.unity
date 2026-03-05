@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  amountToPool: 10
+  amountToPool: 3
   Vida: 75
   radius: 1.5
   height: 1.5
@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 18516620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -122.1, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: 0.9000015, y: -1070.95, z: 56.4039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8889403559829364111, guid: 1a1857d8e168dc94ba7fd963be23c23a, type: 3}
-  amountToPool: 1
+  amountToPool: 2
   Vida: 75
   radius: 1.5
   height: 1.5
@@ -1776,7 +1776,7 @@ Transform:
   m_GameObject: {fileID: 1060880382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -122.1, y: -1076.95, z: 56.4039}
+  m_LocalPosition: {x: -105.1, y: -1069.95, z: 56.4039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3745,7 +3745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
-  amountToPool: 1
+  amountToPool: 2
   Vida: 55
   radius: 5
   height: 10
