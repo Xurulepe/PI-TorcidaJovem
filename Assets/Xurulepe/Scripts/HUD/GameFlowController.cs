@@ -157,6 +157,11 @@ public class GameFlowController : MonoBehaviour
 
         UnPause();
         ControlTutorialObjects();
+
+        if (tutorialIndex == 1)
+        {
+            ShowTutorial();
+        }
     }
 
     public void ShowTutorial()
@@ -216,7 +221,7 @@ public class GameFlowController : MonoBehaviour
                 //canSpawnEnemyShooter = true;
                 //GetEnemyShooter();
                 break;
-            case 3:
+            case 4:
                 ControlSpawners(tutorialSpawners, false);
                 //ControlSpawners(finalSpawners, true);
                 tutorialFinished = true;
