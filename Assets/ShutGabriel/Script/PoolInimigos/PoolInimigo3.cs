@@ -15,7 +15,7 @@ public class PoolInimigo3 : PoolInimigo
         //teste
         if (!_gfc.isPaused && (_gfc.enemyCount >= 2 || _gfc.enemyCount == 0))
         {
-            // _gfc.enemyCount = 1;
+            
             bullet = PoolInimigo3._poolimigos3.GetPooledObject();
             base.InimigoON(bullet);
         }
