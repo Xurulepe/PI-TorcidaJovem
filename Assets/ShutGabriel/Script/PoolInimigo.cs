@@ -9,6 +9,7 @@ public class PoolInimigo : ObjectPooling
     protected Transform _SPAWN;
     public int _quantiaRestante;
     public bool bloqueio;
+    
     protected override void Start()
     {
        
@@ -17,12 +18,17 @@ public class PoolInimigo : ObjectPooling
         _TimeReal = _TimeStart;
         timerIsRunning = true;
         _SPAWN = GetComponent<Transform>();
+        
     }
     
     protected virtual void Update()
     {
+        if (_gfc.isPaused)
+        {
+            timerIsRunning = false;
 
-        if (timerIsRunning)
+        }
+        else
         {
             if (_TimeReal > 0)
             {
