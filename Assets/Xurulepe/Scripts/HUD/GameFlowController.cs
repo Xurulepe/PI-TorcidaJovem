@@ -22,6 +22,7 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private List<GameObject> tutorialList;
     [SerializeField] private int tutorialIndex;
     [SerializeField] private bool tutorialActive;
+    [SerializeField] private bool waveStarted = false;
 
     [Header("Controlados pelo tutorial")]
     [SerializeField] private InimigoMelee enemyMelee;
@@ -221,10 +222,12 @@ public class GameFlowController : MonoBehaviour
         {
             ShowTutorial();
         }
-        if (enemyShooter.morreu)
+        if (enemyShooter.morreu && !waveStarted)
         {
             //ShowTutorial();
             ControlSpawners(finalSpawners, true);
+            waveHUD.SetActive(true);
+            waveStarted = true;
         }
     }
 
