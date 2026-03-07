@@ -30,36 +30,41 @@ public class PoolInimigo : ObjectPooling
         }
         else
         {
-            if (_TimeReal > 0)
+            timerIsRunning = true;
+            if (timerIsRunning) 
             {
-                _TimeReal -= Time.deltaTime;
-            }
-            else
-            {
-                if (_quantiaRestante <= 0)
+                if (_TimeReal > 0)
                 {
-                    gameObject.SetActive(false);
-                }
-                Debug.Log("Tempo esta correndo");
-                
-                _tempInimigo = GetPooledObject();
-                if(_tempInimigo == null)
-                {
-                    Debug.Log("Ta nulo");
+                    _TimeReal -= Time.deltaTime;
                 }
                 else
                 {
-                    InimigoON(_tempInimigo);
-                }
+                    if (_quantiaRestante <= 0)
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    Debug.Log("Tempo esta correndo");
+
+                    _tempInimigo = GetPooledObject();
+                    if (_tempInimigo == null)
+                    {
+                        Debug.Log("Ta nulo");
+                    }
+                    else
+                    {
+                        InimigoON(_tempInimigo);
+                    }
 
                     _TimeReal = _TimeStart;
-                _quantiaRestante = Mathf.Max(0, _quantiaRestante - 1);
-                if (_quantiaRestante <= 0)
-                {
-                    SpawnerOff();
+                    _quantiaRestante = Mathf.Max(0, _quantiaRestante - 1);
+                    if (_quantiaRestante <= 0)
+                    {
+                        SpawnerOff();
+                    }
                 }
-                
+
             }
+           
         }
     }
     void SpawnerOff()
