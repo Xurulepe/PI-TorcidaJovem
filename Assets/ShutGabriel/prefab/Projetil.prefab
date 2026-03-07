@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 7
+  damage: 5
   lifeTime: 5
   _alvo: {fileID: 0}
   _part:
@@ -161,6 +161,7 @@ MonoBehaviour:
   _renderer:
   - {fileID: 8685832739990796803}
   tempoExplosao: 1
+  Tiro: 0
 --- !u!96 &5134261748679359516
 TrailRenderer:
   serializedVersion: 3

@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 27
-  dano: 20
+  dano: 5
   _renderer:
   - {fileID: 602561182795835090}
   _part:
