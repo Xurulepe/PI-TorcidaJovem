@@ -41,9 +41,17 @@ public class ObjectPooling : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+            if(objectToPool != null)
+            {
+                tmp = Instantiate(objectToPool);
+                tmp.SetActive(false);
+                pooledObjects.Add(tmp);
+            }
+            else
+            {
+                Debug.Log("Não esta setado :-;");
+            }
+            
         }
         if (!_startV)
         {

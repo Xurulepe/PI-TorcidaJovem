@@ -11,8 +11,9 @@ public class PoolInimigo : ObjectPooling
     public bool bloqueio;
     protected override void Start()
     {
-        _quantiaRestante = amountToPool;
+       
         base.Start();
+        _quantiaRestante = amountToPool;
         _TimeReal = _TimeStart;
         timerIsRunning = true;
         _SPAWN = GetComponent<Transform>();
@@ -20,6 +21,7 @@ public class PoolInimigo : ObjectPooling
     
     protected virtual void Update()
     {
+
         if (timerIsRunning)
         {
             if (_TimeReal > 0)
@@ -28,21 +30,36 @@ public class PoolInimigo : ObjectPooling
             }
             else
             {
+                if (_quantiaRestante <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
                 Debug.Log("Tempo esta correndo");
-                InimigoON(_tempInimigo);
-                _TimeReal = _TimeStart;
-                _quantiaRestante--;
-                SpawnerOff();
-                //timerIsRunning=false;
+                
+                _tempInimigo = GetPooledObject();
+                if(_tempInimigo == null)
+                {
+                    Debug.Log("Ta nulo");
+                }
+                else
+                {
+                    InimigoON(_tempInimigo);
+                }
+
+                    _TimeReal = _TimeStart;
+                _quantiaRestante = Mathf.Max(0, _quantiaRestante - 1);
+                if (_quantiaRestante <= 0)
+                {
+                    SpawnerOff();
+                }
+                
             }
         }
     }
     void SpawnerOff()
     {
-        if (_quantiaRestante <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+        timerIsRunning = false;
+        gameObject.SetActive(false);
     }
 
     protected virtual void InimigoON(GameObject bullet)
