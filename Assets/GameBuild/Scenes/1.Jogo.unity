@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 18516625}
   - component: {fileID: 18516624}
   - component: {fileID: 18516623}
-  - component: {fileID: 18516622}
   - component: {fileID: 18516621}
   m_Layer: 6
   m_Name: ' SPAWN (MELEE) - Orda1'
@@ -177,28 +176,6 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
---- !u!195 &18516622
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18516620}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &18516623
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -813,7 +790,6 @@ GameObject:
   - component: {fileID: 405270024}
   - component: {fileID: 405270023}
   - component: {fileID: 405270022}
-  - component: {fileID: 405270021}
   - component: {fileID: 405270020}
   m_Layer: 6
   m_Name: ' SPAWN (MELEE) (1)'
@@ -859,28 +835,6 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
---- !u!195 &405270021
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405270019}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &405270022
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -995,7 +949,6 @@ GameObject:
   - component: {fileID: 545241427}
   - component: {fileID: 545241426}
   - component: {fileID: 545241425}
-  - component: {fileID: 545241424}
   - component: {fileID: 545241423}
   m_Layer: 10
   m_Name: SPAWN (Shooter) - Final
@@ -1040,28 +993,6 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
---- !u!195 &545241424
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545241422}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &545241425
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1623,7 +1554,6 @@ GameObject:
   - component: {fileID: 1060880387}
   - component: {fileID: 1060880386}
   - component: {fileID: 1060880385}
-  - component: {fileID: 1060880384}
   - component: {fileID: 1060880383}
   m_Layer: 6
   m_Name: ' SPAWN (MELEE) - Tutorial'
@@ -1669,28 +1599,6 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
---- !u!195 &1060880384
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060880382}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &1060880385
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3722,7 +3630,6 @@ GameObject:
   - component: {fileID: 2012477935}
   - component: {fileID: 2012477934}
   - component: {fileID: 2012477933}
-  - component: {fileID: 2012477932}
   - component: {fileID: 2012477931}
   m_Layer: 10
   m_Name: SPAWN (Shooter) -  Tutorial
@@ -3767,28 +3674,6 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 3
   bloqueio: 0
---- !u!195 &2012477932
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012477930}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &2012477933
 CapsuleCollider:
   m_ObjectHideFlags: 0
