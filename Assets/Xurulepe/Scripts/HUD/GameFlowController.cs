@@ -28,7 +28,9 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private InimigoMelee enemyMelee;
     [SerializeField] private InimigoShooter enemyShooter;
     [SerializeField] private List<GameObject> tutorialSpawners;
-    [SerializeField] private List<GameObject> finalSpawners;
+    [SerializeField] private List<GameObject> wave1Spawners;
+    [SerializeField] private List<GameObject> wave2Spawners;
+    [SerializeField] private List<GameObject> wave3Spawners;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private PlayerControle playerControl;
 
@@ -38,13 +40,6 @@ public class GameFlowController : MonoBehaviour
     public bool isPaused;
     public int enemyCount;
     public bool tutorialFinished;
-
-    public int enemyMeleeAmount = 1;
-    public int enemyShooterAmount = 1;
-
-    public bool canSpawnEnemyMelee = false;
-    public bool canSpawnEnemyShooter = false;
-
 
     // componentes
     private MenuAnimation menuAnimation;
@@ -69,7 +64,6 @@ public class GameFlowController : MonoBehaviour
     {
         if (!waveStarted)
         {
-            print("control enemy");
             ControlEnemies();
         }
 
@@ -221,15 +215,12 @@ public class GameFlowController : MonoBehaviour
     {
         if (enemyMelee != null && enemyMelee.morreu && CanShowTutorial())
         {
-            Debug.Log("melee morreu");
             tutorialSpawners[1].SetActive(true);  //
-            //ShowTutorial();
         }
         else if (enemyShooter != null && enemyShooter.morreu)
         {
             //ShowTutorial();
-            Debug.Log("shooter morreu");
-            ControlSpawners(finalSpawners, true);
+            ControlSpawners(wave1Spawners, true);
             waveHUD.SetActive(true);
             waveStarted = true;
         }
