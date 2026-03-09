@@ -1665,7 +1665,7 @@ MonoBehaviour:
   _cl:
   - {fileID: 1060880385}
   _gfc: {fileID: 0}
-  _TimeStart: 10
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -3730,7 +3730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2012477931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3745,7 +3745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 8656701928171015925, guid: 303ab8cbd12bb9049a7e04aaec20801e, type: 3}
-  amountToPool: 3
+  amountToPool: 1
   Vida: 55
   radius: 5
   height: 10
@@ -3763,9 +3763,9 @@ MonoBehaviour:
   - {fileID: 1953245548}
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 10
+  _TimeStart: 1
   timerIsRunning: 0
-  _quantiaRestante: 0
+  _quantiaRestante: 3
   bloqueio: 0
 --- !u!195 &2012477932
 NavMeshAgent:

@@ -67,8 +67,9 @@ public class GameFlowController : MonoBehaviour
 
     private void Update()
     {
-        if (enemyMelee != null && enemyShooter != null)
+        if (!waveStarted)
         {
+            print("control enemy");
             ControlEnemies();
         }
 
@@ -218,13 +219,16 @@ public class GameFlowController : MonoBehaviour
 
     private void ControlEnemies()
     {
-        if (enemyMelee.morreu && CanShowTutorial())
+        if (enemyMelee != null && enemyMelee.morreu && CanShowTutorial())
         {
-            ShowTutorial();
+            Debug.Log("melee morreu");
+            tutorialSpawners[1].SetActive(true);  //
+            //ShowTutorial();
         }
-        if (enemyShooter.morreu && !waveStarted)
+        else if (enemyShooter != null && enemyShooter.morreu)
         {
             //ShowTutorial();
+            Debug.Log("shooter morreu");
             ControlSpawners(finalSpawners, true);
             waveHUD.SetActive(true);
             waveStarted = true;
