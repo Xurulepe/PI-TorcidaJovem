@@ -41,17 +41,7 @@ public class InimigoMelee : InimigoDef
     {
         base.Start();
         
-        controller = GetComponent<CharacterController>();
-
-        if (controller != null)
-        {
-            controller.enabled = false;
-            Debug.Log("CharacterController desativado no Start.");
-        }
-        else
-        {
-            Debug.LogWarning("Nenhum CharacterController encontrado neste GameObject.");
-        }
+       
         _agent.speed = 10f;
     }
 
@@ -117,10 +107,7 @@ public class InimigoMelee : InimigoDef
 
             Invoke(nameof(FieldResp), 1f);
         }
-        if (other.CompareTag("Ground"))
-        {
-            tocouChao = true;
-        }
+       
     }
    
 

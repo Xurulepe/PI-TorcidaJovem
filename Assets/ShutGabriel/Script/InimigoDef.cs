@@ -57,10 +57,7 @@ public class InimigoDef : MonoBehaviour
     protected bool _OnHit;
     
     
-    [Header("Controle de Navmesh")]
-    [SerializeField] LayerMask groundLayer;
-    protected bool tocouChao = false;
-    protected Rigidbody _rb;
+    
    
     void Awake()
     {     
@@ -80,10 +77,7 @@ public class InimigoDef : MonoBehaviour
         if (mat != null)
             mat.SetFloat("_FlashAmount", 0f);
 
-        if (_agent != null)
-            _agent.enabled = false;
-
-        tocouChao = false;
+        
         
     }
 
@@ -96,8 +90,7 @@ public class InimigoDef : MonoBehaviour
         _gfc.AddEnemy(gameObject);
 
          _agent = GetComponent<NavMeshAgent>();
-        _agent.enabled = false;
-        tocouChao = false;
+       
 
 
 
@@ -126,15 +119,7 @@ public class InimigoDef : MonoBehaviour
         // para inimigos se o jogo estiver pausada
         // _agent.isStopped = _gfc.isPaused;
 
-        if (tocouChao)
-        {
-            if (Physics.Raycast(transform.position, Vector3.down, 1.5f, groundLayer))
-            {
-                _agent.enabled = true;
-                
-               
-            }
-        }
+       
         if (_alvo != null && _agent != null)
 
         {
@@ -262,7 +247,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void Vida()
     {
 
-        vida = 100;
+        vida = 21;
         _tempo = 0f;
 
         _isHIT = false;
