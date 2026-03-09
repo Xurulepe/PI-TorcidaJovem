@@ -87,6 +87,15 @@ public class InimigoMelee : InimigoDef
             StartCoroutine(HitTime(knockDir));
         }
 
+        if (other.gameObject.CompareTag("Globulo"))
+        {
+
+            Vector3 knockDir = (transform.position - transfomelee.transform.position).normalized;
+            _agent.velocity = Vector3.zero;
+            //   _agent.enabled=false;
+
+            StartCoroutine(HitTime(knockDir));
+        }
 
         if (other.CompareTag("Forcefield") && !_field)
         {

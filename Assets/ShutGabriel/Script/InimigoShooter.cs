@@ -133,6 +133,14 @@ public class InimigoShooter : InimigoDef
             StartCoroutine(HitTime(knockDir));
 
         }
+        if (other.gameObject.CompareTag("Globulo"))
+        {
+
+            Vector3 knockDir = (transform.position - other.transform.position).normalized;
+            _agent.velocity = Vector3.zero;
+
+            StartCoroutine(HitTime(knockDir));
+        }
     }
     void FieldResp()
     {

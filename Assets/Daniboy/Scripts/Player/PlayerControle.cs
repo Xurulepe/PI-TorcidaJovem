@@ -341,6 +341,7 @@ public class PlayerControle : MonoBehaviour
                 {
                     _anima_Robo.SetTrigger("CallHelp");
                     _finalAction = true;
+                    glob.Vida();
                     glob.Invocar();
                 }
             }

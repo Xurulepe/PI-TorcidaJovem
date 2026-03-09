@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GlobuloBranco : MonoBehaviour
@@ -49,9 +50,15 @@ public class GlobuloBranco : MonoBehaviour
     {
         enemies.Clear();
 
-        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("EnemyMelee");
+        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("EnemyMelee");
+        GameObject[] shooterEnemies = GameObject.FindGameObjectsWithTag("EnemyShooter");
 
-        foreach (GameObject enemy in enemyObjects)
+        foreach (GameObject enemy in meleeEnemies)
+        {
+            enemies.Add(enemy.transform);
+        }
+
+        foreach (GameObject enemy in shooterEnemies)
         {
             enemies.Add(enemy.transform);
         }
@@ -85,7 +92,7 @@ public class GlobuloBranco : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyMelee"))
+        if (other.gameObject.CompareTag("EnemyMelee") || other.gameObject.CompareTag("EnemyShooter"));
         {
             InimigoDef inimigo = other.GetComponent<InimigoDef>();
 
@@ -122,5 +129,11 @@ public class GlobuloBranco : MonoBehaviour
     {
         Debug.Log("O Glóbulo morreu!");
         gameObject.SetActive(false);
+    }
+    public virtual void Vida()
+    {
+
+        vidaAtual = 100;
+       
     }
 }
