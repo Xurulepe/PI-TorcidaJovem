@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894ca0d7b06fab4981351fb422d8251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 55
+  vida: 21
   dano: 7
   _renderer:
   - {fileID: 6102374726004681698}
@@ -445,6 +445,9 @@ MonoBehaviour:
   executado: 0
   _gfc: {fileID: 0}
   morreu: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   IntervaloAtaque: 1
   _playerNaArea: 0
   _raio: 1.5
@@ -480,7 +483,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112

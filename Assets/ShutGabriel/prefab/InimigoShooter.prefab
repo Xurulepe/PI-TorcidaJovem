@@ -441,8 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255d3577d0bf77047ae94732fc8c8151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 27
-  dano: 5
+  vida: 14
+  dano: 7
   _renderer:
   - {fileID: 602561182795835090}
   _part:
@@ -472,6 +472,9 @@ MonoBehaviour:
   executado: 0
   _gfc: {fileID: 0}
   morreu: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   projectilePrefab: {fileID: 5209477025593447596, guid: 10a34b3928ad20948a20e015b352a657, type: 3}
   spawnPoint: {fileID: 3178175699698396072}
   _intervaloTiro: 1

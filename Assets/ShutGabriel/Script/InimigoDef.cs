@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
 using DG.Tweening.Core.Easing;
 using System.Drawing;
+using Unity.VisualScripting;
 
 public class InimigoDef : MonoBehaviour
 {
@@ -21,13 +22,13 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected ParticleSystem[] _part;
     [SerializeField] protected ParticleSystem[] _part2;
     [SerializeField] protected Collider[] _CL;
-    [SerializeField] protected bool _checkHIT;
-  
+    [SerializeField] protected bool _checkHIT;    
     [SerializeField] protected bool _isHIT;
     [SerializeField] protected Vector3 ScaleStart;
     protected float _tempo = 0f;
     bool _startV;
     public bool _StopTiro;
+    
 
     [Header("SpriteVirus")]
     [SerializeField] protected GameObject _spriteVirus;
@@ -54,7 +55,13 @@ public class InimigoDef : MonoBehaviour
     protected float _knockbackForce = 20f;
     protected Vector3 knockbackVelocity;
     protected bool _OnHit;
-
+    
+    
+    [Header("Controle de Navmesh")]
+    [SerializeField] LayerMask groundLayer;
+    protected bool tocouChao = false;
+    protected Rigidbody _rb;
+   
     void Awake()
     {     
        
@@ -70,9 +77,14 @@ public class InimigoDef : MonoBehaviour
     {
         morreu = false;
 
-        // importante pra pooling
         if (mat != null)
             mat.SetFloat("_FlashAmount", 0f);
+
+        if (_agent != null)
+            _agent.enabled = false;
+
+        tocouChao = false;
+        
     }
 
     protected virtual void Start()
@@ -84,6 +96,11 @@ public class InimigoDef : MonoBehaviour
         _gfc.AddEnemy(gameObject);
 
          _agent = GetComponent<NavMeshAgent>();
+        _agent.enabled = false;
+        tocouChao = false;
+
+
+
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -107,9 +124,17 @@ public class InimigoDef : MonoBehaviour
     protected virtual void Update()
     {
         // para inimigos se o jogo estiver pausada
-       // _agent.isStopped = _gfc.isPaused;
-      
+        // _agent.isStopped = _gfc.isPaused;
 
+        if (tocouChao)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, 1.5f, groundLayer))
+            {
+                _agent.enabled = true;
+                
+               
+            }
+        }
         if (_alvo != null && _agent != null)
 
         {
@@ -232,7 +257,7 @@ public class InimigoDef : MonoBehaviour
         }   
        
     }
-
+    
 
     public virtual void Vida()
     {
@@ -283,6 +308,7 @@ public class InimigoDef : MonoBehaviour
             _spriteVirus.gameObject.SetActive(true);
         }
     }
+    
 
     private void OnDisable()
     {

@@ -97,12 +97,13 @@ public class GlobuloBranco : MonoBehaviour
             InimigoDef inimigo = other.GetComponent<InimigoDef>();
 
             if (inimigo != null)
-            {
-         
+            {         
                 ReceberDano(10);
+
             }
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.transform == _currentTarget)

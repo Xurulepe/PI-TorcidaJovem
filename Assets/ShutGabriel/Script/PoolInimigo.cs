@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PoolInimigo : ObjectPooling
 {
@@ -82,6 +83,7 @@ public class PoolInimigo : ObjectPooling
 
             //bullet.transform.SetParent(_SPAWN);
             bullet.transform.localPosition = transform.position;
+            NavMeshAgent agent = bullet.GetComponent<NavMeshAgent>();
             bullet.SetActive(true);
             for (int i = 0; i < _part.Length; i++)
             {
