@@ -82,7 +82,7 @@ public class PoolInimigo : ObjectPooling
             inimigoDef.Vida();
 
             //bullet.transform.SetParent(_SPAWN);
-            bullet.transform.localPosition = transform.position;
+            bullet.transform.localPosition = transform.localPosition;
             NavMeshAgent agent = bullet.GetComponent<NavMeshAgent>();
             bullet.SetActive(true);
 

@@ -7,7 +7,7 @@ public class Projetil : MonoBehaviour
     public float speed = 20f;
     public int damage = 10;
     public float lifeTime = 1f;
-    int Hurt = 15;
+    int Hurt = 5;
     private Vector3 direction;
     [SerializeField] Transform _alvo;
     [SerializeField] protected ParticleSystem[] _part;
