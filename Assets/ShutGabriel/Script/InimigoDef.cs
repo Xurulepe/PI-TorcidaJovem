@@ -253,7 +253,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void Vida()
     {
 
-        vida = 21;
+        vida = 7;
         _tempo = 0f;
 
         _isHIT = false;
