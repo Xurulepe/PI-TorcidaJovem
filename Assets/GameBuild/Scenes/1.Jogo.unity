@@ -261,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 18516620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9000015, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -13.099998, y: -1070.95, z: 56.4039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -500,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 76465818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70000076, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -14.299999, y: -1070.95, z: 27.4039}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1075,7 +1075,7 @@ Transform:
   m_GameObject: {fileID: 545241422}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70000076, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -12.299999, y: -1070.95, z: 56.4039}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1818,7 +1818,7 @@ Transform:
   m_GameObject: {fileID: 1035770738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70000076, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -94.3, y: -1070.95, z: 44.4039}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2936,7 +2936,7 @@ Transform:
   m_GameObject: {fileID: 1563468101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9000015, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -13.099998, y: -1070.95, z: 33.4039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3323,7 +3323,7 @@ Transform:
   m_GameObject: {fileID: 1624188024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9000015, y: -1070.95, z: 56.4039}
+  m_LocalPosition: {x: -93.1, y: -1070.95, z: 56.4039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4507,6 +4507,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaveId: 0
   waveEnemies: []
+  deadEnemiesCount: 0
+  isWaveActive: 0
+  OnAllEnemiesDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1960654653
 Transform:
   m_ObjectHideFlags: 0
