@@ -171,7 +171,7 @@ MonoBehaviour:
   _cl:
   - {fileID: 0}
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   _part: []
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   - {fileID: 1718173155}
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   _part: []
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -2829,7 +2829,7 @@ MonoBehaviour:
   _part: []
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   _part: []
   _cl: []
   _gfc: {fileID: 0}
-  _TimeStart: 2
+  _TimeStart: 1
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0

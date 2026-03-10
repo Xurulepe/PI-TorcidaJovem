@@ -179,12 +179,13 @@ public class InimigoDef : MonoBehaviour
             _renderer[i].enabled = false;
         }
         TempoMorrendo = 1.5f;
-        estaMorrendo = true;
+       
 
         if (!morreu)
         {
             WaveManager.Instance.IncreaseDeadEnemiesCount();
         }
+        estaMorrendo = true;
         morreu = true;
     }
 
@@ -252,7 +253,7 @@ public class InimigoDef : MonoBehaviour
 
     public virtual void Vida(GameObject bullet)
     {
-
+        TempoMorrendo = 1.5f;
         vida = 7;
         _tempo = 0f;
         morreu = false;
