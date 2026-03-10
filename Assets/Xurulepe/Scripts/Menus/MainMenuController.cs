@@ -192,6 +192,11 @@ public class MainMenuController : MonoBehaviour
         {
             progressBar.fillAmount = asyncLoad.progress;
             yield return null;
+
+            if (asyncLoad.progress == 1f)
+            {
+                break;
+            }
         }
 
         progressBar.fillAmount = 1f;
