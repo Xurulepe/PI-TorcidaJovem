@@ -37,7 +37,7 @@ public class InimigoDef : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRendererVirus;
     [SerializeField] protected List<Sprite> Rostoimg = new List<Sprite>();
     [SerializeField] GameObject hITBOX;
-    public bool estaMorrendo = false;
+    protected bool estaMorrendo = false;
     [SerializeField] protected float knockbackDuration = 0.3f;
     [SerializeField] protected float knockbackTimer;
     public float TempoMorrendo = 0f;
@@ -131,18 +131,7 @@ public class InimigoDef : MonoBehaviour
             }
         }
       
-        if (estaMorrendo)
-        {
-
-            _spriteVirus.gameObject.SetActive(false);
-            TempoMorrendo -= Time.deltaTime;
-            if (TempoMorrendo <= 0f)
-            {
-                
-                gameObject.SetActive(false);
-                //_spriteVirus.gameObject.SetActive(false);
-            }
-        }
+       
 
     }
    
@@ -178,8 +167,12 @@ public class InimigoDef : MonoBehaviour
         {
             _renderer[i].enabled = false;
         }
-        TempoMorrendo = 1.5f;
-       
+        for (int i = 0; i < _CL.Length; i++)
+        {
+            _CL[i].enabled = false;
+        }
+
+
 
         if (!morreu)
         {
@@ -220,6 +213,10 @@ public class InimigoDef : MonoBehaviour
         {
 
            Morrer();
+            _spriteVirus.gameObject.SetActive(false);
+            yield return new WaitForSeconds(1.5f);
+          
+            gameObject.SetActive(false);
         }
         else
         {
@@ -246,8 +243,9 @@ public class InimigoDef : MonoBehaviour
             hITBOX.SetActive(true);
             _OnHit = false;
           
-        }   
-       
+        }
+   
+
     }
     
 
@@ -255,10 +253,12 @@ public class InimigoDef : MonoBehaviour
     {
         TempoMorrendo = 1.5f;
         vida = 7;
+        executado = false;
         _tempo = 0f;
         morreu = false;
         _isHIT = false;
         estaMorrendo = false;
+        hITBOX.SetActive(true);
         bullet.GetComponent<NavMeshAgent>().enabled = true;
         bullet.GetComponent<Collider>().enabled = true;
         if (_startV)
@@ -270,6 +270,10 @@ public class InimigoDef : MonoBehaviour
         {
             _renderer[i].enabled = false;
             _spriteVirus.gameObject.SetActive(true);
+        }
+        for (int i = 0; i < _CL.Length; i++)
+        {
+            _CL[i].enabled = true;
         }
     }
     public virtual void RecuperarDedano()
