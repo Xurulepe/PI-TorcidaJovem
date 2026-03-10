@@ -627,24 +627,21 @@ MonoBehaviour:
   - {fileID: 5788769461490183646}
   tutorialIndex: 0
   tutorialActive: 0
+  waveStarted: 0
   enemyMelee: {fileID: 0}
   enemyShooter: {fileID: 0}
   tutorialSpawners:
   - {fileID: 0}
   - {fileID: 0}
-  finalSpawners:
-  - {fileID: 0}
-  - {fileID: 0}
+  wave1Spawners: []
+  wave2Spawners: []
+  wave3Spawners: []
   pauseButton: {fileID: 0}
   playerControl: {fileID: 0}
   enemiesList: []
   isPaused: 0
   enemyCount: 0
   tutorialFinished: 0
-  enemyMeleeAmount: 1
-  enemyShooterAmount: 1
-  canSpawnEnemyMelee: 0
-  canSpawnEnemyShooter: 0
 --- !u!114 &5646970520030495000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3980853260516914284
 RectTransform:
   m_ObjectHideFlags: 0
@@ -984,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -25}
+  m_AnchoredPosition: {x: 450, y: -50}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2038916063842534259
@@ -997,6 +994,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4157561415781648384}
   - component: {fileID: 6021118414694753203}
+  - component: {fileID: 6553225725027353117}
+  - component: {fileID: 6173654412959654307}
   m_Layer: 5
   m_Name: Win HUD
   m_TagString: Untagged
@@ -1047,6 +1046,36 @@ MonoBehaviour:
   - {fileID: 6424489449210870399}
   - {fileID: 7572741088218965245}
   - {fileID: 3479546211636234015}
+--- !u!114 &6553225725027353117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038916063842534259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26bf277eb072514b97341ab19027e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDObjectiveText: {fileID: 6972467849521529334}
+  missionObjectiveText: {fileID: 2768583959418381785}
+  timer: {fileID: 7621531896602638244}
+  HUDTimerText: {fileID: 733244444963058389}
+--- !u!114 &6173654412959654307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038916063842534259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69737da3d19459d45801aa4b6fbd509a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameFlowController: {fileID: 8493554938979381703}
+  destroyedEnemiesUI: {fileID: 2457302352276339004}
 --- !u!1 &2110633153176800301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3402,7 @@ GameObject:
   - component: {fileID: 4741840122489210882}
   - component: {fileID: 4332253969912387858}
   - component: {fileID: 491180569834246473}
+  - component: {fileID: 3995933434389320298}
   m_Layer: 5
   m_Name: Lose HUD
   m_TagString: Untagged
@@ -3439,6 +3469,20 @@ MonoBehaviour:
   missionObjectiveText: {fileID: 2768583959418381785}
   timer: {fileID: 7621531896602638244}
   HUDTimerText: {fileID: 6113922732540747118}
+--- !u!114 &3995933434389320298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013228370110568152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69737da3d19459d45801aa4b6fbd509a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameFlowController: {fileID: 8493554938979381703}
+  destroyedEnemiesUI: {fileID: 3104864037777971626}
 --- !u!1 &4014313289803144348
 GameObject:
   m_ObjectHideFlags: 0
@@ -8392,7 +8436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -25}
+  m_AnchoredPosition: {x: 450, y: -50}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8927154596181596710
@@ -8410,7 +8454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6424489449210870399
 RectTransform:
   m_ObjectHideFlags: 0
