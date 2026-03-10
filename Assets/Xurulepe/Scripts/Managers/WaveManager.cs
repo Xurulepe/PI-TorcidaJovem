@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour
 
     public void StartWaves()
     {
+        currentWaveId = 1;
         deadEnemiesCount = 0;
         isWaveActive = true;
     }
@@ -64,5 +65,10 @@ public class WaveManager : MonoBehaviour
     public int GetCurrentWaveId()
     {
         return currentWaveId;
+    }
+
+    public int GetDeadEnemiesCount()
+    {
+        return deadEnemiesCount;
     }
 }

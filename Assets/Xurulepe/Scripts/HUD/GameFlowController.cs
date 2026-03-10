@@ -255,7 +255,15 @@ public class GameFlowController : MonoBehaviour
     public void StartNewWave()
     {
         int waveId = WaveManager.Instance.GetCurrentWaveId();
-        ControlSpawners(waveSpawnersList[waveId], true);
-        waveHUD.SetActive(true);
+
+        if (waveId > waveSpawnersList.Count - 1)
+        {
+            ShowWinHUD();
+        }
+        else
+        {
+            ControlSpawners(waveSpawnersList[waveId], true);
+            waveHUD.SetActive(true);
+        }
     }
 }
