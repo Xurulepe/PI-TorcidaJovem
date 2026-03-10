@@ -85,6 +85,9 @@ public class PoolInimigo : ObjectPooling
             bullet.transform.localPosition = transform.position;
             NavMeshAgent agent = bullet.GetComponent<NavMeshAgent>();
             bullet.SetActive(true);
+
+            WaveManager.Instance.AddNewEnemy(bullet);
+
             for (int i = 0; i < _part.Length; i++)
             {
                 _part[i].Play();

@@ -31,6 +31,7 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private List<GameObject> wave1Spawners;
     [SerializeField] private List<GameObject> wave2Spawners;
     [SerializeField] private List<GameObject> wave3Spawners;
+    [SerializeField] private List<List<GameObject>> waveSpawnersList = new List<List<GameObject>>();
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private PlayerControle playerControl;
 
@@ -55,9 +56,21 @@ public class GameFlowController : MonoBehaviour
         tutorialHUD.SetActive(false);
         backgroundPanel.SetActive(false);
 
+        waveSpawnersList = new List<List<GameObject>>()
+        {
+            wave1Spawners,
+            wave2Spawners,
+            wave3Spawners
+        };
+
         tutorialIndex = 0;
 
         ShowTutorial();
+    }
+
+    private void Start()
+    {
+        WaveManager.Instance.OnAllEnemiesDead.AddListener(StartNewWave);
     }
 
     private void Update()
@@ -221,6 +234,8 @@ public class GameFlowController : MonoBehaviour
         {
             //ShowTutorial();
             ControlSpawners(wave1Spawners, true);
+
+            WaveManager.Instance.StartWaves();
             waveHUD.SetActive(true);
             waveStarted = true;
         }
@@ -239,6 +254,8 @@ public class GameFlowController : MonoBehaviour
 
     public void StartNewWave()
     {
+        int waveId = WaveManager.Instance.GetCurrentWaveId();
+        ControlSpawners(waveSpawnersList[waveId], true);
         waveHUD.SetActive(true);
     }
 }

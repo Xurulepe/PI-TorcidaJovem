@@ -1,10 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] private int currentWaveId = 0;
+    [SerializeField] private int currentWaveId = 1;
     [SerializeField] private List<GameObject> waveEnemies = new List<GameObject>();
+    [SerializeField] private int deadEnemiesCount = 0;
+    [SerializeField] private bool isWaveActive = false;
+
+    public UnityEvent OnAllEnemiesDead;
 
     public static WaveManager Instance { get; private set; }
 
@@ -15,33 +20,49 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
-        int deadEnemies = 0;
-
-        foreach (var enemy in waveEnemies)
+        if (!isWaveActive || waveEnemies.Count <= 0)
         {
-            if (enemy.activeInHierarchy)
-            {
-                deadEnemies++;
-            }
+            return;
         }
 
-        if (deadEnemies >= waveEnemies.Count)
+        if (deadEnemiesCount >= waveEnemies.Count)
         {
+            OnAllEnemiesDead?.Invoke();
             StartNextWave();
         }
+    }
+
+    public void StartWaves()
+    {
+        deadEnemiesCount = 0;
+        isWaveActive = true;
     }
 
     public void StartNextWave()
     {
         waveEnemies.Clear();
+        deadEnemiesCount = 0;
         currentWaveId++;
     }
 
     public void AddNewEnemy(GameObject enemy)
     {
-        if (!waveEnemies.Contains(enemy))
+        if (isWaveActive && !waveEnemies.Contains(enemy))
         {
             waveEnemies.Add(enemy);
         }
+    }
+
+    public void IncreaseDeadEnemiesCount()
+    {
+        if (isWaveActive)
+        {
+            deadEnemiesCount++;
+        }
+    }
+
+    public int GetCurrentWaveId()
+    {
+        return currentWaveId;
     }
 }

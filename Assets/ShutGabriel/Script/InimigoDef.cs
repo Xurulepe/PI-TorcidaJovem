@@ -180,6 +180,8 @@ public class InimigoDef : MonoBehaviour
         }
         TempoMorrendo = 1.5f;
         estaMorrendo = true;
+
+        WaveManager.Instance.IncreaseDeadEnemiesCount();
     }
 
     
