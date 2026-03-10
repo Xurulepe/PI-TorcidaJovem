@@ -1046,6 +1046,7 @@ MonoBehaviour:
   - {fileID: 6424489449210870399}
   - {fileID: 7572741088218965245}
   - {fileID: 3479546211636234015}
+  autoSelectButton: {fileID: 5103958382707496070}
 --- !u!114 &6553225725027353117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3453,6 +3454,7 @@ MonoBehaviour:
   - {fileID: 3980853260516914284}
   - {fileID: 4675986432620431716}
   - {fileID: 8540239858717596658}
+  autoSelectButton: {fileID: 900431469273828684}
 --- !u!114 &491180569834246473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4703,6 +4705,7 @@ MonoBehaviour:
   - {fileID: 3880523960814709611}
   - {fileID: 3098252793276873063}
   - {fileID: 2768868119186690615}
+  autoSelectButton: {fileID: 8522836355245606245}
 --- !u!1 &5173160891355670213
 GameObject:
   m_ObjectHideFlags: 0
