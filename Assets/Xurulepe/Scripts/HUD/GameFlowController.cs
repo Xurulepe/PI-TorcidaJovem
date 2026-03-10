@@ -129,12 +129,14 @@ public class GameFlowController : MonoBehaviour
     {
         isPaused = true;
         playerControl.LockFunction();
+        pauseButton.SetActive(false);
     }
 
     public void UnPause()
     {
         isPaused = false;
         playerControl.Unlock();
+        pauseButton.SetActive(true);
     }
 
     public void AddEnemy(GameObject enemy)
