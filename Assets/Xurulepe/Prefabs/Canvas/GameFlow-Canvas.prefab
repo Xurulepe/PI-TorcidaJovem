@@ -6757,7 +6757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2766144466724053200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8493554938979381703}
+        m_TargetAssemblyTypeName: GameFlowController, Assembly-CSharp
+        m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7505257916494884305
 GameObject:
   m_ObjectHideFlags: 0
@@ -7729,7 +7741,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:369859074edc64f47989682e94218a05
     m_TableEntryReference:
-      m_KeyId: 24
+      m_KeyId: 26
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -7873,7 +7885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5298873019906722095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8493554938979381703}
+        m_TargetAssemblyTypeName: GameFlowController, Assembly-CSharp
+        m_MethodName: RetryLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8281111196660759049
 GameObject:
   m_ObjectHideFlags: 0
