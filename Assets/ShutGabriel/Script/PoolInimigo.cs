@@ -79,11 +79,11 @@ public class PoolInimigo : ObjectPooling
         if (bullet != null)
         {
             InimigoDef inimigoDef = bullet.GetComponent<InimigoDef>();
-            inimigoDef.Vida();
+            inimigoDef.Vida(bullet);
 
             //bullet.transform.SetParent(_SPAWN);
             bullet.transform.localPosition = transform.localPosition;
-            NavMeshAgent agent = bullet.GetComponent<NavMeshAgent>();
+           
             bullet.SetActive(true);
 
             WaveManager.Instance.AddNewEnemy(bullet);

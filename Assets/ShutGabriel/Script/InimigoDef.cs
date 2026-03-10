@@ -250,15 +250,16 @@ public class InimigoDef : MonoBehaviour
     }
     
 
-    public virtual void Vida()
+    public virtual void Vida(GameObject bullet)
     {
 
         vida = 7;
         _tempo = 0f;
-
+        morreu = false;
         _isHIT = false;
         estaMorrendo = false;
-        
+        bullet.GetComponent<NavMeshAgent>().enabled = true;
+        bullet.GetComponent<Collider>().enabled = true;
         if (_startV)
         {
             transform.localScale = ScaleStart;
