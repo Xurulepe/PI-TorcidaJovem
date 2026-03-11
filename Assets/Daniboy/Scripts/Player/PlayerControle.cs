@@ -108,18 +108,6 @@ public class PlayerControle : MonoBehaviour
         RotateTowardsMouse();
         //Shootmanage();
 
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            LockFunction();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Unlock();
-        }
-
     }
 
     public void AttackShoot(InputAction.CallbackContext value)

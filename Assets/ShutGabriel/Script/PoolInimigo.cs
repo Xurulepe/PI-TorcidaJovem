@@ -10,6 +10,11 @@ public class PoolInimigo : ObjectPooling
     protected Transform _SPAWN;
     public int _quantiaRestante;
     public bool bloqueio;
+
+    public bool posiAleatoria;
+    public Vector3 posiMin;
+    public Vector3 posiMax;
+
     
     protected override void Start()
     {
@@ -54,6 +59,10 @@ public class PoolInimigo : ObjectPooling
                     else
                     {
                         InimigoON(_tempInimigo);
+                        if (posiAleatoria == true)
+                        {
+                            transform.position = new Vector3(Random.Range(posiMin.x, posiMax.x), transform.position.y, Random.Range(posiMin.z, posiMax.z));
+                        }
                     }
 
                     _TimeReal = _TimeStart;

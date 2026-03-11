@@ -31,7 +31,7 @@ public class PlayerHealthScript : MonoBehaviour
     void Update()
     {
         Death();
-        Test();
+       // Test();
         
     }
 

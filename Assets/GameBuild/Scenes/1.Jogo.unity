@@ -175,6 +175,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!23 &18516624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -182,7 +185,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18516620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -397,7 +400,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76465818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -493,6 +496,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!1001 &141695521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -941,6 +947,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!23 &545241426
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -948,7 +957,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545241422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1667,7 +1676,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035770738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1763,6 +1772,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!1001 &1050302677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1998,6 +2010,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 0
+  posiMin: {x: 0, y: 0, z: 0}
+  posiMax: {x: 0, y: 0, z: 0}
 --- !u!23 &1060880386
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2005,7 +2020,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060880382}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2794,7 +2809,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563468101}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2890,6 +2905,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!1 &1565361964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3046,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fa98cd33fafe84047a8d69e229e28982, type: 2}
+    - target: {fileID: 1120412143851246719, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120412143851246719, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120412143851246719, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       propertyPath: glob
       value: 
@@ -3086,6 +3116,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3767381977790515458, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943182846284432213, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943182846284432213, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943182846284432213, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976711133864400663, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
@@ -3157,7 +3199,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624188024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3253,6 +3295,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 0
   bloqueio: 0
+  posiAleatoria: 1
+  posiMin: {x: -111, y: 0, z: 8}
+  posiMax: {x: 7, y: 0, z: 70}
 --- !u!1001 &1650040635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3902,6 +3947,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3988094126393546310, guid: 076c19437cdc03441970ebdf52514cbc, type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988094126393546310, guid: 076c19437cdc03441970ebdf52514cbc, type: 3}
+      propertyPath: lengthInSec
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988094126393546310, guid: 076c19437cdc03441970ebdf52514cbc, type: 3}
+      propertyPath: TrailModule.worldSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988094126393546310, guid: 076c19437cdc03441970ebdf52514cbc, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8549864865532171538, guid: 076c19437cdc03441970ebdf52514cbc, type: 3}
       propertyPath: m_Name
       value: ShootParticule
@@ -4431,7 +4492,7 @@ GameObject:
   m_Layer: 10
   m_Name: SPAWN (Shooter) -  Tutorial
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -4471,6 +4532,9 @@ MonoBehaviour:
   timerIsRunning: 0
   _quantiaRestante: 3
   bloqueio: 0
+  posiAleatoria: 0
+  posiMin: {x: 0, y: 0, z: 0}
+  posiMax: {x: 0, y: 0, z: 0}
 --- !u!23 &2012477934
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4478,7 +4542,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012477930}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4533,7 +4597,7 @@ Transform:
   m_GameObject: {fileID: 2012477930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -1056.95, z: 56.4039}
+  m_LocalPosition: {x: 0.7, y: -1056.95, z: 65}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
