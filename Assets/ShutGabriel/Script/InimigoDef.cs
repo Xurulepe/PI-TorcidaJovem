@@ -252,7 +252,7 @@ public class InimigoDef : MonoBehaviour
     public virtual void Vida(GameObject bullet)
     {
         TempoMorrendo = 1.5f;
-        vida = 7;
+        vida = 14;
         executado = false;
         _tempo = 0f;
         morreu = false;
