@@ -27,11 +27,6 @@ public class GameFlowController : MonoBehaviour
     [Header("Controlados pelo tutorial")]
     [SerializeField] private InimigoMelee enemyMelee;
     [SerializeField] private InimigoShooter enemyShooter;
-    [SerializeField] private List<GameObject> tutorialSpawners;
-    [SerializeField] private List<GameObject> wave1Spawners;
-    [SerializeField] private List<GameObject> wave2Spawners;
-    [SerializeField] private List<GameObject> wave3Spawners;
-    [SerializeField] private List<List<GameObject>> waveSpawnersList = new List<List<GameObject>>();
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private PlayerControle playerControl;
 
@@ -56,21 +51,21 @@ public class GameFlowController : MonoBehaviour
         tutorialHUD.SetActive(false);
         backgroundPanel.SetActive(false);
 
-        waveSpawnersList = new List<List<GameObject>>()
-        {
-            wave1Spawners,
-            wave2Spawners,
-            wave3Spawners
-        };
-
         tutorialIndex = 0;
 
         ShowTutorial();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        WaveManager.Instance.OnAllEnemiesDead.AddListener(StartNewWave);
+        WaveManager.Instance.OnNewWaveStarted += ActiveWaveHUD;
+        WaveManager.Instance.OnAllWavesCompleted += ShowWinHUD;
+    }
+
+    private void OnDisable()
+    {
+        WaveManager.Instance.OnNewWaveStarted -= ActiveWaveHUD;
+        WaveManager.Instance.OnAllWavesCompleted -= ShowWinHUD;
     }
 
     private void Update()
@@ -194,14 +189,6 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
-    private void ControlSpawners(List<GameObject> spawnerList, bool active)
-    {
-        foreach (GameObject spawner in spawnerList)
-        {
-            spawner.SetActive(active);
-        }
-    }
-
     private void ControlTutorialObjects()
     {
         switch (tutorialIndex)
@@ -219,7 +206,7 @@ public class GameFlowController : MonoBehaviour
                 break;
 
             case 4:  // terminou o tutorial de ataque disparo
-                ControlSpawners(tutorialSpawners, false);
+
                 tutorialFinished = true;
 
                 break;
@@ -230,15 +217,12 @@ public class GameFlowController : MonoBehaviour
     {
         if (enemyMelee != null && enemyMelee.morreu && CanShowTutorial())
         {
-            tutorialSpawners[1].SetActive(true);  //
+            WaveManager.Instance.ControlSingleTutorialSpawner(1, true);
+            //tutorialSpawners[1].SetActive(true);  //
         }
         else if (enemyShooter != null && enemyShooter.morreu)
         {
-            //ShowTutorial();
-            ControlSpawners(wave1Spawners, true);
-
             WaveManager.Instance.StartWaves();
-            waveHUD.SetActive(true);
             waveStarted = true;
         }
     }
@@ -254,18 +238,8 @@ public class GameFlowController : MonoBehaviour
     }
     #endregion
 
-    public void StartNewWave()
+    private void ActiveWaveHUD()
     {
-        int waveId = WaveManager.Instance.GetCurrentWaveId();
-
-        if (waveId > waveSpawnersList.Count - 1)
-        {
-            ShowWinHUD();
-        }
-        else
-        {
-            ControlSpawners(waveSpawnersList[waveId], true);
-            waveHUD.SetActive(true);
-        }
+        waveHUD.SetActive(true);
     }
 }

@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,13 +9,30 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int deadEnemiesCount = 0;
     [SerializeField] private bool isWaveActive = false;
 
-    public UnityEvent OnAllEnemiesDead;
+    [Header("Spawners")]
+    [SerializeField] private List<GameObject> tutorialSpawners;
+    [SerializeField] private List<GameObject> wave1Spawners;
+    [SerializeField] private List<GameObject> wave2Spawners;
+    [SerializeField] private List<GameObject> wave3Spawners;
+    [SerializeField] private List<List<GameObject>> waveSpawnersList = new List<List<GameObject>>();
+
+    // eventos
+    public event Action OnNewWaveStarted;
+    public event Action OnWaveCompleted;
+    public event Action OnAllWavesCompleted;
 
     public static WaveManager Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
+
+        waveSpawnersList = new List<List<GameObject>>()
+        {
+            wave1Spawners,
+            wave2Spawners,
+            wave3Spawners
+        };
     }
 
     private void Update()
@@ -27,8 +44,8 @@ public class WaveManager : MonoBehaviour
 
         if (deadEnemiesCount >= waveEnemies.Count)
         {
-            OnAllEnemiesDead?.Invoke();
-            StartNextWave();
+            OnWaveCompleted?.Invoke();
+            HandleWaveCompleted();
         }
     }
 
@@ -37,12 +54,27 @@ public class WaveManager : MonoBehaviour
         currentWaveId = 1;
         deadEnemiesCount = 0;
         isWaveActive = true;
+
+        ControlSpawners(tutorialSpawners, false);
+        ControlSpawners(wave1Spawners, true);
+        OnNewWaveStarted?.Invoke();
     }
 
-    public void StartNextWave()
+    public void HandleWaveCompleted()
     {
         waveEnemies.Clear();
         deadEnemiesCount = 0;
+
+        if (currentWaveId > waveSpawnersList.Count - 1)
+        {
+            OnAllWavesCompleted?.Invoke();
+        }
+        else
+        {
+            ControlSpawners(waveSpawnersList[currentWaveId], true);
+            OnNewWaveStarted?.Invoke();
+        }
+
         currentWaveId++;
     }
 
@@ -60,6 +92,19 @@ public class WaveManager : MonoBehaviour
         {
             deadEnemiesCount++;
         }
+    }
+
+    private void ControlSpawners(List<GameObject> spawnerList, bool active)
+    {
+        foreach (GameObject spawner in spawnerList)
+        {
+            spawner.SetActive(active);
+        }
+    }
+
+    public void ControlSingleTutorialSpawner(int index, bool active)
+    {
+        tutorialSpawners[index].SetActive(active);
     }
 
     public int GetCurrentWaveId()
