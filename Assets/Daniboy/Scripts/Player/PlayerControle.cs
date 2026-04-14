@@ -87,6 +87,10 @@ public class PlayerControle : MonoBehaviour
 
     [Header("ShutGabrielCode")]
     public GlobuloBranco glob;
+
+    [Header("audioPlayer")]
+    public AudioClip _shoot;
+    public AudioClip _sword;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -118,6 +122,7 @@ public class PlayerControle : MonoBehaviour
             {
                 if (anima_robo_ruan.quantAtk == 0)
                 {
+                    AudioManager.Instance.PlaySFX(_shoot);
                     _anima_Robo.SetTrigger("Shot");
                     _finalAction = true;
 

@@ -15,6 +15,11 @@ public class AnimaControleRobo_ruan : MonoBehaviour
 
     }    
 
+    public void incioAnimaEspada()
+    {
+        AudioManager.Instance.PlaySFX(playerControle._sword);
+    }
+
     public void finalAnimaEspada1()
     {
         if (quantAtk == 1)

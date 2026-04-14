@@ -1969,6 +1969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1892078605266454327, guid: 404ba3d94843ac842b10b1dee62ecd21, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6028729752224086136, guid: 404ba3d94843ac842b10b1dee62ecd21, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -3086,6 +3090,14 @@ PrefabInstance:
       propertyPath: glob
       value: 
       objectReference: {fileID: 597203865}
+    - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: _shoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 252c9ed79b761aa4f99af109f5dc7006, type: 3}
+    - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: _sword
+      value: 
+      objectReference: {fileID: 8300000, guid: f9248f18f706dd545a1531ce11fa30f1, type: 3}
     - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       propertyPath: _rigidbody
       value: 
