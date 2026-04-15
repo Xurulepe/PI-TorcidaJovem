@@ -35,6 +35,7 @@ public class Dashing : MonoBehaviour
                 if (_playerScript._lockMove == false)
                 {
                     _moveScript._anima_Robo.SetTrigger("Dash");
+                    AudioManager.Instance.PlaySFX(_moveScript._Dash);
                     StartCoroutine(Impulse());
                     _playerScript._finalAction = true;
                 }

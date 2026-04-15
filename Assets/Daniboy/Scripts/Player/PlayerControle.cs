@@ -91,6 +91,7 @@ public class PlayerControle : MonoBehaviour
     [Header("audioPlayer")]
     public AudioClip _shoot;
     public AudioClip _sword;
+    public AudioClip _Dash;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();

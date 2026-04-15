@@ -3091,6 +3091,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 597203865}
     - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
+      propertyPath: _Dash
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e652038ca2bdf143862c9f166bf4e08, type: 3}
+    - target: {fileID: 1814900294223476678, guid: 113a3fe1d33af2c42842193a9477c052, type: 3}
       propertyPath: _shoot
       value: 
       objectReference: {fileID: 8300000, guid: 252c9ed79b761aa4f99af109f5dc7006, type: 3}
