@@ -538,7 +538,7 @@ MonoBehaviour:
   _tamanho: 7
   layermask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 8960
   gizmoColor: {r: 0, g: 1, b: 1, a: 1}
   gravity: -9.81
   controller: {fileID: 5289110529591689463}

@@ -78,6 +78,14 @@ public class InimigoMelee : InimigoDef
             Ataque();
         }
 
+
+
+
+
+
+
+
+
         if (other.gameObject.CompareTag("Espadão"))
         {
          
@@ -87,7 +95,25 @@ public class InimigoMelee : InimigoDef
          
             StartCoroutine(HitTime(knockDir));
         }
+        if (other.gameObject.CompareTag("BulletPlayer"))
+        {
+            Debug.Log("BalaPlayered");
 
+            Vector3 knockDir = (transform.position - transfomelee.transform.position).normalized;
+            _agent.velocity = Vector3.zero;
+            StartCoroutine(HitTime(knockDir));
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         if (other.gameObject.CompareTag("Globulo"))
         {
 
