@@ -5,95 +5,68 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.Localization.Settings;
-using JetBrains.Annotations;
 
 public class MainMenuController : MonoBehaviour
 {
+    [Header("Menu Music")]
+    /// <summary>
+    /// A música que será reproduzida assim que entrar na cena do menu.
+    /// </summary>
+    [Tooltip("A música que será reproduzida assim que entrar na cena do menu.")]
     [SerializeField] private AudioClip _mainMenuMusic;
 
+    [Header("3D Virus Animation")]
+    /// <summary>
+    /// O animador dos vírus 3D do menu.
+    /// </summary>
+    [Tooltip("O animador dos vírus 3D do menu.")]
     [SerializeField] private MainMenuVirusAnimation _virusAnimation;
 
+    #region LOADING SETTINGS
+    [Header("Loading Settings")]
     /// <summary>
     /// O painel de fade que cobre a tela para transições.
     /// </summary>
     [Tooltip("O painel de fade que cobre a tela para transições.")]
-    [SerializeField] Image fadePanel;
+    [SerializeField] private Image _fadePanel;
 
     /// <summary>
     /// A tela de loading que aparece ao carregar uma nova cena.
     /// </summary>
     [Tooltip("A tela de loading que aparece ao carregar uma nova cena.")]
-    [SerializeField] GameObject loadingScreen;
+    [SerializeField] private GameObject _loadingScreen;
 
     /// <summary>
     /// A barra de progresso de carregamento.
     /// </summary>
     [Tooltip("A barra de progresso de carregamento.")]
-    [SerializeField] Image progressBar;
+    [SerializeField] private Image _progressBar;
+    #endregion
 
-    [Space]
+    #region MENUS
+    [Header("Menus")]
     /// <summary>
-    /// Os painéis dos menus (Start, Configurações, Sons, Idiomas).
+    /// A lista que contém os painéis dos menus (Start, Configurações, Sons, Idiomas, Créditos).
     /// </summary>
-    [Tooltip("Os painéis dos menus (Start, Configurações, Sons, Idiomas).")]
-    [SerializeField] List<Transform> _menuPanels = new List<Transform>();
+    [Tooltip("A lista que contém os painéis dos menus (Start, Configurações, Sons, Idiomas, Créditos).")]
+    [SerializeField] private List<Menu> _menuList;
 
-    #region MENUS ELEMENTS
     /// <summary>
     /// Os elementos que serão animados do menu Start.
     /// </summary>
     [Tooltip("Os elementos que serão animados do menu Start.")]
-    [SerializeField] List<Transform> _startMenuElements = new List<Transform>();
-
-    /// <summary>
-    /// Os elementos que serão animados do menu de Configurações.
-    /// </summary>
-    [Tooltip("Os elementos que serão animados do menu de Configurações.")]
-    [SerializeField] List<Transform> _configMenuElements = new List<Transform>();
-
-    /// <summary>
-    /// Os elementos que serão animados do menu de Créditos.
-    /// </summary>
-    [Tooltip("Os elementos que serão animados do menu de Créditos.")]
-    [SerializeField] List<Transform> _creditMenuElements = new List<Transform>();
-
-    /// <summary>
-    /// Os elementos que serão animados do menu de Sons.
-    /// </summary>
-    [Tooltip("Os elementos que serão animados do menu de Sons.")]
-    [SerializeField] List<Transform> _sonsMenuElements = new List<Transform>();
-
-    /// <summary>
-    /// Os elementos que serão animados do menu de Idiomas.
-    /// </summary>
-    [Tooltip("Os elementos que serão animados do menu de Idiomas.")]
-    [SerializeField] List<Transform> _languageMenuElements = new List<Transform>();
+    [SerializeField] private Menu _startMenu;
     #endregion
 
-    /// <summary>
-    /// A lista de listas que contém os elementos de cada menu.
-    /// </summary>
-    [Tooltip("A lista de listas que contém os elementos de cada menu.")]
-    List<List<Transform>> _menusLists = new List<List<Transform>>();
-
-    
     private void Start()
     {
-        _menusLists = new List<List<Transform>>()
-        {
-            _startMenuElements,
-            _configMenuElements,
-            _creditMenuElements,
-            _sonsMenuElements,
-            _languageMenuElements
-        };
+        _fadePanel.gameObject.SetActive(true);
 
-
-        fadePanel.gameObject.SetActive(true);
-
-        HideMenuElements(_startMenuElements);
+        HideMenuElements(_startMenu);
         FadeToLight();
-        StartCoroutine(AnimateMenu(_startMenuElements));
+
+        StartCoroutine(AnimateMenu(_startMenu));
+
         AudioManager.Instance.PlayMusic(_mainMenuMusic);
     }
 
@@ -104,23 +77,23 @@ public class MainMenuController : MonoBehaviour
     /// <param name="menuIndex"> O index do menu que será ativado.</param>
     public void ChangeMenu(int menuIndex)
     {
-        if (menuIndex < 0 || menuIndex >= _menusLists.Count || menuIndex >= _menuPanels.Count)
+        if (menuIndex < 0 || menuIndex >= _menuList.Count || menuIndex >= _menuList.Count)
         {
             Debug.LogWarning($"Menu inválido! Index {menuIndex} não existe!");
             return;
         }
 
-        HideOthersMenus(_menuPanels[menuIndex]);
-        StartCoroutine(AnimateMenu(_menusLists[menuIndex]));
+        HideOthersMenus(_menuList[menuIndex]);
+        StartCoroutine(AnimateMenu(_menuList[menuIndex]));
     }
 
     /// <summary>
     /// Oculta outros menus, exceto o menu passado como exceção.
     /// </summary>
     /// <param name="menuToKeep"> O menu que será ativo.</param>
-    private void HideOthersMenus(Transform menuToKeep)
+    private void HideOthersMenus(Menu menuToKeep)
     {
-        foreach (var menu in _menuPanels)
+        foreach (var menu in _menuList)
         {
             menu.gameObject.SetActive(false);
         }
@@ -133,12 +106,12 @@ public class MainMenuController : MonoBehaviour
     /// <summary>
     /// Anima os elementos do menu, fazendo com que eles apareçam um de cada vez.
     /// </summary>
-    /// <param name="menuButtons"> A lista de componentes do menu que será animado.</param>
-    private IEnumerator AnimateMenu(List<Transform> menuButtons)
+    /// <param name="menu"> O menu que contém a lista de componentes que serão animados.</param>
+    private IEnumerator AnimateMenu(Menu menu)
     {
-        HideMenuElements(menuButtons);
+        HideMenuElements(menu);
 
-        foreach (var button in menuButtons)
+        foreach (var button in menu.animatedElements)
         {
             button.DOScaleY(1f, .25f);
             yield return new WaitForSeconds(.25f);
@@ -148,10 +121,10 @@ public class MainMenuController : MonoBehaviour
     /// <summary>
     /// Oculta os elementos do menu que serão animados.
     /// </summary>
-    /// <param name="menusElements"> A lista de elementos que será ocultada.</param>
-    private void HideMenuElements(List<Transform> menusElements)
+    /// <param name="menu"> O menu que contém a lista de elementos que será ocultada.</param>
+    private void HideMenuElements(Menu menu)
     {
-        foreach (var element in menusElements)
+        foreach (var element in menu.animatedElements)
         {
             element.localScale = new Vector3(element.localScale.x, 0f, element.localScale.z);
         }
@@ -161,12 +134,12 @@ public class MainMenuController : MonoBehaviour
     #region FADE PANEL CONTROLLER
     private void FadeToLight()
     {
-        fadePanel.DOFade(0f, 1f);
+        _fadePanel.DOFade(0f, 1f);
     }
 
     private void FadeToDark()
     {
-        fadePanel.DOFade(1f, 1f);
+        _fadePanel.DOFade(1f, 1f);
     }
     #endregion
 
@@ -182,15 +155,15 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(OpenScene(scene_id));
     }
 
-    IEnumerator OpenScene(int scene_id)
+    private IEnumerator OpenScene(int scene_id)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_id);
 
-        loadingScreen.SetActive(true);
+        _loadingScreen.SetActive(true);
 
         while (!asyncLoad.isDone)
         {
-            progressBar.fillAmount = asyncLoad.progress;
+            _progressBar.fillAmount = asyncLoad.progress;
             yield return null;
 
             if (asyncLoad.progress == 1f)
@@ -199,8 +172,8 @@ public class MainMenuController : MonoBehaviour
             }
         }
 
-        progressBar.fillAmount = 1f;
-        loadingScreen.SetActive(false);
+        _progressBar.fillAmount = 1f;
+        _loadingScreen.SetActive(false);
     }
 
     public void QuitGame()

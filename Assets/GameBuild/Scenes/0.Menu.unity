@@ -396,8 +396,9 @@ GameObject:
   - component: {fileID: 71794791}
   - component: {fileID: 71794790}
   - component: {fileID: 71794789}
+  - component: {fileID: 71794792}
   m_Layer: 5
-  m_Name: Config Panel
+  m_Name: Settings Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,6 +490,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71794787}
   m_CullTransparentMesh: 1
+--- !u!114 &71794792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71794787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 436461978}
+  - {fileID: 2070251778}
+  - {fileID: 1590613470}
+  autoSelectButton: {fileID: 436461979}
 --- !u!1 &72802902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1415,7 @@ GameObject:
   - component: {fileID: 315235135}
   - component: {fileID: 315235138}
   - component: {fileID: 315235137}
+  - component: {fileID: 315235139}
   m_Layer: 5
   m_Name: Sons Config sub-menu
   m_TagString: Untagged
@@ -1462,6 +1481,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315235134}
   m_CullTransparentMesh: 1
+--- !u!114 &315235139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315235134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 1134390932}
+  - {fileID: 1239147546}
+  - {fileID: 753892810}
+  - {fileID: 1959209511}
+  autoSelectButton: {fileID: 1959209512}
 --- !u!1 &315996033
 GameObject:
   m_ObjectHideFlags: 0
@@ -7537,6 +7574,7 @@ GameObject:
   - component: {fileID: 760334508}
   - component: {fileID: 760334511}
   - component: {fileID: 760334510}
+  - component: {fileID: 760334512}
   m_Layer: 5
   m_Name: Idioma Config sub-menu
   m_TagString: Untagged
@@ -7603,6 +7641,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760334507}
   m_CullTransparentMesh: 1
+--- !u!114 &760334512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760334507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 147888258}
+  - {fileID: 1742791236}
+  autoSelectButton: {fileID: 1742791237}
 --- !u!1 &773107154
 GameObject:
   m_ObjectHideFlags: 0
@@ -10165,6 +10219,7 @@ GameObject:
   - component: {fileID: 1102695168}
   - component: {fileID: 1102695167}
   - component: {fileID: 1102695169}
+  - component: {fileID: 1102695170}
   m_Layer: 5
   m_Name: Start Panel
   m_TagString: Untagged
@@ -10260,6 +10315,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1102695170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102695165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 220933770}
+  - {fileID: 2082535871}
+  - {fileID: 1424157812}
+  - {fileID: 97881368}
+  autoSelectButton: {fileID: 220933771}
 --- !u!1 &1121088181
 GameObject:
   m_ObjectHideFlags: 0
@@ -22061,24 +22134,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuMusic: {fileID: 8300000, guid: c17bb27823fda4e44b779d5f42e3004e, type: 3}
   _virusAnimation: {fileID: 1519013632}
-  fadePanel: {fileID: 1049359298}
-  loadingScreen: {fileID: 459123291}
-  progressBar: {fileID: 825188787}
+  _fadePanel: {fileID: 1049359298}
+  _loadingScreen: {fileID: 459123291}
+  _progressBar: {fileID: 825188787}
   _menuPanels:
   - {fileID: 1102695166}
   - {fileID: 71794788}
   - {fileID: 2138567870}
   - {fileID: 315235135}
   - {fileID: 760334508}
+  _menuList:
+  - {fileID: 1102695170}
+  - {fileID: 71794792}
+  - {fileID: 2138567873}
+  - {fileID: 315235139}
+  - {fileID: 760334512}
   _startMenuElements:
   - {fileID: 220933770}
   - {fileID: 2082535871}
   - {fileID: 1424157812}
   - {fileID: 97881368}
+  _startMenu: {fileID: 1102695170}
   _configMenuElements:
   - {fileID: 436461978}
   - {fileID: 2070251778}
   - {fileID: 1590613470}
+  _settingsMenu: {fileID: 71794792}
   _creditMenuElements:
   - {fileID: 995764419}
   - {fileID: 1873883577}
@@ -22086,14 +22167,17 @@ MonoBehaviour:
   - {fileID: 7901751}
   - {fileID: 958817526}
   - {fileID: 607307248}
+  _creditsMenu: {fileID: 2138567873}
   _sonsMenuElements:
   - {fileID: 1134390932}
   - {fileID: 1239147546}
   - {fileID: 753892810}
   - {fileID: 1959209511}
+  _soundMenu: {fileID: 315235139}
   _languageMenuElements:
   - {fileID: 147888258}
   - {fileID: 1742791236}
+  _languageMenu: {fileID: 760334512}
 --- !u!114 &1519013631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28920,6 +29004,7 @@ GameObject:
   - component: {fileID: 2138567870}
   - component: {fileID: 2138567872}
   - component: {fileID: 2138567871}
+  - component: {fileID: 2138567873}
   m_Layer: 5
   m_Name: Credits Panel
   m_TagString: Untagged
@@ -28986,6 +29071,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138567869}
   m_CullTransparentMesh: 1
+--- !u!114 &2138567873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138567869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a86927a1554844820e13bbca18944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedElements:
+  - {fileID: 995764419}
+  - {fileID: 1873883577}
+  - {fileID: 816258109}
+  - {fileID: 7901751}
+  - {fileID: 958817526}
+  - {fileID: 607307248}
+  autoSelectButton: {fileID: 1873883579}
 --- !u!1001 &879496609680533163
 PrefabInstance:
   m_ObjectHideFlags: 0
