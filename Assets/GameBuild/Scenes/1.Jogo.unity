@@ -5556,6 +5556,18 @@ PrefabInstance:
       value: WaveManager
       objectReference: {fileID: 0}
     - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: _wave1Spawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: _wave2Spawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: _wave3Spawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
       propertyPath: 'wave1Spawners.Array.data[0]'
       value: 
       objectReference: {fileID: 18516620}
@@ -5580,11 +5592,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1035770738}
     - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: _tutorialSpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave1Spawners.Array.data[0]'
+      value: 
+      objectReference: {fileID: 18516620}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave1Spawners.Array.data[1]'
+      value: 
+      objectReference: {fileID: 545241422}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave2Spawners.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1563468101}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave2Spawners.Array.data[1]'
+      value: 
+      objectReference: {fileID: 76465818}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave3Spawners.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1624188024}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_wave3Spawners.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1035770738}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
       propertyPath: 'tutorialSpawners.Array.data[0]'
       value: 
       objectReference: {fileID: 1060880382}
     - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
       propertyPath: 'tutorialSpawners.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2012477930}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_tutorialSpawners.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1060880382}
+    - target: {fileID: 5360526679774986269, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}
+      propertyPath: '_tutorialSpawners.Array.data[1]'
       value: 
       objectReference: {fileID: 2012477930}
     - target: {fileID: 7740015509897878259, guid: 852f36aff72118f4eb8070ee4c768591, type: 3}

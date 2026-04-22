@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] private int currentWaveId = 1;
-    [SerializeField] private List<GameObject> waveEnemies = new List<GameObject>();
-    [SerializeField] private int deadEnemiesCount = 0;
-    [SerializeField] private bool isWaveActive = false;
+    [Header("Wave Settings")]
+    [SerializeField] private int _currentWaveId = 1;
+    [SerializeField] private int _deadEnemiesCount = 0;
+    [SerializeField] private bool _isWaveActive = false;
+
+    [Header("Wave Enemies")]
+    [SerializeField] private List<GameObject> _waveEnemiesList = new List<GameObject>();
 
     [Header("Spawners")]
-    [SerializeField] private List<GameObject> tutorialSpawners;
-    [SerializeField] private List<GameObject> wave1Spawners;
-    [SerializeField] private List<GameObject> wave2Spawners;
-    [SerializeField] private List<GameObject> wave3Spawners;
-    [SerializeField] private List<List<GameObject>> waveSpawnersList = new List<List<GameObject>>();
+    [SerializeField] private List<GameObject> _tutorialSpawners;
+    [SerializeField] private List<GameObject> _wave1Spawners;
+    [SerializeField] private List<GameObject> _wave2Spawners;
+    [SerializeField] private List<GameObject> _wave3Spawners;
+    
+    private List<List<GameObject>> _waveSpawnersList = new List<List<GameObject>>();
 
     // eventos
     public event Action OnNewWaveStarted;
@@ -27,70 +31,73 @@ public class WaveManager : MonoBehaviour
     {
         Instance = this;
 
-        waveSpawnersList = new List<List<GameObject>>()
+        _waveSpawnersList = new List<List<GameObject>>()
         {
-            wave1Spawners,
-            wave2Spawners,
-            wave3Spawners
+            _wave1Spawners,
+            _wave2Spawners,
+            _wave3Spawners
         };
     }
 
     private void Update()
     {
-        if (!isWaveActive || waveEnemies.Count <= 0)
+        if (!_isWaveActive || _waveEnemiesList.Count <= 0)
         {
             return;
         }
 
-        if (deadEnemiesCount >= waveEnemies.Count)
+        if (_deadEnemiesCount >= _waveEnemiesList.Count)
         {
             OnWaveCompleted?.Invoke();
+
             HandleWaveCompleted();
         }
     }
 
     public void StartWaves()
     {
-        currentWaveId = 1;
-        deadEnemiesCount = 0;
-        isWaveActive = true;
+        _currentWaveId = 1;
+        _deadEnemiesCount = 0;
+        _isWaveActive = true;
 
-        ControlSpawners(tutorialSpawners, false);
-        ControlSpawners(wave1Spawners, true);
+        ControlSpawners(_tutorialSpawners, false);
+        ControlSpawners(_wave1Spawners, true);
+
         OnNewWaveStarted?.Invoke();
     }
 
     public void HandleWaveCompleted()
     {
-        waveEnemies.Clear();
-        deadEnemiesCount = 0;
+        _waveEnemiesList.Clear();
+        _deadEnemiesCount = 0;
 
-        if (currentWaveId > waveSpawnersList.Count - 1)
+        if (_currentWaveId > _waveSpawnersList.Count - 1)
         {
             OnAllWavesCompleted?.Invoke();
         }
         else
         {
-            ControlSpawners(waveSpawnersList[currentWaveId], true);
+            ControlSpawners(_waveSpawnersList[_currentWaveId], true);
+
             OnNewWaveStarted?.Invoke();
         }
 
-        currentWaveId++;
+        _currentWaveId++;
     }
 
     public void AddNewEnemy(GameObject enemy)
     {
-        if (isWaveActive && !waveEnemies.Contains(enemy))
+        if (_isWaveActive)
         {
-            waveEnemies.Add(enemy);
+            _waveEnemiesList.Add(enemy);
         }
     }
 
     public void IncreaseDeadEnemiesCount()
     {
-        if (isWaveActive)
+        if (_isWaveActive)
         {
-            deadEnemiesCount++;
+            _deadEnemiesCount++;
         }
     }
 
@@ -104,16 +111,16 @@ public class WaveManager : MonoBehaviour
 
     public void ControlSingleTutorialSpawner(int index, bool active)
     {
-        tutorialSpawners[index].SetActive(active);
+        _tutorialSpawners[index].SetActive(active);
     }
 
     public int GetCurrentWaveId()
     {
-        return currentWaveId;
+        return _currentWaveId;
     }
 
     public int GetDeadEnemiesCount()
     {
-        return deadEnemiesCount;
+        return _deadEnemiesCount;
     }
 }
